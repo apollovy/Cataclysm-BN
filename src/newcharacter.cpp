@@ -2033,9 +2033,9 @@ tab_direction set_scenario( avatar &u, points_left &points,
         w_profession = catacurses::newwin( 4, ( TERMX / 2 ) - 1, point( TERMX / 2, 7 ) );
         w_location = catacurses::newwin( 3, ( TERMX / 2 ) - 1, point( TERMX / 2, 11 ) );
         w_vehicle = catacurses::newwin( 3, ( TERMX / 2 ) - 1, point( TERMX / 2, 14 ) );
-        // 11 = 2 + 4 + 3 + 3, so we use rest of space for flags
-        w_flags = catacurses::newwin( iContentHeight - 14, ( TERMX / 2 ) - 1,
-                                      point( TERMX / 2, 17 ) );
+        // 9 = 2 + 4 + 3, so we use rest of space for flags
+        w_flags = catacurses::newwin( iContentHeight - 9, ( TERMX / 2 ) - 1,
+                                     point( TERMX / 2, 17 ) );
         ui.position_from_window( w );
     };
     init_windows( ui );
