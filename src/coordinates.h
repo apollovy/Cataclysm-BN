@@ -2,9 +2,12 @@
 #ifndef CATA_SRC_COORDINATES_H
 #define CATA_SRC_COORDINATES_H
 
+#include <algorithm>
 #include <cstdlib>
+#include <iterator>
 
 #include "coordinate_conversions.h"
+#include "cuboid_rectangle.h"
 #include "enums.h"
 #include "game_constants.h"
 #include "point.h"
@@ -421,6 +424,22 @@ inline auto project_combine(
     return coord_point<PointResult, CoarseOrigin, FineScale>( refined_coarse.raw() + fine.raw() );
 }
 
+template<scale FineScale, origin Origin, scale CoarseScale>
+inline auto project_bounds( const coord_point<point, Origin, CoarseScale> &coarse )
+{
+    constexpr point one( 1, 1 ); // NOLINT(cata-use-named-point-constants)
+    return inclusive_rectangle<coord_point<point, Origin, FineScale>>( project_to<FineScale>( coarse ),
+            project_to<FineScale>( coarse + one ) - one );
+}
+
+template<scale FineScale, origin Origin, scale CoarseScale>
+inline auto project_bounds( const coord_point<tripoint, Origin, CoarseScale> &coarse )
+{
+    constexpr point one( 1, 1 ); // NOLINT(cata-use-named-point-constants)
+    return inclusive_cuboid<coord_point<tripoint, Origin, FineScale>>( project_to<FineScale>( coarse ),
+            project_to<FineScale>( coarse + one ) - one );
+}
+
 } // namespace coords
 
 namespace std
@@ -456,18 +475,23 @@ using point_omt_ms = coords::coord_point<point, coords::origin::overmap_terrain,
 using point_abs_sm = coords::coord_point<point, coords::origin::abs, coords::sm>;
 using point_omt_sm = coords::coord_point<point, coords::origin::overmap_terrain, coords::sm>;
 using point_om_sm = coords::coord_point<point, coords::origin::overmap, coords::sm>;
+using point_rel_omt = coords::coord_point<point, coords::origin::relative, coords::omt>;
 using point_abs_omt = coords::coord_point<point, coords::origin::abs, coords::omt>;
 using point_om_omt = coords::coord_point<point, coords::origin::overmap, coords::omt>;
 using point_abs_seg = coords::coord_point<point, coords::origin::abs, coords::seg>;
+using point_rel_om = coords::coord_point<point, coords::origin::relative, coords::om>;
 using point_abs_om = coords::coord_point<point, coords::origin::abs, coords::om>;
 
 using tripoint_rel_ms = coords::coord_point<tripoint, coords::origin::relative, coords::ms>;
 using tripoint_abs_ms = coords::coord_point<tripoint, coords::origin::abs, coords::ms>;
 using tripoint_sm_ms = coords::coord_point<tripoint, coords::origin::submap, coords::ms>;
 using tripoint_omt_ms = coords::coord_point<tripoint, coords::origin::overmap_terrain, coords::ms>;
+using tripoint_rel_sm = coords::coord_point<tripoint, coords::origin::relative, coords::sm>;
 using tripoint_abs_sm = coords::coord_point<tripoint, coords::origin::abs, coords::sm>;
 using tripoint_om_sm = coords::coord_point<tripoint, coords::origin::overmap, coords::sm>;
+using tripoint_rel_omt = coords::coord_point<tripoint, coords::origin::relative, coords::omt>;
 using tripoint_abs_omt = coords::coord_point<tripoint, coords::origin::abs, coords::omt>;
+using tripoint_om_omt = coords::coord_point<tripoint, coords::origin::overmap, coords::omt>;
 using tripoint_abs_seg = coords::coord_point<tripoint, coords::origin::abs, coords::seg>;
 using tripoint_abs_om = coords::coord_point<tripoint, coords::origin::abs, coords::om>;
 /*@}*/
@@ -475,6 +499,7 @@ using tripoint_abs_om = coords::coord_point<tripoint, coords::origin::abs, coord
 using coords::project_to;
 using coords::project_remain;
 using coords::project_combine;
+using coords::project_bounds;
 
 template<typename Point, coords::origin Origin, coords::scale Scale>
 inline int square_dist( const coords::coord_point<Point, Origin, Scale> &loc1,
@@ -505,6 +530,13 @@ inline int manhattan_dist( const coords::coord_point<Point, Origin, Scale> &loc1
 }
 
 template<typename Point, coords::origin Origin, coords::scale Scale>
+inline int octile_dist( const coords::coord_point<Point, Origin, Scale> &loc1,
+                        const coords::coord_point<Point, Origin, Scale> &loc2, int multiplier = 1 )
+{
+    return octile_dist( loc1.raw(), loc2.raw(), multiplier );
+}
+
+template<typename Point, coords::origin Origin, coords::scale Scale>
 direction direction_from( const coords::coord_point<Point, Origin, Scale> &loc1,
                           const coords::coord_point<Point, Origin, Scale> &loc2 )
 {
@@ -531,6 +563,32 @@ midpoint( const coords::coord_point<Point, Origin, Scale> &loc1,
           const coords::coord_point<Point, Origin, Scale> &loc2 )
 {
     return coords::coord_point<Point, Origin, Scale>( ( loc1.raw() + loc2.raw() ) / 2 );
+}
+
+template<typename Point>
+Point midpoint( const inclusive_rectangle<Point> &box )
+{
+    constexpr point one( 1, 1 ); // NOLINT(cata-use-named-point-constants)
+    return midpoint( box.p_min, box.p_max + one );
+}
+
+template<typename Point>
+Point midpoint( const half_open_rectangle<Point> &box )
+{
+    return midpoint( box.p_min, box.p_max );
+}
+
+template<typename Tripoint>
+Tripoint midpoint( const inclusive_cuboid<Tripoint> &box )
+{
+    constexpr tripoint one( 1, 1, 1 );
+    return midpoint( box.p_min, box.p_max + one );
+}
+
+template<typename Tripoint>
+Tripoint midpoint( const half_open_cuboid<Tripoint> &box )
+{
+    return midpoint( box.p_min, box.p_max );
 }
 
 template<typename Point, coords::origin Origin, coords::scale Scale>
@@ -620,6 +678,10 @@ struct real_coords {
     void fromomap( const point &rel_om, const point &rel_om_pos ) {
         const point a = om_to_omt_copy( rel_om ) + rel_om_pos;
         fromabs( omt_to_ms_copy( a ) );
+    }
+
+    point_abs_omt abs_omt() const {
+        return project_to<coords::omt>( point_abs_sm( abs_sub ) );
     }
 
     // helper functions to return abs_pos of submap/overmap tile/overmap's start

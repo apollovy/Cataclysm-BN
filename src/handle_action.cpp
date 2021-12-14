@@ -436,6 +436,10 @@ static void pldrive( const tripoint &p )
         u.in_vehicle = false;
         return;
     }
+    if( veh->is_on_ramp && p.x != 0 ) {
+        add_msg( m_bad, _( "You can't turn the vehicle while on a ramp." ) );
+        return;
+    }
     if( !remote ) {
         static const itype_id fuel_type_animal( "animal" );
         const bool has_animal_controls = veh->part_with_feature( part, "CONTROL_ANIMAL", true ) >= 0;
@@ -474,7 +478,7 @@ static void pldrive( const tripoint &p )
             return;
         }
     }
-    veh->pldrive( p.xy(), p.z );
+    veh->pldrive( get_avatar(), p.xy(), p.z );
 }
 
 inline static void pldrive( point d )
@@ -2448,10 +2452,12 @@ bool game::handle_action()
 
             case ACTION_ZOOM_IN:
                 zoom_in();
+                mark_main_ui_adaptor_resize();
                 break;
 
             case ACTION_ZOOM_OUT:
                 zoom_out();
+                mark_main_ui_adaptor_resize();
                 break;
 
             case ACTION_ITEMACTION:

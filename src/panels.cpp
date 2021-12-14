@@ -213,18 +213,18 @@ std::string window_panel::get_name() const
 }
 
 void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const avatar &you,
-                                     const tripoint &global_omt, const point &start_input,
+                                     const tripoint_abs_omt &global_omt, const point &start_input,
                                      const int width, const int height )
 {
-    const point curs( global_omt.xy() );
-    const tripoint targ = you.get_active_mission_target();
+    const point_abs_omt curs = global_omt.xy();
+    const tripoint_abs_omt targ = you.get_active_mission_target();
     bool drew_mission = targ == overmap::invalid_tripoint;
     const int start_y = start_input.y + ( height / 2 ) - 2;
     const int start_x = start_input.x + ( width / 2 ) - 2;
 
     for( int i = -( width / 2 ); i <= width - ( width / 2 ) - 1; i++ ) {
         for( int j = -( height / 2 ); j <= height - ( height / 2 ) - 1; j++ ) {
-            const tripoint omp( curs.x + i, curs.y + j, g->get_levz() );
+            const tripoint_abs_omt omp( curs + point( i, j ), g->get_levz() );
             nc_color ter_color;
             std::string ter_sym;
             const bool seen = overmap_buffer.seen( omp );
@@ -351,11 +351,11 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
 
     // Print arrow to mission if we have one!
     if( !drew_mission ) {
-        double slope = ( curs.x != targ.x ) ? static_cast<double>( targ.y - curs.y ) / static_cast<double>
-                       ( targ.x - curs.x ) : 4;
+        double slope = curs.x() != targ.x() ?
+                       static_cast<double>( targ.y() - curs.y() ) / ( targ.x() - curs.x() ) : 4;
 
-        if( curs.x == targ.x || std::fabs( slope ) > 3.5 ) {  // Vertical slope
-            if( targ.y > curs.y ) {
+        if( curs.x() == targ.x() || std::fabs( slope ) > 3.5 ) {  // Vertical slope
+            if( targ.y() > curs.y() ) {
                 mvwputch( w_minimap, point( 3 + start_x, 6 + start_y ), c_red, '*' );
             } else {
                 mvwputch( w_minimap, point( 3 + start_x, 0 + start_y ), c_red, '*' );
@@ -364,8 +364,8 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
             int arrowx = -1;
             int arrowy = -1;
             if( std::fabs( slope ) >= 1. ) {  // y diff is bigger!
-                arrowy = ( targ.y > curs.y ? 6 : 0 );
-                arrowx = static_cast<int>( 3 + 3 * ( targ.y > curs.y ? slope : ( 0 - slope ) ) );
+                arrowy = ( targ.y() > curs.y() ? 6 : 0 );
+                arrowx = static_cast<int>( 3 + 3 * ( targ.y() > curs.y() ? slope : ( 0 - slope ) ) );
                 if( arrowx < 0 ) {
                     arrowx = 0;
                 }
@@ -373,8 +373,8 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
                     arrowx = 6;
                 }
             } else {
-                arrowx = ( targ.x > curs.x ? 6 : 0 );
-                arrowy = static_cast<int>( 3 + 3 * ( targ.x > curs.x ? slope : ( 0 - slope ) ) );
+                arrowx = ( targ.x() > curs.x() ? 6 : 0 );
+                arrowy = static_cast<int>( 3 + 3 * ( targ.x() > curs.x() ? slope : ( 0 - slope ) ) );
                 if( arrowy < 0 ) {
                     arrowy = 0;
                 }
@@ -383,9 +383,9 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
                 }
             }
             char glyph = '*';
-            if( targ.z > you.posz() ) {
+            if( targ.z() > you.posz() ) {
                 glyph = '^';
-            } else if( targ.z < you.posz() ) {
+            } else if( targ.z() < you.posz() ) {
                 glyph = 'v';
             }
 
@@ -399,7 +399,7 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
             if( i > -3 && i < 3 && j > -3 && j < 3 ) {
                 continue; // only do hordes on the border, skip inner map
             }
-            const tripoint omp( curs.x + i, curs.y + j, g->get_levz() );
+            const tripoint_abs_omt omp( curs + point( i, j ), g->get_levz() );
             int horde_size = overmap_buffer.get_horde_size( omp );
             if( horde_size >= HORDE_VISIBILITY_SIZE ) {
                 if( overmap_buffer.seen( omp )
@@ -414,7 +414,7 @@ void overmap_ui::draw_overmap_chunk( const catacurses::window &w_minimap, const 
 
 static void draw_minimap( const avatar &u, const catacurses::window &w_minimap )
 {
-    const tripoint curs = u.global_omt_location();
+    const tripoint_abs_omt curs = u.global_omt_location();
     overmap_ui::draw_overmap_chunk( w_minimap, u, curs, point_zero, 5, 5 );
 }
 
@@ -800,10 +800,7 @@ static std::pair<nc_color, std::string> power_stat( const avatar &u )
             c_pwr = c_red;
         }
 
-        if( u.get_power_level() < 1_J ) {
-            s_pwr = std::to_string( units::to_millijoule( u.get_power_level() ) ) +
-                    pgettext( "energy unit: millijoule", "mJ" );
-        } else if( u.get_power_level() < 1_kJ ) {
+        if( u.get_power_level() < 1_kJ ) {
             s_pwr = std::to_string( units::to_joule( u.get_power_level() ) ) +
                     pgettext( "energy unit: joule", "J" );
         } else {
@@ -1411,7 +1408,7 @@ static void draw_loc_labels( const avatar &u, const catacurses::window &w, bool 
     } else {
         // NOLINTNEXTLINE(cata-use-named-point-constants)
         mvwprintz( w, point( 1, 1 ), c_light_gray, _( "Sky  :" ) );
-        wprintz( w, get_weather().weather_id->color, " %s", get_weather().weather_id->name );
+        wprintz( w, get_weather().weather_id->color, " %s", get_weather().weather_id->name.translated() );
     }
     // display lighting
     const auto ll = get_light_level( g->u.fine_detail_vision_mod() );
@@ -1435,7 +1432,7 @@ static void draw_loc_labels( const avatar &u, const catacurses::window &w, bool 
     }
     if( minimap ) {
         const int offset = getmaxx( w ) - 6;
-        const tripoint curs = u.global_omt_location();
+        const tripoint_abs_omt curs = u.global_omt_location();
         overmap_ui::draw_overmap_chunk( w, u, curs, point( offset, -1 ), 5, 5 );
     }
     wnoutrefresh( w );
@@ -1605,7 +1602,8 @@ static void draw_env_compact( avatar &u, const catacurses::window &w )
     if( g->get_levz() < 0 ) {
         mvwprintz( w, point( 8, 3 ), c_light_gray, _( "Underground" ) );
     } else {
-        mvwprintz( w, point( 8, 3 ), get_weather().weather_id->color, get_weather().weather_id->name );
+        mvwprintz( w, point( 8, 3 ), get_weather().weather_id->color,
+                   get_weather().weather_id->name.translated() );
     }
     // display lighting
     const auto ll = get_light_level( g->u.fine_detail_vision_mod() );
@@ -1744,8 +1742,7 @@ static void draw_health_classic( avatar &u, const catacurses::window &w )
     // vehicle display
     if( veh ) {
         veh->print_fuel_indicators( w, point( 39, 2 ) );
-        mvwprintz( w, point( 35, 4 ), c_light_gray,
-                   std::to_string( ( veh->face.dir() + 90 ) % 360 ) + "°" );
+        mvwprintz( w, point( 35, 4 ), c_light_gray, veh->face.to_string_azimuth_from_north() );
         // target speed > current speed
         const float strain = veh->strain();
         if( veh->cruise_on ) {
@@ -1859,8 +1856,7 @@ static void draw_veh_compact( const avatar &u, const catacurses::window &w )
     }
     if( veh ) {
         veh->print_fuel_indicators( w, point_zero );
-        mvwprintz( w, point( 6, 0 ), c_light_gray,
-                   std::to_string( ( veh->face.dir() + 90 ) % 360 ) + "°" );
+        mvwprintz( w, point( 6, 0 ), c_light_gray, veh->face.to_string_azimuth_from_north() );
         // target speed > current speed
         const float strain = veh->strain();
         if( veh->cruise_on ) {
@@ -1892,8 +1888,7 @@ static void draw_veh_padding( const avatar &u, const catacurses::window &w )
     }
     if( veh ) {
         veh->print_fuel_indicators( w, point_east );
-        mvwprintz( w, point( 7, 0 ), c_light_gray,
-                   std::to_string( ( veh->face.dir() + 90 ) % 360 ) + "°" );
+        mvwprintz( w, point( 7, 0 ), c_light_gray, veh->face.to_string_azimuth_from_north() );
         // target speed > current speed
         const float strain = veh->strain();
         nc_color col_vel = strain <= 0 ? c_light_blue :
@@ -1945,7 +1940,8 @@ static void draw_weather_classic( avatar &, const catacurses::window &w )
         mvwprintz( w, point_zero, c_light_gray, _( "Underground" ) );
     } else {
         mvwprintz( w, point_zero, c_light_gray, _( "Weather :" ) );
-        mvwprintz( w, point( 10, 0 ), get_weather().weather_id->color, get_weather().weather_id->name );
+        mvwprintz( w, point( 10, 0 ), get_weather().weather_id->color,
+                   get_weather().weather_id->name.translated() );
     }
     mvwprintz( w, point( 31, 0 ), c_light_gray, _( "Moon :" ) );
     nc_color clr = c_white;

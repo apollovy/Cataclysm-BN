@@ -15,6 +15,7 @@
 #include <utility>
 #include <vector>
 
+#include "activity_actor_definitions.h"
 #include "avatar.h"
 #include "avatar_action.h"
 #include "calendar.h"
@@ -891,9 +892,9 @@ static int move_cost( const item &it, const tripoint &src, const tripoint &dest 
 
         if( const cata::optional<vpart_reference> vp = g->m.veh_at(
                     cart_position ).part_with_feature( "CARGO", false ) ) {
-            auto veh = vp->vehicle();
-            auto vstor = vp->part_index();
-            auto capacity = veh.free_volume( vstor );
+            const vehicle &veh = vp->vehicle();
+            size_t vstor = vp->part_index();
+            units::volume capacity = veh.free_volume( vstor );
 
             return move_cost_cart( it, src, dest, capacity );
         }
@@ -911,7 +912,7 @@ static bool vehicle_activity( player &p, const tripoint &src_loc, int vpindex, c
         return false;
     }
     int time_to_take = 0;
-    if( vpindex >= static_cast<int>( veh->parts.size() ) ) {
+    if( vpindex >= veh->part_count() ) {
         // if parts got removed during our work, we can't just carry on removing, we want to repair parts!
         // so just bail out, as we don't know if the next shifted part is suitable for repair.
         if( type == 'r' ) {
@@ -924,8 +925,8 @@ static bool vehicle_activity( player &p, const tripoint &src_loc, int vpindex, c
         }
     }
     const vpart_info &vp = veh->part_info( vpindex );
-    const vehicle_part part = veh->parts[ vpindex ];
     if( type == 'r' ) {
+        const vehicle_part part = veh->part( vpindex );
         time_to_take = vp.repair_time( p ) * part.damage() / part.max_damage();
     } else if( type == 'o' ) {
         time_to_take = vp.removal_time( p );
@@ -950,7 +951,7 @@ static bool vehicle_activity( player &p, const tripoint &src_loc, int vpindex, c
     // values[5]
     p.activity.values.push_back( -point_zero.y );
     // values[6]
-    p.activity.values.push_back( veh->index_of_part( &veh->parts[vpindex] ) );
+    p.activity.values.push_back( veh->index_of_part( &veh->part( vpindex ) ) );
     p.activity.str_values.push_back( vp.get_id().str() );
     // this would only be used for refilling tasks
     item_location target;
@@ -1450,17 +1451,23 @@ static activity_reason_info can_do_activity_there( const activity_id &act, playe
         }
         bool b_rack_present = false;
         for( const tripoint &pt : g->m.points_in_radius( src_loc, 2 ) ) {
-            if( g->m.has_flag_furn( flag_BUTCHER_EQ, pt ) ) {
+            const inventory &inv = p.crafting_inventory();
+            if( g->m.has_flag_furn( flag_BUTCHER_EQ, pt ) || inv.has_item_with( []( const item & it ) {
+            return it.has_flag( "BUTCHER_RACK" );
+            } ) ) {
                 b_rack_present = true;
             }
         }
         if( !corpses.empty() ) {
             if( big_count > 0 && small_count == 0 ) {
-                if( !b_rack_present || !g->m.has_nearby_table( src_loc, 2 ) ) {
+                const inventory &inv = p.crafting_inventory();
+                if( !b_rack_present || !( g->m.has_nearby_table( src_loc, PICKUP_RANGE ) ||
+                inv.has_item_with( []( const item & it ) {
+                return it.has_flag( "FLAT_SURFACE" );
+                } ) ) ) {
                     return activity_reason_info::fail( do_activity_reason::NO_ZONE );
                 }
-                if( p.has_quality( quality_id( qual_BUTCHER ), 1 ) && ( p.has_quality( qual_SAW_W ) ||
-                        p.has_quality( qual_SAW_M ) ) ) {
+                if( p.has_quality( quality_id( qual_BUTCHER ), 1 ) ) {
                     return activity_reason_info::ok( do_activity_reason::NEEDS_BIG_BUTCHERING );
                 } else {
                     return activity_reason_info::fail( do_activity_reason::NEEDS_BIG_BUTCHERING );

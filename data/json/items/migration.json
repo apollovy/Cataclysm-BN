@@ -406,12 +406,12 @@
   {
     "id": "pda",
     "type": "MIGRATION",
-    "replace": "cell_phone"
+    "replace": "smart_phone"
   },
   {
     "id": "pda_flashlight",
     "type": "MIGRATION",
-    "replace": "cell_phone"
+    "replace": "smart_phone"
   },
   {
     "id": "crude_brick",
@@ -1305,5 +1305,15 @@
     ],
     "type": "MIGRATION",
     "replace": "gunpowder"
+  },
+  {
+    "id": [ "tanning_hide", "tanned_hide" ],
+    "type": "MIGRATION",
+    "replace": "leather"
+  },
+  {
+    "id": [ "tanning_pelt", "tanned_pelt" ],
+    "type": "MIGRATION",
+    "replace": "fur"
   }
 ]

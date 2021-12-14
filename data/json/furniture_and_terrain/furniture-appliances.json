@@ -427,7 +427,7 @@
     "flags": [ "TRANSPARENT" ],
     "deconstruct": {
       "items": [
-        { "item": "tanned_hide", "count": [ 1, 2 ] },
+        { "item": "leather", "count": [ 6, 12 ] },
         { "item": "2x4", "count": [ 2, 4 ] },
         { "item": "scrap", "count": [ 2, 6 ] },
         { "item": "wire", "count": [ 1, 4 ] }
@@ -804,11 +804,9 @@
     "active": [ "charger", { "power": 100 } ],
     "deconstruct": {
       "items": [
-        { "item": "sheet_metal_small", "count": [ 4, 6 ] },
-        { "item": "plastic_chunk", "count": 2 },
-        { "item": "pipe", "count": 4 },
-        { "item": "cable", "charges": [ 5, 10 ] },
-        { "item": "battery_charger", "count": 1 }
+        { "item": "cable", "charges": [ 2, 5 ] },
+        { "item": "battery_charger", "count": 1 },
+        { "item": "power_supply", "count": 1 }
       ]
     },
     "bash": {
