@@ -433,6 +433,7 @@ class Character : public Creature, public visitable<Character>
         /** Combat getters */
         float get_dodge_base() const override;
         float get_hit_base() const override;
+        float get_dodge() const override;
 
         const tripoint &pos() const override;
         /** Returns the player's sight range */
@@ -758,6 +759,9 @@ class Character : public Creature, public visitable<Character>
         // Trigger and disable mutations that can be so toggled.
         void activate_mutation( const trait_id &mutation );
         void deactivate_mutation( const trait_id &mut );
+
+        /** Removes the appropriate costs (NOTE: will reapply mods & recalc sightlines in case of newly activated mutation). */
+        void mutation_spend_resources( const trait_id &mut );
 
         /** Converts a body_part to an hp_part */
         static hp_part bp_to_hp( body_part bp );

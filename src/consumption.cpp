@@ -77,6 +77,7 @@ static const trait_id trait_BEAK_HUM( "BEAK_HUM" );
 static const trait_id trait_CANNIBAL( "CANNIBAL" );
 static const trait_id trait_CARNIVORE( "CARNIVORE" );
 static const trait_id trait_EATDEAD( "EATDEAD" );
+static const trait_id trait_EATHEALTH( "EATHEALTH" );
 static const trait_id trait_FANGS_SPIDER( "FANGS_SPIDER" );
 static const trait_id trait_GIZZARD( "GIZZARD" );
 static const trait_id trait_GOURMAND( "GOURMAND" );
@@ -739,7 +740,7 @@ ret_val<edible_rating> Character::will_eat( const item &food, bool interactive )
 
     if( food.rotten() ) {
         const bool saprovore = has_trait( trait_SAPROVORE );
-        if( !saprophage && !saprovore ) {
+        if( !saprophage && !saprovore && !has_bionic( bio_digestion ) ) {
             add_consequence( _( "This is rotten and smells awful!" ), edible_rating::rotten );
         }
     }
@@ -863,7 +864,7 @@ bool player::eat( item &food, bool force )
     if( spoiled && !saprophage ) {
         add_msg_if_player( m_bad, _( "Ick, this %s doesn't taste so good…" ), food.tname() );
         if( !has_trait( trait_SAPROVORE ) && !has_trait( trait_EATDEAD ) &&
-            ( !has_bionic( bio_digestion ) || one_in( 3 ) ) ) {
+            !has_bionic( bio_digestion ) ) {
             add_effect( effect_foodpoison, rng( 6_minutes, ( nutr + 1 ) * 6_minutes ) );
         }
     } else if( spoiled && saprophage ) {
@@ -945,7 +946,7 @@ bool player::eat( item &food, bool force )
     }
 
     if( has_active_bionic( bio_taste_blocker ) ) {
-        mod_power_level( units::from_kilojoule( -std::min( 0, food.get_comestible_fun() ) ) );
+        mod_power_level( units::from_kilojoule( std::min( 0, food.get_comestible_fun() ) ) );
     }
 
     if( food.has_flag( flag_FUNGAL_VECTOR ) && !has_trait( trait_M_IMMUNE ) ) {
@@ -1226,9 +1227,18 @@ bool Character::consume_effects( item &food )
 
     int excess_kcal = get_stored_kcal() + stomach.get_calories() + ingested.nutr.kcal -
                       max_stored_kcal();
+
+    // Moved hypermetabolism check here to prevent it being gimped by various bloating/vomit problems.
+    if( excess_kcal > 0 && has_trait( trait_EATHEALTH ) ) {
+        healall( roll_remainder( excess_kcal / 50.0f ) );
+        mod_stored_kcal( -excess_kcal );
+        excess_kcal = 0;
+    }
+
     int excess_quench = -( get_thirst() - comest.quench );
     stomach.ingest( ingested );
     mod_thirst( -contained_food.type->comestible->quench );
+
 
     if( ( excess_kcal > 0 || excess_quench > 0 ) && !food.has_flag( flag_NO_BLOAT ) ) {
         add_effect( effect_bloated, 5_minutes );
