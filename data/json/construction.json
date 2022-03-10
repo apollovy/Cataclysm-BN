@@ -1308,9 +1308,9 @@
     "description": "Build Thatched Roof",
     "category": "CONSTRUCT",
     "required_skills": [ [ "fabrication", 5 ], [ "survival", 3 ] ],
-    "time": "360 m",
+    "time": "120 m",
     "qualities": [ { "id": "CUT", "level": 1 } ],
-    "components": [ [ [ "2x4", 5 ], [ "stick", 10 ] ], [ [ "straw_pile", 60 ], [ "withered", 60 ] ], [ [ "cordage", 8, "LIST" ] ] ],
+    "components": [ [ [ "2x4", 8 ], [ "stick", 8 ] ], [ [ "straw_pile", 24 ], [ "withered", 24 ] ], [ [ "cordage", 2, "LIST" ] ] ],
     "pre_special": "check_support",
     "post_terrain": "t_dirtfloor_thatchroof"
   },
@@ -1324,7 +1324,7 @@
     "qualities": [ [ { "id": "HAMMER", "level": 2 } ] ],
     "components": [
       [ [ "log", 2 ] ],
-      [ [ "stick", 4 ], [ "2x4", 8 ] ],
+      [ [ "stick", 4 ], [ "2x4", 4 ] ],
       [ [ "material_soil", 40 ] ],
       [ [ "birchbark", 12 ], [ "pine_bough", 12 ] ]
     ],
@@ -4170,21 +4170,85 @@
   {
     "type": "construction",
     "id": "constr_oven",
-    "description": "Build Oven",
+    "description": "Install Oven",
     "category": "FURN",
-    "required_skills": [ [ "fabrication", 4 ] ],
-    "time": "45 m",
-    "qualities": [ [ { "id": "SAW_M", "level": 1 } ], [ { "id": "SCREW", "level": 1 } ] ],
-    "components": [
-      [ [ "sheet_metal", 6 ] ],
-      [ [ "steel_chunk", 5 ] ],
-      [ [ "element", 4 ] ],
-      [ [ "cable", 5 ] ],
-      [ [ "pilot_light", 1 ] ]
-    ],
+    "required_skills": [  ],
+    "time": "10 m",
+    "qualities": [  ],
+    "components": [ [ [ "oven", 1 ] ] ],
     "pre_note": "Will only work if constructed in/on a building that has an electric grid with a mounted battery.",
     "pre_special": "check_empty",
     "post_terrain": "f_oven"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridfridge",
+    "description": "Install Refrigerator",
+    "category": "FURN",
+    "required_skills": [  ],
+    "time": "10 m",
+    "qualities": [  ],
+    "components": [ [ [ "fridge", 1 ] ] ],
+    "pre_note": "Will only work if constructed in/on a building that has an electric grid with a mounted battery.",
+    "pre_special": "check_empty",
+    "post_terrain": "f_fridge"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridfridge_switch_off",
+    "description": "Toggle Refrigerator/Freezer",
+    "required_skills": [  ],
+    "category": "FURN",
+    "time": "1 m",
+    "dark_craftable": true,
+    "pre_terrain": "f_fridge_on",
+    "post_terrain": "f_fridge_off"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridfridge_switch_on",
+    "description": "Toggle Refrigerator/Freezer",
+    "required_skills": [  ],
+    "category": "FURN",
+    "time": "1 m",
+    "dark_craftable": true,
+    "pre_terrain": "f_fridge_off",
+    "post_terrain": "f_fridge_on"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridminifreezer",
+    "description": "Install Minifreezer",
+    "category": "FURN",
+    "required_skills": [  ],
+    "time": "10 m",
+    "qualities": [  ],
+    "components": [ [ [ "minifreezer", 1 ] ] ],
+    "pre_note": "Will only work if constructed in/on a building that has an electric grid with a mounted battery.",
+    "pre_special": "check_empty",
+    "post_terrain": "f_minifreezer"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridminifreezer_switch_off",
+    "description": "Toggle Refrigerator/Freezer",
+    "required_skills": [  ],
+    "category": "FURN",
+    "time": "1 m",
+    "dark_craftable": true,
+    "pre_terrain": "f_minifreezer_on",
+    "post_terrain": "f_minifreezer_off"
+  },
+  {
+    "type": "construction",
+    "id": "constr_gridminifreezer_switch_on",
+    "description": "Toggle Refrigerator/Freezer",
+    "required_skills": [  ],
+    "category": "FURN",
+    "time": "1 m",
+    "dark_craftable": true,
+    "pre_terrain": "f_minifreezer_off",
+    "post_terrain": "f_minifreezer_on"
   },
   {
     "type": "construction",

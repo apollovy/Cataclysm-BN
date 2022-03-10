@@ -97,21 +97,25 @@
 #include "weather.h"
 #include "weighted_list.h"
 
+struct ammo_effect;
+using ammo_effect_str_id = string_id<ammo_effect>;
+
+static const ammo_effect_str_id ammo_effect_INCENDIARY( "INCENDIARY" );
+static const ammo_effect_str_id ammo_effect_LASER( "LASER" );
+static const ammo_effect_str_id ammo_effect_LIGHTNING( "LIGHTNING" );
+static const ammo_effect_str_id ammo_effect_PLASMA( "PLASMA" );
+
 static const itype_id itype_battery( "battery" );
 static const itype_id itype_chemistry_set( "chemistry_set" );
 static const itype_id itype_dehydrator( "dehydrator" );
 static const itype_id itype_electrolysis_kit( "electrolysis_kit" );
 static const itype_id itype_food_processor( "food_processor" );
 static const itype_id itype_forge( "forge" );
-static const itype_id itype_glass_shard( "glass_shard" );
 static const itype_id itype_hotplate( "hotplate" );
 static const itype_id itype_kiln( "kiln" );
 static const itype_id itype_nail( "nail" );
 static const itype_id itype_press( "press" );
-static const itype_id itype_sheet( "sheet" );
 static const itype_id itype_soldering_iron( "soldering_iron" );
-static const itype_id itype_stick( "stick" );
-static const itype_id itype_string_36( "string_36" );
 static const itype_id itype_vac_sealer( "vac_sealer" );
 static const itype_id itype_welder( "welder" );
 
@@ -125,6 +129,8 @@ static const efftype_id effect_crushed( "crushed" );
 static const std::string flag_RECHARGE( "RECHARGE" );
 static const std::string flag_USE_UPS( "USE_UPS" );
 static const std::string flag_USES_GRID_POWER( "USES_GRID_POWER" );
+
+static const ter_str_id t_rock_floor_no_roof( "t_rock_floor_no_roof" );
 
 #define dbg(x) DebugLog((x),DC::Map)
 
@@ -706,7 +712,8 @@ vehicle *map::move_vehicle( vehicle &veh, const tripoint &dp, const tileray &fac
                                          vehicle_mass_kg ) * weight_to_damage_factor );
 
                 //~ %1$s: vehicle name
-                smash_items( wheel_p, wheel_damage, string_format( _( "weight of %1$s" ), veh.disp_name() ) );
+                smash_items( wheel_p, wheel_damage, string_format( _( "weight of %1$s" ), veh.disp_name() ),
+                             false );
             }
         }
     }
@@ -2839,18 +2846,18 @@ bool map::mop_spills( const tripoint &p )
 
 int map::collapse_check( const tripoint &p )
 {
-    const bool collapses = has_flag( "COLLAPSES", p );
-    const bool supports_roof = has_flag( "SUPPORTS_ROOF", p );
+    const bool collapses = has_flag( TFLAG_COLLAPSES, p );
+    const bool supports_roof = has_flag( TFLAG_SUPPORTS_ROOF, p );
 
-    int num_supports = p.z == OVERMAP_DEPTH ? 0 : -5;
+    int num_supports = p.z == -OVERMAP_DEPTH ? 0 : -5;
     // if there's support below, things are less likely to collapse
     if( p.z > -OVERMAP_DEPTH ) {
         const tripoint &pbelow = tripoint( p.xy(), p.z - 1 );
         for( const tripoint &tbelow : points_in_radius( pbelow, 1 ) ) {
-            if( has_flag( "SUPPORTS_ROOF", pbelow ) ) {
+            if( has_flag( TFLAG_SUPPORTS_ROOF, pbelow ) ) {
                 num_supports += 1;
-                if( has_flag( "WALL", pbelow ) ) {
-                    num_supports = 2;
+                if( has_flag( TFLAG_WALL, pbelow ) ) {
+                    num_supports += 2;
                 }
                 if( tbelow == pbelow ) {
                     num_supports += 2;
@@ -2865,16 +2872,16 @@ int map::collapse_check( const tripoint &p )
         }
 
         if( collapses ) {
-            if( has_flag( "COLLAPSES", t ) ) {
+            if( has_flag( TFLAG_COLLAPSES, t ) ) {
                 num_supports++;
-            } else if( has_flag( "SUPPORTS_ROOF", t ) ) {
+            } else if( has_flag( TFLAG_SUPPORTS_ROOF, t ) ) {
                 num_supports += 2;
             }
         } else if( supports_roof ) {
-            if( has_flag( "SUPPORTS_ROOF", t ) ) {
-                if( has_flag( "WALL", t ) ) {
+            if( has_flag( TFLAG_SUPPORTS_ROOF, t ) ) {
+                if( has_flag( TFLAG_WALL, t ) ) {
                     num_supports += 4;
-                } else if( !has_flag( "COLLAPSES", t ) ) {
+                } else if( !has_flag( TFLAG_COLLAPSES, t ) ) {
                     num_supports += 3;
                 }
             }
@@ -2889,15 +2896,15 @@ int map::collapse_check( const tripoint &p )
 void map::collapse_at( const tripoint &p, const bool silent, const bool was_supporting,
                        const bool destroy_pos )
 {
-    const bool supports = was_supporting || has_flag( "SUPPORTS_ROOF", p );
-    const bool wall = was_supporting || has_flag( "WALL", p );
+    const bool supports = was_supporting || has_flag( TFLAG_SUPPORTS_ROOF, p );
+    const bool wall = was_supporting || has_flag( TFLAG_WALL, p );
     // don't bash again if the caller already bashed here
     if( destroy_pos ) {
         destroy( p, silent );
         crush( p );
         make_rubble( p );
     }
-    const bool still_supports = has_flag( "SUPPORTS_ROOF", p );
+    const bool still_supports = has_flag( TFLAG_SUPPORTS_ROOF, p );
 
     // If something supporting the roof collapsed, see what else collapses
     if( supports && !still_supports ) {
@@ -2910,12 +2917,12 @@ void map::collapse_at( const tripoint &p, const bool silent, const bool was_supp
             }
             // if a wall collapses, walls without support from below risk collapsing and
             //propagate the collapse upwards
-            if( zlevels && wall && p == t && has_flag( "WALL", tz ) ) {
+            if( zlevels && wall && p == t && has_flag( TFLAG_WALL, tz ) ) {
                 collapse_at( tz, silent );
             }
             // floors without support from below risk collapsing into open air and can propagate
             // the collapse horizontally but not vertically
-            if( p != t && ( has_flag( "SUPPORTS_ROOF", t ) && has_flag( "COLLAPSES", t ) ) ) {
+            if( p != t && ( has_flag( TFLAG_SUPPORTS_ROOF, t ) && has_flag( TFLAG_COLLAPSES, t ) ) ) {
                 collapse_at( t, silent );
             }
             // this tile used to support a roof, now it doesn't, which means there is only
@@ -2934,7 +2941,7 @@ void map::collapse_at( const tripoint &p, const bool silent, const bool was_supp
 void map::propagate_suspension_check( const tripoint &point )
 {
     for( const tripoint &neighbor : points_in_radius( point, 1 ) ) {
-        if( neighbor != point && has_flag( "SUSPENDED", neighbor ) ) {
+        if( neighbor != point && has_flag( TFLAG_SUSPENDED, neighbor ) ) {
             collapse_invalid_suspension( neighbor );
         }
     }
@@ -2971,101 +2978,81 @@ bool map::is_suspension_valid( const tripoint &point )
     return false;
 }
 
-void map::smash_items( const tripoint &p, const int power, const std::string &cause_message )
+void map::smash_items( const tripoint &p, const int power, const std::string &cause_message,
+                       bool do_destroy )
 {
     if( !has_items( p ) ) {
         return;
     }
 
     // Keep track of how many items have been damaged, and what the first one is
-    bool item_was_damaged = false;
     int items_damaged = 0;
     int items_destroyed = 0;
     std::string damaged_item_name;
 
+    // TODO: Bullets should be pretty much corpse-only
+    constexpr const int min_destroy_threshold = 50;
+
     std::vector<item> contents;
     map_stack items = i_at( p );
     for( auto i = items.begin(); i != items.end(); ) {
-        if( i->made_of( LIQUID ) ) {
+        // If the power is low or it's not an explosion, only pulp rezing corpses
+        if( ( power < min_destroy_threshold || !do_destroy ) && !i->can_revive() ) {
             i++;
             continue;
         }
-        if( i->active ) {
-            // Get the explosion item actor
-            if( i->type->get_use( "explosion" ) != nullptr ) {
-                const explosion_iuse *actor = dynamic_cast<const explosion_iuse *>(
-                                                  i->type->get_use( "explosion" )->get_actor_ptr() );
-                if( actor != nullptr ) {
-                    // If we're looking at another bomb, don't blow it up early for now.
-                    // i++ here because we aren't iterating in the loop header.
-                    i++;
-                    continue;
-                }
-            }
+
+        // Active explosives arbitrarily get double the destroy threshold
+        bool is_active_explosive = i->active && i->type->get_use( "explosion" ) != nullptr;
+        if( is_active_explosive && i->charges == 0 ) {
+            i++;
+            continue;
         }
 
         const float material_factor = i->chip_resistance( true );
-        // Intact non-corpses get a boost
+        // Intact non-rezing get a boost
         const float intact_mult = 2.0f -
                                   ( static_cast<float>( i->damage_level( i->max_damage() ) ) / i->max_damage() );
-        const float final_factor =  i->is_corpse() ?
-                                    material_factor / 2.0f : ( material_factor * intact_mult );
-        // Avoid damaging non-corpses with low powered attacks
-        if( power < material_factor && !i->is_corpse() ) {
+        const float destroy_threshold = min_destroy_threshold
+                                        + material_factor * intact_mult
+                                        + ( is_active_explosive ? min_destroy_threshold : 0 );
+        // For pulping, only consider material resistance. Non-rezing can only be destroyed.
+        const float pulp_threshold = i->can_revive() ? material_factor : destroy_threshold;
+        // Active explosives that will explode this turn are indestructible (they are exploding "now")
+        if( power < pulp_threshold ) {
             i++;
             continue;
         }
 
-        float damage_chance = power / 4.0;
-        // Example:
-        // Power 133 (just below C4 epicenter) vs two-by-four
-        // damage_chance = 133 / 10 = 13, final_factor = 16 (2*8)
-        // 13/16 - rounds down to 0
-        // Power 16 (grenade minus shrapnel) vs glass bottle
-        // 16 / 8 = 2 vs 0
-        // inf damage, clamped to 5 (destruction)
-        // Power 20 (primitive pipebomp) vs zombie corpse
-        // 20 / 10 = 2 vs 2
-        // 1 damage
+        bool item_was_destroyed = false;
+        float destroy_chance = ( power - pulp_threshold ) / 4.0;
 
         const bool by_charges = i->count_by_charges();
-        // See if they were damaged
         if( by_charges ) {
-            damage_chance *= i->charges_per_volume( 250_ml );
-            while( ( damage_chance > final_factor ||
-                     x_in_y( damage_chance, final_factor ) ) &&
-                   i->charges > 0 ) {
-                i->charges--;
-                damage_chance -= final_factor;
-                // We can't increment items_damaged directly because a single item can be damaged more than once
-                item_was_damaged = true;
+            destroy_chance *= i->charges_per_volume( 250_ml );
+            if( x_in_y( destroy_chance, destroy_threshold ) ) {
+                item_was_destroyed = true;
             }
         } else {
             const field_type_id type_blood = i->is_corpse() ? i->get_mtype()->bloodType() : fd_null;
-            while( ( damage_chance > final_factor ||
-                     x_in_y( damage_chance, final_factor ) ) &&
-                   i->damage() < i->max_damage() ) {
-                i->inc_damage( DT_BASH );
-                add_splash( type_blood, p, 1, damage_chance );
-                damage_chance -= final_factor;
-                item_was_damaged = true;
+            float roll = rng_float( 0.0, destroy_chance );
+            if( roll >= destroy_threshold ) {
+                item_was_destroyed = true;
+            } else if( roll >= pulp_threshold ) {
+                // Only pulp
+                i->set_damage( i->max_damage() );
+                // TODO: Blood streak cone away from explosion
+                add_splash( type_blood, p, 1, destroy_chance );
+                // If it was the first item to be damaged, note it
+                if( items_damaged == 0 ) {
+                    damaged_item_name = i->tname();
+                }
+                items_damaged++;
             }
-        }
-
-        // If an item was damaged, increment the counter and set it as most recently damaged.
-        if( item_was_damaged ) {
-
-            // If this is the first item to be damaged, store its name in damaged_item_name.
-            if( items_damaged == 0 ) {
-                damaged_item_name = i->tname();
-            }
-            // Increment the counter, and reset the flag.
-            items_damaged++;
-            item_was_damaged = false;
         }
 
         // Remove them if they were damaged too much
-        if( i->damage() == i->max_damage() || ( by_charges && i->charges == 0 ) ) {
+        if( item_was_destroyed ) {
             // But save the contents, except for irremovable gunmods
             for( item *elem : i->contents.all_items_top() ) {
                 if( !elem->is_irremovable() ) {
@@ -3073,7 +3060,11 @@ void map::smash_items( const tripoint &p, const int power, const std::string &ca
                 }
             }
 
+            if( items_damaged == 0 ) {
+                damaged_item_name = i->tname();
+            }
             i = i_rem( p, i );
+            items_damaged++;
             items_destroyed++;
         } else {
             i++;
@@ -3098,7 +3089,7 @@ void map::smash_items( const tripoint &p, const int power, const std::string &ca
     }
 }
 
-ter_id map::get_roof( const tripoint &p, const bool allow_air )
+ter_id map::get_roof( const tripoint &p, const bool allow_air ) const
 {
     // This function should not be called from the 2D mode
     // Just use t_dirt instead
@@ -3113,8 +3104,12 @@ ter_id map::get_roof( const tripoint &p, const bool allow_air )
     const auto &roof = ter_there.roof;
     if( !roof ) {
         // No roof
-        // Not acceptable if the tile is not passable
         if( !allow_air ) {
+            // TODO: Biomes? By setting? Forbid and treat as bug?
+            if( p.z < 0 ) {
+                return t_rock_floor_no_roof;
+            }
+
             return t_dirt;
         }
 
@@ -3154,24 +3149,218 @@ static bool furn_is_supported( const map &m, const tripoint &p )
     return false;
 }
 
-void map::bash_ter_furn( const tripoint &p, bash_params &params )
+static int get_sound_volume( const map_bash_info &bash )
 {
-    int sound_volume = 0;
-    std::string soundfxid;
-    std::string soundfxvariant;
-    const auto &terid = ter( p ).obj();
+    int smin = bash.str_min;
+    int smax = bash.str_max;
+    return bash.sound_vol.value_or( std::min( static_cast<int>( smin * 1.5 ), smax ) );;
+}
+
+bash_results map::bash_ter_success( const tripoint &p, const bash_params &params )
+{
+    bash_results result;
+    const ter_t &ter_before = ter( p ).obj();
+    const map_bash_info &bash = ter_before.bash;
+    if( has_flag_ter( "FUNGUS", p ) ) {
+        fungal_effects( *g, *this ).create_spores( p );
+    }
+    const std::string soundfxvariant = ter_before.id.str();
+    const bool will_collapse = ter_before.has_flag( TFLAG_SUPPORTS_ROOF ) &&
+                               !ter_before.has_flag( TFLAG_INDOORS );
+    const bool suspended = ter_before.has_flag( TFLAG_SUSPENDED );
+    bool follow_below = false;
+    if( params.bashing_from_above && bash.ter_set_bashed_from_above ) {
+        // If this terrain is being bashed from above and this terrain
+        // has a valid post-destroy bashed-from-above terrain, set it
+        ter_set( p, bash.ter_set_bashed_from_above );
+    } else if( bash.ter_set ) {
+        // If the terrain has a valid post-destroy terrain, set it
+        ter_set( p, bash.ter_set );
+    } else if( suspended ) {
+        // Its important that we change the ter value before recursing, otherwise we'll hit an infinite loop.
+        // This could be prevented by assembling a visited list, but in order to avoid that cost, we're going
+        // build our recursion to just be resilient.
+        ter_set( p, t_open_air );
+        propagate_suspension_check( p );
+    } else {
+        tripoint below( p.xy(), p.z - 1 );
+        const ter_t &ter_below = ter( below ).obj();
+        // Only setting the flag here because we want drops and sounds in correct order
+        follow_below |= zlevels && bash.bash_below && ter_below.roof;
+
+        ter_set( p, t_open_air );
+    }
+
+    spawn_items( p, item_group::items_from( bash.drop_group, calendar::turn ) );
+
+    if( !bash.sound.empty() && !params.silent ) {
+        static const std::string soundfxid = "smash_success";
+        int sound_volume = get_sound_volume( bash );
+        sounds::sound( p, sound_volume, sounds::sound_t::combat, bash.sound, false,
+                       soundfxid, soundfxvariant );
+    }
+
+    if( ter( p ) == t_open_air ) {
+        tripoint below( p.xy(), p.z - 1 );
+        const ter_t &ter_below = ter( below ).obj();
+        if( !zlevels ) {
+            // We destroyed something, so we aren't just "plugging" air with dirt here
+            ter_set( p, t_dirt );
+        } else if( follow_below ) {
+            if( ter_below.roof == ter_before.id ) {
+                bash_params params_below = params;
+                params_below.bashing_from_above = true;
+                params_below.bash_floor = false;
+                params_below.destroy = true;
+                int tries = 10;
+                // Unconditionally destroy, but don't go deeper
+                do {
+                    result |= bash_ter_success( below, params_below );
+                } while( impassable( below ) && tries-- > 0 );
+                if( tries <= 0 ) {
+                    debugmsg( "Loop in terrain bashing for type %s", ter_before.id.str() );
+                }
+            } else {
+                // Replace with the roof, then bash that with same exact params as for this floor
+                // Note: we're bashing the new roof, not the tile supported by it!
+                ter_set( p, ter_below.roof );
+                int tries = 10;
+                bash_results results_sub;
+                do {
+                    // TODO: Don't bash furn
+                    results_sub = bash_ter_furn( p, params );
+                    result |= results_sub;
+                } while( results_sub.success && tries-- > 0 );
+                if( tries <= 0 ) {
+                    debugmsg( "Loop in terrain bashing for type %s", ter_before.id.str() );
+                }
+            }
+        } else {
+            const ter_id &roof = get_roof( below, params.bash_floor && ter( below )->movecost != 0 );
+            ter_set( p, roof );
+        }
+    }
+
+    if( will_collapse && !has_flag( TFLAG_SUPPORTS_ROOF, p ) ) {
+        collapse_at( p, params.silent, true, bash.explosive > 0 );
+    }
+
+    if( bash.explosive > 0 ) {
+        explosion_handler::explosion( p, bash.explosive, 0.8, false );
+    }
+
+    return result;
+}
+
+bash_results map::bash_furn_success( const tripoint &p, const bash_params &params )
+{
+    bash_results result;
     const auto &furnid = furn( p ).obj();
-    bool smash_furn = false;
+    const map_bash_info &bash = furnid.bash;
+
+
+    if( has_flag_furn( "FUNGUS", p ) ) {
+        fungal_effects( *g, *this ).create_spores( p );
+    }
+    std::string soundfxvariant = furnid.id.str();
+    const bool tent = !bash.tent_centers.empty();
+
+    // Special code to collapse the tent if destroyed
+    if( tent ) {
+        // Get ids of possible centers
+        std::set<furn_id> centers;
+        for( const auto &cur_id : bash.tent_centers ) {
+            if( cur_id.is_valid() ) {
+                centers.insert( cur_id );
+            }
+        }
+
+        cata::optional<std::pair<tripoint, furn_id>> tentp;
+
+        // Find the center of the tent
+        // First check if we're not currently bashing the center
+        if( centers.count( furn( p ) ) > 0 ) {
+            tentp.emplace( p, furn( p ) );
+        } else {
+            for( const tripoint &pt : points_in_radius( p, bash.collapse_radius ) ) {
+                const furn_id &f_at = furn( pt );
+                // Check if we found the center of the current tent
+                if( centers.count( f_at ) > 0 ) {
+                    tentp.emplace( pt, f_at );
+                    break;
+                }
+            }
+        }
+        // Didn't find any tent center, wreck the current tile
+        if( !tentp ) {
+            spawn_items( p, item_group::items_from( bash.drop_group, calendar::turn ) );
+            furn_set( p, bash.furn_set );
+        } else {
+            // Take the tent down
+            const int rad = tentp->second.obj().bash.collapse_radius;
+            for( const tripoint &pt : points_in_radius( tentp->first, rad ) ) {
+                const furn_id frn = furn( pt );
+                if( frn == f_null ) {
+                    continue;
+                }
+
+                const map_bash_info &recur_bash = frn.obj().bash;
+                // Check if we share a center type and thus a "tent type"
+                for( const auto &cur_id : recur_bash.tent_centers ) {
+                    if( centers.count( cur_id.id() ) > 0 ) {
+                        // Found same center, wreck current tile
+                        spawn_items( p, item_group::items_from( recur_bash.drop_group, calendar::turn ) );
+                        furn_set( pt, recur_bash.furn_set );
+                        break;
+                    }
+                }
+            }
+        }
+        soundfxvariant = "smash_cloth";
+    } else {
+        furn_set( p, bash.furn_set );
+        for( item &it : i_at( p ) )  {
+            it.on_drop( p, *this );
+        }
+        // HACK: Hack alert.
+        // Signs have cosmetics associated with them on the submap since
+        // furniture can't store dynamic data to disk. To prevent writing
+        // mysteriously appearing for a sign later built here, remove the
+        // writing from the submap.
+        delete_signage( p );
+    }
+
+    if( !tent ) {
+        spawn_items( p, item_group::items_from( bash.drop_group, calendar::turn ) );
+    }
+
+    if( !bash.sound.empty() && !params.silent ) {
+        static const std::string soundfxid = "smash_success";
+        int sound_volume = get_sound_volume( bash );
+        sounds::sound( p, sound_volume, sounds::sound_t::combat, bash.sound, false,
+                       soundfxid, soundfxvariant );
+    }
+
+    if( bash.explosive > 0 ) {
+        explosion_handler::explosion( p, bash.explosive, 0.8, false );
+    }
+
+    return result;
+}
+
+bash_results map::bash_ter_furn( const tripoint &p, const bash_params &params )
+{
+    bash_results result;
+    std::string soundfxvariant;
+    const auto &ter_obj = ter( p ).obj();
+    const auto &furn_obj = furn( p ).obj();
     bool smash_ter = false;
     const map_bash_info *bash = nullptr;
 
-    bool success = false;
-
-    if( has_furn( p ) && furnid.bash.str_max != -1 ) {
-        bash = &furnid.bash;
-        smash_furn = true;
-    } else if( ter( p ).obj().bash.str_max != -1 ) {
-        bash = &ter( p ).obj().bash;
+    if( furn_obj.id && furn_obj.bash.str_max != -1 ) {
+        bash = &furn_obj.bash;
+    } else if( ter_obj.bash.str_max != -1 ) {
+        bash = &ter_obj.bash;
         smash_ter = true;
     }
 
@@ -3219,17 +3408,19 @@ void map::bash_ter_furn( const tripoint &p, bash_params &params )
                                false, "smash_fail", "default" );
             }
 
-            params.did_bash = true;
-            params.bashed_solid = true;
+            result.did_bash = true;
+            result.bashed_solid = true;
         }
 
-        return;
+        return result;
     }
+
+    result.did_bash = true;
+    result.bashed_solid = true;
+    result.success = params.destroy;
 
     int smin = bash->str_min;
     int smax = bash->str_max;
-    int sound_vol = bash->sound_vol;
-    int sound_fail_vol = bash->sound_fail_vol;
     if( !params.destroy ) {
         if( bash->str_min_blocked != -1 || bash->str_max_blocked != -1 ) {
             if( furn_is_supported( *this, p ) ) {
@@ -3244,7 +3435,7 @@ void map::bash_ter_furn( const tripoint &p, bash_params &params )
 
         if( bash->str_min_supported != -1 || bash->str_max_supported != -1 ) {
             tripoint below( p.xy(), p.z - 1 );
-            if( !zlevels || has_flag( "SUPPORTS_ROOF", below ) ) {
+            if( !zlevels || has_flag( TFLAG_SUPPORTS_ROOF, below ) ) {
                 if( bash->str_min_supported != -1 ) {
                     smin = bash->str_min_supported;
                 }
@@ -3256,224 +3447,72 @@ void map::bash_ter_furn( const tripoint &p, bash_params &params )
         // Linear interpolation from str_min to str_max
         const int resistance = smin + ( params.roll * ( smax - smin ) );
         if( params.strength >= resistance ) {
-            success = true;
+            result.success = true;
         }
     }
 
-    if( smash_furn ) {
-        soundfxvariant = furnid.id.str();
-    } else {
-        soundfxvariant = terid.id.str();
-    }
+    if( !result.success ) {
+        int sound_volume = bash->sound_fail_vol.value_or( 12 );
 
-    if( !params.destroy && !success ) {
-        if( sound_fail_vol == -1 ) {
-            sound_volume = 12;
-        } else {
-            sound_volume = sound_fail_vol;
-        }
-
-        params.did_bash = true;
+        result.did_bash = true;
         if( !params.silent ) {
             sounds::sound( p, sound_volume, sounds::sound_t::combat, bash->sound_fail, false,
                            "smash_fail", soundfxvariant );
         }
-
-        return;
-    }
-
-    // Clear out any partially grown seeds
-    if( has_flag_ter_or_furn( "PLANT", p ) ) {
-        i_clear( p );
-    }
-
-    if( ( smash_furn && has_flag_furn( "FUNGUS", p ) ) ||
-        ( smash_ter && has_flag_ter( "FUNGUS", p ) ) ) {
-        fungal_effects( *g, *this ).create_spores( p );
-    }
-
-    if( params.destroy ) {
-        sound_volume = smin * 2;
     } else {
-        if( sound_vol == -1 ) {
-            sound_volume = std::min( static_cast<int>( smin * 1.5 ), smax );
+        if( smash_ter ) {
+            result |= bash_ter_success( p, params );
         } else {
-            sound_volume = sound_vol;
+            result |= bash_furn_success( p, params );
         }
     }
 
-    soundfxid = "smash_success";
-    const translation &sound = bash->sound;
-    // Set this now in case the ter_set below changes this
-    const bool will_collapse = smash_ter && has_flag( "SUPPORTS_ROOF", p ) && !has_flag( "INDOORS", p );
-    const bool tent = smash_furn && !bash->tent_centers.empty();
-    const bool suspended = smash_ter && has_flag( "SUSPENDED", p );
-    // Special code to collapse the tent if destroyed
-    if( tent ) {
-        // Get ids of possible centers
-        std::set<furn_id> centers;
-        for( const auto &cur_id : bash->tent_centers ) {
-            if( cur_id.is_valid() ) {
-                centers.insert( cur_id );
-            }
-        }
-
-        cata::optional<std::pair<tripoint, furn_id>> tentp;
-
-        // Find the center of the tent
-        // First check if we're not currently bashing the center
-        if( centers.count( furn( p ) ) > 0 ) {
-            tentp.emplace( p, furn( p ) );
-        } else {
-            for( const tripoint &pt : points_in_radius( p, bash->collapse_radius ) ) {
-                const furn_id &f_at = furn( pt );
-                // Check if we found the center of the current tent
-                if( centers.count( f_at ) > 0 ) {
-                    tentp.emplace( pt, f_at );
-                    break;
-                }
-            }
-        }
-        // Didn't find any tent center, wreck the current tile
-        if( !tentp ) {
-            spawn_items( p, item_group::items_from( bash->drop_group, calendar::turn ) );
-            furn_set( p, bash->furn_set );
-        } else {
-            // Take the tent down
-            const int rad = tentp->second.obj().bash.collapse_radius;
-            for( const tripoint &pt : points_in_radius( tentp->first, rad ) ) {
-                const auto frn = furn( pt );
-                if( frn == f_null ) {
-                    continue;
-                }
-
-                const auto recur_bash = &frn.obj().bash;
-                // Check if we share a center type and thus a "tent type"
-                for( const auto &cur_id : recur_bash->tent_centers ) {
-                    if( centers.count( cur_id.id() ) > 0 ) {
-                        // Found same center, wreck current tile
-                        spawn_items( p, item_group::items_from( recur_bash->drop_group, calendar::turn ) );
-                        furn_set( pt, recur_bash->furn_set );
-                        break;
-                    }
-                }
-            }
-        }
-        soundfxvariant = "smash_cloth";
-    } else if( smash_furn ) {
-        furn_set( p, bash->furn_set );
-        for( item &it : i_at( p ) )  {
-            it.on_drop( p, *this );
-        }
-        // HACK: Hack alert.
-        // Signs have cosmetics associated with them on the submap since
-        // furniture can't store dynamic data to disk. To prevent writing
-        // mysteriously appearing for a sign later built here, remove the
-        // writing from the submap.
-        delete_signage( p );
-    } else if( !smash_ter ) {
-        // Handle error earlier so that we can assume smash_ter is true below
-        debugmsg( "data/json/terrain.json does not have %s.bash.ter_set set!",
-                  ter( p ).obj().id.c_str() );
-    } else if( params.bashing_from_above && bash->ter_set_bashed_from_above ) {
-        // If this terrain is being bashed from above and this terrain
-        // has a valid post-destroy bashed-from-above terrain, set it
-        ter_set( p, bash->ter_set_bashed_from_above );
-    } else if( bash->ter_set ) {
-        // If the terrain has a valid post-destroy terrain, set it
-        ter_set( p, bash->ter_set );
-    } else {
-        tripoint below( p.xy(), p.z - 1 );
-        const auto &ter_below = ter( below ).obj();
-        if( bash->bash_below && ter_below.has_flag( "SUPPORTS_ROOF" ) ) {
-            // When bashing the tile below, don't allow bashing the floor
-            bash_params params_below = params; // Make a copy
-            params_below.bashing_from_above = true;
-            bash_ter_furn( below, params_below );
-        }
-
-        ter_set( p, t_open_air );
-    }
-
-    if( !tent ) {
-        spawn_items( p, item_group::items_from( bash->drop_group, calendar::turn ) );
-    }
-
-    if( smash_ter && ter( p ) == t_open_air ) {
-        if( !zlevels ) {
-            // We destroyed something, so we aren't just "plugging" air with dirt here
-            ter_set( p, t_dirt );
-        } else {
-            tripoint below( p.xy(), p.z - 1 );
-            const auto roof = get_roof( below, params.bash_floor && ter( below ).obj().movecost != 0 );
-            ter_set( p, roof );
-        }
-    }
-
-    if( bash->explosive > 0 ) {
-        explosion_handler::explosion( p, bash->explosive, 0.8, false );
-    }
-
-    if( will_collapse && !has_flag( "SUPPORTS_ROOF", p ) ) {
-        collapse_at( p, params.silent, true, bash->explosive > 0 );
-    }
-    if( suspended ) {
-        // Its important that we change the ter value before recursing, otherwise we'll hit an infinite loop.
-        // This could be prevented by assembling a visited list, but in order to avoid that cost, we're going
-        // build our recursion to just be resilient.
-        ter_set( p, t_open_air );
-        propagate_suspension_check( p );
-    }
-    params.did_bash = true;
-    params.success |= success; // Not always true, so that we can tell when to stop destroying
-    params.bashed_solid = true;
-    if( !sound.empty() && !params.silent ) {
-        sounds::sound( p, sound_volume, sounds::sound_t::combat, sound, false,
-                       soundfxid, soundfxvariant );
-    }
+    return result;
 }
 
-bash_params map::bash( const tripoint &p, const int str,
-                       bool silent, bool destroy, bool bash_floor,
-                       const vehicle *bashing_vehicle )
+bash_results map::bash( const tripoint &p, const int str,
+                        bool silent, bool destroy, bool bash_floor,
+                        const vehicle *bashing_vehicle )
 {
     bash_params bsh{
-        str, silent, destroy, bash_floor, static_cast<float>( rng_float( 0, 1.0f ) ), false, false, false, false
+        str, silent, destroy, bash_floor, static_cast<float>( rng_float( 0, 1.0f ) ), false
     };
+    bash_results result;
     if( !inbounds( p ) ) {
-        return bsh;
+        return result;
     }
 
     bool bashed_sealed = false;
     if( has_flag( "SEALED", p ) ) {
-        bash_ter_furn( p, bsh );
+        result |= bash_ter_furn( p, bsh );
         bashed_sealed = true;
     }
 
-    bash_field( p, bsh );
+    result |= bash_field( p, bsh );
 
     // Don't bash items inside terrain/furniture with SEALED flag
     if( !bashed_sealed ) {
-        bash_items( p, bsh );
+        result |= bash_items( p, bsh );
     }
     // Don't bash the vehicle doing the bashing
     const vehicle *veh = veh_pointer_or_null( veh_at( p ) );
     if( veh != nullptr && veh != bashing_vehicle ) {
-        bash_vehicle( p, bsh );
+        result |= bash_vehicle( p, bsh );
     }
 
     // If we still didn't bash anything solid (a vehicle) or a tile with SEALED flag, bash ter/furn
-    if( !bsh.bashed_solid && !bashed_sealed ) {
-        bash_ter_furn( p, bsh );
+    if( !result.bashed_solid && !bashed_sealed ) {
+        result |= bash_ter_furn( p, bsh );
     }
 
-    return bsh;
+    return result;
 }
 
-void map::bash_items( const tripoint &p, bash_params &params )
+bash_results map::bash_items( const tripoint &p, const bash_params &params )
 {
+    bash_results result;
     if( !has_items( p ) ) {
-        return;
+        return result;
     }
 
     std::vector<item> smashed_contents;
@@ -3482,7 +3521,7 @@ void map::bash_items( const tripoint &p, bash_params &params )
     for( auto bashed_item = bashed_items.begin(); bashed_item != bashed_items.end(); ) {
         // the check for active suppresses Molotovs smashing themselves with their own explosion
         if( bashed_item->made_of( material_id( "glass" ) ) && !bashed_item->active && one_in( 2 ) ) {
-            params.did_bash = true;
+            result.did_bash = true;
             smashed_glass = true;
             for( const item *bashed_content : bashed_item->contents.all_items_top() ) {
                 smashed_contents.push_back( item( *bashed_content ) );
@@ -3500,10 +3539,12 @@ void map::bash_items( const tripoint &p, bash_params &params )
         sounds::sound( p, 12, sounds::sound_t::combat, _( "glass shattering" ), false,
                        "smash_success", "smash_glass_contents" );
     }
+    return result;
 }
 
-void map::bash_vehicle( const tripoint &p, bash_params &params )
+bash_results map::bash_vehicle( const tripoint &p, const bash_params &params )
 {
+    bash_results result;
     // Smash vehicle if present
     if( const optional_vpart_position vp = veh_at( p ) ) {
         vp->vehicle().damage( vp->part_index(), params.strength, DT_BASH );
@@ -3512,19 +3553,32 @@ void map::bash_vehicle( const tripoint &p, bash_params &params )
                            "smash_success", "hit_vehicle" );
         }
 
-        params.did_bash = true;
-        params.success = true;
-        params.bashed_solid = true;
+        result.did_bash = true;
+        result.success = true;
+        result.bashed_solid = true;
     }
+    return result;
 }
 
-void map::bash_field( const tripoint &p, bash_params &params )
+bash_results map::bash_field( const tripoint &p, const bash_params & )
 {
+    bash_results result;
     if( get_field( p, fd_web ) != nullptr ) {
-        params.did_bash = true;
-        params.bashed_solid = true; // To prevent bashing furniture/vehicles
+        result.did_bash = true;
+        result.bashed_solid = true; // To prevent bashing furniture/vehicles
         remove_field( p, fd_web );
     }
+
+    return result;
+}
+
+bash_results &bash_results::operator|=( const bash_results &other )
+{
+    did_bash |= other.did_bash;
+    success |= other.success;
+    bashed_solid |= other.bashed_solid;
+    subresults.push_back( other );
+    return *this;
 }
 
 void map::destroy( const tripoint &p, const bool silent )
@@ -3610,10 +3664,9 @@ void map::crush( const tripoint &p )
 
 void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
 {
-    // TODO: Make bashing count fully, but other types much less
     float initial_damage = 0.0;
-    for( damage_unit dam : proj.impact ) {
-        initial_damage += dam.amount;
+    for( const damage_unit &dam : proj.impact ) {
+        initial_damage += dam.amount * dam.damage_multiplier;
         initial_damage += dam.res_pen;
     }
     if( initial_damage < 0 ) {
@@ -3621,7 +3674,6 @@ void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
     }
 
     float dam = initial_damage;
-    const auto &ammo_effects = proj.proj_effects;
 
     if( has_flag( "ALARMED", p ) && !g->timed_events.queued( TIMED_EVENT_WANTED ) ) {
         sounds::sound( p, 30, sounds::sound_t::alarm, _( "an alarm sound!" ), true, "environment",
@@ -3630,181 +3682,33 @@ void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
         g->timed_events.add( TIMED_EVENT_WANTED, calendar::turn + 30_minutes, 0, abs );
     }
 
-    const bool inc = ammo_effects.count( "INCENDIARY" );
+    const bool inc = proj.has_effect( ammo_effect_INCENDIARY ) ||
+                     proj.impact.type_damage( DT_HEAT ) > 0;
     if( const optional_vpart_position vp = veh_at( p ) ) {
         dam = vp->vehicle().damage( vp->part_index(), dam, inc ? DT_HEAT : DT_STAB, hit_items );
     }
-    const auto break_glass = []( const tripoint & p, int vol ) {
-        sounds::sound( p, vol, sounds::sound_t::combat, _( "glass breaking!" ), false,
-                       "smash", "glass" );
-    };
 
     ter_id terrain = ter( p );
-    if( terrain == t_wall_wood_broken ||
-        terrain == t_wall_log_broken ||
-        terrain == t_door_b ) {
-        if( hit_items || one_in( 8 ) ) { // 1 in 8 chance of hitting the door
-            dam -= rng( 20, 40 );
-            if( dam > 0 ) {
-                sounds::sound( p, 10, sounds::sound_t::combat, _( "crash!" ), false,
-                               "smash", "wall" );
-                ter_set( p, t_dirt );
-            }
-        } else {
-            dam -= rng( 0, 1 );
-        }
-    } else if( terrain == t_door_c ||
-               terrain == t_door_locked ||
-               terrain == t_door_locked_peep ||
-               terrain == t_door_locked_alarm ) {
-        dam -= rng( 15, 30 );
-        if( dam > 0 ) {
-            sounds::sound( p, 10, sounds::sound_t::combat, _( "smash!" ), false, "smash", "door" );
-            ter_set( p, t_door_b );
-        }
-    } else if( terrain == t_door_boarded ||
-               terrain == t_door_boarded_damaged ||
-               terrain == t_rdoor_boarded ||
-               terrain == t_rdoor_boarded_damaged ) {
-        dam -= rng( 15, 35 );
-        if( dam > 0 ) {
-            sounds::sound( p, 10, sounds::sound_t::combat, _( "crash!" ), false,
-                           "smash", "door_boarded" );
-            ter_set( p, t_door_b );
-        }
-    } else if( terrain == t_window_domestic_taped ||
-               terrain == t_curtains ||
-               terrain == t_window_domestic ) {
-        if( ammo_effects.count( "LASER" ) ) {
-            if( terrain == t_window_domestic_taped ||
-                terrain == t_curtains ) {
-                dam -= rng( 1, 5 );
-            }
-            dam -= rng( 0, 5 );
-        } else {
-            dam -= rng( 1, 3 );
-            if( dam > 0 ) {
-                break_glass( p, 16 );
-                ter_set( p, t_window_frame );
-                spawn_item( p, itype_sheet, 1 );
-                spawn_item( p, itype_stick );
-                spawn_item( p, itype_string_36 );
-            }
-        }
-    } else if( terrain == t_window_taped ||
-               terrain == t_window_alarm_taped ||
-               terrain == t_window ||
-               terrain == t_window_no_curtains ||
-               terrain == t_window_no_curtains_taped ||
-               terrain == t_window_alarm ) {
-        if( ammo_effects.count( "LASER" ) ) {
-            if( terrain == t_window_taped ||
-                terrain == t_window_alarm_taped ||
-                terrain == t_window_no_curtains_taped ) {
-                dam -= rng( 1, 5 );
-            }
-            dam -= rng( 0, 5 );
-        } else {
-            dam -= rng( 1, 3 );
-            if( dam > 0 ) {
-                break_glass( p, 16 );
-                ter_set( p, t_window_frame );
-            }
-        }
-    } else if( terrain == t_window_bars_alarm ) {
-        dam -= rng( 1, 3 );
-        if( dam > 0 ) {
-            break_glass( p, 16 );
-            ter_set( p, t_window_bars );
-            spawn_item( p, itype_glass_shard, 1 );
-        }
-    } else if( terrain == t_window_boarded ) {
-        dam -= rng( 10, 30 );
-        if( dam > 0 ) {
-            break_glass( p, 16 );
-            ter_set( p, t_window_frame );
-        }
-    } else if( terrain == t_wall_glass  ||
-               terrain == t_wall_glass_alarm ||
-               terrain == t_door_glass_c ||
-               terrain == t_laminated_glass ) {
-        if( ammo_effects.count( "LASER" ) ) {
-            dam -= rng( 0, 5 );
-        } else {
-            dam -= rng( 1, 8 );
-            if( dam > 0 ) {
-                if( terrain != t_laminated_glass || one_in( 40 ) ) {
-                    break_glass( p, 16 );
-                    ter_set( p, t_floor );
-                }
-            }
-        }
-    } else if( terrain == t_ballistic_glass || terrain == t_reinforced_glass ||
-               terrain == t_reinforced_door_glass_c
-               || terrain == t_reinforced_glass_shutter || terrain ==  t_reinforced_glass_shutter_open ) {
-        // reinforced glass stops most bullets
-        // laser beams are attenuated
-        if( ammo_effects.count( "LASER" ) ) {
-            dam -= rng( 0, 8 );
-        } else {
-            //Greatly weakens power of bullets
-            dam -= 40;
-            if( dam <= 0 && g->u.sees( p ) ) {
-                if( terrain == t_reinforced_door_glass_c ) {
-                    add_msg( _( "The shot is stopped by the reinforced glass door!" ) );
-                } else {
-                    add_msg( _( "The shot is stopped by the reinforced glass wall!" ) );
-                }
-            } else if( dam >= 40 ) {
-                //high powered bullets penetrate the glass, but only extremely strong
-                // ones (80 before reduction) actually destroy the glass itself.
-                break_glass( p, 16 );
-                ter_set( p, t_floor );
-            }
-        }
-    } else if( terrain == t_paper ) {
-        dam -= rng( 4, 16 );
-        if( dam > 0 ) {
-            sounds::sound( p, 8, sounds::sound_t::combat, _( "rrrrip!" ), true, "smash", "paper_torn" );
-            ter_set( p, t_dirt );
-        }
-        if( inc ) {
-            add_field( p, fd_fire, 1 );
-        }
-    } else if( terrain == t_gas_pump ) {
-        if( hit_items || one_in( 3 ) ) {
-            if( dam > 15 ) {
-                if( inc ) {
-                    explosion_handler::explosion( p, 40, 0.8, true );
-                } else {
-                    for( const tripoint &pt : points_in_radius( p, 2 ) ) {
-                        if( one_in( 3 ) && passable( pt ) ) {
-                            int gas_amount = rng( 10, 100 );
-                            item gas_spill( "gasoline", calendar::turn );
-                            gas_spill.charges = gas_amount;
-                            add_item_or_charges( pt, gas_spill );
-                        }
-                    }
+    ter_t ter = terrain.obj();
 
-                    sounds::sound( p, 10, sounds::sound_t::combat, _( "smash!" ), true, "bullet_hit", "hit_metal" );
-                }
-                ter_set( p, t_gas_pump_smashed );
-            }
-            dam -= 60;
-        }
-    } else if( terrain == t_vat ) {
-        if( dam >= 10 ) {
-            sounds::sound( p, 20, sounds::sound_t::combat, _( "ke-rash!" ), true, "bullet_hit", "hit_metal" );
-            ter_set( p, t_floor );
+    if( ter.bash.ranged ) {
+        const ranged_bash_info &ri = *ter.bash.ranged;
+        if( !hit_items && !check( ri.block_unaimed_chance ) ) {
+            // Nothing, it's a miss
+        } else if( ri.reduction_laser && proj.has_effect( ammo_effect_LASER ) != 0 ) {
+            dam -= rng( ri.reduction_laser->min, ri.reduction_laser->max );
         } else {
-            dam = 0;
-        }
-    } else if( terrain == t_thconc_floor_olight ) {
-        if( one_in( 3 ) ) {
-            break_glass( p, 16 );
-            ter_set( p, t_thconc_floor );
-            spawn_item( p, itype_glass_shard, rng( 1, 2 ) );
-            dam = 0; //Prevent damaging additional items, since we shot at the ceiling.
+            dam -= rng( ri.reduction.min, ri.reduction.max );
+            if( dam > ri.destroy_threshold ) {
+                bash_params params{0, false, true, hit_items, 1.0, false};
+                bash_ter_success( p, params );
+            }
+            if( dam <= 0 && is_transparent( p ) && get_avatar().sees( p ) ) {
+                add_msg( _( "The shot is stopped by the %s!" ), tername( p ) );
+            }
+            if( ri.flammable && inc ) {
+                add_field( p, fd_fire, 1 );
+            }
         }
     } else if( impassable( p ) && !is_transparent( p ) ) {
         bash( p, dam, false );
@@ -3812,8 +3716,9 @@ void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
         dam = 0;
     }
 
-    for( const ammo_effect &ae : ammo_effects::get_all() ) {
-        if( ammo_effects.count( ae.id.str() ) > 0 ) {
+    for( const ammo_effect_str_id &ae_id : proj.get_ammo_effects() ) {
+        const ammo_effect &ae = *ae_id;
+        if( ae.trail_field_type ) {
             if( x_in_y( ae.trail_chance, 100 ) ) {
                 g->m.add_field( p, ae.trail_field_type, rng( ae.trail_intensity_min, ae.trail_intensity_max ) );
             }
@@ -3849,19 +3754,17 @@ void map::shoot( const tripoint &p, projectile &proj, const bool hit_items )
 
     // Make sure the message is sensible for the ammo effects. Lasers aren't projectiles.
     std::string damage_message;
-    if( ammo_effects.count( "LASER" ) ) {
+    if( proj.has_effect( ammo_effect_LASER ) ) {
         damage_message = _( "laser beam" );
-    } else if( ammo_effects.count( "LIGHTNING" ) ) {
+    } else if( proj.has_effect( ammo_effect_LIGHTNING ) ) {
         damage_message = _( "bolt of electricity" );
-    } else if( ammo_effects.count( "PLASMA" ) ) {
+    } else if( proj.has_effect( ammo_effect_PLASMA ) ) {
         damage_message = _( "bolt of plasma" );
     } else {
         damage_message = _( "flying projectile" );
     }
 
-    // Now, smash items on that tile.
-    // dam / 3, because bullets aren't all that good at destroying items...
-    smash_items( p, dam / 3, damage_message );
+    smash_items( p, dam, damage_message, false );
 }
 
 bool map::hit_with_acid( const tripoint &p )
@@ -4686,6 +4589,12 @@ void map::process_items_in_submap( submap &current_submap, const tripoint &gridp
         if( ter( map_location ) == t_rootcellar ) {
             flag = temperature_flag::TEMP_ROOT_CELLAR;
         }
+        if( furn( map_location ) == f_fridge_on ) {
+            flag = temperature_flag::TEMP_FRIDGE;
+        }
+        if( furn( map_location ) == f_minifreezer_on ) {
+            flag = temperature_flag::TEMP_FREEZER;
+        }
         map_stack items = i_at( map_location );
         process_map_items( items, active_item_ref.item_ref, map_location, 1, flag );
     }
@@ -5165,31 +5074,6 @@ std::list<item> map::use_charges( const tripoint &origin, const int range,
     return ret;
 }
 
-std::list<std::pair<tripoint, item *> > map::get_rc_items( const tripoint &p )
-{
-    std::list<std::pair<tripoint, item *> > rc_pairs;
-    tripoint pos;
-    pos.z = abs_sub.z;
-    for( pos.x = 0; pos.x < MAPSIZE_X; pos.x++ ) {
-        if( p.x != -1 && p.x != pos.x ) {
-            continue;
-        }
-        for( pos.y = 0; pos.y < MAPSIZE_Y; pos.y++ ) {
-            if( p.y != -1 && p.y != pos.y ) {
-                continue;
-            }
-            auto items = i_at( pos );
-            for( auto &elem : items ) {
-                if( elem.has_flag( "RADIO_ACTIVATION" ) || elem.has_flag( "RADIO_CONTAINER" ) ) {
-                    rc_pairs.push_back( std::make_pair( pos, &elem ) );
-                }
-            }
-        }
-    }
-
-    return rc_pairs;
-}
-
 bool map::can_see_trap_at( const tripoint &p, const Character &c ) const
 {
     return tr_at( p ).can_see( p, c );
@@ -5474,6 +5358,7 @@ bool map::add_field( const tripoint &p, const field_type_id &type_id, int intens
     }
 
     if( !type_id ) {
+        debugmsg( "Tried to add null field" );
         return false;
     }
 

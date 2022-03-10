@@ -56,6 +56,8 @@
 #include "trap.h"
 #include "weather.h"
 
+static const ammo_effect_str_id ammo_effect_WHIP( "WHIP" );
+
 static const efftype_id effect_badpoison( "badpoison" );
 static const efftype_id effect_beartrap( "beartrap" );
 static const efftype_id effect_bleed( "bleed" );
@@ -1541,10 +1543,9 @@ void monster::deal_projectile_attack( Creature *source, dealt_projectile_attack 
 {
     const auto &proj = attack.proj;
     double &missed_by = attack.missed_by; // We can change this here
-    const auto &effects = proj.proj_effects;
 
     // Whip has a chance to scare wildlife even if it misses
-    if( effects.count( "WHIP" ) && type->in_category( "WILDLIFE" ) && one_in( 3 ) ) {
+    if( proj.has_effect( ammo_effect_WHIP ) && type->in_category( "WILDLIFE" ) && one_in( 3 ) ) {
         add_effect( effect_run, rng( 3_turns, 5_turns ) );
     }
 
@@ -2379,6 +2380,31 @@ bool monster::check_mech_powered() const
                  get_name() );
     }
     return true;
+}
+
+static void process_item_valptr( cata::value_ptr<item> &ptr, monster &mon )
+{
+    if( ptr && ptr->needs_processing() && ptr->process( nullptr, mon.pos(), false ) ) {
+        ptr.reset();
+    }
+}
+
+void monster::process_items()
+{
+    for( auto iter = inv.begin(); iter != inv.end(); ) {
+        if( iter->needs_processing() &&
+            iter->process( nullptr, pos(), false )
+          ) {
+            iter = inv.erase( iter );
+            continue;
+        }
+        iter++;
+    }
+
+    process_item_valptr( storage_item, *this );
+    process_item_valptr( armor_item, *this );
+    process_item_valptr( tack_item, *this );
+    process_item_valptr( tied_item, *this );
 }
 
 void monster::drop_items_on_death()

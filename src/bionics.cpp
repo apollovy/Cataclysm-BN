@@ -837,7 +837,16 @@ bool Character::activate_bionic( int b, bool eff_only )
             proj.impact = damage_instance::physical( pr.first.weight() / 250_gram, 0, 0, 0 );
             // make the projectile stop one tile short to prevent hitting the player
             proj.range = rl_dist( pr.second, pos() ) - 1;
-            proj.proj_effects = {{ "NO_ITEM_DAMAGE", "DRAW_AS_LINE", "NO_DAMAGE_SCALING", "JET" }};
+            static const std::set<ammo_effect_str_id> ammo_effects = {{
+                    ammo_effect_str_id( "NO_ITEM_DAMAGE" ),
+                    ammo_effect_str_id( "DRAW_AS_LINE" ),
+                    ammo_effect_str_id( "NO_DAMAGE_SCALING" ),
+                    ammo_effect_str_id( "JET" ),
+                }
+            };
+            for( const auto &eff : ammo_effects ) {
+                proj.add_effect( eff );
+            }
 
             dealt_projectile_attack dealt = projectile_attack(
                                                 proj, pr.second, pos(), dispersion_sources{ 0 }, this );
@@ -884,7 +893,15 @@ bool Character::activate_bionic( int b, bool eff_only )
         mod_moves( -100 );
     } else if( bio.id == bio_shockwave ) {
         add_msg_activate();
-        explosion_handler::shockwave( pos(), 3, 4, 2, 8, true, "explosion" );
+
+        shockwave_data sw;
+        sw.affects_player = false;
+        sw.radius = 3;
+        sw.force = 4;
+        sw.stun = 2;
+        sw.dam_mult = 8;
+
+        explosion_handler::shockwave( pos(), sw, "explosion" );
         add_msg_if_player( m_neutral, _( "You unleash a powerful shockwave!" ) );
         mod_moves( -100 );
     } else if( bio.id == bio_meteorologist ) {

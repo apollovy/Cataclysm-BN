@@ -13,6 +13,7 @@
 #include <utility>
 #include <vector>
 
+#include "animation.h"
 #include "avatar.h"
 #include "bodypart.h"
 #include "calendar.h"
@@ -51,6 +52,8 @@
 #include "units.h"
 #include "vehicle.h"
 #include "vpart_position.h"
+
+static const ammo_effect_str_id ammo_effect_magic( "magic" );
 
 namespace spell_detail
 {
@@ -443,7 +446,7 @@ static void damage_targets( const spell &sp, Creature &caster,
         projectile bolt;
         bolt.speed = 10000;
         bolt.impact = sp.get_damage_instance();
-        bolt.proj_effects.emplace( "magic" );
+        bolt.add_effect( ammo_effect_magic );
 
         dealt_projectile_attack atk;
         atk.end_point = target;

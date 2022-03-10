@@ -1277,9 +1277,12 @@ int worldfactory::show_modselection_window( const catacurses::window &win,
         } else if( action == "PREV_TAB" && ( !on_backtab || on_backtab() ) ) {
             tab_output = -1;
         } else if( action == "SAVE_DEFAULT_MODS" ) {
-            if( mman->set_default_mods( active_mod_order ) ) {
-                popup( _( "Saved list of active mods as default" ) );
-                draw_modselection_borders( win, ctxt, standalone );
+            if( query_yn( _( "Save list of active mods as default mod list?" ) ) ) {
+                if( mman->set_default_mods( active_mod_order ) ) {
+                    popup( _( "Saved successfully!" ) );
+                } else {
+                    popup( _( "Failed to save!  Debug log might contain more details." ) );
+                }
             }
         } else if( action == "VIEW_MOD_DESCRIPTION" ) {
             if( const MOD_INFORMATION *selmod = get_selected_mod() ) {
@@ -1567,9 +1570,6 @@ bool worldfactory::valid_worldname( const std::string &name, bool automated )
 
 void WORLD::load_options( JsonIn &jsin )
 {
-    // if core data version isn't specified then assume version 1
-    int version = 1;
-
     auto &opts = get_options();
 
     jsin.start_array();
@@ -1580,17 +1580,10 @@ void WORLD::load_options( JsonIn &jsin )
         const std::string value = opts.migrateOptionValue( jo.get_string( "name" ),
                                   jo.get_string( "value" ) );
 
-        if( name == "CORE_VERSION" ) {
-            version = std::max( std::atoi( value.c_str() ), 0 );
-            continue;
-        }
-
         if( opts.has_option( name ) && opts.get_option( name ).getPage() == "world_default" ) {
             WORLD_OPTIONS[ name ].setValue( value );
         }
     }
-
-    WORLD_OPTIONS[ "CORE_VERSION" ].setValue( version );
 }
 
 void WORLD::load_legacy_options( std::istream &fin )

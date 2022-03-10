@@ -421,6 +421,9 @@ struct vehicle_part {
         /** direction the part is facing */
         units::angle direction = 0_degrees;
 
+
+        vpart_id proxy_part_id = vpart_id::NULL_ID();
+        char proxy_sym = '\0';
         /**
          * Coordinates for some kind of target; jumper cables and turrets use this
          * Two coordinate pairs are stored: actual target point, and target vehicle center.
@@ -513,7 +516,7 @@ class turret_data
         bool ammo_select( const itype_id &ammo );
 
         /** Effects inclusive of any from ammo loaded from tanks */
-        std::set<std::string> ammo_effects() const;
+        std::set<ammo_effect_str_id> ammo_effects() const;
 
         /** Maximum range considering current ammo (if any) */
         int range() const;
