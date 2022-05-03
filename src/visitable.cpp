@@ -173,8 +173,18 @@ bool visitable<T>::has_quality( const quality_id &qual, int level, int qty ) con
 template <>
 bool visitable<inventory>::has_quality( const quality_id &qual, int level, int qty ) const
 {
+    const inventory *inv = static_cast<const inventory *>( this );
+    auto inv_qual_cache = inv->get_quality_cache();
     int res = 0;
-    for( const auto &stack : static_cast<const inventory *>( this )->items ) {
+    if( !inv_qual_cache.empty() ) {
+        for( const auto &q : inv_qual_cache[qual] ) {
+            if( q.first >= level ) {
+                res = sum_no_wrap( res, q.second );
+            }
+        }
+        return res >= qty;
+    }
+    for( const auto &stack : inv->items ) {
         res += stack.size() * has_quality_internal( stack.front(), qual, level, qty );
         if( res >= qty ) {
             return true;
@@ -637,6 +647,7 @@ std::list<item> visitable<inventory>::remove_items_with( const
 
     // Invalidate binning cache
     inv->binned = false;
+    inv->items_type_cached = false;
 
     return res;
 }

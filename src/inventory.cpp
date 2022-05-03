@@ -226,6 +226,7 @@ inventory inventory::operator+ ( const item &rhs )
 void inventory::unsort()
 {
     binned = false;
+    items_type_cached = false;
 }
 
 static bool stack_compare( const std::list<item> &lhs, const std::list<item> &rhs )
@@ -237,6 +238,7 @@ void inventory::clear()
 {
     items.clear();
     binned = false;
+    items_type_cached = false;
 }
 
 void inventory::push_back( const std::list<item> &newits )
@@ -283,6 +285,7 @@ char inventory::find_usable_cached_invlet( const itype_id &item_type )
 item &inventory::add_item( item newit, bool keep_invlet, bool assign_invlet, bool should_stack )
 {
     binned = false;
+    items_type_cached = false;
 
     if( should_stack ) {
         // See if we can't stack this item.
@@ -317,9 +320,64 @@ item &inventory::add_item( item newit, bool keep_invlet, bool assign_invlet, boo
     }
     update_cache_with_item( newit );
 
-    std::list<item> newstack;
-    newstack.push_back( newit );
-    items.push_back( newstack );
+    items.push_back( {newit} );
+    return items.back().back();
+}
+
+void inventory::build_items_type_cache()
+{
+    items_type_cache.clear();
+    for( auto &elem : items ) {
+        itype_id type = elem.front().typeId();
+        items_type_cache[type].push_back( &elem );
+    }
+    items_type_cached = true;
+}
+
+item &inventory::add_item_by_items_type_cache( item newit, bool keep_invlet, bool assign_invlet,
+        bool should_stack )
+{
+    binned = false;
+    if( !items_type_cached ) {
+        debugmsg( "Tried to add item to inventory using cache without building the items_type_cache." );
+        build_items_type_cache();
+    }
+    itype_id type = newit.typeId();
+    if( should_stack ) {
+        // See if we can't stack this item.
+        for( auto &elem : items_type_cache[type] ) {
+            auto it_ref = elem->begin();
+            if( it_ref->stacks_with( newit, false, true ) ) {
+                if( it_ref->merge_charges( newit ) ) {
+                    return *it_ref;
+                }
+                if( it_ref->invlet == '\0' ) {
+                    if( !keep_invlet ) {
+                        update_invlet( newit, assign_invlet );
+                    }
+                    update_cache_with_item( newit );
+                    it_ref->invlet = newit.invlet;
+                } else {
+                    newit.invlet = it_ref->invlet;
+                }
+                elem->push_back( newit );
+                return elem->back();
+            } else if( keep_invlet && assign_invlet && it_ref->invlet == newit.invlet &&
+                       it_ref->invlet != '\0' ) {
+                // If keep_invlet is true, we'll be forcing other items out of their current invlet.
+                assign_empty_invlet( *it_ref, g->u );
+            }
+        }
+    }
+
+    // Couldn't stack the item, proceed.
+    if( !keep_invlet ) {
+        update_invlet( newit, assign_invlet );
+    }
+    update_cache_with_item( newit );
+
+    items.push_back( {newit} );
+    items_type_cache[type].push_back( &items.back() );
     return items.back().back();
 }
 
@@ -345,6 +403,7 @@ void inventory::restack( player &p )
     // 3. combine matching stacks
 
     binned = false;
+    items_type_cached = false;
     std::list<item> to_restack;
     int idx = 0;
     for( invstack::iterator iter = items.begin(); iter != items.end(); ++iter, ++idx ) {
@@ -451,6 +510,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
 {
     const time_point bday = calendar::start_of_cataclysm;
     items.clear();
+    build_items_type_cache();
     for( const tripoint &p : pts ) {
         if( m.has_furn( p ) ) {
             const furn_t &f = m.furn( p ).obj();
@@ -466,7 +526,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
                 } else {
                     furn_item.charges = ammo ? count_charges_in_list( ammo, m.i_at( p ) ) : 0;
                 }
-                add_item( furn_item );
+                add_item_by_items_type_cache( furn_item );
             }
         }
         if( m.has_items( p ) && m.accessible_items( p ) ) {
@@ -478,7 +538,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
                     continue;
                 }
                 if( allow_liquids || !i.made_of( LIQUID ) ) {
-                    add_item( i, false, assign_invlet );
+                    add_item_by_items_type_cache( i, false, assign_invlet );
                 }
             }
         }
@@ -486,12 +546,12 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
         if( m.has_nearby_fire( p, 0 ) ) {
             item fire( "fire", bday );
             fire.charges = 1;
-            add_item( fire );
+            add_item_by_items_type_cache( fire );
         }
         // Handle any water from infinite map sources.
         item water = m.water_from( p );
         if( !water.is_null() ) {
-            add_item( water );
+            add_item_by_items_type_cache( water );
         }
         // kludge that can probably be done better to check specifically for toilet water to use in
         // crafting
@@ -506,7 +566,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
                 }
             }
             if( water != toilet.end() && water->charges > 0 ) {
-                add_item( *water );
+                add_item_by_items_type_cache( *water );
             }
         }
 
@@ -533,7 +593,9 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
 
         if( cargo ) {
             const auto items = veh->get_items( cargo->part_index() );
-            *this += std::list<item>( items.begin(), items.end() );
+            for( const auto &it : items ) {
+                add_item_by_items_type_cache( it, false, false );
+            }
         }
 
         if( faupart ) {
@@ -541,7 +603,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
                 item fuel( it.first, bday );
                 if( fuel.made_of( LIQUID ) ) {
                     fuel.charges = it.second;
-                    add_item( fuel );
+                    add_item_by_items_type_cache( fuel );
                 }
             }
         }
@@ -552,69 +614,69 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
             hotplate.item_tags.insert( "PSEUDO" );
             // TODO: Allow disabling
             hotplate.item_tags.insert( "HEATS_FOOD" );
-            add_item( hotplate );
+            add_item_by_items_type_cache( hotplate );
 
             item pot( "pot", bday );
             pot.set_flag( "PSEUDO" );
-            add_item( pot );
+            add_item_by_items_type_cache( pot );
             item pan( "pan", bday );
             pan.set_flag( "PSEUDO" );
-            add_item( pan );
+            add_item_by_items_type_cache( pan );
         }
         if( weldpart ) {
             item welder( "welder", bday );
             welder.charges = veh->fuel_left( itype_battery, true );
             welder.item_tags.insert( "PSEUDO" );
-            add_item( welder );
+            add_item_by_items_type_cache( welder );
 
             item soldering_iron( "soldering_iron", bday );
             soldering_iron.charges = veh->fuel_left( itype_battery, true );
             soldering_iron.item_tags.insert( "PSEUDO" );
-            add_item( soldering_iron );
+            add_item_by_items_type_cache( soldering_iron );
         }
         if( craftpart ) {
             item vac_sealer( "vac_sealer", bday );
             vac_sealer.charges = veh->fuel_left( itype_battery, true );
             vac_sealer.item_tags.insert( "PSEUDO" );
-            add_item( vac_sealer );
+            add_item_by_items_type_cache( vac_sealer );
 
             item dehydrator( "dehydrator", bday );
             dehydrator.charges = veh->fuel_left( itype_battery, true );
             dehydrator.item_tags.insert( "PSEUDO" );
-            add_item( dehydrator );
+            add_item_by_items_type_cache( dehydrator );
 
             item food_processor( "food_processor", bday );
             food_processor.charges = veh->fuel_left( itype_battery, true );
             food_processor.item_tags.insert( "PSEUDO" );
-            add_item( food_processor );
+            add_item_by_items_type_cache( food_processor );
 
             item press( "press", bday );
             press.charges = veh->fuel_left( itype_battery, true );
             press.set_flag( "PSEUDO" );
-            add_item( press );
+            add_item_by_items_type_cache( press );
         }
         if( forgepart ) {
             item forge( "forge", bday );
             forge.charges = veh->fuel_left( itype_battery, true );
             forge.item_tags.insert( "PSEUDO" );
-            add_item( forge );
+            add_item_by_items_type_cache( forge );
         }
         if( kilnpart ) {
             item kiln( "kiln", bday );
             kiln.charges = veh->fuel_left( itype_battery, true );
             kiln.item_tags.insert( "PSEUDO" );
-            add_item( kiln );
+            add_item_by_items_type_cache( kiln );
         }
         if( chempart ) {
             item chemistry_set( "chemistry_set", bday );
             chemistry_set.charges = veh->fuel_left( itype_battery, true );
             chemistry_set.item_tags.insert( "PSEUDO" );
-            add_item( chemistry_set );
+            add_item_by_items_type_cache( chemistry_set );
 
             item electrolysis_kit( "electrolysis_kit", bday );
             electrolysis_kit.charges = veh->fuel_left( itype_battery, true );
             electrolysis_kit.item_tags.insert( "PSEUDO" );
-            add_item( electrolysis_kit );
+            add_item_by_items_type_cache( electrolysis_kit );
         }
     }
     pts.clear();
@@ -627,6 +689,7 @@ std::list<item> inventory::reduce_stack( const int position, const int quantity 
     for( invstack::iterator iter = items.begin(); iter != items.end(); ++iter ) {
         if( position == pos ) {
             binned = false;
+            items_type_cached = false;
             if( quantity >= static_cast<int>( iter->size() ) || quantity < 0 ) {
                 ret = *iter;
                 items.erase( iter );
@@ -649,6 +712,7 @@ item inventory::remove_item( const item *it )
     }, 1 );
     if( !tmp.empty() ) {
         binned = false;
+        items_type_cached = false;
         return tmp.front();
     }
     debugmsg( "Tried to remove a item not in inventory." );
@@ -661,6 +725,7 @@ item inventory::remove_item( const int position )
     for( invstack::iterator iter = items.begin(); iter != items.end(); ++iter ) {
         if( position == pos ) {
             binned = false;
+            items_type_cached = false;
             if( iter->size() > 1 ) {
                 std::list<item>::iterator stack_member = iter->begin();
                 char invlet = stack_member->invlet;
@@ -706,6 +771,7 @@ std::list<item> inventory::remove_randomly_by_volume( const units::volume &volum
         }
         if( chosen_stack->empty() ) {
             binned = false;
+            items_type_cached = false;
             items.erase( chosen_stack );
         }
     }
@@ -793,6 +859,7 @@ std::list<item> inventory::use_amount( itype_id it, int quantity,
         }
         if( iter->empty() ) {
             binned = false;
+            items_type_cached = false;
             iter = items.erase( iter );
         } else if( iter != items.end() ) {
             ++iter;
@@ -1035,6 +1102,26 @@ enchantment inventory::get_active_enchantment_cache( const Character &owner ) co
         }
     }
     return temp_cache;
+}
+
+void inventory::update_quality_cache()
+{
+    quality_cache.clear();
+    inventory *this_nonconst = const_cast<inventory *>( this );
+    this_nonconst->visit_items( [ this ]( item * e ) {
+        auto item_qualities = e->get_qualities();
+        for( const auto &quality : item_qualities ) {
+            // quality.first is the id of the quality, quality.second is the quality level
+            // the value is the number of items with that quality level
+            ++quality_cache[quality.first][quality.second];
+        }
+        return VisitResponse::NEXT;
+    } );
+}
+
+const std::map<quality_id, std::map<int, int>> &inventory::get_quality_cache() const
+{
+    return quality_cache;
 }
 
 void inventory::assign_empty_invlet( item &it, const Character &p, const bool force )

@@ -173,7 +173,7 @@ static const efftype_id effect_webbed( "webbed" );
 
 static const itype_id itype_adv_UPS_off( "adv_UPS_off" );
 static const itype_id itype_apparatus( "apparatus" );
-static const itype_id itype_beartrap( "breatrap" );
+static const itype_id itype_beartrap( "beartrap" );
 static const itype_id itype_e_handcuffs( "e_handcuffs" );
 static const itype_id itype_fire( "fire" );
 static const itype_id itype_rm13_armor_on( "rm13_armor_on" );
@@ -5181,7 +5181,7 @@ void Character::update_bodytemp( const map &m, const weather_manager &weather )
     }
 
     std::map<bodypart_id, int> warmth_per_bp = warmth::from_clothing( clothing_map );
-    std::map<bodypart_id, int> bonus_warmth_per_bp = warmth::from_clothing( bonus_clothing_map );
+    std::map<bodypart_id, int> bonus_warmth_per_bp = warmth::bonus_from_clothing( bonus_clothing_map );
     for( const auto &pr : warmth::from_effects( *this ) ) {
         warmth_per_bp[pr.first] += pr.second;
     }
@@ -6112,6 +6112,8 @@ bool Character::is_immune_damage( const damage_type dt ) const
         case DT_STAB:
             return has_effect_with_flag( "EFFECT_STAB_IMMUNE" ) ||
                    worn_with_flag( "STAB_IMMUNE" );
+        case DT_BULLET:
+            return has_effect_with_flag( "EFFECT_BULLET_IMMUNE" ) || worn_with_flag( "BULLET_IMMUNE" );
         case DT_HEAT:
             return has_trait( trait_M_SKIN2 ) ||
                    has_trait( trait_M_SKIN3 ) ||
@@ -6847,6 +6849,11 @@ int Character::get_armor_cut( bodypart_id bp ) const
     return get_armor_cut_base( bp ) + armor_cut_bonus;
 }
 
+int Character::get_armor_bullet( bodypart_id bp ) const
+{
+    return get_armor_bullet_base( bp ) + armor_bullet_bonus;
+}
+
 // TODO: Reduce duplication with below function
 int Character::get_armor_type( damage_type dt, bodypart_id bp ) const
 {
@@ -6860,6 +6867,8 @@ int Character::get_armor_type( damage_type dt, bodypart_id bp ) const
             return get_armor_cut( bp );
         case DT_STAB:
             return get_armor_cut( bp ) * 0.8f;
+        case DT_BULLET:
+            return get_armor_bullet( bp );
         case DT_ACID:
         case DT_HEAT:
         case DT_COLD:
@@ -6909,6 +6918,9 @@ std::map<bodypart_id, int> Character::get_all_armor_type( damage_type dt,
                 break;
             case DT_STAB:
                 per_bp.second += get_armor_cut( bp ) * 0.8f;
+                break;
+            case DT_BULLET:
+                per_bp.second += get_armor_bullet( bp );
                 break;
             case DT_ACID:
             case DT_HEAT:
@@ -6969,6 +6981,26 @@ int Character::get_armor_cut_base( bodypart_id bp ) const
     return ret;
 }
 
+int Character::get_armor_bullet_base( bodypart_id bp ) const
+{
+    int ret = 0;
+    for( auto &i : worn ) {
+        if( i.covers( bp->token ) ) {
+            ret += i.bullet_resist();
+        }
+    }
+
+    for( const bionic_id &bid : get_bionics() ) {
+        const auto bullet_prot = bid->bullet_protec.find( bp.id() );
+        if( bullet_prot != bid->bullet_protec.end() ) {
+            ret += bullet_prot->second;
+        }
+    }
+
+    ret += mutation_armor( bp, DT_BULLET );
+    return ret;
+}
+
 int Character::get_env_resist( bodypart_id bp ) const
 {
     int ret = 0;
@@ -6981,7 +7013,7 @@ int Character::get_env_resist( bodypart_id bp ) const
 
     for( const bionic_id &bid : get_bionics() ) {
         const auto EP = bid->env_protec.find( bp.id() );
-        if( EP != bid->env_protec.end() ) {
+        if( ( !bid->activated || has_active_bionic( bid ) ) && EP != bid->env_protec.end() ) {
             ret += EP->second;
         }
     }
@@ -7904,6 +7936,9 @@ static void item_armor_enchantment_adjust( Character &guy, damage_unit &du, item
         case DT_STAB:
             du.amount += armor.bonus_from_enchantments( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_STAB );
             break;
+        case DT_BULLET:
+            du.amount += armor.bonus_from_enchantments( guy, du.amount, enchant_vals::mod::ITEM_ARMOR_BULLET );
+            break;
         default:
             return;
     }
@@ -7939,6 +7974,9 @@ static void armor_enchantment_adjust( Character &guy, damage_unit &du )
         case DT_STAB:
             du.amount += guy.bonus_from_enchantments( du.amount, enchant_vals::mod::ARMOR_STAB );
             break;
+        case DT_BULLET:
+            du.amount += guy.bonus_from_enchantments( du.amount, enchant_vals::mod::ARMOR_BULLET );
+            break;
         default:
             return;
     }
@@ -7961,11 +7999,11 @@ void Character::absorb_hit( const bodypart_id &bp, damage_instance &dam )
         if( has_active_bionic( bio_ads ) ) {
             if( elem.amount > 0 && get_power_level() > 24_kJ ) {
                 if( elem.type == DT_BASH ) {
-                    elem.amount -= rng( 1, 8 );
+                    elem.amount -= rng( 1, 2 );
                 } else if( elem.type == DT_CUT ) {
                     elem.amount -= rng( 1, 4 );
-                } else if( elem.type == DT_STAB ) {
-                    elem.amount -= rng( 1, 2 );
+                } else if( elem.type == DT_STAB || elem.type == DT_BULLET ) {
+                    elem.amount -= rng( 1, 8 );
                 }
                 mod_power_level( -25_kJ );
             }
@@ -8128,6 +8166,13 @@ float Character::bionic_armor_bonus( const bodypart_id &bp, damage_type dt ) con
             const auto bash_prot = bid->bash_protec.find( bp.id() );
             if( bash_prot != bid->bash_protec.end() ) {
                 result += bash_prot->second;
+            }
+        }
+    } else if( dt == DT_BULLET ) {
+        for( const bionic_id &bid : get_bionics() ) {
+            const auto bullet_prot = bid->bullet_protec.find( bp.id() );
+            if( bullet_prot != bid->bullet_protec.end() ) {
+                result += bullet_prot->second;
             }
         }
     }
@@ -9147,18 +9192,32 @@ std::map<bodypart_id, int> Character::warmth( const std::map<bodypart_id, std::v
 namespace warmth
 {
 
-std::map<bodypart_id, int> from_clothing( const
-        std::map<bodypart_id, std::vector<const item *>> &bonus_clothing_map )
+template <typename Acc = int const&( int const &, int const & )>
+static std::map<bodypart_id, int> acc_clothing_warmth( const
+        std::map<bodypart_id, std::vector<const item *>> &clothing_map,
+        Acc accumulation_function )
 {
     std::map<bodypart_id, int> ret;
-    for( const std::pair<bodypart_id, std::vector<const item *>> &pr : bonus_clothing_map ) {
+    for( const std::pair<bodypart_id, std::vector<const item *>> &pr : clothing_map ) {
         ret[pr.first] = std::accumulate( pr.second.begin(), pr.second.end(), 0,
-        []( int acc, const item * it ) {
-            return std::max( acc, it->get_warmth() );
+        [accumulation_function]( int acc, const item * it ) {
+            return accumulation_function( acc, it->get_warmth() );
         } );
     }
 
     return ret;
+}
+
+std::map<bodypart_id, int> from_clothing(
+    const std::map<bodypart_id, std::vector<const item *>> &clothing_map )
+{
+    return acc_clothing_warmth( clothing_map, std::plus<int>() );
+}
+
+std::map<bodypart_id, int> bonus_from_clothing(
+    const std::map<bodypart_id, std::vector<const item *>> &clothing_map )
+{
+    return acc_clothing_warmth( clothing_map, std::max<int> );
 }
 
 std::map<bodypart_id, int> from_effects( const Character &c )

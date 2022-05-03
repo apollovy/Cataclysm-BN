@@ -1717,7 +1717,7 @@ void player::update_body_wetness( const w_point &weather )
     // A modifier on drying time
     double delay = 1.0;
     // Weather slows down drying
-    delay += ( ( weather.humidity - 66 ) - ( weather.temperature - 65 ) ) / 100;
+    delay += ( ( weather.humidity - 66 ) - ( units::to_fahrenheit( weather.temperature ) - 65 ) ) / 100;
     delay = std::max( 0.1, delay );
     // Fur/slime retains moisture
     if( has_trait( trait_LIGHTFUR ) || has_trait( trait_FUR ) || has_trait( trait_FELINE_FUR ) ||
@@ -2233,6 +2233,7 @@ item::reload_option player::select_ammo( const item &base,
             return e.ammo->contents.front().display_name();
 
         } else {
+            const_cast<item_location &>( ammo_location ).make_dirty();
             return ( ammo_location && ammo_location == e.ammo ? "* " : "" ) + e.ammo->display_name();
         }
     } );

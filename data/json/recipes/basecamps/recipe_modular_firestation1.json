@@ -195,7 +195,7 @@
         "components": [ [ [ "rock", 40 ] ] ]
       }
     },
-    "components": [ [ [ "pot", 1 ], [ "rock_pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
+    "components": [ [ [ "pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -219,7 +219,7 @@
     ],
     "blueprint_excludes": [ { "id": "fbmc_firestation1_fire" } ],
     "blueprint_resources": [ "fake_fireplace", "pot" ],
-    "components": [ [ [ "brazier", 1 ] ], [ [ "pot", 1 ], [ "rock_pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
+    "components": [ [ [ "brazier", 1 ] ], [ [ "pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -247,7 +247,7 @@
       "skills": [ [ "mechanics", 0 ], [ "fabrication", 4 ] ],
       "inline": { "tools": [  ], "qualities": [ [ { "id": "SAW_M" } ] ], "components": [ [ [ "metal_tank", 1 ] ], [ [ "pipe", 1 ] ] ] }
     },
-    "components": [ [ [ "pot", 1 ], [ "rock_pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
+    "components": [ [ [ "pot", 1 ], [ "pot_copper", 1 ], [ "clay_pot", 1 ] ] ]
   },
   {
     "type": "recipe",
@@ -299,20 +299,7 @@
           [ [ "wood_sheet", 1 ], [ "wood_panel", 1 ] ],
           [ [ "nail", 8 ] ],
           [ [ "stick_long", 6 ] ],
-          [
-            [ "rope_6", 1 ],
-            [ "vine_6", 1 ],
-            [ "rope_makeshift_6", 1 ],
-            [ "string_36", 2 ],
-            [ "cordage_36", 2 ],
-            [ "string_6", 12 ],
-            [ "cordage_6", 12 ],
-            [ "thread", 600 ],
-            [ "sinew", 600 ],
-            [ "plant_fibre", 600 ],
-            [ "yarn", 600 ],
-            [ "wire", 8 ]
-          ],
+          [ [ "rope_natural_short", 1, "LIST" ], [ "cordage", 2, "LIST" ], [ "wire", 8 ] ],
           [ [ "pointy_stick", 2 ], [ "spike", 2 ] ]
         ]
       }

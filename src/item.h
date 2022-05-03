@@ -520,7 +520,8 @@ class item : public visitable<item>
          * stacks like "3 items-count-by-charge (5)".
          */
         bool display_stacked_with( const item &rhs, bool check_components = false ) const;
-        bool stacks_with( const item &rhs, bool check_components = false ) const;
+        bool stacks_with( const item &rhs, bool check_components = false,
+                          bool skip_type_check = false ) const;
         /**
          * Merge charges of the other item into this item.
          * @return true if the items have been merged, otherwise false.
@@ -744,6 +745,7 @@ class item : public visitable<item>
         /*@}*/
 
         int get_quality( const quality_id &id ) const;
+        std::map<quality_id, int> get_qualities() const;
         bool count_by_charges() const;
 
         /**
@@ -967,6 +969,7 @@ class item : public visitable<item>
         int bash_resist( bool to_self = false ) const;
         int cut_resist( bool to_self = false )  const;
         int stab_resist( bool to_self = false ) const;
+        int bullet_resist( bool to_self = false ) const;
         /*@}*/
 
         /**
@@ -1537,7 +1540,7 @@ class item : public visitable<item>
         int get_warmth() const;
         /**
          * Returns the @ref islot_armor::thickness value, or 0 for non-armor. Thickness is are
-         * relative value that affects the items resistance against bash / cutting damage.
+         * relative value that affects the items resistance against bash / cutting / bullet damage.
          */
         int get_thickness() const;
         /**
@@ -2260,6 +2263,15 @@ inline bool is_crafting_component( const item &component )
 {
     return ( component.allow_crafting_component() || component.count_by_charges() ) &&
            !component.is_filthy();
+}
+
+/**
+ * This is used in recipes, all other cases use is_crafting_component instead. This allows
+ * filthy components to be filtered out in a different manner that allows exceptions.
+ */
+inline bool is_crafting_component_allow_filthy( const item &component )
+{
+    return ( component.allow_crafting_component() || component.count_by_charges() );
 }
 
 namespace charge_removal_blacklist

@@ -107,6 +107,7 @@ static const efftype_id effect_pkill1( "pkill1" );
 static const efftype_id effect_pkill2( "pkill2" );
 static const efftype_id effect_pkill3( "pkill3" );
 static const efftype_id effect_poison( "poison" );
+static const efftype_id effect_badpoison( "badpoison" );
 static const efftype_id effect_sleep( "sleep" );
 static const efftype_id effect_stung( "stung" );
 static const efftype_id effect_teleglow( "teleglow" );
@@ -133,8 +134,6 @@ static const itype_id itype_remotevehcontrol( "remotevehcontrol" );
 static const itype_id itype_UPS( "UPS" );
 static const itype_id itype_UPS_off( "UPS_off" );
 static const itype_id itype_water_clean( "water_clean" );
-
-static const fault_id fault_bionic_salvaged( "fault_bionic_salvaged" );
 
 static const skill_id skill_computer( "computer" );
 static const skill_id skill_electronics( "electronics" );
@@ -192,7 +191,6 @@ static const trait_id trait_THRESH_MEDICAL( "THRESH_MEDICAL" );
 static const std::string flag_ALLOWS_NATURAL_ATTACKS( "ALLOWS_NATURAL_ATTACKS" );
 static const std::string flag_AURA( "AURA" );
 static const std::string flag_CABLE_SPOOL( "CABLE_SPOOL" );
-static const std::string flag_FILTHY( "FILTHY" );
 static const std::string flag_NO_PACKED( "NO_PACKED" );
 static const std::string flag_NO_STERILE( "NO_STERILE" );
 static const std::string flag_NO_UNWIELD( "NO_UNWIELD" );
@@ -307,6 +305,7 @@ void bionic_data::load( const JsonObject &jsobj, const std::string src )
     assign_map_from_array( jsobj, "env_protec", env_protec, strict );
     assign_map_from_array( jsobj, "bash_protec", bash_protec, strict );
     assign_map_from_array( jsobj, "cut_protec", cut_protec, strict );
+    assign_map_from_array( jsobj, "bullet_protec", bullet_protec, strict );
     assign_map_from_array( jsobj, "occupied_bodyparts", occupied_bodyparts, strict );
     assign_map_from_array( jsobj, "encumbrance", encumbrance, strict );
     assign( jsobj, "fake_item", fake_item, strict );
@@ -355,6 +354,11 @@ void bionic_data::check() const
     for( const auto &it : cut_protec ) {
         if( !it.first.is_valid() ) {
             rep.warn( "cut_protec specifies unknown body part \"%s\"", it.first.str() );
+        }
+    }
+    for( const auto &it : bullet_protec ) {
+        if( !it.first.is_valid() ) {
+            rep.warn( "bullet_protec specifies unknown body part \"%s\"", it.first.str() );
         }
     }
     for( const auto &it : bash_protec ) {
@@ -708,7 +712,7 @@ bool Character::activate_bionic( int b, bool eff_only )
         add_msg_activate();
         static const std::vector<efftype_id> removable = {{
                 effect_fungus, effect_dermatik, effect_bloodworms,
-                effect_poison, effect_stung,
+                effect_poison, effect_stung, effect_badpoison,
                 effect_pkill1, effect_pkill2, effect_pkill3, effect_pkill_l,
                 effect_drunk, effect_cig, effect_cocaine_high, effect_weed_high,
                 effect_hallu, effect_visuals, effect_pblue, effect_iodine, effect_datura,
@@ -931,7 +935,8 @@ bool Character::activate_bionic( int b, bool eff_only )
                            velocity_units( VU_WIND ) );
         add_msg_if_player( m_info, _( "Feels Like: %s." ),
                            print_temperature(
-                               get_local_windchill( weatherPoint.temperature, weatherPoint.humidity,
+                               get_local_windchill( units::to_fahrenheit( weatherPoint.temperature ),
+                                       weatherPoint.humidity,
                                        windpower / 100 ) + player_local_temp ) );
         std::string dirstring = get_dirstring( weather.winddirection );
         add_msg_if_player( m_info, _( "Wind Direction: From the %s." ), dirstring );
@@ -1481,7 +1486,7 @@ static bool attempt_recharge( Character &p, bionic &bio, units::energy &amount, 
     bool recharged = false;
 
     if( power_cost > 0_kJ ) {
-        if( info.has_flag( STATIC( flag_str_id( "BIO_ARMOR_INTERFACE" ) ) ) ) {
+        if( info.has_flag( STATIC( flag_str_id( "BIONIC_ARMOR_INTERFACE" ) ) ) ) {
             // Don't spend any power on armor interfacing unless we're wearing active powered armor.
             bool powered_armor = std::any_of( p.worn.begin(), p.worn.end(),
             []( const item & w ) {
@@ -1581,44 +1586,46 @@ void Character::process_bionic( int b )
         sounds::sound( pos(), 19, sounds::sound_t::activity, _( "HISISSS!" ), false, "bionic",
                        static_cast<std::string>( bio_hydraulics ) );
     } else if( bio.id == bio_nanobots ) {
-        if( get_power_level() >= 40_J ) {
-            std::forward_list<bodypart_id> bleeding_bp_parts;
-            for( const bodypart_id bp : get_all_body_parts() ) {
-                if( has_effect( effect_bleed, bp->token ) ) {
-                    bleeding_bp_parts.push_front( bp );
+        // Total hack, prevents charge_timer reaching 0 thus preventing power draw.
+        // Ideally there would be a value that directly impacts whether a bionic draws power when idle.
+        bio.charge_timer = 2;
+        // The above hack means there's no check for whether the bionic actually has power to run.
+        if( get_power_level() < bio.info().power_over_time ) {
+            bio.powered = false;
+            add_msg_if_player( m_neutral, _( "Your %s powers down." ), bio.info().name );
+            deactivate_bionic( b );
+            return;
+        }
+        if( calendar::once_every( 15_turns ) ) {
+            std::vector<bodypart_id> bleeding_bp_parts;
+            for( const bodypart_id &bp : get_all_body_parts() ) {
+                if( has_effect( effect_bleed, bp.id() ) ) {
+                    bleeding_bp_parts.push_back( bp );
                 }
             }
-            std::vector<bodypart_id> damaged_hp_parts;
-            for( const std::pair<const bodypart_str_id, bodypart> &part : get_body() ) {
-                const int hp_cur = part.second.get_hp_cur();
-                if( hp_cur > 0 && hp_cur < part.second.get_hp_max() ) {
-                    damaged_hp_parts.push_back( part.first.id() );
-                    // only healed and non-hp parts will have a chance of bleeding removal
-                    bleeding_bp_parts.remove( part.first.id() );
+            if( !bleeding_bp_parts.empty() ) {
+                const bodypart_id part_to_staunch = bleeding_bp_parts[ rng( 0, bleeding_bp_parts.size() - 1 ) ];
+                effect &e = get_effect( effect_bleed, part_to_staunch->token );
+                if( e.get_intensity() > 1 ) {
+                    e.mod_intensity( -1, false );
+                } else {
+                    remove_effect( effect_bleed, part_to_staunch->token );
                 }
             }
-            if( calendar::once_every( 60_turns ) ) {
-                bool try_to_heal_bleeding = true;
+            if( rng( 0, 2 ) == 2 ) {
+                std::vector<bodypart_id> damaged_hp_parts;
+                for( const std::pair<const bodypart_str_id, bodypart> &part : get_body() ) {
+                    const int hp_cur = part.second.get_hp_cur();
+                    if( hp_cur > 0 && hp_cur < part.second.get_hp_max() ) {
+                        damaged_hp_parts.push_back( part.first.id() );
+                    }
+                }
                 if( get_stored_kcal() >= 5 && !damaged_hp_parts.empty() ) {
                     const bodypart_id part_to_heal = damaged_hp_parts[ rng( 0, damaged_hp_parts.size() - 1 ) ];
                     heal( part_to_heal, 1 );
+                    mod_power_level( - bio.info().power_over_time );
                     mod_stored_kcal( -5 );
-                    int hp_percent = static_cast<float>( get_part_hp_cur( part_to_heal ) ) / get_part_hp_max(
-                                         part_to_heal ) * 100;
-                    if( has_effect( effect_bleed, part_to_heal->token ) && rng( 0, 100 ) < hp_percent ) {
-                        remove_effect( effect_bleed, part_to_heal->token );
-                        try_to_heal_bleeding = false;
-                    }
                 }
-
-                // if no bleed was removed, try to remove it on some other part
-                if( try_to_heal_bleeding && !bleeding_bp_parts.empty() && rng( 0, 1 ) == 1 ) {
-                    remove_effect( effect_bleed,  bleeding_bp_parts.front()->token );
-                }
-
-            }
-            if( !damaged_hp_parts.empty() || !bleeding_bp_parts.empty() ) {
-                mod_power_level( -40_J );
             }
         }
     } else if( bio.id == bio_painkiller ) {
@@ -2019,10 +2026,8 @@ void Character::perform_uninstall( bionic_id bid, int difficulty, int success,
         if( bid->itype().is_valid() ) {
             cbm = item( bid.c_str() );
         }
-        cbm.set_flag( flag_FILTHY );
         cbm.set_flag( flag_NO_STERILE );
         cbm.set_flag( flag_NO_PACKED );
-        cbm.faults.emplace( fault_bionic_salvaged );
         g->m.add_item( pos(), cbm );
     } else {
         g->events().send<event_type::fails_to_remove_cbm>( getID(), bid );
@@ -2094,10 +2099,8 @@ bool Character::uninstall_bionic( const bionic &target_cbm, monster &installer, 
         patient.remove_bionic( target_cbm.id );
         const itype_id iid = itemtype.is_valid() ? itemtype : itype_burnt_out_bionic;
         item cbm( iid, calendar::start_of_cataclysm );
-        cbm.set_flag( flag_FILTHY );
         cbm.set_flag( flag_NO_STERILE );
         cbm.set_flag( flag_NO_PACKED );
-        cbm.faults.emplace( fault_bionic_salvaged );
         g->m.add_item( patient.pos(), cbm );
     } else {
         bionics_uninstall_failure( installer, patient, difficulty, success, adjusted_skill );

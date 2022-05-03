@@ -372,6 +372,9 @@ void MonsterGenerator::finalize_mtypes()
         if( mon.armor_stab < 0 ) {
             mon.armor_stab = mon.armor_cut * 0.8;
         }
+        if( mon.armor_bullet < 0 ) {
+            mon.armor_bullet = 0;
+        }
         if( mon.armor_acid < 0 ) {
             mon.armor_acid = mon.armor_cut * 0.5;
         }
@@ -646,7 +649,7 @@ void MonsterGenerator::load_monster( const JsonObject &jo, const std::string &sr
 mon_effect_data load_mon_effect_data( const JsonObject &e )
 {
     bool permanent = e.get_bool( "permanent", false );
-    if( permanent && ( test_mode || json_report_unused_fields ) ) {
+    if( permanent && json_report_strict ) {
         try {
             e.throw_error( "Effect permanence has been moved to effect_type.  Set permanence there.",
                            "permanent" );
@@ -734,6 +737,7 @@ void mtype::load( const JsonObject &jo, const std::string &src )
     assign( jo, "dodge", sk_dodge, strict, 0 );
     assign( jo, "armor_bash", armor_bash, strict, 0 );
     assign( jo, "armor_cut", armor_cut, strict, 0 );
+    assign( jo, "armor_bullet", armor_bullet, strict, 0 );
     assign( jo, "armor_stab", armor_stab, strict, 0 );
     assign( jo, "armor_acid", armor_acid, strict, 0 );
     assign( jo, "armor_fire", armor_fire, strict, 0 );

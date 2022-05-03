@@ -921,6 +921,16 @@ int player::fire_gun( const tripoint &target, const int max_shots, item &gun )
         // Now actually apply recoil for the future shots
         // But only for one shot, because bursts kinda suck
         int gun_recoil = gun.gun_recoil( can_use_bipod( g->m, pos() ) );
+
+        // If user is currently able to fire a mounted gun freely, penalize recoil based on size class.
+        if( gun.has_flag( flag_MOUNTED_GUN ) && !can_use_bipod( g->m, pos() ) ) {
+            if( get_size() == MS_HUGE ) {
+                gun_recoil = gun_recoil * 2;
+            } else {
+                gun_recoil = gun_recoil * 3;
+            }
+        }
+
         recoil += gun_recoil;
         if( is_mech_weapon ) {
             // mechs can handle recoil far better. they are built around their main gun.
@@ -1629,7 +1639,7 @@ static projectile make_gun_projectile( const item &gun )
             proj.set_drop( drop );
         }
 
-        if( fx.has_effect( ammo_effect_CUSTOM_EXPLOSION ) > 0 ) {
+        if( fx.has_effect( ammo_effect_CUSTOM_EXPLOSION ) ) {
             proj.set_custom_explosion( gun.ammo_data()->explosion );
         }
     }
@@ -1840,6 +1850,15 @@ dispersion_sources player::get_weapon_dispersion( const item &obj ) const
         // Adding dispersion for additional debuff
         dispersion.add_range( 150 );
         dispersion.add_multiplier( 4 );
+    }
+
+    // If user is currently able to fire a mounted gun freely, penalize dispersion based on size class.
+    if( obj.has_flag( flag_MOUNTED_GUN ) && !can_use_bipod( g->m, pos() ) ) {
+        if( get_size() == MS_HUGE ) {
+            dispersion.add_multiplier( 2 );
+        } else {
+            dispersion.add_multiplier( 3 );
+        }
     }
 
     return dispersion;
@@ -2872,8 +2891,8 @@ void target_ui::action_switch_mode()
 {
     uilist menu;
     menu.settext( _( "Select preferences" ) );
-    const std::pair<int, int> aim_modes_range = std::make_pair( 0, 100 );
-    const std::pair<int, int> firing_modes_range = std::make_pair( 100, 200 );
+
+    std::vector<std::function<void()>> on_select;
 
     if( !aim_types.empty() ) {
         menu.addentry( -1, false, 0, "  " + std::string( _( "Default aiming mode" ) ) );
@@ -2884,35 +2903,41 @@ void target_ui::action_switch_mode()
             const bool is_active_aim_mode = aim_mode == it;
             const std::string text = ( it->name.empty() ? _( "Immediate" ) : it->name ) +
                                      ( is_active_aim_mode ? _( " (active)" ) : "" );
-            menu.addentry( aim_modes_range.first + std::distance( aim_types.begin(), it ),
-                           true, MENU_AUTOASSIGN, text );
+
+            menu.addentry( on_select.size(), true, MENU_AUTOASSIGN, text );
+            on_select.emplace_back( [it, this]() {
+                aim_mode = it;
+                you->preferred_aiming_mode = it->action;
+            } );
             if( is_active_aim_mode ) {
                 menu.entries.back().text_color = c_light_green;
             }
         }
     }
 
-    const std::map<gun_mode_id, gun_mode> gun_modes = relevant->gun_all_modes();
-    if( !gun_modes.empty() ) {
+    const std::map<gun_mode_id, gun_mode> &all_gun_modes = relevant->gun_all_modes();
+    if( !all_gun_modes.empty() ) {
         menu.addentry( -1, false, 0, "  " + std::string( _( "Firing mode" ) ) );
         menu.entries.back().force_color = true;
         menu.entries.back().text_color = c_cyan;
 
-        for( auto it = gun_modes.begin(); it != gun_modes.end(); ++it ) {
-            if( it->second.melee() ) {
+        for( const auto &mode : all_gun_modes ) {
+            if( mode.second.melee() ) {
                 continue;
             }
-            const bool active_gun_mode = relevant->gun_get_mode_id() == it->first;
+            const bool active_gun_mode = relevant->gun_get_mode_id() == mode.first;
 
             // If gun mode is from a gunmod use gunmod's name, pay attention to the "->" on tname
-            std::string text = ( it->second.target == relevant )
-                               ? it->second.tname()
-                               : it->second->tname() + " (" + std::to_string( it->second.qty ) + ")";
+            std::string text = ( mode.second.target == relevant )
+                               ? mode.second.tname()
+                               : mode.second->tname() + " (" + std::to_string( mode.second.qty ) + ")";
 
             text += ( active_gun_mode ? _( " (active)" ) : "" );
 
-            int retv = firing_modes_range.first + std::distance( gun_modes.begin(), it );
-            menu.entries.emplace_back( retv, true, MENU_AUTOASSIGN, text );
+            menu.entries.emplace_back( static_cast<int>( on_select.size() ), true, MENU_AUTOASSIGN, text );
+            on_select.emplace_back( [mode, this]() {
+                relevant->gun_set_mode( mode.first );
+            } );
             if( active_gun_mode ) {
                 menu.entries.back().text_color = c_light_green;
                 if( menu.selected == 0 ) {
@@ -2923,24 +2948,9 @@ void target_ui::action_switch_mode()
     }
 
     menu.query();
-    if( menu.ret >= firing_modes_range.first && menu.ret < firing_modes_range.second ) {
-        // gun mode select
-        const std::map<gun_mode_id, gun_mode> all_gun_modes = relevant->gun_all_modes();
-        int skip = menu.ret - firing_modes_range.first;
-        for( std::pair<gun_mode_id, gun_mode> it : all_gun_modes ) {
-            if( it.second.melee() ) {
-                continue;
-            }
-            if( skip-- == 0 ) {
-                relevant->gun_set_mode( it.first );
-                break;
-            }
-        }
-    } else if( menu.ret >= aim_modes_range.first && menu.ret < aim_modes_range.second ) {
-        // aiming mode select
-        aim_mode = aim_types.begin();
-        std::advance( aim_mode, menu.ret - aim_modes_range.first );
-        you->preferred_aiming_mode = aim_mode->action;
+    if( menu.ret >= 0 && menu.ret < static_cast<int>( on_select.size() ) ) {
+        size_t i = static_cast<size_t>( menu.ret );
+        on_select[i]();
     } // else - just refresh
 
     ensure_ranged_gun_mode();
@@ -3644,7 +3654,7 @@ bool ranged::gunmode_checks_weapon( avatar &you, const map &m, std::vector<std::
         const bool v_mountable = static_cast<bool>( m.veh_at( you.pos() ).part_with_feature( "MOUNTABLE",
                                  true ) );
         bool t_mountable = m.has_flag_ter_or_furn( flag_MOUNTABLE, you.pos() );
-        if( !t_mountable && !v_mountable ) {
+        if( !t_mountable && !v_mountable && !( you.get_size() > MS_MEDIUM ) ) {
             messages.push_back( string_format(
                                     _( "You must stand near acceptable terrain or furniture to fire the %s.  A table, a mound of dirt, a broken window, etc." ),
                                     gmode->tname() ) );

@@ -579,6 +579,8 @@ const inventory &Character::crafting_inventory( const tripoint &src_pos, int rad
     cached_moves = moves;
     cached_time = calendar::turn;
     cached_position = inv_pos;
+    // cache the qualities of the items in cached_crafting_inventory
+    cached_crafting_inventory.update_quality_cache();
     return cached_crafting_inventory;
 }
 
@@ -1557,6 +1559,7 @@ struct avail_tool_comp {
         : comp( comp ), charges( charges ), ideal( ideal )
     {}
     avail_tool_comp( const avail_tool_comp & ) = default;
+    avail_tool_comp &operator =( const avail_tool_comp & ) = default;
 
     comp_selection<tool_comp> comp;
     int charges;

@@ -143,7 +143,6 @@ static const itype_id itype_water_acid( "water_acid" );
 static const itype_id itype_water_acid_weak( "water_acid_weak" );
 
 static const skill_id skill_cooking( "cooking" );
-static const skill_id skill_melee( "melee" );
 static const skill_id skill_survival( "survival" );
 static const skill_id skill_unarmed( "unarmed" );
 static const skill_id skill_weapon( "weapon" );
@@ -210,6 +209,7 @@ static const std::string flag_LITCIG( "LITCIG" );
 static const std::string flag_MAG_BELT( "MAG_BELT" );
 static const std::string flag_MAG_DESTROY( "MAG_DESTROY" );
 static const std::string flag_MAG_EJECT( "MAG_EJECT" );
+static const flag_str_id flag_MELEE_GUNMOD( "MELEE_GUNMOD" );
 static const std::string flag_NANOFAB_TEMPLATE( "NANOFAB_TEMPLATE" );
 static const std::string flag_NEEDS_UNFOLD( "NEEDS_UNFOLD" );
 static const std::string flag_NEVER_JAMS( "NEVER_JAMS" );
@@ -480,6 +480,10 @@ item::item( const recipe *rec, int qty, std::list<item> items, std::vector<item_
                 set_flag( f );
             }
         }
+    }
+    // this extra section is so that in-progress crafts will correctly display expected flags.
+    for( const std::string &flag : rec->flags_to_delete ) {
+        unset_flag( flag );
     }
 }
 
@@ -870,9 +874,9 @@ bool item::display_stacked_with( const item &rhs, bool check_components ) const
     return !count_by_charges() && stacks_with( rhs, check_components );
 }
 
-bool item::stacks_with( const item &rhs, bool check_components ) const
+bool item::stacks_with( const item &rhs, bool check_components, bool skip_type_check ) const
 {
-    if( type != rhs.type ) {
+    if( !skip_type_check && type != rhs.type ) {
         return false;
     }
     if( is_relic() && rhs.is_relic() && !( *relic_data == *rhs.relic_data ) ) {
@@ -2412,7 +2416,8 @@ void item::armor_protection_info( std::vector<iteminfo> &info, const iteminfo_qu
     if( parts->test( iteminfo_parts::ARMOR_PROTECTION ) ) {
         info.push_back( iteminfo( "ARMOR", _( "<bold>Protection</bold>: Bash: " ), "",
                                   iteminfo::no_newline, bash_resist() ) );
-        info.push_back( iteminfo( "ARMOR", space + _( "Cut: " ), cut_resist() ) );
+        info.push_back( iteminfo( "ARMOR", space + _( "Cut: " ), "", iteminfo::no_newline, cut_resist() ) );
+        info.push_back( iteminfo( "ARMOR", space + _( "Ballistic: " ), bullet_resist() ) );
         info.push_back( iteminfo( "ARMOR", space + _( "Acid: " ), "",
                                   iteminfo::no_newline, acid_resist() ) );
         info.push_back( iteminfo( "ARMOR", space + _( "Fire: " ), "",
@@ -3235,6 +3240,7 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
 
     if( !bid->env_protec.empty() ) {
         info.push_back( iteminfo( "DESCRIPTION",
+                                  bid->activated ? _( "<bold>Environmental Protection (activated)</bold>: " ) :
                                   _( "<bold>Environmental Protection</bold>: " ),
                                   iteminfo::no_newline ) );
         for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->env_protec ) ) {
@@ -3258,6 +3264,15 @@ void item::bionic_info( std::vector<iteminfo> &info, const iteminfo_query *parts
                                   _( "<bold>Cut Protection</bold>: " ),
                                   iteminfo::no_newline ) );
         for( const std::pair< const bodypart_str_id, int > element : sorted_lex( bid->cut_protec ) ) {
+            info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
+                                      " <num> ", iteminfo::no_newline, element.second ) );
+        }
+    }
+
+    if( !bid->bullet_protec.empty() ) {
+        info.push_back( iteminfo( "DESCRIPTION", _( "<bold>Ballistic Protection</bold>: " ),
+                                  iteminfo::no_newline ) );
+        for( const std::pair<const bodypart_str_id, size_t > &element : bid->bullet_protec ) {
             info.push_back( iteminfo( "CBM", body_part_name_as_heading( element.first->token, 1 ),
                                       " <num> ", iteminfo::no_newline, element.second ) );
         }
@@ -3388,9 +3403,7 @@ void item::combat_info( std::vector<iteminfo> &info, const iteminfo_query *parts
         }
     }
 
-    ///\EFFECT_MELEE >2 allows seeing melee damage stats on weapons
-    if( ( g->u.get_skill_level( skill_melee ) > 2 &&
-          ( dmg_bash || dmg_cut || dmg_stab || type->m_to_hit > 0 ) ) || debug_mode ) {
+    if( ( dmg_bash || dmg_cut || dmg_stab || type->m_to_hit > 0 ) || debug_mode ) {
         damage_instance non_crit;
         g->u.roll_all_damage( false, non_crit, true, *this );
         damage_instance crit;
@@ -4106,8 +4119,8 @@ nc_color item::color_in_inventory() const
             ret = c_light_red;
         }
     } else if( is_book() ) {
+        const islot_book &tmp = *type->book;
         if( u.has_identified( typeId() ) ) {
-            const islot_book &tmp = *type->book;
             if( tmp.skill && // Book can improve skill: blue
                 u.get_skill_level_object( tmp.skill ).can_train() &&
                 u.get_skill_level( tmp.skill ) >= tmp.req &&
@@ -4124,8 +4137,12 @@ nc_color item::color_in_inventory() const
                            *type ) ) { // Book can't improve skill anymore, but has more recipes: yellow
                 ret = c_yellow;
             }
+        } else if( tmp.skill || type->can_use( "MA_MANUAL" ) ) {
+            // Book can teach you something and hasn't been identified yet
+            ret = c_red;
         } else {
-            ret = c_red;  // Book hasn't been identified yet: red
+            // "just for fun" book that they haven't read yet
+            ret = c_magenta;
         }
     }
     return ret;
@@ -4997,13 +5014,10 @@ int item::damage_melee( damage_type dt ) const
 
     // consider any melee gunmods
     if( is_gun() ) {
-        std::vector<int> opts = { res };
-        for( const std::pair<const gun_mode_id, gun_mode> &e : gun_all_modes() ) {
-            if( e.second.target != this && e.second.melee() ) {
-                opts.push_back( e.second.target->damage_melee( dt ) );
-            }
-        }
-        return *std::max_element( opts.begin(), opts.end() );
+        const std::vector<const item *> &mods = gunmods();
+        return std::accumulate( mods.begin(), mods.end(), res, [dt]( int last_max, const item * it ) {
+            return it->has_flag( flag_MELEE_GUNMOD ) ? std::max( last_max, it->damage_melee( dt ) ) : last_max;
+        } );
 
     }
 
@@ -5194,6 +5208,15 @@ int item::get_quality( const quality_id &id ) const
     return_quality = std::max( return_quality, contents.best_quality( id ) );
 
     return return_quality;
+}
+
+std::map<quality_id, int> item::get_qualities() const
+{
+    std::map<quality_id, int> qualities;
+    for( const auto &quality : type->qualities ) {
+        qualities[quality.first] = get_quality( quality.first );
+    }
+    return qualities;
 }
 
 bool item::has_technique( const matec_id &tech ) const
@@ -5819,6 +5842,35 @@ int item::stab_resist( bool to_self ) const
     return static_cast<int>( 0.8f * cut_resist( to_self ) );
 }
 
+int item::bullet_resist( bool to_self ) const
+{
+    if( is_null() ) {
+        return 0;
+    }
+
+    const int base_thickness = get_thickness();
+    float resist = 0;
+    float mod = get_clothing_mod_val( clothing_mod_type_bullet );
+    int eff_thickness = 1;
+
+    // base resistance
+    // Don't give reinforced items +armor, just more resistance to ripping
+    const int dmg = damage_level( 4 );
+    const int eff_damage = to_self ? std::min( dmg, 0 ) : std::max( dmg, 0 );
+    eff_thickness = std::max( 1, base_thickness - eff_damage );
+
+    const std::vector<const material_type *> mat_types = made_of_types();
+    if( !mat_types.empty() ) {
+        for( const material_type *mat : mat_types ) {
+            resist += mat->bullet_resist();
+        }
+        // Average based on number of materials.
+        resist /= mat_types.size();
+    }
+
+    return std::lround( ( resist * eff_thickness ) + mod );
+}
+
 int item::acid_resist( bool to_self, int base_env_resist ) const
 {
     if( to_self ) {
@@ -6087,6 +6139,8 @@ int item::damage_resist( damage_type dt, bool to_self ) const
             return stab_resist( to_self );
         case DT_HEAT:
             return fire_resist( to_self );
+        case DT_BULLET:
+            return bullet_resist( to_self );
         default:
             debugmsg( "Invalid damage type: %d", dt );
     }
@@ -8687,8 +8741,10 @@ bool item::process_rot( float /*insulation*/, const bool seals,
             //Use weather if above ground, use map temp if below
             double env_temperature = 0;
             if( pos.z >= 0 ) {
-                double weather_temperature = wgen.get_weather_temperature( pos, time, seed );
-                env_temperature = weather_temperature + local_mod;
+                tripoint_abs_ms location = tripoint_abs_ms( get_map().getabs( pos ) );
+                units::temperature weather_temperature = wgen.get_weather_temperature( location, time,
+                        calendar::config, seed );
+                env_temperature = units::to_fahrenheit( weather_temperature ) + local_mod;
             } else {
                 env_temperature = AVERAGE_ANNUAL_TEMPERATURE + local_mod;
             }

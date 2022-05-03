@@ -434,9 +434,10 @@ void Character::load( const JsonObject &data )
     JsonObject vits = data.get_object( "vitamin_levels" );
     vits.allow_omitted_members();
     for( const std::pair<const vitamin_id, vitamin> &v : vitamin::all() ) {
-        int lvl = vits.get_int( v.first.str(), 0 );
-        lvl = std::max( std::min( lvl, v.first.obj().max() ), v.first.obj().min() );
-        vitamin_levels[v.first] = lvl;
+        if( vits.has_member( v.first.str() ) ) {
+            int lvl = vits.get_int( v.first.str() );
+            vitamin_levels[v.first] = clamp( lvl, v.first->min(), v.first->max() );
+        }
     }
     data.read( "consumption_history", consumption_history );
     data.read( "activity", activity );
@@ -3030,6 +3031,7 @@ void Creature::store( JsonOut &jsout ) const
 
     jsout.member( "armor_bash_bonus", armor_bash_bonus );
     jsout.member( "armor_cut_bonus", armor_cut_bonus );
+    jsout.member( "armor_bullet_bonus", armor_bullet_bonus );
 
     jsout.member( "speed", speed_base );
 
@@ -3083,6 +3085,7 @@ void Creature::load( const JsonObject &jsin )
 
     jsin.read( "armor_bash_bonus", armor_bash_bonus );
     jsin.read( "armor_cut_bonus", armor_cut_bonus );
+    jsin.read( "armor_bullet_bonus", armor_bullet_bonus );
 
     jsin.read( "speed", speed_base );
 
