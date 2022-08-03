@@ -48,13 +48,13 @@
 #include "value_ptr.h"
 #include "veh_interact.h"
 #include "veh_type.h"
+#include "vehicle_move.h"
 #include "vpart_position.h"
 #include "vpart_range.h"
 #include "weather.h"
 
 static const activity_id ACT_HOTWIRE_CAR( "ACT_HOTWIRE_CAR" );
 static const activity_id ACT_RELOAD( "ACT_RELOAD" );
-static const activity_id ACT_REPAIR_ITEM( "ACT_REPAIR_ITEM" );
 static const activity_id ACT_START_ENGINES( "ACT_START_ENGINES" );
 
 static const itype_id fuel_type_battery( "battery" );
@@ -143,14 +143,18 @@ void vehicle::add_toggle_to_opts( std::vector<uilist_entry> &options,
 
 void handbrake()
 {
-    const optional_vpart_position vp = g->m.veh_at( g->u.pos() );
+    const map &here = get_map();
+    Character &pl = get_player_character();
+    const optional_vpart_position vp = here.veh_at( pl.pos() );
     if( !vp ) {
         return;
     }
     vehicle *const veh = &vp->vehicle();
     add_msg( _( "You pull a handbrake." ) );
     veh->cruise_velocity = 0;
-    if( veh->last_turn != 0_degrees && rng( 15, 60 ) * 100 < std::abs( veh->velocity ) ) {
+    bool is_on_rails = vehicle_movement::is_on_rails( here, *veh );
+    if( !is_on_rails && veh->last_turn != 0_degrees &&
+        rng( 15, 60 ) * 100 < std::abs( veh->velocity ) ) {
         veh->skidding = true;
         add_msg( m_warning, _( "You lose control of %s." ), veh->name );
         veh->turn( veh->last_turn > 0_degrees ? 60_degrees : -60_degrees );
@@ -163,7 +167,7 @@ void handbrake()
             veh->velocity = sgn * ( std::abs( veh->velocity ) - braking_power );
         }
     }
-    g->u.moves = 0;
+    pl.moves = 0;
 }
 
 void vehicle::control_doors()
@@ -384,6 +388,7 @@ void vehicle::control_engines()
                     }
                     return;
                 }
+                i++;
             }
         }
     };
@@ -1548,56 +1553,6 @@ void vehicle::open_or_close( const int part_index, const bool opening )
     coeff_air_dirty = true;
 }
 
-void vehicle::use_autoclave( int p )
-{
-    auto items = get_items( p );
-    static const std::string filthy( "FILTHY" );
-    static const std::string no_packed( "NO_PACKED" );
-    bool filthy_items = std::any_of( items.begin(), items.end(), []( const item & i ) {
-        return i.has_flag( filthy );
-    } );
-
-    bool unpacked_items = std::any_of( items.begin(), items.end(), []( const item & i ) {
-        return i.has_flag( no_packed );
-    } );
-
-    bool cbms = std::all_of( items.begin(), items.end(), []( const item & i ) {
-        return i.is_bionic();
-    } );
-
-    if( parts[p].enabled ) {
-        parts[p].enabled = false;
-        add_msg( m_bad,
-                 _( "You turn the autoclave off before it's finished the program, and open its door." ) );
-    } else if( items.empty() ) {
-        add_msg( m_bad, _( "The autoclave is empty, there's no point in starting it." ) );
-    } else if( fuel_left( itype_water ) < 8 && fuel_left( itype_water_clean ) < 8 ) {
-        add_msg( m_bad, _( "You need 8 charges of water in tanks of the %s for the autoclave to run." ),
-                 name );
-    } else if( filthy_items ) {
-        add_msg( m_bad,
-                 _( "You need to remove all filthy items from the autoclave to start the sterilizing cycle." ) );
-    } else if( !cbms ) {
-        add_msg( m_bad, _( "Only CBMs can be sterilized in an autoclave." ) );
-    } else if( unpacked_items ) {
-        add_msg( m_bad, _( "You should put your CBMs in autoclave pouches to keep them sterile." ) );
-    } else {
-        parts[p].enabled = true;
-        for( auto &n : items ) {
-            n.set_age( 0_turns );
-        }
-
-        if( fuel_left( itype_water ) >= 8 ) {
-            drain( itype_water, 8 );
-        } else {
-            drain( itype_water_clean, 8 );
-        }
-
-        add_msg( m_good,
-                 _( "You turn the autoclave on and it starts its cycle." ) );
-    }
-}
-
 void vehicle::use_washing_machine( int p )
 {
     // Get all the items that can be used as detergent
@@ -1908,7 +1863,7 @@ void vehicle::use_bike_rack( int part )
     }
     if( success ) {
         get_map().invalidate_map_cache( g->get_levz() );
-        get_map().reset_vehicle_cache( g->get_levz() );
+        get_map().reset_vehicle_cache( );
     }
 }
 
@@ -1936,11 +1891,9 @@ void vehicle::interact_with( const tripoint &pos, int interact_part )
     const bool from_vehicle = cargo_part >= 0 && !get_items( cargo_part ).empty();
     const bool can_be_folded = is_foldable();
     const bool is_convertible = tags.count( "convertible" ) > 0;
-    const bool remotely_controlled = g->remoteveh() == this;
     const int autoclave_part = avail_part_with_feature( interact_part, "AUTOCLAVE", true );
     const bool has_autoclave = autoclave_part >= 0;
-    bool autoclave_on = ( autoclave_part == -1 ) ? false :
-                        parts[autoclave_part].enabled;
+    const bool remotely_controlled = g->remoteveh() == this;
     const int washing_machine_part = avail_part_with_feature( interact_part, "WASHING_MACHINE", true );
     const bool has_washmachine = washing_machine_part >= 0;
     bool washing_machine_on = ( washing_machine_part == -1 ) ? false :
@@ -1976,9 +1929,7 @@ void vehicle::interact_with( const tripoint &pos, int interact_part )
                              _( "Control multiple electronics" ) );
     }
     if( has_autoclave ) {
-        selectmenu.addentry( USE_AUTOCLAVE, true, 'a',
-                             autoclave_on ? _( "Deactivate the autoclave" ) :
-                             _( "Activate the autoclave (1.5 hours)" ) );
+        selectmenu.addentry( USE_AUTOCLAVE, true, 'a', _( "Sterilize a CBM" ) );
     }
     if( has_washmachine ) {
         selectmenu.addentry( USE_WASHMACHINE, true, 'W',
@@ -2095,7 +2046,7 @@ void vehicle::interact_with( const tripoint &pos, int interact_part )
             return;
         }
         case USE_AUTOCLAVE: {
-            use_autoclave( autoclave_part );
+            iexamine::autoclave_empty( get_avatar(), pos );
             return;
         }
         case USE_WASHMACHINE: {
@@ -2121,16 +2072,10 @@ void vehicle::interact_with( const tripoint &pos, int interact_part )
         case USE_WELDER: {
             if( veh_tool( itype_welder ) ) {
                 // HACK: Evil hack incoming
-                auto &act = g->u.activity;
-                if( act.id() == ACT_REPAIR_ITEM ) {
-                    // Magic: first tell activity the item doesn't really exist
-                    act.index = INT_MIN;
-                    // Then tell it to search it on `pos`
-                    act.coords.push_back( pos );
-                    // Finally tell if it is the vehicle part with welding rig
-                    act.values.resize( 2 );
-                    act.values[1] = part_with_feature( interact_part, "WELDRIG", true );
-                }
+                activity_handlers::repair_activity_hack::patch_activity_for_vehicle_welder(
+                    g->u.activity,
+                    pos, *this, interact_part
+                );
             }
             return;
         }

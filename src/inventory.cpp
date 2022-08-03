@@ -589,6 +589,7 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
         const cata::optional<vpart_reference> forgepart = vp.part_with_feature( "FORGE", true );
         const cata::optional<vpart_reference> kilnpart = vp.part_with_feature( "KILN", true );
         const cata::optional<vpart_reference> chempart = vp.part_with_feature( "CHEMLAB", true );
+        const cata::optional<vpart_reference> autoclavepart = vp.part_with_feature( "AUTOCLAVE", true );
         const cata::optional<vpart_reference> cargo = vp.part_with_feature( "CARGO", true );
 
         if( cargo ) {
@@ -677,6 +678,12 @@ void inventory::form_from_map( map &m, std::vector<tripoint> pts, const Characte
             electrolysis_kit.charges = veh->fuel_left( itype_battery, true );
             electrolysis_kit.item_tags.insert( "PSEUDO" );
             add_item_by_items_type_cache( electrolysis_kit );
+        }
+        if( autoclavepart ) {
+            item autoclave( "autoclave", bday );
+            autoclave.charges = veh->fuel_left( itype_battery, true );
+            autoclave.item_tags.insert( "PSEUDO" );
+            add_item_by_items_type_cache( autoclave );
         }
     }
     pts.clear();
@@ -1107,13 +1114,13 @@ enchantment inventory::get_active_enchantment_cache( const Character &owner ) co
 void inventory::update_quality_cache()
 {
     quality_cache.clear();
-    inventory *this_nonconst = const_cast<inventory *>( this );
-    this_nonconst->visit_items( [ this ]( item * e ) {
-        auto item_qualities = e->get_qualities();
-        for( const auto &quality : item_qualities ) {
+    visit_items( [ this ]( const item * e ) {
+        const std::map<quality_id, int> &item_qualities = e->get_qualities();
+        for( const std::pair<const quality_id, int> &quality : item_qualities ) {
+            const int item_count = e->count_by_charges() ? e->charges : 1;
             // quality.first is the id of the quality, quality.second is the quality level
             // the value is the number of items with that quality level
-            ++quality_cache[quality.first][quality.second];
+            quality_cache[quality.first][quality.second] += item_count;
         }
         return VisitResponse::NEXT;
     } );
@@ -1122,6 +1129,20 @@ void inventory::update_quality_cache()
 const std::map<quality_id, std::map<int, int>> &inventory::get_quality_cache() const
 {
     return quality_cache;
+}
+
+int inventory::count_item( const itype_id &item_type ) const
+{
+    int num = 0;
+    const itype_bin bin = get_binned_items();
+    if( bin.find( item_type ) == bin.end() ) {
+        return num;
+    }
+    const std::list<const item *> items = get_binned_items().find( item_type )->second;
+    for( const item *it : items ) {
+        num += it->count();
+    }
+    return num;
 }
 
 void inventory::assign_empty_invlet( item &it, const Character &p, const bool force )

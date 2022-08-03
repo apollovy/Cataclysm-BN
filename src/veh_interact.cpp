@@ -69,11 +69,11 @@
 static const itype_id fuel_type_battery( "battery" );
 
 static const itype_id itype_battery( "battery" );
-static const itype_id itype_hose( "hose" );
 static const itype_id itype_plut_cell( "plut_cell" );
 
 static const skill_id skill_mechanics( "mechanics" );
 
+static const quality_id qual_HOSE( "HOSE" );
 static const quality_id qual_JACK( "JACK" );
 static const quality_id qual_LIFT( "LIFT" );
 static const quality_id qual_SELF_JACK( "SELF_JACK" );
@@ -144,18 +144,19 @@ player_activity veh_interact::serialize_activity()
 
     // if we're working on an existing part, use that part as the reference point
     // otherwise (e.g. installing a new frame), just use part 0
-    const point q = veh->coord_translate( pt ? pt->mount : veh->part( 0 ).mount );
+    const tripoint q = g->m.getabs( veh->global_part_pos3( pt ? *pt : veh->part( 0 ) ) );
     const vehicle_part *vpt = pt ? pt : &veh->part( 0 );
     for( const tripoint &p : veh->get_points( true ) ) {
         res.coord_set.insert( g->m.getabs( p ) );
     }
-    res.values.push_back( g->m.getabs( veh->global_pos3() ).x + q.x );    // values[0]
-    res.values.push_back( g->m.getabs( veh->global_pos3() ).y + q.y );    // values[1]
+    res.values.push_back( q.x );   // values[0]
+    res.values.push_back( q.y );   // values[1]
     res.values.push_back( dd.x );   // values[2]
     res.values.push_back( dd.y );   // values[3]
     res.values.push_back( -dd.x );   // values[4]
     res.values.push_back( -dd.y );   // values[5]
     res.values.push_back( veh->index_of_part( vpt ) ); // values[6]
+    res.values.push_back( q.z );   // values[7]
     res.str_values.push_back( vp->get_id().str() );
     res.targets.emplace_back( std::move( target ) );
 
@@ -605,7 +606,7 @@ task_reason veh_interact::cant_do( char mode )
                     break;
                 }
             }
-            has_tools = crafting_inv.has_tools( itype_hose, 1 );
+            has_tools = g->u.has_quality( qual_HOSE );
             break;
 
         case 'd':
@@ -2417,72 +2418,88 @@ void veh_interact::display_stats() const
     };
 
     int i = 0;
+
+    // these lambdas simplifies printing stat for vehicle line-by-line
+    const auto print_stat_color = [&]( auto color, auto ...args ) {
+        fold_and_print( w_stats, point( x[i], y[i] ), w[i], color, args... );
+        i++;
+    };
+    const auto print_stat = [&]( auto ...args ) {
+        print_stat_color( c_light_gray, args... );
+    };
+    // print empty line if condition not matches
+    const auto print_stat_if = [&]( bool condition, auto ...args ) {
+        if( condition ) {
+            print_stat( args... );
+        } else {
+            i++;
+        }
+    };
+
     if( is_aircraft ) {
-        fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                        _( "Air Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
-                        vel_to_int( veh->safe_rotor_velocity( false ) ),
-                        vel_to_int( veh->max_rotor_velocity( false ) ),
-                        velocity_units( VU_VEHICLE ) );
-        i += 1;
-        fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                        _( "Air Acceleration: <color_light_blue>%3d</color> %s/s" ),
-                        vel_to_int( veh->rotor_acceleration( false ) ),
-                        velocity_units( VU_VEHICLE ) );
-        i += 1;
+        print_stat(
+            _( "Air Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
+            vel_to_int( veh->safe_rotor_velocity( false ) ),
+            vel_to_int( veh->max_rotor_velocity( false ) ),
+            velocity_units( VU_VEHICLE ) );
+        print_stat(
+            _( "Air Acceleration: <color_light_blue>%3d</color> %s/s" ),
+            vel_to_int( veh->rotor_acceleration( false ) ),
+            velocity_units( VU_VEHICLE ) );
     } else {
         if( is_ground ) {
-            fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                            _( "Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
-                            vel_to_int( veh->safe_ground_velocity( false ) ),
-                            vel_to_int( veh->max_ground_velocity( false ) ),
-                            velocity_units( VU_VEHICLE ) );
-            i += 1;
+            print_stat(
+                _( "Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
+                vel_to_int( veh->safe_ground_velocity( false ) ),
+                vel_to_int( veh->max_ground_velocity( false ) ),
+                velocity_units( VU_VEHICLE ) );
             // TODO: extract accelerations units to its own function
-            fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                            //~ /t means per turn
-                            _( "Acceleration: <color_light_blue>%3d</color> %s/s" ),
-                            vel_to_int( veh->ground_acceleration( false ) ),
-                            velocity_units( VU_VEHICLE ) );
-            i += 1;
+            print_stat(
+                //~ /t means per turn
+                _( "Acceleration: <color_light_blue>%3d</color> %s/s" ),
+                vel_to_int( veh->ground_acceleration( false ) ),
+                velocity_units( VU_VEHICLE ) );
         } else {
             i += 2;
         }
         if( is_boat ) {
-            fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                            _( "Water Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
-                            vel_to_int( veh->safe_water_velocity( false ) ),
-                            vel_to_int( veh->max_water_velocity( false ) ),
-                            velocity_units( VU_VEHICLE ) );
-            i += 1;
+            print_stat(
+                _( "Water Safe/Top Speed: <color_light_green>%3d</color>/<color_light_red>%3d</color> %s" ),
+                vel_to_int( veh->safe_water_velocity( false ) ),
+                vel_to_int( veh->max_water_velocity( false ) ),
+                velocity_units( VU_VEHICLE ) );
             // TODO: extract accelerations units to its own function
-            fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                            //~ /t means per turn
-                            _( "Water Acceleration: <color_light_blue>%3d</color> %s/s" ),
-                            vel_to_int( veh->water_acceleration( false ) ),
-                            velocity_units( VU_VEHICLE ) );
-            i += 1;
+            print_stat(
+                //~ /t means per turn
+                _( "Water Acceleration: <color_light_blue>%3d</color> %s/s" ),
+                vel_to_int( veh->water_acceleration( false ) ),
+                velocity_units( VU_VEHICLE ) );
         } else {
             i += 2;
         }
     }
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    _( "Mass: <color_light_blue>%5.0f</color> %s" ),
-                    convert_weight( veh->total_mass() ), weight_units() );
-    i += 1;
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    _( "Cargo Volume: <color_light_blue>%s</color> / <color_light_blue>%s</color> %s" ),
-                    format_volume( total_cargo - free_cargo ),
-                    format_volume( total_cargo ), volume_units_abbr() );
-    i += 1;
+    print_stat(
+        _( "Mass: <color_light_blue>%5.0f</color> %s" ),
+        convert_weight( veh->total_mass() ), weight_units() );
+    if( veh->has_part( "ROTOR" ) ) {
+        // convert newton to kg.
+        units::mass lift_as_mass = units::from_newton(
+                                       veh->lift_thrust_of_rotorcraft( true ) );
+        print_stat(
+            _( "Maximum Lift: <color_light_blue>%5.0f</color> %s" ),
+            convert_weight( lift_as_mass ),
+            weight_units() );
+    }
+    print_stat(
+        _( "Cargo Volume: <color_light_blue>%s</color> / <color_light_blue>%s</color> %s" ),
+        format_volume( total_cargo - free_cargo ),
+        format_volume( total_cargo ), volume_units_abbr() );
     // Write the overall damage
     mvwprintz( w_stats, point( x[i], y[i] ), c_light_gray, _( "Status:" ) );
     x[i] += utf8_width( _( "Status:" ) ) + 1;
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], total_durability_color, total_durability_text );
-    i += 1;
+    print_stat_color( total_durability_color, total_durability_text );
 
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    wheel_state_description( *veh ) );
-    i += 1;
+    print_stat( wheel_state_description( *veh ) );
 
     //This lambda handles printing parts in the "Most damaged" and "Needs repair" cases
     //for the veh_interact ui
@@ -2513,35 +2530,26 @@ void veh_interact::display_stats() const
         i += 1;
     }
 
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    _( "Air drag:       <color_light_blue>%5.2f</color>" ),
-                    veh->coeff_air_drag() );
-    i += 1;
+    print_stat(
+        _( "Air drag:       <color_light_blue>%5.2f</color>" ),
+        veh->coeff_air_drag() );
 
-    if( is_boat ) {
-        fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                        _( "Water drag:     <color_light_blue>%5.2f</color>" ),
-                        veh->coeff_water_drag() );
-    }
-    i += 1;
+    print_stat_if( is_boat,
+                   _( "Water drag:     <color_light_blue>%5.2f</color>" ),
+                   veh->coeff_water_drag() );
 
-    if( is_ground ) {
-        fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                        _( "Rolling drag:   <color_light_blue>%5.2f</color>" ),
-                        veh->coeff_rolling_drag() );
-    }
-    i += 1;
+    print_stat_if( is_ground,
+                   _( "Rolling drag:   <color_light_blue>%5.2f</color>" ),
+                   veh->coeff_rolling_drag() );
 
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    _( "Static drag:    <color_light_blue>%5d</color>" ),
-                    veh->static_drag( false ) );
-    i += 1;
+    print_stat(
+        _( "Static drag:    <color_light_blue>%5d</color>" ),
+        veh->static_drag( false ) );
 
-    fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                    _( "Offroad:        <color_light_blue>%4d</color>%%" ),
-                    static_cast<int>( veh->k_traction( veh->wheel_area() *
-                                      veh->average_or_rating() ) * 100 ) );
-    i += 1;
+    print_stat(
+        _( "Offroad:        <color_light_blue>%4d</color>%%" ),
+        static_cast<int>( veh->k_traction( veh->wheel_area() *
+                                           veh->average_or_rating() ) * 100 ) );
 
     if( is_boat ) {
 
@@ -2550,10 +2558,9 @@ void veh_interact::display_stats() const
                                    _( "Draft/Clearance:<color_light_blue>%4.2f</color>m/<color_light_blue>%4.2f</color>m" ) :
                                    _( "Draft/Clearance:<color_light_blue>%4.2f</color>m/<color_light_red>%4.2f</color>m" );
 
-        fold_and_print( w_stats, point( x[i], y[i] ), w[i], c_light_gray,
-                        draft_string.c_str(),
-                        veh->water_draft(), water_clearance );
-        i += 1;
+        print_stat(
+            draft_string.c_str(),
+            veh->water_draft(), water_clearance );
     }
 
     i = std::max( i, 2 * stats_h );
@@ -2986,7 +2993,7 @@ void veh_interact::complete_vehicle( player &p )
 
     map &here = get_map();
     optional_vpart_position vp = here.veh_at( here.getlocal( tripoint( p.activity.values[0],
-                                 p.activity.values[1], p.posz() ) ) );
+                                 p.activity.values[1], p.activity.values[7] ) ) );
     if( !vp ) {
         // so the vehicle could have lost some of its parts from other NPCS works during this player/NPCs activity.
         // check the vehicle points that were stored at beginning of activity.
@@ -3223,9 +3230,8 @@ void veh_interact::complete_vehicle( player &p )
             if( veh->part_count() < 2 ) {
                 p.add_msg_if_player( _( "You completely dismantle the %s." ), veh->name );
                 p.activity.set_to_null();
-                int veh_z = veh->sm_pos.z;
                 here.destroy_vehicle( veh );
-                here.reset_vehicle_cache( veh_z );
+                here.reset_vehicle_cache( );
             } else {
                 point mount = veh->part( vehicle_part ).mount;
                 const tripoint &part_pos = veh->global_part_pos3( vehicle_part );

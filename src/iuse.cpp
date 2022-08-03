@@ -299,6 +299,7 @@ static const trait_id trait_ALCMET( "ALCMET" );
 static const trait_id trait_CHLOROMORPH( "CHLOROMORPH" );
 static const trait_id trait_EATDEAD( "EATDEAD" );
 static const trait_id trait_GILLS( "GILLS" );
+static const trait_id trait_GILLS_CEPH( "GILLS_CEPH" );
 static const trait_id trait_HYPEROPIC( "HYPEROPIC" );
 static const trait_id trait_ILLITERATE( "ILLITERATE" );
 static const trait_id trait_LIGHTWEIGHT( "LIGHTWEIGHT" );
@@ -3034,7 +3035,9 @@ static int toolweapon_off( player &p, item &it, const bool fast_startup,
                                              sfx::channel::chainsaw_theme,
                                              3000 );
         }
+
         sounds::sound( p.pos(), volume, sounds::sound_t::combat, msg_success );
+        p.add_msg_if_player( msg_success );
         // 4 is the length of "_off".
         it.convert( itype_id( it.typeId().str().substr( 0, it.typeId().str().size() - 4 ) + "_on" ) );
         it.active = true;
@@ -3063,7 +3066,7 @@ int iuse::e_combatsaw_off( player *p, item *it, bool, const tripoint & )
                            true,
                            !p->is_underwater(),
                            30, _( "With a snarl, the electric combat chainsaw screams to life!" ),
-                           _( "You flip the switch, but nothing happens." ) );
+                           _( "You pull the trigger, but nothing happens." ) );
 }
 
 int iuse::chainsaw_off( player *p, item *it, bool, const tripoint & )
@@ -3079,9 +3082,9 @@ int iuse::elec_chainsaw_off( player *p, item *it, bool, const tripoint & )
 {
     return toolweapon_off( *p, *it,
                            false,
-                           rng( 0, 10 ) - it->damage_level( 4 ) > 5 && !p->is_underwater(),
+                           !p->is_underwater(),
                            20, _( "With a roar, the electric chainsaw leaps to life!" ),
-                           _( "You flip the switch, but nothing happens." ) );
+                           _( "You pull the trigger, but nothing happens." ) );
 }
 
 int iuse::cs_lajatang_off( player *p, item *it, bool, const tripoint & )
@@ -3097,9 +3100,9 @@ int iuse::ecs_lajatang_off( player *p, item *it, bool, const tripoint & )
 {
     return toolweapon_off( *p, *it,
                            false,
-                           rng( 0, 10 ) - it->damage_level( 4 ) > 5 && it->ammo_remaining() > 1 && !p->is_underwater(),
+                           it->ammo_remaining() > 1 && !p->is_underwater(),
                            40, _( "With a buzz, the chainsaws leap to life!" ),
-                           _( "You flip the on switch, but nothing happens." ) );
+                           _( "You pull the trigger, but nothing happens." ) );
 }
 
 int iuse::carver_off( player *p, item *it, bool, const tripoint & )
@@ -4384,8 +4387,8 @@ int iuse::portable_game( player *p, item *it, bool t, const tripoint & )
     if( p->has_trait( trait_ILLITERATE ) ) {
         p->add_msg_if_player( m_info, _( "You're illiterate!" ) );
         return 0;
-    } else if( it->units_remaining( *p ) < it->ammo_required() ) {
-        p->add_msg_if_player( m_info, _( "The %s's batteries are dead." ), it->tname() );
+    } else if( it->units_remaining( *p ) < ( it->ammo_required() * 15 ) ) {
+        p->add_msg_if_player( m_info, _( "You don't have enough charges to play." ) );
         return 0;
     } else {
         std::string loaded_software = "robot_finds_kitten";
@@ -4428,34 +4431,21 @@ int iuse::portable_game( player *p, item *it, bool t, const tripoint & )
         const int moves = to_moves<int>( 15_minutes );
 
         p->add_msg_if_player( _( "You play on your %s for a while." ), it->tname() );
-        if( loaded_software == "null" ) {
-            p->assign_activity( ACT_GENERIC_GAME, to_moves<int>( 1_hours ), -1,
-                                p->get_item_position( it ), "gaming" );
-            return 0;
-        }
         p->assign_activity( ACT_GAME, moves, -1, 0, "gaming" );
         p->activity.targets.push_back( item_location( *p, it ) );
-        std::map<std::string, std::string> game_data;
-        game_data.clear();
+        std::string end_message;
+        end_message.clear();
         int game_score = 0;
 
-        play_videogame( loaded_software, game_data, game_score );
+        play_videogame( loaded_software, end_message, game_score );
 
-        if( game_data.find( "end_message" ) != game_data.end() ) {
-            p->add_msg_if_player( game_data["end_message"] );
+        if( !end_message.empty() ) {
+            p->add_msg_if_player( end_message );
         }
 
         if( game_score != 0 ) {
-            if( game_data.find( "moraletype" ) != game_data.end() ) {
-                std::string moraletype = game_data.find( "moraletype" )->second;
-                if( moraletype == "MORALE_GAME_FOUND_KITTEN" ) {
-                    p->add_morale( MORALE_GAME_FOUND_KITTEN, game_score, 110 );
-                } /*else if ( ...*/
-            } else {
-                p->add_morale( MORALE_GAME, game_score, 110 );
-            }
+            p->add_morale( MORALE_GAME, game_score, 60, 2_hours, 30_minutes, true );
         }
-
     }
     return 0;
 }
@@ -4506,6 +4496,7 @@ int iuse::vibe( player *p, item *it, bool, const tripoint & )
         return 0;
     }
     if( ( p->is_underwater() ) && ( !( ( p->has_trait( trait_GILLS ) ) ||
+                                       ( p->has_trait( trait_GILLS_CEPH ) ) ||
                                        ( p->is_wearing( itype_rebreather_on ) ) ||
                                        ( p->is_wearing( itype_rebreather_xl_on ) ) ||
                                        ( p->is_wearing( itype_mask_h20survivor_on ) ) ) ) ) {
@@ -4763,7 +4754,7 @@ int iuse::chop_moves( Character &ch, item &tool )
     // attribute; regular tools - based on STR, powered tools - based on DEX
     const int attr = tool.has_flag( "POWERED" ) ? ch.dex_cur : ch.str_cur;
 
-    return to_moves<int>( time_duration::from_minutes( 60 - attr ) / std::pow( 2, quality - 1 ) );
+    return to_moves<int>( std::max( 10_minutes, time_duration::from_minutes( 60 - attr ) / quality ) );
 }
 
 int iuse::chop_tree( player *p, item *it, bool t, const tripoint & )
@@ -8381,97 +8372,9 @@ static bool multicooker_hallu( player &p )
 
 }
 
-int iuse::autoclave( player *p, item *it, bool t, const tripoint &pos )
+int iuse::autoclave( player *p, item *, bool, const tripoint &pos )
 {
-    if( t ) {
-        if( !it->units_sufficient( *p ) ) {
-            add_msg( m_bad, _( "The autoclave ran out of battery and stopped before completing its cycle." ) );
-            it->active = false;
-            it->erase_var( "CYCLETIME" );
-            return 0;
-        }
-
-        int Cycle_time = it->get_var( "CYCLETIME", 0 );
-        Cycle_time -= 1;
-        if( Cycle_time <= 0 ) {
-            it->active = false;
-            it->erase_var( "CYCLETIME" );
-            it->visit_items( []( item * bio ) {
-                if( bio->is_bionic() && !bio->has_flag( "NO_PACKED" ) ) {
-                    bio->unset_flag( "NO_STERILE" );
-                }
-                return VisitResponse::NEXT;
-            } );
-        } else {
-            it->set_var( "CYCLETIME", Cycle_time );
-        }
-    } else if( !it->active ) {
-        if( p->is_underwater() ) {
-            p->add_msg_if_player( m_info, _( "You can't do that while underwater." ) );
-            return 0;
-        }
-
-        bool empty = true;
-        item *clean_cbm = it->contents.get_item_with(
-        []( const item & it ) {
-            return it.is_bionic();
-        } );
-
-        if( clean_cbm ) {
-            empty = false;
-            if( query_yn( _( "Autoclave already contains a CBM.  Do you want to remove it?" ) ) ) {
-                g->m.add_item( pos, *clean_cbm );
-                it->remove_item( *clean_cbm );
-                if( !query_yn( _( "Do you want to use the autoclave?" ) ) ) {
-                    return 0;
-                }
-                empty = true;
-            }
-        }
-
-        //Using power_draw seem to consume random amount of battery so +100 to be safe
-        static const int power_need = ( ( it->type->tool->power_draw / 1000 ) * to_seconds<int>
-                                        ( 90_minutes ) ) / 1000 + 100;
-        if( power_need > it->ammo_remaining() ) {
-            popup( _( "The autoclave doesn't have enough battery for one cycle.  You need at least %s charges." ),
-                   power_need );
-            return 0;
-        }
-
-        item_location to_sterile;
-        if( empty ) {
-            to_sterile = game_menus::inv::sterilize_cbm( *p );
-            if( !to_sterile ) {
-                return 0;
-            }
-        }
-
-        if( query_yn( _( "Start the autoclave?" ) ) ) {
-            auto reqs = *requirement_id( "autoclave_item" );
-            for( const auto &e : reqs.get_components() ) {
-                p->consume_items( e, 1, is_crafting_component );
-            }
-            for( const auto &e : reqs.get_tools() ) {
-                p->consume_tools( e );
-            }
-            p->invalidate_crafting_inventory();
-
-            if( empty ) {
-                const item *cbm = to_sterile.get_item();
-                it->put_in( *cbm );
-                to_sterile.remove_item();
-            }
-
-            it->activate();
-            it->set_var( "CYCLETIME", to_seconds<int>( 90_minutes ) ); // one cycle
-            return it->type->charges_to_use();
-        }
-    } else {
-        int Cycle_time = it->get_var( "CYCLETIME", 0 );
-        add_msg( _( "The cycle will be completed in %s." ),
-                 to_string( time_duration::from_seconds( Cycle_time ) ) );
-    }
-
+    iexamine::autoclave_empty( *p, pos );
     return 0;
 }
 
@@ -9725,7 +9628,7 @@ int iuse::play_game( player *p, item *it, bool t, const tripoint & )
 
     if( query_yn( _( "Play a game with the %s?" ), it->tname() ) ) {
         p->add_msg_if_player( _( "You start playing." ) );
-        p->assign_activity( ACT_GENERIC_GAME, to_moves<int>( 1_hours ), -1,
+        p->assign_activity( ACT_GENERIC_GAME, to_moves<int>( 30_minutes ), -1,
                             p->get_item_position( it ), "gaming" );
     }
     return 0;
