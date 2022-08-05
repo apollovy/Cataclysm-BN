@@ -1442,6 +1442,7 @@ completed when you wake up for the first time after 24 hours into the game.
 "can_heal_with": [ "caramel_ointement" ], // List of med that will work for you but not for anyone. See `CANT_HEAL_EVERYONE` flag for items. (default: empty)
 "allowed_category": [ "ALPHA" ], // List of category you can mutate into. (default: empty)
 "no_cbm_on_bp": [ "TORSO", "HEAD", "EYES", "MOUTH", "ARM_L" ], // List of body parts that can't receive cbms. (default: empty)
+"body_size": "LARGE", // Increase or decrease size, only one size mutation at a time will be valid. Allowed values are: `TINY`, `SMALL`, `LARGE`, `HUGE`. `MEDIUM` can be specified but has no effect, as this is the default size for players and NPCs.
 "lumination": [ [ "HEAD", 20 ], [ "ARM_L", 10 ] ], // List of glowing bodypart and the intensity of the glow as a float. (default: empty)
 "metabolism_modifier": 0.333, // Extra metabolism rate multiplier. 1.0 doubles usage, -0.5 halves.
 "fatigue_modifier": 0.5, // Extra fatigue rate multiplier. 1.0 doubles usage, -0.5 halves.
@@ -1487,7 +1488,6 @@ Vehicle components when installed on a vehicle.
 "durability": 200,            // How much damage the part can take before breaking
 "description": "A wheel."     // A description of this vehicle part when installing it
 "size": 2000                  // If vehicle part has flag "FLUIDTANK" then capacity in mLs, else divide by 4 for volume on space
-"cargo_weight_modifier": 100  // Special function to multiplicatively modify item weight on space. Divide by 100 for ratio.
 "wheel_width": 9,             /* (Optional, default = 0)
                                * SPECIAL: A part may have at most ONE of the following fields:
                                *    wheel_width = base wheel width in inches
@@ -1634,6 +1634,10 @@ See also VEHICLE_JSON.md
     [ "9mm", [ "glockmag" ] ]                // The first magazine specified for each ammo type is the default
     [ "45", [ "m1911mag", "m1911bigmag" ] ],
 ],
+"milling": {                                 // Optional. If given, the item can be milled in a water/wind mill.
+  "into": "flour",                           // The item id of the product.
+  "conversion_rate": 4                       // Number of products per item consumed. At a conversion_rate of 4, 1 item is milled into 4 product. Only accepts integers.
+},
 "explode_in_fire": true,                     // Should the item explode if set on fire
 "explosion": {                               // Physical explosion data
   "damage": 10,                              // Damage the explosion deals to player at epicenter. Damage is halved above 50% radius.

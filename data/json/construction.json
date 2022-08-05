@@ -2599,6 +2599,24 @@
   },
   {
     "type": "construction",
+    "id": "constr_mine_downstair_no_roof",
+    "description": "Mine Downstair",
+    "category": "DIG",
+    "required_skills": [ [ "fabrication", 6 ] ],
+    "time": "480 m",
+    "qualities": [
+      [ { "id": "AXE", "level": 2 }, { "id": "SAW_W", "level": 1 } ],
+      [ { "id": "HAMMER", "level": 2 } ],
+      [ { "id": "DIG", "level": 2 } ]
+    ],
+    "tools": [ [ [ "pickaxe", -1 ], [ "jackhammer", 160 ], [ "elec_jackhammer", 7000 ] ] ],
+    "components": [ [ [ "2x4", 12 ], [ "log", 12 ] ], [ [ "rope_makeshift_30", 1 ], [ "rope_30", 1 ], [ "vine_30", 1 ] ] ],
+    "pre_special": "check_down_OK",
+    "pre_terrain": "t_rock_floor_no_roof",
+    "post_special": "done_mine_downstair"
+  },
+  {
+    "type": "construction",
     "id": "constr_repair_wood_stairs_up",
     "description": "Repair Wooden Staircase",
     "//": "Fix the broken back to normal",
@@ -2952,6 +2970,19 @@
     "pre_terrain": "t_clay",
     "dark_craftable": true,
     "post_special": "done_extract_maybe_revert_to_dirt"
+  },
+  {
+    "type": "construction",
+    "id": "constr_remove_gravel",
+    "description": "Remove gravel and replace with dirt",
+    "category": "OTHER",
+    "required_skills": [ [ "fabrication", 0 ] ],
+    "time": "60 m",
+    "qualities": [ [ { "id": "DIG", "level": 1 } ] ],
+    "byproducts": [ { "item": "pebble", "count": [ 6, 10 ] } ],
+    "pre_terrain": "t_railroad_rubble",
+    "dark_craftable": true,
+    "post_terrain": "t_dirt"
   },
   {
     "type": "construction",
@@ -4350,6 +4381,20 @@
   },
   {
     "type": "construction",
+    "id": "constr_gridautoclave",
+    "description": "Place Autoclave",
+    "category": "OTHER",
+    "required_skills": [ [ "electronics", 1 ] ],
+    "time": "30 m",
+    "qualities": [ [ { "id": "SCREW", "level": 1 } ] ],
+    "tools": [ [ [ "soldering_iron", 20 ] ] ],
+    "components": [ [ [ "autoclave", 1 ] ], [ [ "cable", 5 ] ], [ [ "power_supply", 1 ] ], [ [ "solder_wire", 5 ] ] ],
+    "pre_note": "Will only work if constructed in/on a building that has an electric grid with a mounted battery.",
+    "pre_special": "check_empty",
+    "post_terrain": "f_gridautoclave"
+  },
+  {
+    "type": "construction",
     "id": "constr_griddehydrator",
     "description": "Place Food Dehydrator",
     "category": "OTHER",
@@ -4463,19 +4508,6 @@
     "pre_note": "Must be between brick or (reinforced)concrete walls to function, and at least one wall must have an adjacent mechanical winch.",
     "pre_special": "check_empty",
     "post_terrain": "t_door_metal_locked"
-  },
-  {
-    "type": "construction",
-    "id": "constr_remove_gravel",
-    "description": "Remove gravel and replace with dirt",
-    "category": "CONSTRUCT",
-    "required_skills": [ [ "fabrication", 0 ] ],
-    "time": "60 m",
-    "qualities": [ [ { "id": "DIG", "level": 1 } ] ],
-    "byproducts": [ { "item": "pebble", "count": [ 6, 10 ] } ],
-    "pre_terrain": "t_railroad_rubble",
-    "dark_craftable": true,
-    "post_terrain": "t_dirt"
   },
   {
     "type": "construction",

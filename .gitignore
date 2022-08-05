@@ -19,6 +19,7 @@
 /dep/
 /doxygen_doc/html/*
 /doxygen_doc/latex/*
+/doxygen_doc/doxygen-awesome-css
 /font/
 /graveyard/
 /memorial/
@@ -194,3 +195,13 @@ Xcode/
 /.flatpak-builder/
 /repo/
 /build-dir/
+
+# precompiled headers
+/pch/pch.hpp.pch
+/pch/main-pch.hpp.gch
+/pch/main-pch.hpp.pch
+/tests/pch/pch.hpp.pch
+/tests/pch/tests-pch.hpp.gch
+/tests/pch/tests-pch.hpp.pch
+/tests/catch/catch.hpp.gch
+/tests/catch/catch.hpp.pch

@@ -114,7 +114,6 @@
 #include "flag.h"
 
 struct mutation_branch;
-struct oter_type_t;
 
 static const efftype_id effect_riding( "riding" );
 
@@ -608,6 +607,7 @@ void Character::load( const JsonObject &data )
         overmap_time_array.read_next( tdr );
         overmap_time[pt] = tdr;
     }
+    data.read( "stomach", stomach );
     data.read( "automoveroute", auto_move_route );
 
     known_traps.clear();
@@ -740,6 +740,7 @@ void Character::store( JsonOut &json ) const
         }
         json.end_array();
     }
+    json.member( "stomach", stomach );
     json.member( "automoveroute", auto_move_route );
     json.member( "known_traps" );
     json.start_array();
@@ -2874,11 +2875,7 @@ void mission::deserialize( JsonIn &jsin )
     }
 
     jo.read( "item_id", item_id );
-
-    const std::string omid = jo.get_string( "target_id", "" );
-    if( !omid.empty() ) {
-        target_id = string_id<oter_type_t>( omid );
-    }
+    jo.read( "target_id", target_id );
 
     if( jo.has_int( "recruit_class" ) ) {
         recruit_class = npc_class::from_legacy_int( jo.get_int( "recruit_class" ) );
@@ -2927,7 +2924,7 @@ void mission::serialize( JsonOut &json ) const
 
     json.member( "item_id", item_id );
     json.member( "item_count", item_count );
-    json.member( "target_id", target_id.str() );
+    json.member( "target_id", target_id );
     json.member( "recruit_class", recruit_class );
     json.member( "target_npc_id", target_npc_id );
     json.member( "monster_type", monster_type );

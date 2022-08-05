@@ -1068,7 +1068,7 @@ class Character : public Creature, public visitable<Character>
         /**Is the installation possible*/
         bool can_install_bionics( const itype &type, player &installer, bool autodoc = false,
                                   int skill_level = -1 );
-        std::map<bodypart_id, int> bionic_installation_issues( const bionic_id &bioid );
+        std::map<bodypart_id, int> bionic_installation_issues( const bionic_id &bioid ) const;
         /** Initialize all the values needed to start the operation player_activity */
         bool install_bionics( const itype &type, player &installer, bool autodoc = false,
                               int skill_level = -1 );
@@ -1387,6 +1387,12 @@ class Character : public Creature, public visitable<Character>
          * @param it Thing to be unwielded
          */
         ret_val<bool> can_unwield( const item &it ) const;
+
+        /**
+         * Check player capable of swapping the side of a worn item.
+         * @param it Thing to be swapped
+         */
+        ret_val<bool> can_swap( const item &it ) const;
 
         void drop_invalid_inventory();
         /** Returns all items that must be taken off before taking off this item */

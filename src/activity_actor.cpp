@@ -59,6 +59,8 @@ static const mtype_id mon_zombie_crawler( "mon_zombie_crawler" );
 
 static const std::string flag_RELOAD_AND_SHOOT( "RELOAD_AND_SHOOT" );
 
+static const std::string has_thievery_witness( "has_thievery_witness" );
+
 aim_activity_actor::aim_activity_actor()
 {
     initial_view_offset = get_avatar().view_offset;
@@ -282,7 +284,7 @@ bool aim_activity_actor::load_RAS_weapon()
     }
 
     // Burn 0.2% max base stamina x the strength required to fire.
-    you.mod_stamina( gun->get_min_str() * static_cast<int>( 0.002f *
+    you.mod_stamina( gun->get_min_str() * static_cast<int>( -0.002f *
                      get_option<int>( "PLAYER_MAX_STAMINA" ) ) );
     // At low stamina levels, firing starts getting slow.
     int sta_percent = ( 100 * you.get_stamina() ) / you.get_stamina_max();
@@ -404,7 +406,8 @@ void dig_activity_actor::do_turn( player_activity &, Character & )
 
 void dig_activity_actor::finish( player_activity &act, Character &who )
 {
-    const bool grave = g->m.ter( location ) == t_grave;
+    map &here = get_map();
+    const bool grave = here.ter( location ) == t_grave;
 
     if( grave ) {
         if( one_in( 10 ) ) {
@@ -416,11 +419,11 @@ void dig_activity_actor::finish( player_activity &act, Character &who )
             };
 
             g->place_critter_at( random_entry( monids ), byproducts_location );
-            g->m.furn_set( location, f_coffin_o );
+            here.furn_set( location, f_coffin_o );
             who.add_msg_if_player( m_warning, _( "Something crawls out of the coffin!" ) );
         } else {
-            g->m.spawn_item( location, itype_bone_human, rng( 5, 15 ) );
-            g->m.furn_set( location, f_coffin_c );
+            here.spawn_item( location, itype_bone_human, rng( 5, 15 ) );
+            here.furn_set( location, f_coffin_c );
         }
         std::vector<item *> dropped = g->m.place_items( item_group_id( "allclothes" ), 50, location,
                                       location, false,
@@ -436,10 +439,10 @@ void dig_activity_actor::finish( player_activity &act, Character &who )
         g->events().send<event_type::exhumes_grave>( who.getID() );
     }
 
-    g->m.ter_set( location, ter_id( result_terrain ) );
+    here.ter_set( location, ter_id( result_terrain ) );
 
     for( int i = 0; i < byproducts_count; i++ ) {
-        g->m.spawn_items( byproducts_location,
+        here.spawn_items( byproducts_location,
                           item_group::items_from( item_group_id( byproducts_item_group ),
                                   calendar::turn ) );
     }
@@ -452,7 +455,7 @@ void dig_activity_actor::finish( player_activity &act, Character &who )
         who.add_msg_if_player( m_good, _( "You finish exhuming a grave." ) );
     } else {
         who.add_msg_if_player( m_good, _( "You finish digging the %s." ),
-                               g->m.ter( location ).obj().name() );
+                               here.ter( location ).obj().name() );
     }
 
     act.set_to_null();
@@ -506,11 +509,11 @@ void dig_channel_activity_actor::do_turn( player_activity &, Character & )
 
 void dig_channel_activity_actor::finish( player_activity &act, Character &who )
 {
-
-    g->m.ter_set( location, ter_id( result_terrain ) );
+    map &here = get_map();
+    here.ter_set( location, ter_id( result_terrain ) );
 
     for( int i = 0; i < byproducts_count; i++ ) {
-        g->m.spawn_items( byproducts_location,
+        here.spawn_items( byproducts_location,
                           item_group::items_from( item_group_id( byproducts_item_group ),
                                   calendar::turn ) );
     }
@@ -519,7 +522,7 @@ void dig_channel_activity_actor::finish( player_activity &act, Character &who )
     who.mod_thirst( 5 );
     who.mod_fatigue( 10 );
     who.add_msg_if_player( m_good, _( "You finish digging up %s." ),
-                           g->m.ter( location ).obj().name() );
+                           here.ter( location ).obj().name() );
 
     act.set_to_null();
 }
@@ -663,8 +666,9 @@ static hack_result hack_attempt( Character &who, const bool using_bionic )
 static hack_type get_hack_type( tripoint examp )
 {
     hack_type type = HACK_NULL;
-    const furn_t &xfurn_t = g->m.furn( examp ).obj();
-    const ter_t &xter_t = g->m.ter( examp ).obj();
+    const map &here = get_map();
+    const furn_t &xfurn_t = here.furn( examp ).obj();
+    const ter_t &xter_t = here.ter( examp ).obj();
     if( xter_t.examine == &iexamine::pay_gas || xfurn_t.examine == &iexamine::pay_gas ) {
         type = HACK_GAS;
     } else if( xter_t.examine == &iexamine::cardreader || xfurn_t.examine == &iexamine::cardreader ) {
@@ -684,6 +688,7 @@ void hacking_activity_actor::finish( player_activity &act, Character &who )
 {
     tripoint examp = act.placement;
     hack_type type = get_hack_type( examp );
+    map &here = get_map();
     switch( hack_attempt( who, using_bionic ) ) {
         case HACK_UNABLE:
             who.add_msg_if_player( _( "You cannot hack this." ) );
@@ -721,14 +726,14 @@ void hacking_activity_actor::finish( player_activity &act, Character &who )
                 }
             } else if( type == HACK_SAFE ) {
                 who.add_msg_if_player( m_good, _( "The door on the safe swings open." ) );
-                g->m.furn_set( examp, furn_str_id( "f_safe_o" ) );
+                here.furn_set( examp, furn_str_id( "f_safe_o" ) );
             } else if( type == HACK_DOOR ) {
                 who.add_msg_if_player( _( "You activate the panel!" ) );
                 who.add_msg_if_player( m_good, _( "The nearby doors unlock." ) );
-                g->m.ter_set( examp, t_card_reader_broken );
-                for( const tripoint &tmp : g->m.points_in_radius( ( examp ), 3 ) ) {
-                    if( g->m.ter( tmp ) == t_door_metal_locked ) {
-                        g->m.ter_set( tmp, t_door_metal_c );
+                here.ter_set( examp, t_card_reader_broken );
+                for( const tripoint &tmp : here.points_in_radius( ( examp ), 3 ) ) {
+                    if( here.ter( tmp ) == t_door_metal_locked ) {
+                        here.ter_set( tmp, t_door_metal_c );
                     }
                 }
             }
@@ -779,14 +784,6 @@ void move_items_activity_actor::do_turn( player_activity &act, Character &who )
         // Make a copy to be put in the destination location
         item newit = leftovers;
 
-        // Handle charges, quantity == 0 means move all
-        if( quantity != 0 && newit.count_by_charges() ) {
-            newit.charges = std::min( newit.charges, quantity );
-            leftovers.charges -= quantity;
-        } else {
-            leftovers.charges = 0;
-        }
-
         // Check that we can pick it up.
         if( !newit.made_of( LIQUID ) ) {
             // This is for hauling across zlevels, remove when going up and down stairs
@@ -795,6 +792,13 @@ void move_items_activity_actor::do_turn( player_activity &act, Character &who )
                 newit.set_owner( who );
             } else {
                 continue;
+            }
+            // Handle charges, quantity == 0 means move all
+            if( quantity != 0 && newit.count_by_charges() ) {
+                newit.charges = std::min( newit.charges, quantity );
+                leftovers.charges -= quantity;
+            } else {
+                leftovers.charges = 0;
             }
             const tripoint src = target.position();
             const int distance = src.z == dest.z ? std::max( rl_dist( src, dest ), 1 ) : 1;
@@ -843,7 +847,7 @@ std::unique_ptr<activity_actor> move_items_activity_actor::deserialize( JsonIn &
     return actor.clone();
 }
 
-void pickup_activity_actor::do_turn( player_activity &, Character &who )
+void pickup_activity_actor::do_turn( player_activity &act, Character &who )
 {
     // If we don't have target items bail out
     if( target_items.empty() ) {
@@ -865,9 +869,20 @@ void pickup_activity_actor::do_turn( player_activity &, Character &who )
     // False indicates that the player canceled pickup when met with some prompt
     const bool keep_going = pickup::do_pickup( target_items, autopickup );
 
+    // Check thievey witness
+    npc *witness = nullptr;
+    if( !act.str_values.empty() && act.str_values[0] == has_thievery_witness ) {
+        for( npc &guy : g->all_npcs() ) {
+            if( guy.get_attitude() == NPCATT_RECOVER_GOODS ) {
+                witness = &guy;
+                break;
+            }
+        }
+    }
+
     // If there are items left we ran out of moves, so continue the activity
     // Otherwise, we are done.
-    if( !keep_going || target_items.empty() ) {
+    if( !keep_going || target_items.empty() || witness ) {
         who.cancel_activity();
 
         if( who.get_value( "THIEF_MODE_KEEP" ) != "YES" ) {
@@ -879,6 +894,12 @@ void pickup_activity_actor::do_turn( player_activity &, Character &who )
             // AIM might have more pickup activities pending, also cancel them.
             // TODO: Move this to advanced inventory instead of hacking it in here
             cancel_aim_processing();
+        }
+
+        if( witness ) {
+            witness->talk_to_u();
+            // Then remove "has_thievery_witness" from the activity
+            act.str_values.clear();
         }
     }
 }

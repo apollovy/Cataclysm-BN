@@ -333,6 +333,16 @@ class item : public visitable<item>
          */
         nc_color color_in_inventory() const;
         /**
+         * Returns the color of the item depending on usefulness for the passed player,
+         * e.g. differently if it its an unread book or a spoiling food item etc.
+         * This should only be used for displaying data, it should not affect game play.
+         *
+         * @param for_player NPC or avatar which would read book.
+         */
+        // TODO: Start using this version in more places for interation with NPCs
+        // e.g. giving them unmatching food or allergic thing.
+        nc_color color_in_inventory( const player &p ) const;
+        /**
          * Return the (translated) item name.
          * @param quantity used for translation to the proper plural form of the name, e.g.
          * returns "rock" for quantity 1 and "rocks" for quantity > 0.
@@ -827,7 +837,7 @@ class item : public visitable<item>
          * 1 for other comestibles,
          * 0 otherwise.
          */
-        int spoilage_sort_order();
+        int spoilage_sort_order() const;
 
         /** an item is fresh if it is capable of rotting but still has a long shelf life remaining */
         bool is_fresh() const {
@@ -1198,7 +1208,10 @@ class item : public visitable<item>
          * @see player::can_reload()
          */
         bool is_reloadable() const;
-        /** Returns true if this item can be reloaded with specified ammo type, ignoring capacity. */
+        /**
+         * Returns true if this item can be reloaded with specified ammo type,
+         * ignoring currently loaded ammo.
+         */
         bool can_reload_with( const itype_id &ammo ) const;
         /** Returns true if this item can be reloaded with specified ammo type at this moment. */
         bool is_reloadable_with( const itype_id &ammo ) const;

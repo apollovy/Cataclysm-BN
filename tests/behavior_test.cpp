@@ -1,12 +1,12 @@
+#include "catch/catch.hpp"
+
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "behavior.h"
 #include "behavior_strategy.h"
-#include "catch/catch.hpp"
 #include "character_oracle.h"
-#include "game.h"
 #include "item.h"
 #include "item_location.h"
 #include "map.h"

@@ -1,3 +1,5 @@
+#include "catch/catch.hpp"
+
 #include <algorithm>
 #include <climits>
 #include <map>
@@ -11,7 +13,6 @@
 #include "avatar.h"
 #include "calendar.h"
 #include "cata_utility.h"
-#include "catch/catch.hpp"
 #include "coordinate_conversions.h"
 #include "craft_command.h"
 #include "crafting.h"
@@ -457,6 +458,27 @@ TEST_CASE( "tool_use", "[crafting][tool]" )
         tools.push_back( jar );
 
         prep_craft( recipe_id( "water_clean" ), tools, false );
+    }
+}
+
+TEST_CASE( "Component same as tool", "[crafting][tool]" )
+{
+    SECTION( "primitive_hammer with one rock" ) {
+        std::vector<item> tools;
+        tools.emplace_back( "rock" );
+        tools.emplace_back( "2x4" );
+        tools.emplace_back( "thread", calendar::turn, 100 );
+
+        prep_craft( recipe_id( "primitive_hammer" ), tools, false );
+    }
+    SECTION( "primitive_hammer with two rocks" ) {
+        std::vector<item> tools;
+        tools.emplace_back( "rock" );
+        tools.emplace_back( "rock" );
+        tools.emplace_back( "2x4" );
+        tools.emplace_back( "thread", calendar::turn, 100 );
+
+        prep_craft( recipe_id( "primitive_hammer" ), tools, true );
     }
 }
 
