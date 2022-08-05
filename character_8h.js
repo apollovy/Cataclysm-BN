@@ -1,12 +1,16 @@
 var character_8h =
 [
     [ "enum_traits< character_movemode >", "structenum__traits_3_01character__movemode_01_4.html", "structenum__traits_3_01character__movemode_01_4" ],
+    [ "layer_details", "structlayer__details.html", "structlayer__details" ],
+    [ "encumbrance_data", "structencumbrance__data.html", "structencumbrance__data" ],
     [ "aim_type", "structaim__type.html", "structaim__type" ],
     [ "special_attack", "structspecial__attack.html", "structspecial__attack" ],
+    [ "consumption_event", "structconsumption__event.html", "structconsumption__event" ],
     [ "Character", "classCharacter.html", "classCharacter" ],
     [ "Character::comfort_response_t", "structCharacter_1_1comfort__response__t.html", "structCharacter_1_1comfort__response__t" ],
     [ "Character::has_mission_item_filter", "structCharacter_1_1has__mission__item__filter.html", "structCharacter_1_1has__mission__item__filter" ],
     [ "Character::trait_data", "structCharacter_1_1trait__data.html", "structCharacter_1_1trait__data" ],
+    [ "enum_traits< character_stat >", "structenum__traits_3_01character__stat_01_4.html", "structenum__traits_3_01character__stat_01_4" ],
     [ "CATA_SRC_CHARACTER_H", "character_8h.html#a40a19339f13ec04291e3cc17bca37d69", null ],
     [ "MAX_CLAIRVOYANCE", "character_8h.html#a0b97b2ab8862038f108ad883eb5274fb", null ],
     [ "character_movemode", "character_8h.html#af749573d20b6327d21f9588ebdd5b19b", [
@@ -14,6 +18,13 @@ var character_8h =
       [ "CMM_RUN", "character_8h.html#af749573d20b6327d21f9588ebdd5b19ba3d69a30a227d3f7bcd67e80d164cf786", null ],
       [ "CMM_CROUCH", "character_8h.html#af749573d20b6327d21f9588ebdd5b19baa1885f8602d8a35017c4a310ed64e62b", null ],
       [ "CMM_COUNT", "character_8h.html#af749573d20b6327d21f9588ebdd5b19ba5b74be953794e9151d56a8db3324889b", null ]
+    ] ],
+    [ "character_stat", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755", [
+      [ "STRENGTH", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a3963049b60ddd6534b219d3767af0dfc", null ],
+      [ "DEXTERITY", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a66212c9f367544fe9bffff62900c6203", null ],
+      [ "INTELLIGENCE", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755acbc4a7ccc74fbcbda6a01632c5e4656e", null ],
+      [ "PERCEPTION", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a7301a4f338e31867e8ef6d3f0a148319", null ],
+      [ "DUMMY_STAT", "character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a308f546dec073d676fe48face3d09056", null ]
     ] ],
     [ "edible_rating", "character_8h.html#a3a436072188c9efbfad9d5a7d017aedf", [
       [ "edible", "character_8h.html#a3a436072188c9efbfad9d5a7d017aedfad31765030932e90b353bfa393a1fd5ab", null ],
@@ -74,6 +85,7 @@ var character_8h =
     [ "from_clothing", "character_8h.html#aded8b30269da0d4119f07b696e27ceb8", null ],
     [ "from_effects", "character_8h.html#ab3da63b8c7b9e6d10df9605a7e0708eb", null ],
     [ "get_player_character", "character_8h.html#a2fcb25d686f4a35fca374c6f71280311", null ],
+    [ "get_stat_name", "character_8h.html#a035c78e847a263690eaab59f16c23b88", null ],
     [ "nv_range_from_eye_encumbrance", "character_8h.html#ac9e992a7dff11772e270108ad424e4ab", null ],
     [ "nv_range_from_per", "character_8h.html#a05a8ace4b281f390ac9ee3de19c61a78", null ],
     [ "threshold_for_nv_range", "character_8h.html#a8d88c9a764e41f78d403b0fb6976ef56", null ],

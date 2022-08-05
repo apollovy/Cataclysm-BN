@@ -151,7 +151,7 @@ Functions</h2></td></tr>
 <tr class="separator:ae39e94620013b52e3f84a973c5a5bf73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e95432bcc3c9ccbb4567d281671ec36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classovermap__special__batch.html">overmap_special_batch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceovermap__specials.html#a7e95432bcc3c9ccbb4567d281671ec36">overmap_specials::get_default_batch</a> (const <a class="el" href="coordinates_8h.html#a25c9545e5a462b06e86032b6454271c3">point_abs_om</a> &amp;origin)</td></tr>
 <tr class="separator:a7e95432bcc3c9ccbb4567d281671ec36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af05eed49c8aee8dba1ae1fcdf347385c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="type__id_8h.html#aa7964d871c74fa759b358081855b6e24">overmap_special_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceovermap__specials.html#af05eed49c8aee8dba1ae1fcdf347385c">overmap_specials::create_building_from</a> (const <a class="el" href="type__id_8h.html#a23955259c9ef5338ff50d43255f19cd9">oter_type_str_id</a> &amp;base)</td></tr>
+<tr class="memitem:af05eed49c8aee8dba1ae1fcdf347385c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="omdata_8h.html#aa7964d871c74fa759b358081855b6e24">overmap_special_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceovermap__specials.html#af05eed49c8aee8dba1ae1fcdf347385c">overmap_specials::create_building_from</a> (const <a class="el" href="type__id_8h.html#a23955259c9ef5338ff50d43255f19cd9">oter_type_str_id</a> &amp;base)</td></tr>
 <tr class="memdesc:af05eed49c8aee8dba1ae1fcdf347385c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a simple special from a building id.  <a href="namespaceovermap__specials.html#af05eed49c8aee8dba1ae1fcdf347385c">More...</a><br /></td></tr>
 <tr class="separator:af05eed49c8aee8dba1ae1fcdf347385c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6be0b7f7107b43f1a3e7a3f3b1939266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecity__buildings.html#a6be0b7f7107b43f1a3e7a3f3b1939266">city_buildings::load</a> (const <a class="el" href="classJsonObject.html">JsonObject</a> &amp;jo, const std::string &amp;src)</td></tr>
@@ -207,27 +207,27 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="overmap_8cpp_source.html#l04409">4409</a> of file <a class="el" href="overmap_8cpp_source.html">overmap.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l04410" name="l04410"></a><span class="lineno"> 4410</span>{</div>
-<div class="line"><a id="l04411" name="l04411"></a><span class="lineno"> 4411</span>    std::vector&lt;point_om_omt&gt; res;</div>
-<div class="line"><a id="l04412" name="l04412"></a><span class="lineno"> 4412</span> </div>
-<div class="line"><a id="l04413" name="l04413"></a><span class="lineno"> 4413</span>    res.reserve( ( <a class="code hl_variable" href="game__constants_8h.html#a282f307f5d51bf229c829518b5ab9232">OMAPX</a> / sector_width ) * ( <a class="code hl_variable" href="game__constants_8h.html#a19d4c597789235509b7ee6060543829e">OMAPY</a> / sector_width ) );</div>
-<div class="line"><a id="l04414" name="l04414"></a><span class="lineno"> 4414</span>    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> x = 0; x &lt; <a class="code hl_variable" href="game__constants_8h.html#a282f307f5d51bf229c829518b5ab9232">OMAPX</a>; x += sector_width ) {</div>
-<div class="line"><a id="l04415" name="l04415"></a><span class="lineno"> 4415</span>        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> y = 0; y &lt; <a class="code hl_variable" href="game__constants_8h.html#a19d4c597789235509b7ee6060543829e">OMAPY</a>; y += sector_width ) {</div>
-<div class="line"><a id="l04416" name="l04416"></a><span class="lineno"> 4416</span>            res.emplace_back( x, y );</div>
-<div class="line"><a id="l04417" name="l04417"></a><span class="lineno"> 4417</span>        }</div>
-<div class="line"><a id="l04418" name="l04418"></a><span class="lineno"> 4418</span>    }</div>
-<div class="line"><a id="l04419" name="l04419"></a><span class="lineno"> 4419</span>    std::shuffle( res.begin(), res.end(), <a class="code hl_function" href="rng_8cpp.html#acf9418ccfee8372eff44e7483f709ce2">rng_get_engine</a>() );</div>
-<div class="line"><a id="l04420" name="l04420"></a><span class="lineno"> 4420</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="structom__special__sectors.html">om_special_sectors</a>{ res, sector_width };</div>
-<div class="line"><a id="l04421" name="l04421"></a><span class="lineno"> 4421</span>}</div>
+<p class="definition">Definition at line <a class="el" href="overmap_8cpp_source.html#l04399">4399</a> of file <a class="el" href="overmap_8cpp_source.html">overmap.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l04400" name="l04400"></a><span class="lineno"> 4400</span>{</div>
+<div class="line"><a id="l04401" name="l04401"></a><span class="lineno"> 4401</span>    std::vector&lt;point_om_omt&gt; res;</div>
+<div class="line"><a id="l04402" name="l04402"></a><span class="lineno"> 4402</span> </div>
+<div class="line"><a id="l04403" name="l04403"></a><span class="lineno"> 4403</span>    res.reserve( ( <a class="code hl_variable" href="game__constants_8h.html#a282f307f5d51bf229c829518b5ab9232">OMAPX</a> / sector_width ) * ( <a class="code hl_variable" href="game__constants_8h.html#a19d4c597789235509b7ee6060543829e">OMAPY</a> / sector_width ) );</div>
+<div class="line"><a id="l04404" name="l04404"></a><span class="lineno"> 4404</span>    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> x = 0; x &lt; <a class="code hl_variable" href="game__constants_8h.html#a282f307f5d51bf229c829518b5ab9232">OMAPX</a>; x += sector_width ) {</div>
+<div class="line"><a id="l04405" name="l04405"></a><span class="lineno"> 4405</span>        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> y = 0; y &lt; <a class="code hl_variable" href="game__constants_8h.html#a19d4c597789235509b7ee6060543829e">OMAPY</a>; y += sector_width ) {</div>
+<div class="line"><a id="l04406" name="l04406"></a><span class="lineno"> 4406</span>            res.emplace_back( x, y );</div>
+<div class="line"><a id="l04407" name="l04407"></a><span class="lineno"> 4407</span>        }</div>
+<div class="line"><a id="l04408" name="l04408"></a><span class="lineno"> 4408</span>    }</div>
+<div class="line"><a id="l04409" name="l04409"></a><span class="lineno"> 4409</span>    std::shuffle( res.begin(), res.end(), <a class="code hl_function" href="rng_8cpp.html#acf9418ccfee8372eff44e7483f709ce2">rng_get_engine</a>() );</div>
+<div class="line"><a id="l04410" name="l04410"></a><span class="lineno"> 4410</span>    <span class="keywordflow">return</span> <a class="code hl_struct" href="structom__special__sectors.html">om_special_sectors</a>{ res, sector_width };</div>
+<div class="line"><a id="l04411" name="l04411"></a><span class="lineno"> 4411</span>}</div>
 <div class="ttc" id="agame__constants_8h_html_a19d4c597789235509b7ee6060543829e"><div class="ttname"><a href="game__constants_8h.html#a19d4c597789235509b7ee6060543829e">OMAPY</a></div><div class="ttdeci">static constexpr int OMAPY</div><div class="ttdef"><b>Definition:</b> <a href="game__constants_8h_source.html#l00052">game_constants.h:52</a></div></div>
 <div class="ttc" id="agame__constants_8h_html_a282f307f5d51bf229c829518b5ab9232"><div class="ttname"><a href="game__constants_8h.html#a282f307f5d51bf229c829518b5ab9232">OMAPX</a></div><div class="ttdeci">static constexpr int OMAPX</div><div class="ttdoc">Size of the overmap.</div><div class="ttdef"><b>Definition:</b> <a href="game__constants_8h_source.html#l00051">game_constants.h:51</a></div></div>
 <div class="ttc" id="arng_8cpp_html_acf9418ccfee8372eff44e7483f709ce2"><div class="ttname"><a href="rng_8cpp.html#acf9418ccfee8372eff44e7483f709ce2">rng_get_engine</a></div><div class="ttdeci">cata_default_random_engine &amp; rng_get_engine()</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.html#l00136">rng.cpp:136</a></div></div>
-<div class="ttc" id="astructom__special__sectors_html"><div class="ttname"><a href="structom__special__sectors.html">om_special_sectors</a></div><div class="ttdef"><b>Definition:</b> <a href="overmap__special_8h_source.html#l00130">overmap_special.h:130</a></div></div>
+<div class="ttc" id="astructom__special__sectors_html"><div class="ttname"><a href="structom__special__sectors.html">om_special_sectors</a></div><div class="ttdef"><b>Definition:</b> <a href="overmap__special_8h_source.html#l00133">overmap_special.h:133</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="game__constants_8h_source.html#l00051">OMAPX</a>, <a class="el" href="game__constants_8h_source.html#l00052">OMAPY</a>, and <a class="el" href="rng_8cpp_source.html#l00136">rng_get_engine()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="overmapbuffer_8cpp_source.html#l01586">overmapbuffer::place_special()</a>, and <a class="el" href="overmap_8cpp_source.html#l04493">overmap::place_specials()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="overmapbuffer_8cpp_source.html#l01586">overmapbuffer::place_special()</a>, and <a class="el" href="overmap_8cpp_source.html#l04483">overmap::place_specials()</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="overmap__special_8h_source.html#l00036">36</a> of file <a class="el" href="overmap__special_8h_source.html">overmap_special.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="overmap_8cpp_source.html#l00506">overmap_specials::check_consistency()</a>, <a class="el" href="overmapbuffer_8cpp_source.html#l01586">overmapbuffer::place_special()</a>, and <a class="el" href="overmap_8cpp_source.html#l04493">overmap::place_specials()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="overmap_8cpp_source.html#l00482">overmap_specials::check_consistency()</a>, <a class="el" href="overmapbuffer_8cpp_source.html#l01586">overmapbuffer::place_special()</a>, and <a class="el" href="overmap_8cpp_source.html#l04483">overmap::place_specials()</a>.</p>
 
 </div>
 </div>
@@ -264,7 +264,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="overmap__special_8h.html">overmap_special.h</a></li>
-    <li class="footer">Generated on Thu Aug 4 2022 23:46:11 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Aug 5 2022 20:07:33 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

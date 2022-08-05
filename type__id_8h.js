@@ -49,7 +49,6 @@ var type__id_8h =
     [ "overmap_connection_id", "type__id_8h.html#a6734a1559ce7392e5d5659e0682cb3f9", null ],
     [ "overmap_location_id", "type__id_8h.html#a193c6fac4d30a74533eda3e6bbf50929", null ],
     [ "overmap_special_id", "type__id_8h.html#aa7964d871c74fa759b358081855b6e24", null ],
-    [ "profession_id", "type__id_8h.html#ade3fa4a56f88d43404bf3bb1abef30de", null ],
     [ "quality_id", "type__id_8h.html#a462e78d510851b30d4f5795c409c7467", null ],
     [ "recipe_id", "type__id_8h.html#a7d1934ae1f3ab6bea8bd75f88070482d", null ],
     [ "requirement_id", "type__id_8h.html#afb36dc6d5925e5112e70d60a171ebeb1", null ],

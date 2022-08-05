@@ -105,7 +105,6 @@ $(document).ready(function(){initNavTree('npctalk__funcs_8cpp.html',''); initRes
 <code>#include &quot;<a class="el" href="calendar_8h_source.html">calendar.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cata__utility_8h_source.html">cata_utility.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="character__id_8h_source.html">character_id.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="character__display_8h_source.html">character_display.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="character__martial__arts_8h_source.html">character_martial_arts.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="enums_8h_source.html">enums.h</a>&quot;</code><br />
@@ -249,44 +248,44 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00603">603</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>{</div>
-<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    <a class="code hl_class" href="classuilist.html">uilist</a> hair_menu;</div>
-<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    std::string menu_text;</div>
-<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>    <span class="keywordflow">if</span>( mut_type == <span class="stringliteral">&quot;hair_style&quot;</span> ) {</div>
-<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>        menu_text = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Choose a new hairstyle&quot;</span> );</div>
-<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>( mut_type == <span class="stringliteral">&quot;facial_hair&quot;</span> ) {</div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>        menu_text = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Choose a new facial hair style&quot;</span> );</div>
-<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    }</div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>    hair_menu.<a class="code hl_variable" href="classuilist.html#af59dd3fdde04746dbc5cb52b355577ce">text</a> = menu_text;</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    <span class="keywordtype">int</span> <a class="code hl_enumvalue" href="namespacedetail.html#ac4c79842ec549e8b02145d43a1fbc330a6a992d5529f459a44fee58c733255e86">index</a> = 0;</div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    hair_menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( index, <span class="keyword">true</span>, <span class="charliteral">&#39;q&#39;</span>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Actually…  I&#39;ve changed my mind.&quot;</span> ) );</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    std::vector&lt;trait_id&gt; hair_muts = <a class="code hl_function" href="mutation_8h.html#acf233a01322f47ce8a2d396a841c0dff">get_mutations_in_type</a>( mut_type );</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <a class="code hl_class" href="classstring__id.html">trait_id</a> cur_hair;</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> elem : hair_muts ) {</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>        <span class="keywordflow">if</span>( <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.has_trait( elem ) ) {</div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>            cur_hair = elem;</div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>        }</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>        <a class="code hl_enumvalue" href="namespacedetail.html#ac4c79842ec549e8b02145d43a1fbc330a6a992d5529f459a44fee58c733255e86">index</a> += 1;</div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>        hair_menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( index, <span class="keyword">true</span>, <a class="code hl_variable" href="ui_8h.html#a06d5f3667ed71fa40939c4e7367e30ce">MENU_AUTOASSIGN</a>, elem.obj().name() );</div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>    }</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>    hair_menu.<a class="code hl_function" href="group__UI.html#ga7604af7545244003f0a52ac87ce37979">query</a>();</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>    <span class="keywordtype">int</span> choice = hair_menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a>;</div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>    <span class="keywordflow">if</span>( choice != 0 ) {</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>        <span class="keywordflow">if</span>( <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.has_trait( cur_hair ) ) {</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>            <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.remove_mutation( cur_hair, <span class="keyword">true</span> );</div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>        }</div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>        <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.set_mutation( hair_muts[ choice - 1 ] );</div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>        <a class="code hl_function" href="messages_8cpp.html#a54489326fc37823819c5105addfa27f2">add_msg</a>( <a class="code hl_enumvalue" href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea5d3734a51686ceb1848704dd277dfc7f">m_info</a>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;You get a trendy new cut!&quot;</span> ) );</div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    }</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>}</div>
+<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00602">602</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span>{</div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>    <a class="code hl_class" href="classuilist.html">uilist</a> hair_menu;</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span>    std::string menu_text;</div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>    <span class="keywordflow">if</span>( mut_type == <span class="stringliteral">&quot;hair_style&quot;</span> ) {</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>        menu_text = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Choose a new hairstyle&quot;</span> );</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>( mut_type == <span class="stringliteral">&quot;facial_hair&quot;</span> ) {</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>        menu_text = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Choose a new facial hair style&quot;</span> );</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>    }</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>    hair_menu.<a class="code hl_variable" href="classuilist.html#af59dd3fdde04746dbc5cb52b355577ce">text</a> = menu_text;</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>    <span class="keywordtype">int</span> <a class="code hl_enumvalue" href="namespacedetail.html#ac4c79842ec549e8b02145d43a1fbc330a6a992d5529f459a44fee58c733255e86">index</a> = 0;</div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    hair_menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( index, <span class="keyword">true</span>, <span class="charliteral">&#39;q&#39;</span>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Actually…  I&#39;ve changed my mind.&quot;</span> ) );</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    std::vector&lt;trait_id&gt; hair_muts = <a class="code hl_function" href="mutation_8h.html#acf233a01322f47ce8a2d396a841c0dff">get_mutations_in_type</a>( mut_type );</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    <a class="code hl_class" href="classstring__id.html">trait_id</a> cur_hair;</div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> elem : hair_muts ) {</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>        <span class="keywordflow">if</span>( <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.has_trait( elem ) ) {</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>            cur_hair = elem;</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>        }</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>        <a class="code hl_enumvalue" href="namespacedetail.html#ac4c79842ec549e8b02145d43a1fbc330a6a992d5529f459a44fee58c733255e86">index</a> += 1;</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>        hair_menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( index, <span class="keyword">true</span>, <a class="code hl_variable" href="ui_8h.html#a06d5f3667ed71fa40939c4e7367e30ce">MENU_AUTOASSIGN</a>, elem.obj().name() );</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>    }</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>    hair_menu.<a class="code hl_function" href="group__UI.html#ga7604af7545244003f0a52ac87ce37979">query</a>();</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>    <span class="keywordtype">int</span> choice = hair_menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a>;</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>    <span class="keywordflow">if</span>( choice != 0 ) {</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>        <span class="keywordflow">if</span>( <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.has_trait( cur_hair ) ) {</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>            <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.remove_mutation( cur_hair, <span class="keyword">true</span> );</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>        }</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>        <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.set_mutation( hair_muts[ choice - 1 ] );</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>        <a class="code hl_function" href="messages_8cpp.html#a54489326fc37823819c5105addfa27f2">add_msg</a>( <a class="code hl_enumvalue" href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea5d3734a51686ceb1848704dd277dfc7f">m_info</a>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;You get a trendy new cut!&quot;</span> ) );</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>    }</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>}</div>
 <div class="ttc" id="aclassstring__id_html"><div class="ttname"><a href="classstring__id.html">string_id&lt; mutation_branch &gt;</a></div></div>
 <div class="ttc" id="aclassuilist_html"><div class="ttname"><a href="classuilist.html">uilist</a></div><div class="ttdoc">uilist: scrolling vertical list menu</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00186">ui.h:187</a></div></div>
 <div class="ttc" id="aclassuilist_html_a0baa34622db6972a59d47d478bfd21d6"><div class="ttname"><a href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">uilist::ret</a></div><div class="ttdeci">int ret</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00412">ui.h:412</a></div></div>
 <div class="ttc" id="aclassuilist_html_af59dd3fdde04746dbc5cb52b355577ce"><div class="ttname"><a href="classuilist.html#af59dd3fdde04746dbc5cb52b355577ce">uilist::text</a></div><div class="ttdeci">std::string text</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00320">ui.h:320</a></div></div>
 <div class="ttc" id="aclassuilist_html_af99f28334902af64487e2d0758df2ab9"><div class="ttname"><a href="classuilist.html#af99f28334902af64487e2d0758df2ab9">uilist::addentry</a></div><div class="ttdeci">void addentry(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="ui_8cpp_source.html#l00932">ui.cpp:932</a></div></div>
 <div class="ttc" id="aenums_8h_html_a3baf36d700701401b6baf94db93d096ea5d3734a51686ceb1848704dd277dfc7f"><div class="ttname"><a href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea5d3734a51686ceb1848704dd277dfc7f">m_info</a></div><div class="ttdeci">@ m_info</div><div class="ttdef"><b>Definition:</b> <a href="enums_8h_source.html#l00258">enums.h:258</a></div></div>
-<div class="ttc" id="agame_8cpp_html_abeb98e93502d73818b4a73fabe191bc1"><div class="ttname"><a href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a></div><div class="ttdeci">std::unique_ptr&lt; game &gt; g</div><div class="ttdef"><b>Definition:</b> <a href="game_8cpp_source.html#l00269">game.cpp:269</a></div></div>
+<div class="ttc" id="agame_8cpp_html_abeb98e93502d73818b4a73fabe191bc1"><div class="ttname"><a href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a></div><div class="ttdeci">std::unique_ptr&lt; game &gt; g</div><div class="ttdef"><b>Definition:</b> <a href="game_8cpp_source.html#l00267">game.cpp:267</a></div></div>
 <div class="ttc" id="agroup__UI_html_ga7604af7545244003f0a52ac87ce37979"><div class="ttname"><a href="group__UI.html#ga7604af7545244003f0a52ac87ce37979">uilist::query</a></div><div class="ttdeci">void query(bool loop=true, int timeout=-1)</div><div class="ttdoc">Handle input and update display.</div><div class="ttdef"><b>Definition:</b> <a href="ui_8cpp_source.html#l00828">ui.cpp:828</a></div></div>
 <div class="ttc" id="amessages_8cpp_html_a54489326fc37823819c5105addfa27f2"><div class="ttname"><a href="messages_8cpp.html#a54489326fc37823819c5105addfa27f2">add_msg</a></div><div class="ttdeci">void add_msg(std::string msg)</div><div class="ttdef"><b>Definition:</b> <a href="messages_8cpp_source.html#l00884">messages.cpp:884</a></div></div>
 <div class="ttc" id="amutation_8h_html_acf233a01322f47ce8a2d396a841c0dff"><div class="ttname"><a href="mutation_8h.html#acf233a01322f47ce8a2d396a841c0dff">get_mutations_in_type</a></div><div class="ttdeci">std::vector&lt; trait_id &gt; get_mutations_in_type(const std::string &amp;id)</div><div class="ttdef"><b>Definition:</b> <a href="mutation__type_8cpp_source.html#l00029">mutation_type.cpp:29</a></div></div>
@@ -294,9 +293,9 @@ Variables</h2></td></tr>
 <div class="ttc" id="atranslations_8h_html_aa829053017e23ef22d44dccecba63a34"><div class="ttname"><a href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a></div><div class="ttdeci">#define _(msg)</div><div class="ttdef"><b>Definition:</b> <a href="translations_8h_source.html#l00116">translations.h:116</a></div></div>
 <div class="ttc" id="aui_8h_html_a06d5f3667ed71fa40939c4e7367e30ce"><div class="ttname"><a href="ui_8h.html#a06d5f3667ed71fa40939c4e7367e30ce">MENU_AUTOASSIGN</a></div><div class="ttdeci">const int MENU_AUTOASSIGN</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00031">ui.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="messages_8cpp_source.html#l00884">add_msg()</a>, <a class="el" href="ui_8cpp_source.html#l00932">uilist::addentry()</a>, <a class="el" href="game_8cpp_source.html#l00269">g</a>, <a class="el" href="mutation__type_8cpp_source.html#l00029">get_mutations_in_type()</a>, <a class="el" href="enums_8h_source.html#l00258">m_info</a>, <a class="el" href="ui_8h_source.html#l00031">MENU_AUTOASSIGN</a>, <a class="el" href="ui_8cpp_source.html#l00828">uilist::query()</a>, <a class="el" href="ui_8h_source.html#l00412">uilist::ret</a>, and <a class="el" href="ui_8h_source.html#l00320">uilist::text</a>.</p>
+<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="messages_8cpp_source.html#l00884">add_msg()</a>, <a class="el" href="ui_8cpp_source.html#l00932">uilist::addentry()</a>, <a class="el" href="game_8cpp_source.html#l00267">g</a>, <a class="el" href="mutation__type_8cpp_source.html#l00029">get_mutations_in_type()</a>, <a class="el" href="enums_8h_source.html#l00258">m_info</a>, <a class="el" href="ui_8h_source.html#l00031">MENU_AUTOASSIGN</a>, <a class="el" href="ui_8cpp_source.html#l00828">uilist::query()</a>, <a class="el" href="ui_8h_source.html#l00412">uilist::ret</a>, and <a class="el" href="ui_8h_source.html#l00320">uilist::text</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00635">talk_function::barber_beard()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00640">talk_function::barber_hair()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00634">talk_function::barber_beard()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00639">talk_function::barber_hair()</a>.</p>
 
 </div>
 </div>
@@ -324,24 +323,24 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00557">557</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>{</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    <span class="keywordflow">for</span>( <span class="keyword">const</span> <a class="code hl_class" href="classint__id.html">bodypart_id</a> &amp;bp : guy.<a class="code hl_function" href="classCreature.html#a9f9cc294949ffc5bd51ab464b5c5ad6f">get_all_body_parts</a>() ) {</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        <a class="code hl_class" href="classstring__id.html">bodypart_str_id</a> bp_healed = bp-&gt;<a class="code hl_variable" href="structbody__part__type.html#ab88f4c72186cad27609e877dd46d2c33">main_part</a>;</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>        guy.<a class="code hl_function" href="classCharacter.html#aa37435b78aa0bc1f7d77b6e4cbcea996">heal</a>( bp_healed, 5 * <a class="code hl_function" href="artifact_8cpp.html#a70800e95389f34dd34186fafaea2a840">rng</a>( 2, 5 ) );</div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, bp_healed ) ) {</div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, bp_healed );</div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>        }</div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, bp_healed ) ) {</div>
-<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, bp_healed );</div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>        }</div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, bp_healed ) ) {</div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, bp_healed );</div>
-<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>        }</div>
-<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>    }</div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>}</div>
+<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00556">556</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>{</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>    <span class="keywordflow">for</span>( <span class="keyword">const</span> <a class="code hl_class" href="classint__id.html">bodypart_id</a> &amp;bp : guy.<a class="code hl_function" href="classCreature.html#a9f9cc294949ffc5bd51ab464b5c5ad6f">get_all_body_parts</a>() ) {</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        <a class="code hl_class" href="classstring__id.html">bodypart_str_id</a> bp_healed = bp-&gt;<a class="code hl_variable" href="structbody__part__type.html#ab88f4c72186cad27609e877dd46d2c33">main_part</a>;</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        guy.<a class="code hl_function" href="classCharacter.html#aa37435b78aa0bc1f7d77b6e4cbcea996">heal</a>( bp_healed, 5 * <a class="code hl_function" href="artifact_8cpp.html#a70800e95389f34dd34186fafaea2a840">rng</a>( 2, 5 ) );</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, bp_healed ) ) {</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, bp_healed );</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>        }</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, bp_healed ) ) {</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, bp_healed );</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>        }</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>        <span class="keywordflow">if</span>( guy.<a class="code hl_function" href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">has_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, bp_healed ) ) {</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>            guy.<a class="code hl_function" href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">remove_effect</a>( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, bp_healed );</div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>        }</div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>    }</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>}</div>
 <div class="ttc" id="aartifact_8cpp_html_a70800e95389f34dd34186fafaea2a840"><div class="ttname"><a href="artifact_8cpp.html#a70800e95389f34dd34186fafaea2a840">rng</a></div><div class="ttdeci">units::quantity&lt; V, B &gt; rng(const units::quantity&lt; V, B &gt; &amp;min, const units::quantity&lt; V, B &gt; &amp;max)</div><div class="ttdef"><b>Definition:</b> <a href="artifact_8cpp_source.html#l00032">artifact.cpp:32</a></div></div>
-<div class="ttc" id="aclassCharacter_html_aa37435b78aa0bc1f7d77b6e4cbcea996"><div class="ttname"><a href="classCharacter.html#aa37435b78aa0bc1f7d77b6e4cbcea996">Character::heal</a></div><div class="ttdeci">void heal(const bodypart_id &amp;healed, int dam)</div><div class="ttdoc">Heals a body_part for dam.</div><div class="ttdef"><b>Definition:</b> <a href="character_8cpp_source.html#l08654">character.cpp:8654</a></div></div>
+<div class="ttc" id="aclassCharacter_html_aa37435b78aa0bc1f7d77b6e4cbcea996"><div class="ttname"><a href="classCharacter.html#aa37435b78aa0bc1f7d77b6e4cbcea996">Character::heal</a></div><div class="ttdeci">void heal(const bodypart_id &amp;healed, int dam)</div><div class="ttdoc">Heals a body_part for dam.</div><div class="ttdef"><b>Definition:</b> <a href="character_8cpp_source.html#l08633">character.cpp:8633</a></div></div>
 <div class="ttc" id="aclassCreature_html_a6fb79df9315dc2bed6f34d9a2e37da90"><div class="ttname"><a href="classCreature.html#a6fb79df9315dc2bed6f34d9a2e37da90">Creature::has_effect</a></div><div class="ttdeci">bool has_effect(const efftype_id &amp;eff_id, body_part bp=num_bp) const</div><div class="ttdoc">Check if creature has the matching effect.</div><div class="ttdef"><b>Definition:</b> <a href="creature_8cpp_source.html#l01176">creature.cpp:1176</a></div></div>
 <div class="ttc" id="aclassCreature_html_a730fb8be5a540edd31ed9d8126ea20de"><div class="ttname"><a href="classCreature.html#a730fb8be5a540edd31ed9d8126ea20de">Creature::remove_effect</a></div><div class="ttdeci">bool remove_effect(const efftype_id &amp;eff_id, body_part bp=num_bp)</div><div class="ttdoc">Removes a listed effect.</div><div class="ttdef"><b>Definition:</b> <a href="creature_8cpp_source.html#l01133">creature.cpp:1133</a></div></div>
 <div class="ttc" id="aclassCreature_html_a9f9cc294949ffc5bd51ab464b5c5ad6f"><div class="ttname"><a href="classCreature.html#a9f9cc294949ffc5bd51ab464b5c5ad6f">Creature::get_all_body_parts</a></div><div class="ttdeci">std::vector&lt; bodypart_id &gt; get_all_body_parts(bool only_main=false) const</div><div class="ttdoc">Returns body parts this creature have.</div><div class="ttdef"><b>Definition:</b> <a href="creature_8cpp_source.html#l01624">creature.cpp:1624</a></div></div>
@@ -351,9 +350,9 @@ Variables</h2></td></tr>
 <div class="ttc" id="anpctalk__funcs_8cpp_html_a39b21fc30fecd7d4fb15047600d03522"><div class="ttname"><a href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a></div><div class="ttdeci">static const efftype_id effect_bite(&quot;bite&quot;)</div></div>
 <div class="ttc" id="astructbody__part__type_html_ab88f4c72186cad27609e877dd46d2c33"><div class="ttname"><a href="structbody__part__type.html#ab88f4c72186cad27609e877dd46d2c33">body_part_type::main_part</a></div><div class="ttdeci">bodypart_str_id main_part</div><div class="ttdef"><b>Definition:</b> <a href="bodypart_8h_source.html#l00120">bodypart.h:120</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, <a class="el" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, <a class="el" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, <a class="el" href="creature_8cpp_source.html#l01624">Creature::get_all_body_parts()</a>, <a class="el" href="creature_8cpp_source.html#l01176">Creature::has_effect()</a>, <a class="el" href="character_8cpp_source.html#l08654">Character::heal()</a>, <a class="el" href="bodypart_8h_source.html#l00120">body_part_type::main_part</a>, <a class="el" href="creature_8cpp_source.html#l01133">Creature::remove_effect()</a>, and <a class="el" href="artifact_8cpp_source.html#l00032">rng()</a>.</p>
+<p class="reference">References <a class="el" href="npctalk__funcs_8cpp.html#a39b21fc30fecd7d4fb15047600d03522">effect_bite</a>, <a class="el" href="npctalk__funcs_8cpp.html#a151e6b162a8a2cdbdb11c407013076eb">effect_bleed</a>, <a class="el" href="npctalk__funcs_8cpp.html#a1de43fa1f6d16ce87ab7a3a49e47c463">effect_infected</a>, <a class="el" href="creature_8cpp_source.html#l01624">Creature::get_all_body_parts()</a>, <a class="el" href="creature_8cpp_source.html#l01176">Creature::has_effect()</a>, <a class="el" href="character_8cpp_source.html#l08633">Character::heal()</a>, <a class="el" href="bodypart_8h_source.html#l00120">body_part_type::main_part</a>, <a class="el" href="creature_8cpp_source.html#l01133">Creature::remove_effect()</a>, and <a class="el" href="artifact_8cpp_source.html#l00032">rng()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00574">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00586">talk_function::give_all_aid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00573">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00585">talk_function::give_all_aid()</a>.</p>
 
 </div>
 </div>
@@ -374,45 +373,45 @@ Variables</h2></td></tr>
 
 <p>Opens a menu and allows player to select a friendly NPC. </p>
 
-<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00958">958</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>{</div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>    std::vector&lt;npc *&gt; followers;</div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>    std::vector&lt;tripoint&gt; <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a>;</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span> </div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>    <span class="keywordflow">for</span>( <a class="code hl_class" href="classnpc.html">npc</a> &amp;guy : <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;all_npcs() ) {</div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>        <span class="keywordflow">if</span>( guy.is_player_ally() &amp;&amp; <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.sees( guy ) ) {</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>            followers.push_back( &amp;guy );</div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>            <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a>.push_back( guy.pos() );</div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>        }</div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    }</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span> </div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>    <a class="code hl_class" href="classpointmenu__cb.html">pointmenu_cb</a> callback( <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a> );</div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span> </div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    <a class="code hl_class" href="classuilist.html">uilist</a> menu;</div>
-<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>    menu.<a class="code hl_variable" href="classuilist.html#af59dd3fdde04746dbc5cb52b355577ce">text</a> = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Select a follower&quot;</span> );</div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    menu.<a class="code hl_variable" href="classuilist.html#ad4f5806d1d8ab3de3af8e3285faf47d6">callback</a> = &amp;callback;</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>    menu.<a class="code hl_variable" href="classuilist.html#ad9e47c1efe3c9fb954ceaeb5c65791fe">w_y_setup</a> = 2;</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span> </div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    <span class="keywordflow">for</span>( <span class="keyword">const</span> <a class="code hl_class" href="classnpc.html">npc</a> *p : followers ) {</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>        menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( -1, <span class="keyword">true</span>, <a class="code hl_variable" href="ui_8h.html#a06d5f3667ed71fa40939c4e7367e30ce">MENU_AUTOASSIGN</a>, p-&gt;name );</div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>    }</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span> </div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    menu.<a class="code hl_function" href="group__UI.html#ga7604af7545244003f0a52ac87ce37979">query</a>();</div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>    <span class="keywordflow">if</span>( menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> &lt; 0 || <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>( menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> ) &gt;= followers.size() ) {</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    }</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span> </div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>    <span class="keywordflow">return</span> followers[ menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> ];</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>}</div>
+<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00957">957</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>{</div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>    std::vector&lt;npc *&gt; followers;</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>    std::vector&lt;tripoint&gt; <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a>;</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span> </div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>    <span class="keywordflow">for</span>( <a class="code hl_class" href="classnpc.html">npc</a> &amp;guy : <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;all_npcs() ) {</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>        <span class="keywordflow">if</span>( guy.is_player_ally() &amp;&amp; <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;u.sees( guy ) ) {</div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>            followers.push_back( &amp;guy );</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>            <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a>.push_back( guy.pos() );</div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>        }</div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    }</div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span> </div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    <a class="code hl_class" href="classpointmenu__cb.html">pointmenu_cb</a> callback( <a class="code hl_variable" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">locations</a> );</div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span> </div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>    <a class="code hl_class" href="classuilist.html">uilist</a> menu;</div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    menu.<a class="code hl_variable" href="classuilist.html#af59dd3fdde04746dbc5cb52b355577ce">text</a> = <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;Select a follower&quot;</span> );</div>
+<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>    menu.<a class="code hl_variable" href="classuilist.html#ad4f5806d1d8ab3de3af8e3285faf47d6">callback</a> = &amp;callback;</div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    menu.<a class="code hl_variable" href="classuilist.html#ad9e47c1efe3c9fb954ceaeb5c65791fe">w_y_setup</a> = 2;</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span> </div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>    <span class="keywordflow">for</span>( <span class="keyword">const</span> <a class="code hl_class" href="classnpc.html">npc</a> *p : followers ) {</div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>        menu.<a class="code hl_function" href="classuilist.html#af99f28334902af64487e2d0758df2ab9">addentry</a>( -1, <span class="keyword">true</span>, <a class="code hl_variable" href="ui_8h.html#a06d5f3667ed71fa40939c4e7367e30ce">MENU_AUTOASSIGN</a>, p-&gt;name );</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    }</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span> </div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    menu.<a class="code hl_function" href="group__UI.html#ga7604af7545244003f0a52ac87ce37979">query</a>();</div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    <span class="keywordflow">if</span>( menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> &lt; 0 || <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>( menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> ) &gt;= followers.size() ) {</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    }</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span> </div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>    <span class="keywordflow">return</span> followers[ menu.<a class="code hl_variable" href="classuilist.html#a0baa34622db6972a59d47d478bfd21d6">ret</a> ];</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>}</div>
 <div class="ttc" id="aclassnpc_html"><div class="ttname"><a href="classnpc.html">npc</a></div><div class="ttdef"><b>Definition:</b> <a href="npc_8h_source.html#l00780">npc.h:781</a></div></div>
 <div class="ttc" id="aclasspointmenu__cb_html"><div class="ttname"><a href="classpointmenu__cb.html">pointmenu_cb</a></div><div class="ttdoc">Callback for uilist that pairs menu entries with points When an entry is selected,...</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00422">ui.h:423</a></div></div>
 <div class="ttc" id="aclassuilist_html_ad4f5806d1d8ab3de3af8e3285faf47d6"><div class="ttname"><a href="classuilist.html#ad4f5806d1d8ab3de3af8e3285faf47d6">uilist::callback</a></div><div class="ttdeci">uilist_callback * callback</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00335">ui.h:335</a></div></div>
 <div class="ttc" id="aclassuilist_html_ad9e47c1efe3c9fb954ceaeb5c65791fe"><div class="ttname"><a href="classuilist.html#ad9e47c1efe3c9fb954ceaeb5c65791fe">uilist::w_y_setup</a></div><div class="ttdeci">pos_scalar w_y_setup</div><div class="ttdef"><b>Definition:</b> <a href="ui_8h_source.html#l00338">ui.h:338</a></div></div>
 <div class="ttc" id="anamespaceanonymous__namespace_02overmap__location_8cpp_03_html_a1746287579ae93eaa7db10693e28de66"><div class="ttname"><a href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">anonymous_namespace{overmap_location.cpp}::locations</a></div><div class="ttdeci">generic_factory&lt; overmap_location &gt; locations(&quot;overmap location&quot;)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="ui_8cpp_source.html#l00932">uilist::addentry()</a>, <a class="el" href="ui_8h_source.html#l00335">uilist::callback</a>, <a class="el" href="game_8cpp_source.html#l00269">g</a>, <a class="el" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">anonymous_namespace{overmap_location.cpp}::locations</a>, <a class="el" href="ui_8h_source.html#l00031">MENU_AUTOASSIGN</a>, <a class="el" href="ui_8cpp_source.html#l00828">uilist::query()</a>, <a class="el" href="ui_8h_source.html#l00412">uilist::ret</a>, <a class="el" href="ui_8h_source.html#l00320">uilist::text</a>, and <a class="el" href="ui_8h_source.html#l00338">uilist::w_y_setup</a>.</p>
+<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="ui_8cpp_source.html#l00932">uilist::addentry()</a>, <a class="el" href="ui_8h_source.html#l00335">uilist::callback</a>, <a class="el" href="game_8cpp_source.html#l00267">g</a>, <a class="el" href="namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66">anonymous_namespace{overmap_location.cpp}::locations</a>, <a class="el" href="ui_8h_source.html#l00031">MENU_AUTOASSIGN</a>, <a class="el" href="ui_8cpp_source.html#l00828">uilist::query()</a>, <a class="el" href="ui_8h_source.html#l00412">uilist::ret</a>, <a class="el" href="ui_8h_source.html#l00320">uilist::text</a>, and <a class="el" href="ui_8h_source.html#l00338">uilist::w_y_setup</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00989">talk_function::copy_npc_rules()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00988">talk_function::copy_npc_rules()</a>.</p>
 
 </div>
 </div>
@@ -442,25 +441,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00199">199</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>{</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">if</span>( <a class="code hl_class" href="classmonster.html">monster</a> *<span class="keyword">const</span> mon_ptr = <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;place_critter_around( mon, p.<a class="code hl_function" href="classCharacter.html#ad24859164517ed6e392e21df69527199">pos</a>(), 1 ) ) {</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        mon_ptr-&gt;friendly = -1;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        mon_ptr-&gt;add_effect( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8">effect_pet</a>, 1_turns, <a class="code hl_enumvalue" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980ac09d37dac773806a42c13041ba254700">num_bp</a> );</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="comment">// TODO: handle this gracefully (return the money, proper in-character message from npc)</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <a class="code hl_function" href="messages_8cpp.html#a54489326fc37823819c5105addfa27f2">add_msg</a>( <a class="code hl_enumvalue" href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea9855e523119c93601d8f67718994df05">m_debug</a>, <span class="stringliteral">&quot;No space to spawn purchased pet&quot;</span> );</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
+<p class="definition">Definition at line <a class="el" href="npctalk__funcs_8cpp_source.html#l00198">198</a> of file <a class="el" href="npctalk__funcs_8cpp_source.html">npctalk_funcs.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>{</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">if</span>( <a class="code hl_class" href="classmonster.html">monster</a> *<span class="keyword">const</span> mon_ptr = <a class="code hl_variable" href="game_8cpp.html#abeb98e93502d73818b4a73fabe191bc1">g</a>-&gt;place_critter_around( mon, p.<a class="code hl_function" href="classCharacter.html#ad24859164517ed6e392e21df69527199">pos</a>(), 1 ) ) {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        mon_ptr-&gt;friendly = -1;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        mon_ptr-&gt;add_effect( <a class="code hl_variable" href="npctalk__funcs_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8">effect_pet</a>, 1_turns, <a class="code hl_enumvalue" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980ac09d37dac773806a42c13041ba254700">num_bp</a> );</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="comment">// TODO: handle this gracefully (return the money, proper in-character message from npc)</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <a class="code hl_function" href="messages_8cpp.html#a54489326fc37823819c5105addfa27f2">add_msg</a>( <a class="code hl_enumvalue" href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea9855e523119c93601d8f67718994df05">m_debug</a>, <span class="stringliteral">&quot;No space to spawn purchased pet&quot;</span> );</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>}</div>
 <div class="ttc" id="abodypart_8h_html_af618290c4c2de42aab87977ac7311980ac09d37dac773806a42c13041ba254700"><div class="ttname"><a href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980ac09d37dac773806a42c13041ba254700">num_bp</a></div><div class="ttdeci">@ num_bp</div><div class="ttdef"><b>Definition:</b> <a href="bodypart_8h_source.html#l00053">bodypart.h:52</a></div></div>
-<div class="ttc" id="aclassCharacter_html_ad24859164517ed6e392e21df69527199"><div class="ttname"><a href="classCharacter.html#ad24859164517ed6e392e21df69527199">Character::pos</a></div><div class="ttdeci">const tripoint &amp; pos() const override</div><div class="ttdef"><b>Definition:</b> <a href="character_8cpp_source.html#l00714">character.cpp:714</a></div></div>
+<div class="ttc" id="aclassCharacter_html_ad24859164517ed6e392e21df69527199"><div class="ttname"><a href="classCharacter.html#ad24859164517ed6e392e21df69527199">Character::pos</a></div><div class="ttdeci">const tripoint &amp; pos() const override</div><div class="ttdef"><b>Definition:</b> <a href="character_8cpp_source.html#l00709">character.cpp:709</a></div></div>
 <div class="ttc" id="aclassmonster_html"><div class="ttname"><a href="classmonster.html">monster</a></div><div class="ttdef"><b>Definition:</b> <a href="monster_8h_source.html#l00083">monster.h:84</a></div></div>
 <div class="ttc" id="aenums_8h_html_a3baf36d700701401b6baf94db93d096ea9855e523119c93601d8f67718994df05"><div class="ttname"><a href="enums_8h.html#a3baf36d700701401b6baf94db93d096ea9855e523119c93601d8f67718994df05">m_debug</a></div><div class="ttdeci">@ m_debug</div><div class="ttdef"><b>Definition:</b> <a href="enums_8h_source.html#l00264">enums.h:264</a></div></div>
 <div class="ttc" id="anpctalk__funcs_8cpp_html_a02a4844a7fb68c13a34dc40b0a9e94d8"><div class="ttname"><a href="npctalk__funcs_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8">effect_pet</a></div><div class="ttdeci">static const efftype_id effect_pet(&quot;pet&quot;)</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="messages_8cpp_source.html#l00884">add_msg()</a>, <a class="el" href="npctalk__funcs_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8">effect_pet</a>, <a class="el" href="game_8cpp_source.html#l00269">g</a>, <a class="el" href="enums_8h_source.html#l00264">m_debug</a>, <a class="el" href="bodypart_8h_source.html#l00052">num_bp</a>, and <a class="el" href="character_8cpp_source.html#l00714">Character::pos()</a>.</p>
+<p class="reference">References <a class="el" href="messages_8cpp_source.html#l00884">add_msg()</a>, <a class="el" href="npctalk__funcs_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8">effect_pet</a>, <a class="el" href="game_8cpp_source.html#l00267">g</a>, <a class="el" href="enums_8h_source.html#l00264">m_debug</a>, <a class="el" href="bodypart_8h_source.html#l00052">num_bp</a>, and <a class="el" href="character_8cpp_source.html#l00709">Character::pos()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00185">talk_function::buy_chicken()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00194">talk_function::buy_cow()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00189">talk_function::buy_horse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00184">talk_function::buy_chicken()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00193">talk_function::buy_cow()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00188">talk_function::buy_horse()</a>.</p>
 
 </div>
 </div>
@@ -489,7 +488,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00240">talk_function::find_mount()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00239">talk_function::find_mount()</a>.</p>
 
 </div>
 </div>
@@ -517,7 +516,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00215">talk_function::sort_loot()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00214">talk_function::sort_loot()</a>.</p>
 
 </div>
 </div>
@@ -545,7 +544,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00258">talk_function::do_butcher()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00257">talk_function::do_butcher()</a>.</p>
 
 </div>
 </div>
@@ -573,7 +572,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00263">talk_function::do_chop_plank()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00262">talk_function::do_chop_plank()</a>.</p>
 
 </div>
 </div>
@@ -601,7 +600,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00278">talk_function::do_chop_trees()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00277">talk_function::do_chop_trees()</a>.</p>
 
 </div>
 </div>
@@ -629,7 +628,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00220">talk_function::do_construction()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00219">talk_function::do_construction()</a>.</p>
 
 </div>
 </div>
@@ -657,7 +656,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00283">talk_function::do_farming()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00282">talk_function::do_farming()</a>.</p>
 
 </div>
 </div>
@@ -685,7 +684,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00288">talk_function::do_fishing()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00287">talk_function::do_fishing()</a>.</p>
 
 </div>
 </div>
@@ -713,7 +712,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00225">talk_function::do_mining()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00224">talk_function::do_mining()</a>.</p>
 
 </div>
 </div>
@@ -741,7 +740,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00669">talk_function::morale_chat_activity()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00668">talk_function::morale_chat_activity()</a>.</p>
 
 </div>
 </div>
@@ -769,7 +768,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00902">talk_function::start_training()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00901">talk_function::start_training()</a>.</p>
 
 </div>
 </div>
@@ -797,7 +796,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00268">talk_function::do_vehicle_deconstruct()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00267">talk_function::do_vehicle_deconstruct()</a>.</p>
 
 </div>
 </div>
@@ -825,7 +824,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00273">talk_function::do_vehicle_repair()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00272">talk_function::do_vehicle_repair()</a>.</p>
 
 </div>
 </div>
@@ -853,7 +852,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00645">talk_function::buy_haircut()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00654">talk_function::buy_shave()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00574">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00586">talk_function::give_all_aid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00644">talk_function::buy_haircut()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00653">talk_function::buy_shave()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00573">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00585">talk_function::give_all_aid()</a>.</p>
 
 </div>
 </div>
@@ -881,7 +880,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00475">talk_function::bionic_remove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00474">talk_function::bionic_remove()</a>.</p>
 
 </div>
 </div>
@@ -909,7 +908,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00475">talk_function::bionic_remove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00474">talk_function::bionic_remove()</a>.</p>
 
 </div>
 </div>
@@ -937,7 +936,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00423">talk_function::wake_up()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00422">talk_function::wake_up()</a>.</p>
 
 </div>
 </div>
@@ -965,7 +964,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00756">talk_function::deny_equipment()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00528">talk_function::give_equipment()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00755">talk_function::deny_equipment()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00527">talk_function::give_equipment()</a>.</p>
 
 </div>
 </div>
@@ -993,7 +992,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00766">talk_function::deny_personal_info()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00765">talk_function::deny_personal_info()</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1020,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00746">talk_function::deny_follow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00745">talk_function::deny_follow()</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1048,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00751">talk_function::deny_lead()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00750">talk_function::deny_lead()</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +1076,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00761">talk_function::deny_train()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00902">talk_function::start_training()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00760">talk_function::deny_train()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00901">talk_function::start_training()</a>.</p>
 
 </div>
 </div>
@@ -1105,7 +1104,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00557">give_aid_to()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00556">give_aid_to()</a>.</p>
 
 </div>
 </div>
@@ -1133,7 +1132,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00557">give_aid_to()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00556">give_aid_to()</a>.</p>
 
 </div>
 </div>
@@ -1161,7 +1160,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00705">talk_function::buy_100_logs()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00678">talk_function::buy_10_logs()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00574">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00586">talk_function::give_all_aid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00704">talk_function::buy_100_logs()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00677">talk_function::buy_10_logs()</a>, <a class="el" href="npctalk__funcs_8cpp_source.html#l00573">talk_function::give_aid()</a>, and <a class="el" href="npctalk__funcs_8cpp_source.html#l00585">talk_function::give_all_aid()</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1188,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00557">give_aid_to()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00556">give_aid_to()</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1216,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00423">talk_function::wake_up()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00422">talk_function::wake_up()</a>.</p>
 
 </div>
 </div>
@@ -1245,7 +1244,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00423">talk_function::wake_up()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00422">talk_function::wake_up()</a>.</p>
 
 </div>
 </div>
@@ -1273,7 +1272,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00199">spawn_animal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00198">spawn_animal()</a>.</p>
 
 </div>
 </div>
@@ -1301,7 +1300,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00423">talk_function::wake_up()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00422">talk_function::wake_up()</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1328,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00185">talk_function::buy_chicken()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00184">talk_function::buy_chicken()</a>.</p>
 
 </div>
 </div>
@@ -1357,7 +1356,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00194">talk_function::buy_cow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00193">talk_function::buy_cow()</a>.</p>
 
 </div>
 </div>
@@ -1385,7 +1384,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00189">talk_function::buy_horse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="npctalk__funcs_8cpp_source.html#l00188">talk_function::buy_horse()</a>.</p>
 
 </div>
 </div>
@@ -1395,7 +1394,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="npctalk__funcs_8cpp.html">npctalk_funcs.cpp</a></li>
-    <li class="footer">Generated on Thu Aug 4 2022 23:46:10 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Aug 5 2022 20:07:33 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

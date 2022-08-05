@@ -37,7 +37,7 @@ var searchData=
   ['bionic_5fenergy_34',['bionic_energy',['../magic_8h.html#a3c314c02f97a7d720f18adcd1dbd7313a64a465572520ca8000f9628233063d7d',1,'magic.h']]],
   ['bionic_5fid_35',['bionic_id',['../cata__variant_8h.html#adfe42687fffdd05d233096b4e7dac2f4a965ba98fb0eca1e875b86fcf2bc91ab8',1,'cata_variant.h']]],
   ['bionic_5fpower_36',['BIONIC_POWER',['../namespaceenchant__vals.html#acd6a6ebb27f9ecb82b3bce1d3aef2998a9184d4002003eddbf7dc8ee0abeee8e3',1,'enchant_vals']]],
-  ['bionics_37',['bionics',['../namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09af8eb4254a5c40ba0293fd18353b05a33',1,'anonymous_namespace{character_display.cpp}']]],
+  ['bionics_37',['bionics',['../namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1af8eb4254a5c40ba0293fd18353b05a33',1,'anonymous_namespace{player_display.cpp}']]],
   ['bird_5feye_38',['BIRD_EYE',['../character_8h.html#ad87be595004034c31843cf782d41c0b5aca4ce71d13f327d46d3376ea5af37f97',1,'character.h']]],
   ['birdfood_39',['BIRDFOOD',['../iuse_8cpp.html#aada2fd516b4c31f58ea02b26f150e497af79eb64ca9e7dd0aa39bca5e926832cf',1,'iuse.cpp']]],
   ['black_40',['black',['../namespacecatacurses.html#a2181be54a83455ed99a7b7fab4fb46e8aa8987a61b46eae2571fc4ab9bc5d6ed5',1,'catacurses']]],

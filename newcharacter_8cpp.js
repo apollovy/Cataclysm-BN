@@ -35,7 +35,6 @@ var newcharacter_8cpp =
       [ "BACKWARD", "newcharacter_8cpp.html#a85bc3733a02891220ecf083c38848096a6377b4908ae38f9a57fe9120cf179eb1", null ],
       [ "QUIT", "newcharacter_8cpp.html#a85bc3733a02891220ecf083c38848096a5dfd352dd6b7a5d118237fcf1e19fcc1", null ]
     ] ],
-    [ "can_pick_prof", "newcharacter_8cpp.html#af2db912c1312868bb04c033c5398dcc8", null ],
     [ "choose_ma_style", "newcharacter_8cpp.html#a4fe8df6d02ee4a9cd69411d1ace5a234", null ],
     [ "draw_age", "newcharacter_8cpp.html#a002fb4c447a357ba79c83fcdc8434299", null ],
     [ "draw_character_tabs", "newcharacter_8cpp.html#a40c0b110f83f1a84e53d9c7c92cdb54b", null ],
@@ -46,7 +45,6 @@ var newcharacter_8cpp =
     [ "flag_CITY_START", "newcharacter_8cpp.html#adae4c173eb00972049b4bc10f4b03d29", null ],
     [ "flag_SECRET", "newcharacter_8cpp.html#af3cd40fdd58d6482eee0aee2e0fe0de7", null ],
     [ "flag_WET", "newcharacter_8cpp.html#a0f35b65e17801413ce658571f42dd000", null ],
-    [ "learn_spells", "newcharacter_8cpp.html#a3e94197e111e580dcb30f555dbc1b575", null ],
     [ "query_for_template_name", "newcharacter_8cpp.html#ac9fd44e067a314f4c67519b33ca69d77", null ],
     [ "reset_scenario", "newcharacter_8cpp.html#ae693b39515e9db3eef95557bfb57c6a3", null ],
     [ "set_description", "newcharacter_8cpp.html#ac2d8c6376956543cb27f6399fdeae973", null ],

@@ -314,7 +314,7 @@ var searchData=
   ['destroyed_311',['destroyed',['../mutation_8h.html#a034ae5e964e0a02c1de845df8b031755aff9a344674366cee6d23a1e3bda6c176',1,'mutation.h']]],
   ['destroys_5ftriffid_5fgrove_312',['destroys_triffid_grove',['../event_8h.html#a430b444c74dd3fd1472a31714ec5f1cea7176e453815ab2a3439511f8e6be2f86',1,'event.h']]],
   ['destructive_5factivity_313',['destructive_activity',['../namespacesounds.html#af6b3d144906d9ccfda6824fb87e46aa3ae7fa8ac1823cff415437b77e46942f00',1,'sounds']]],
-  ['dexterity_314',['DEXTERITY',['../character__stat_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a66212c9f367544fe9bffff62900c6203',1,'DEXTERITY():&#160;character_stat.h'],['../namespaceenchant__vals.html#acd6a6ebb27f9ecb82b3bce1d3aef2998a66212c9f367544fe9bffff62900c6203',1,'enchant_vals::DEXTERITY()']]],
+  ['dexterity_314',['DEXTERITY',['../character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a66212c9f367544fe9bffff62900c6203',1,'DEXTERITY():&#160;character.h'],['../namespaceenchant__vals.html#acd6a6ebb27f9ecb82b3bce1d3aef2998a66212c9f367544fe9bffff62900c6203',1,'enchant_vals::DEXTERITY()']]],
   ['diazepam_315',['DIAZEPAM',['../pldata_8h.html#abffc2f52fa6cfeac2e388c6de0ac295ba7a81deeba31284628b2578c7df89fde8',1,'pldata.h']]],
   ['dies_5ffrom_5fasthma_5fattack_316',['dies_from_asthma_attack',['../event_8h.html#a430b444c74dd3fd1472a31714ec5f1cea0656734d6a53b3af8996f7ef89f7af00',1,'event.h']]],
   ['dies_5ffrom_5fdrug_5foverdose_317',['dies_from_drug_overdose',['../event_8h.html#a430b444c74dd3fd1472a31714ec5f1cea1a30eda4e4958583de1a74ed1a215d4f',1,'event.h']]],
@@ -348,6 +348,6 @@ var searchData=
   ['dt_5fnull_345',['DT_NULL',['../damage_8h.html#ae63a2cf8429f9edf77b547d34ffe4e7aa72a55d767311e078564d195eefa4cafc',1,'damage.h']]],
   ['dt_5fstab_346',['DT_STAB',['../damage_8h.html#ae63a2cf8429f9edf77b547d34ffe4e7aa12e559f29e023db673e9251b9337d8dd',1,'damage.h']]],
   ['dt_5ftrue_347',['DT_TRUE',['../damage_8h.html#ae63a2cf8429f9edf77b547d34ffe4e7aa64ca6840e504bdf899795e9e112d9077',1,'damage.h']]],
-  ['dummy_5fstat_348',['DUMMY_STAT',['../character__stat_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a308f546dec073d676fe48face3d09056',1,'character_stat.h']]],
+  ['dummy_5fstat_348',['DUMMY_STAT',['../character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755a308f546dec073d676fe48face3d09056',1,'character.h']]],
   ['duration_349',['duration',['../namespacefields.html#af8bc739ca8fbe535a44afc02da973280ab85ec314bf443b797ef8a66b3b03f8a4',1,'fields']]]
 ];

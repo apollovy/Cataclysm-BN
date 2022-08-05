@@ -275,7 +275,7 @@ var searchData=
   ['toxin_272',['TOXIN',['../vitamin_8h.html#a1614a36ad4442e08210a822735541012af75665d66a2453183e0f0a8d77a779ad',1,'vitamin.h']]],
   ['tracked_5fflag_273',['tracked_flag',['../structvehicle__part.html#a6944258e64f01a23d5ea254ad2fe71eaa1a8e65b4ccc32e8654446910b6a5c51e',1,'vehicle_part']]],
   ['trait_5fid_274',['trait_id',['../cata__variant_8h.html#adfe42687fffdd05d233096b4e7dac2f4ad03d97c03c94cd08796f4787856af713',1,'cata_variant.h']]],
-  ['traits_275',['traits',['../namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09ab4a7cb107b59ab9d38b92d8f65efc29a',1,'anonymous_namespace{character_display.cpp}']]],
+  ['traits_275',['traits',['../namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1ab4a7cb107b59ab9d38b92d8f65efc29a',1,'anonymous_namespace{player_display.cpp}']]],
   ['transfer_276',['TRANSFER',['../structpoints__left.html#ab75600e756b02407392cd8b6c3406423affd1fcba65029ab64ab0b38467729704',1,'points_left']]],
   ['transfer_5fall_5fmoney_277',['transfer_all_money',['../classanonymous__namespace_02iexamine_8cpp_03_1_1atm__menu.html#af172b0bce13bfa8cd3542317e7be55dba0ce3989cd37505501d6341f39e849dd2',1,'anonymous_namespace{iexamine.cpp}::atm_menu']]],
   ['trap_5fstr_5fid_278',['trap_str_id',['../cata__variant_8h.html#adfe42687fffdd05d233096b4e7dac2f4afa733ad49aa7cb511c8acdc6604fcfed',1,'cata_variant.h']]],

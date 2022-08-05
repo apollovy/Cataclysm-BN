@@ -56,7 +56,7 @@ var searchData=
   ['next_5fpart_5fto_5fopen_53',['next_part_to_open',['../classvehicle.html#aa3c434ad827415575b465480af310487',1,'vehicle']]],
   ['next_5fselectable_5findex_54',['next_selectable_index',['../classinventory__column.html#a4a9f13b42c9f130960860e4e876bd9c4',1,'inventory_column']]],
   ['next_5fstring_55',['next_string',['../classJsonArray.html#a0b9f2991ca4cbc0d3181d1c87314067d',1,'JsonArray']]],
-  ['next_5ftab_56',['next_tab',['../character__display_8cpp.html#aff85b90ff0657f35a4cecd1b889f97ef',1,'character_display.cpp']]],
+  ['next_5ftab_56',['next_tab',['../player__display_8cpp.html#aff85b90ff0657f35a4cecd1b889f97ef',1,'player_display.cpp']]],
   ['next_5fter_57',['next_ter',['../classter__furn__transform.html#ad46a75251e0c0482a0cb0a197bac814d',1,'ter_furn_transform::next_ter(const std::string &amp;flag) const'],['../classter__furn__transform.html#a96f1b8ac5c5ac873e09c6c29c9fb808a',1,'ter_furn_transform::next_ter(const ter_str_id &amp;ter) const']]],
   ['next_5fupgrade_58',['next_upgrade',['../classbasecamp.html#a91a411d614d10dc5c507058518613740',1,'basecamp']]],
   ['next_5fupgrade_5ftime_59',['next_upgrade_time',['../classmonster.html#af6d05a3d7157530aba98073fd5166607',1,'monster']]],
