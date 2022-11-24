@@ -28,10 +28,13 @@
 #include "cata_utility.h"
 #include "catacharset.h"
 #include "character.h"
+#include "character_functions.h"
 #include "colony.h"
 #include "flag.h"
 #include "color.h"
 #include "construction.h"
+#include "construction_group.h"
+#include "construction_partial.h"
 #include "coordinate_conversions.h"
 #include "craft_command.h"
 #include "creature.h"
@@ -65,6 +68,7 @@
 #include "map.h"
 #include "map_iterator.h"
 #include "map_selector.h"
+#include "map_functions.h"
 #include "mapdata.h"
 #include "material.h"
 #include "messages.h"
@@ -98,6 +102,7 @@
 #include "units.h"
 #include "units_utility.h"
 #include "value_ptr.h"
+#include "vehicle.h"
 #include "vpart_position.h"
 #include "weather.h"
 
@@ -207,6 +212,7 @@ static const bionic_id bio_painkiller( "bio_painkiller" );
 static const bionic_id bio_power_storage( "bio_power_storage" );
 static const bionic_id bio_power_storage_mkII( "bio_power_storage_mkII" );
 
+static const std::string flag_AUTODOC( "AUTODOC" );
 static const std::string flag_AUTODOC_COUCH( "AUTODOC_COUCH" );
 static const std::string flag_BARRICADABLE_WINDOW_CURTAINS( "BARRICADABLE_WINDOW_CURTAINS" );
 static const std::string flag_CLOSES_PORTAL( "CLOSES_PORTAL" );
@@ -953,7 +959,7 @@ void iexamine::elevator( player &p, const tripoint &examp )
 }
 
 /**
- * Open gate.
+ * Open or close gate.
  */
 void iexamine::controls_gate( player &p, const tripoint &examp )
 {
@@ -961,7 +967,7 @@ void iexamine::controls_gate( player &p, const tripoint &examp )
         none( p, examp );
         return;
     }
-    g->open_gate( examp );
+    g->toggle_gate( examp );
 }
 
 static bool try_start_hacking( player &p, const tripoint &examp )
@@ -1456,57 +1462,32 @@ void iexamine::gunsafe_el( player &p, const tripoint &examp )
     }
 }
 
-/**
- * Checks whether PC has a crowbar then calls iuse.crowbar.
- */
-void iexamine::locked_object( player &p, const tripoint &examp )
+static safe_reference<item> find_best_prying_tool( player &p )
 {
-    auto prying_items = p.crafting_inventory().items_with( []( const item & it ) -> bool {
-        item temporary_item( it.type );
-        return temporary_item.has_quality( quality_id( "PRY" ), 1 );
+    std::vector<item *> prying_items = p.items_with( []( const item & it ) {
+        // we want to get worn items (eg crowbar in toolbelt), so no check on item position
+        return it.has_quality( quality_id( "PRY" ), 1 );
     } );
-
-    map &here = get_map();
-    if( prying_items.empty() ) {
-        add_msg( m_info, _( "The %s is locked.  If only you had something to pry it with…" ),
-                 here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ) );
-        return;
-    }
 
     // Sort by their quality level.
     std::sort( prying_items.begin(), prying_items.end(), []( const item * a, const item * b ) -> bool {
         return a->get_quality( quality_id( "PRY" ) ) > b->get_quality( quality_id( "PRY" ) );
     } );
 
-    //~ %1$s: terrain/furniture name, %2$s: prying tool name
-    p.add_msg_if_player( _( "You attempt to pry open the %1$s using your %2$s…" ),
-                         here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ), prying_items[0]->tname() );
-
     // if crowbar() ever eats charges or otherwise alters the passed item, rewrite this to reflect
     // changes to the original item.
-    item temporary_item( prying_items[0]->type );
-    iuse::crowbar( &p, &temporary_item, false, examp );
+    if( prying_items.empty() ) {
+        return safe_reference<item>();
+    }
+    return ( *prying_items[0] ).get_safe_reference();
 }
 
-/**
-* Checks whether PC has picklocks then calls pick_lock_actor.
-*/
-void iexamine::locked_object_pickable( player &p, const tripoint &examp )
+static safe_reference<item> find_best_lock_picking_tool( player &p )
 {
-    std::vector<item *> picklocks = p.items_with( [&p]( const item & it ) {
-        // Don't search for worn items such as hairpins
-        if( p.get_item_position( &it ) >= -1 ) {
-            return it.type->get_use( "picklock" ) != nullptr;
-        }
-        return false;
+    std::vector<item *> picklocks = p.items_with( []( const item & it ) {
+        // we want to get worn items (eg hairpin), so no check on item position
+        return it.type->get_use( "picklock" ) != nullptr;
     } );
-
-    map &here = get_map();
-    if( picklocks.empty() ) {
-        add_msg( m_info, _( "The %s is locked.  If only you had something to pick its lock with…" ),
-                 here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ) );
-        return;
-    }
 
     // Sort by their picklock level.
     std::sort( picklocks.begin(), picklocks.end(), [&]( const item * a, const item * b ) {
@@ -1517,19 +1498,86 @@ void iexamine::locked_object_pickable( player &p, const tripoint &examp )
         return actor_a->pick_quality > actor_b->pick_quality;
     } );
 
-    for( item *it : picklocks ) {
-        const auto actor = dynamic_cast<const pick_lock_actor *>
-                           ( it->type->get_use( "picklock" )->get_actor_ptr() );
-        p.add_msg_if_player( _( "You attempt to pick lock of %1$s using your %2$s…" ),
-                             here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ), it->tname() );
-        const ret_val<bool> can_use = actor->can_use( p, *it, false, examp );
-        if( can_use.success() ) {
-            actor->use( p, *it, false, examp );
-            return;
-        } else {
-            p.add_msg_if_player( m_bad, can_use.str() );
-        }
+    if( picklocks.empty() ) {
+        return safe_reference<item>();
     }
+
+    return ( *picklocks[0] ).get_safe_reference();
+}
+
+static void apply_prying_tool( player &p, item *it, const tripoint &examp )
+{
+    map &here = get_map();
+    //~ %1$s: terrain/furniture name, %2$s: prying tool name
+    p.add_msg_if_player( _( "You attempt to pry open the %1$s using your %2$s…" ),
+                         here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ), it->tname() );
+
+    // if crowbar() ever eats charges or otherwise alters the passed item, rewrite this to reflect
+    // changes to the original item.
+    iuse::crowbar( &p, it, false, examp );
+}
+
+static void apply_lock_picking_tool( player &p, item *it, const tripoint &examp )
+{
+    map &here = get_map();
+
+    const auto actor = dynamic_cast<const pick_lock_actor *>
+                       ( it->type->get_use( "picklock" )->get_actor_ptr() );
+    p.add_msg_if_player( _( "You attempt to pick lock of %1$s using your %2$s…" ),
+                         here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ), it->tname() );
+    const ret_val<bool> can_use = actor->can_use( p, *it, false, examp );
+    if( can_use.success() ) {
+        actor->use( p, *it, false, examp );
+        return;
+    } else {
+        p.add_msg_if_player( m_bad, can_use.str() );
+    }
+}
+
+/**
+ * Checks whether PC has a crowbar then calls iuse.crowbar.
+ */
+void iexamine::locked_object( player &p, const tripoint &examp )
+{
+    map &here = get_map();
+
+    safe_reference<item> prying_tool = find_best_prying_tool( p );
+    if( prying_tool ) {
+        apply_prying_tool( p, prying_tool.get(), examp );
+        return;
+    }
+
+    // if the furniture/terrain is also lockpickable
+    if( here.has_flag_ter_or_furn( "LOCKED", examp ) ) {
+        safe_reference<item> lock_picking_tool = find_best_lock_picking_tool( p );
+        if( lock_picking_tool ) {
+            apply_lock_picking_tool( p, lock_picking_tool.get(), examp );
+        } else {
+            add_msg( m_info, _( "The %s is locked.  If only you had something to pry it or pick its lock…" ),
+                     here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ) );
+        }
+        return;
+    }
+
+    add_msg( m_info, _( "The %s is locked.  If only you had something to pry it…" ),
+             here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ) );
+}
+
+/**
+* Checks whether PC has picklocks then calls pick_lock_actor.
+*/
+void iexamine::locked_object_pickable( player &p, const tripoint &examp )
+{
+    map &here = get_map();
+
+    safe_reference<item> lock_picking_tool = find_best_lock_picking_tool( p );
+    if( lock_picking_tool ) {
+        apply_lock_picking_tool( p, lock_picking_tool.get(), examp );
+        return;
+    }
+
+    add_msg( m_info, _( "The %s is locked.  If only you had something to pick its lock…" ),
+             here.has_furn( examp ) ? here.furnname( examp ) : here.tername( examp ) );
 }
 
 void iexamine::bulletin_board( player &p, const tripoint &examp )
@@ -3748,17 +3796,17 @@ void iexamine::trap( player &p, const tripoint &examp )
     if( tr.loadid == tr_unfinished_construction || here.partial_con_at( examp ) ) {
         partial_con *pc = here.partial_con_at( examp );
         if( pc ) {
-            if( g->u.fine_detail_vision_mod() > 4 && !g->u.has_trait( trait_DEBUG_HS ) ) {
+            if( !character_funcs::can_see_fine_details( p ) && !p.has_trait( trait_DEBUG_HS ) ) {
                 add_msg( m_info, _( "It is too dark to construct right now." ) );
                 return;
             }
             const construction &built = pc->id.obj();
             if( !query_yn( _( "Unfinished task: %s, %d%% complete here, continue construction?" ),
-                           built.description, pc->counter / 100000 ) ) {
+                           built.group->name(), pc->counter / 100000 ) ) {
                 if( query_yn( _( "Cancel construction?" ) ) ) {
                     here.disarm_trap( examp );
                     for( const item &it : pc->components ) {
-                        here.add_item_or_charges( g->u.pos(), it );
+                        here.add_item_or_charges( p.pos(), it );
                     }
                     here.partial_con_remove( examp );
                     return;
@@ -3766,8 +3814,8 @@ void iexamine::trap( player &p, const tripoint &examp )
                     return;
                 }
             } else {
-                g->u.assign_activity( ACT_BUILD );
-                g->u.activity.placement = here.getabs( examp );
+                p.assign_activity( ACT_BUILD );
+                p.activity.placement = here.getabs( examp );
                 return;
             }
         } else {
@@ -4518,7 +4566,7 @@ void iexamine::ledge( player &p, const tripoint &examp )
             }
 
             const bool has_grapnel = p.has_amount( itype_grapnel, 1 );
-            const int climb_cost = p.climbing_cost( where, examp );
+            const int climb_cost = map_funcs::climbing_cost( here, where, examp );
             const auto fall_mod = p.fall_damage_mod();
             std::string query_str = vgettext( "Looks like %d story.  Jump down?",
                                               "Looks like %d stories.  Jump down?",
@@ -4602,17 +4650,16 @@ static player &player_on_couch( player &p, const tripoint &autodoc_loc, player &
                                 bool &adjacent_couch, tripoint &couch_pos )
 {
     map &here = get_map();
-    for( const auto &couch_loc : here.points_in_radius( autodoc_loc, 1 ) ) {
-        if( here.has_flag_furn( flag_AUTODOC_COUCH, couch_loc ) ) {
-            adjacent_couch = true;
-            couch_pos = couch_loc;
-            if( p.pos() == couch_loc ) {
-                return p;
-            }
-            for( const npc *e : g->allies() ) {
-                if( e->pos() == couch_loc ) {
-                    return  *g->critter_by_id<player>( e->getID() );
-                }
+    for( const auto &couch_loc : here.find_furnitures_or_vparts_with_flag_in_radius( autodoc_loc, 1,
+            flag_AUTODOC_COUCH ) ) {
+        adjacent_couch = true;
+        couch_pos = couch_loc;
+        if( p.pos() == couch_loc ) {
+            return p;
+        }
+        for( const npc *e : g->allies() ) {
+            if( e->pos() == couch_loc ) {
+                return  *g->critter_by_id<player>( e->getID() );
             }
         }
     }
@@ -4624,7 +4671,7 @@ static Character &operator_present( Character &p, const tripoint &autodoc_loc,
 {
     map &here = get_map();
     for( const auto &loc : here.points_in_radius( autodoc_loc, 1 ) ) {
-        if( !here.has_flag_furn( flag_AUTODOC_COUCH, loc ) ) {
+        if( !here.has_flag_furn_or_vpart( flag_AUTODOC_COUCH, loc ) ) {
             if( p.pos() == loc ) {
                 return p;
             }
@@ -4647,6 +4694,22 @@ static item &cyborg_on_couch( const tripoint &couch_pos, item &null_cyborg )
         if( it.typeId() == itype_corpse ) {
             if( it.get_mtype()->id == mon_broken_cyborg || it.get_mtype()->id == mon_prototype_cyborg ) {
                 return it;
+            }
+        }
+    }
+    // if we're in a autodoc couch on a vehicle, go through the items in it, and return the item if's a cyborg
+    if( const cata::optional<vpart_reference> vp = get_map().veh_at( couch_pos ).part_with_feature(
+                flag_AUTODOC_COUCH, false ) ) {
+        auto dest_veh = &vp->vehicle();
+        int dest_part = vp->part_index();
+        for( item &it : dest_veh->get_items( dest_part ) ) {
+            if( it.typeId() == itype_bot_broken_cyborg || it.typeId() == itype_bot_prototype_cyborg ) {
+                return it;
+            }
+            if( it.typeId() == itype_corpse ) {
+                if( it.get_mtype()->id == mon_broken_cyborg || it.get_mtype()->id == mon_prototype_cyborg ) {
+                    return it;
+                }
             }
         }
     }
@@ -4804,12 +4867,27 @@ void iexamine::autodoc( player &p, const tripoint &examp )
     std::vector<item> arm_splints;
     std::vector<item> leg_splints;
 
+    // find splints on the ground
     for( const item &supplies : get_map().i_at( examp ) ) {
         if( supplies.typeId() == itype_arm_splint ) {
             arm_splints.push_back( supplies );
         }
         if( supplies.typeId() == itype_leg_splint ) {
             leg_splints.push_back( supplies );
+        }
+    }
+    // find splints in vehicle
+    if( const cata::optional<vpart_reference> vp = get_map().veh_at( examp ).part_with_feature(
+                flag_AUTODOC, false ) ) {
+        auto dest_veh = &vp->vehicle();
+        int dest_part = vp->part_index();
+        for( item &it : dest_veh->get_items( dest_part ) ) {
+            if( it.typeId() == itype_arm_splint ) {
+                arm_splints.push_back( it );
+            }
+            if( it.typeId() == itype_leg_splint ) {
+                leg_splints.push_back( it );
+            }
         }
     }
 
@@ -5322,7 +5400,7 @@ void iexamine::mill_finalize( player &, const tripoint &examp, const time_point 
         if( it.type->milling_data ) {
             it.calc_rot_while_processing( milling_time );
             const islot_milling &mdata = *it.type->milling_data;
-            item result( mdata.into_, start_time + milling_time, it.charges * mdata.conversion_rate_ );
+            item result( mdata.into_, start_time + milling_time, it.count() * mdata.conversion_rate_ );
             result.components.push_back( it );
             // copied from item::inherit_flags, which can not be called here because it requires a recipe.
             for( const std::string &f : it.type->item_tags ) {
@@ -5549,7 +5627,7 @@ static void mill_load_food( player &p, const tripoint &examp,
     }
 
     if( comps.empty() ) {
-        p.add_msg_if_player( _( "You don't have any products that can be milled." ) );
+        p.add_msg_if_player( _( "You don't have any materials that can be milled." ) );
         return;
     }
 
@@ -5728,13 +5806,19 @@ void iexamine::quern_examine( player &p, const tripoint &examp )
             if( items_here.empty() ) {
                 pop += _( "…that it is empty." );
             } else {
+                std::map<item, int> mill_list;
                 for( const item &it : items_here ) {
                     if( it.typeId() == itype_fake_milling_item ) {
-                        pop += "\n" + colorize( _( "You see some grains that are not yet milled to fine flour." ),
+                        pop += "\n" + colorize( _( "You see that the milling process is not yet complete." ),
                                                 c_red ) + "\n";
                         continue;
                     }
-                    pop += "-> " + item::nname( it.typeId(), it.charges ) + " (" + std::to_string( it.charges ) + ")\n";
+                    mill_list[it] += it.count();
+                }
+                for( auto it_mill : mill_list ) {
+                    pop += "-> " + item::nname( it_mill.first.typeId(),
+                                                it_mill.first.count() ) + ( ( it_mill.second > 1 ) ? " (" + std::to_string(
+                                                            it_mill.second ) + ")\n" : "\n" );
                 }
             }
             popup( pop, PF_NONE );
@@ -6074,6 +6158,17 @@ void iexamine::check_power( player &, const tripoint &examp )
     add_msg( m_info, _( "This electric grid stores %d kJ of electric power." ), amt );
 }
 
+void iexamine::migo_nerve_cluster( player &p, const tripoint &examp )
+{
+    map &here = get_map();
+    if( query_yn( _( "This looks important.  Tear open nerve cluster?" ) ) ) {
+        p.mod_moves( -200 );
+        add_msg( _( "You grab hold of a sinewy tendril and wrench it loose!" ) );
+        map_funcs::migo_nerve_cage_removal( here, examp, false );
+        here.furn_set( examp, furn_id( "f_alien_scar" ) );
+    }
+}
+
 /**
  * Given then name of one of the above functions, returns the matching function
  * pointer. If no match is found, defaults to iexamine::none but prints out a
@@ -6166,6 +6261,7 @@ iexamine_function iexamine_function_from_string( const std::string &function_nam
             { "workbench", &iexamine::workbench },
             { "dimensional_portal", &iexamine::dimensional_portal },
             { "check_power", &iexamine::check_power },
+            { "migo_nerve_cluster", &iexamine::migo_nerve_cluster },
         }
     };
 

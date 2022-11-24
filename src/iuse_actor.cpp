@@ -22,6 +22,7 @@
 #include "calendar.h"
 #include "cata_utility.h"
 #include "character.h"
+#include "character_functions.h"
 #include "character_id.h"
 #include "clothing_mod.h"
 #include "crafting.h"
@@ -563,15 +564,14 @@ int explosion_iuse::use( player &p, item &it, bool t, const tripoint &pos ) cons
         }
         return 0;
     }
-
-    trigger_explosion( pos );
+    trigger_explosion( pos, it.activated_by.get() );
     return 1;
 }
 
-void explosion_iuse::trigger_explosion( const tripoint &pos ) const
+void explosion_iuse::trigger_explosion( const tripoint &pos, Creature *source ) const
 {
     if( explosion ) {
-        explosion_handler::explosion( pos, explosion );
+        explosion_handler::explosion( pos, explosion, source );
     }
 
     if( draw_explosion_radius >= 0 ) {
@@ -1144,7 +1144,7 @@ void pick_lock_actor::load( const JsonObject &obj )
     pick_quality = obj.get_int( "pick_quality" );
 }
 
-int pick_lock_actor::use( player &p, item &it, bool, const tripoint & ) const
+int pick_lock_actor::use( player &p, item &it, bool, const tripoint &t ) const
 {
     if( p.is_npc() ) {
         return 0;
@@ -1155,24 +1155,26 @@ int pick_lock_actor::use( player &p, item &it, bool, const tripoint & ) const
         return 0;
     }
 
-    const std::function<bool( const tripoint & )> f = []( const tripoint & pnt ) {
+    map &here = get_map();
+
+    const std::function<bool( const tripoint & )> f = [&here]( const tripoint & pnt ) {
         if( pnt == g->u.pos() ) {
             return false;
         }
-        const ter_id ter = g->m.ter( pnt );
-        const furn_id furn = g->m.furn( pnt );
+        const ter_id ter = here.ter( pnt );
+        const furn_id furn = here.furn( pnt );
         lockpicking_open_result result = get_lockpicking_open_result( ter, furn );
         const bool is_allowed = result.new_ter_type || result.new_furn_type;
         return is_allowed;
     };
 
-    const cata::optional<tripoint> pnt_ = choose_adjacent_highlight(
+    const cata::optional<tripoint> pnt_ = ( t != p.pos() ) ? t : choose_adjacent_highlight(
             _( "Use your lockpick where?" ), _( "There is nothing to lockpick nearby." ), f, false );
     if( !pnt_ ) {
         return 0;
     }
     const tripoint &pnt = *pnt_;
-    const ter_id type = g->m.ter( pnt );
+    const ter_id type = here.ter( pnt );
     if( !f( pnt ) ) {
         if( pnt == p.pos() ) {
             p.add_msg_if_player( m_info, _( "You pick your nose and your sinuses swing open." ) );
@@ -1345,7 +1347,7 @@ int reveal_map_actor::use( player &p, item &it, bool, const tripoint & ) const
         p.add_msg_if_player( _( "You should read your %s when you get to the surface." ),
                              it.tname() );
         return 0;
-    } else if( p.fine_detail_vision_mod() > 4 ) {
+    } else if( !character_funcs::can_see_fine_details( p ) ) {
         p.add_msg_if_player( _( "It's too dark to read." ) );
         return 0;
     }
@@ -1597,7 +1599,7 @@ bool salvage_actor::try_to_cut_up( player &p, item &it ) const
     // There must be some historical significance to these items.
     if( !it.is_salvageable() ) {
         add_msg( m_info, _( "Can't salvage anything from %s." ), it.tname() );
-        if( p.rate_action_disassemble( it ) != hint_rating::cant ) {
+        if( recipe_dictionary::get_uncraft( it.typeId() ) ) {
             add_msg( m_info, _( "Try disassembling the %s instead." ), it.tname() );
         }
         return false;
@@ -2020,7 +2022,7 @@ int enzlave_actor::use( player &p, item &it, bool t, const tripoint & ) const
         p.add_msg_if_player( m_info, _( "You cannot do that while mounted." ) );
         return 0;
     }
-    map_stack items = g->m.i_at( point( p.posx(), p.posy() ) );
+    map_stack items = get_map().i_at( point( p.posx(), p.posy() ) );
     std::vector<const item *> corpses;
 
     for( item &corpse_candidate : items ) {
@@ -2473,7 +2475,7 @@ void learn_spell_actor::info( const item &, std::vector<iteminfo> &dump ) const
 
 int learn_spell_actor::use( player &p, item &, bool, const tripoint & ) const
 {
-    if( p.fine_detail_vision_mod() > 4 ) {
+    if( !character_funcs::can_see_fine_details( p ) ) {
         p.add_msg_if_player( _( "It's too dark to read." ) );
         return 0;
     }
@@ -2986,7 +2988,7 @@ int ammobelt_actor::use( player &p, item &, bool, const tripoint & ) const
     item mag( belt );
     mag.ammo_unset();
 
-    if( p.rate_action_reload( mag ) != hint_rating::good ) {
+    if( !p.can_reload( mag ) ) {
         p.add_msg_if_player( _( "Insufficient ammunition to assemble %s" ), mag.tname() );
         return 0;
     }
@@ -3038,7 +3040,7 @@ bool repair_item_actor::can_use_tool( const player &p, const item &tool, bool pr
         }
         return false;
     }
-    if( p.fine_detail_vision_mod() > 4 ) {
+    if( !character_funcs::can_see_fine_details( p ) ) {
         if( print_msg ) {
             p.add_msg_if_player( m_info, _( "You can't see to do that!" ) );
         }
@@ -4728,7 +4730,7 @@ int sew_advanced_actor::use( player &p, item &it, bool, const tripoint & ) const
         return 0;
     }
 
-    if( p.fine_detail_vision_mod() > 4 ) {
+    if( !character_funcs::can_see_fine_details( p ) ) {
         add_msg( m_info, _( "You can't see to sew!" ) );
         return 0;
     }
@@ -4894,7 +4896,8 @@ int sew_advanced_actor::use( player &p, item &it, bool, const tripoint & ) const
 
     std::vector<item_comp> comps;
     comps.push_back( item_comp( repair_item, items_needed ) );
-    p.moves -= to_moves<int>( 30_seconds * p.fine_detail_vision_mod() );
+    // TODO: this may take up to 2 minutes, and so should start an activity instead
+    p.moves -= to_moves<int>( 30_seconds * character_funcs::fine_detail_vision_mod( p ) );
     p.practice( used_skill, items_needed * 3 + 3 );
     /** @EFFECT_TAILOR randomly improves clothing modification efforts */
     int rn = dice( 3, 2 + p.get_skill_level( used_skill ) ); // Skill

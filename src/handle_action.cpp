@@ -18,14 +18,18 @@
 #include "calendar.h"
 #include "catacharset.h"
 #include "character.h"
+#include "character_display.h"
 #include "character_martial_arts.h"
 #include "clzones.h"
 #include "color.h"
 #include "construction.h"
+#include "crafting.h"
 #include "cursesdef.h"
 #include "damage.h"
 #include "debug.h"
 #include "debug_menu.h"
+#include "diary.h"
+#include "distraction_manager.h"
 #include "faction.h"
 #include "field.h"
 #include "field_type.h"
@@ -804,7 +808,7 @@ static void smash()
             }
         }
 
-        if( !here.has_floor_or_support( u.pos() ) ) {
+        if( !here.has_floor_or_support( u.pos() ) && !here.has_flag_ter( "GOES_DOWN", u.pos() ) ) {
             cata::optional<tripoint> to_safety;
             while( true ) {
                 to_safety = choose_direction( _( "Floor below destroyed!  Move where?" ) );
@@ -1466,6 +1470,7 @@ static void cast_spell()
     cast_spell.name = sp.id().c_str();
     if( u.magic->casting_ignore ) {
         const std::vector<distraction_type> ignored_distractions = {
+            distraction_type::alert,
             distraction_type::noise,
             distraction_type::pain,
             distraction_type::attacked,
@@ -1473,7 +1478,6 @@ static void cast_spell()
             distraction_type::hostile_spotted_far,
             distraction_type::talked_to,
             distraction_type::asthma,
-            distraction_type::motion_alarm,
             distraction_type::weather_change
         };
         for( const distraction_type ignored : ignored_distractions ) {
@@ -2016,7 +2020,7 @@ bool game::handle_action()
                 break;
 
             case ACTION_WIELD:
-                wield();
+                avatar_action::wield();
                 break;
 
             case ACTION_PICK_STYLE:
@@ -2024,15 +2028,15 @@ bool game::handle_action()
                 break;
 
             case ACTION_RELOAD_ITEM:
-                reload_item();
+                avatar_action::reload_item();
                 break;
 
             case ACTION_RELOAD_WEAPON:
-                reload_weapon();
+                avatar_action::reload_weapon();
                 break;
 
             case ACTION_RELOAD_WIELDED:
-                reload_wielded();
+                avatar_action::reload_wielded();
                 break;
 
             case ACTION_UNLOAD:
@@ -2143,7 +2147,7 @@ bool game::handle_action()
                 } else if( u.is_mounted() ) {
                     add_msg( m_info, _( "You can't disassemble items while you're riding." ) );
                 } else {
-                    u.disassemble();
+                    crafting::disassemble( u );
                 }
                 break;
 
@@ -2242,6 +2246,7 @@ bool game::handle_action()
             case ACTION_SUICIDE:
                 if( query_yn( _( "Commit suicide?" ) ) ) {
                     if( query_yn( _( "REALLY commit suicide?" ) ) ) {
+                        u.apply_damage( &u, body_part_head, 99999 );
                         u.moves = 0;
                         u.place_corpse();
                         uquit = QUIT_SUICIDE;
@@ -2267,7 +2272,7 @@ bool game::handle_action()
                 return false;
 
             case ACTION_PL_INFO:
-                u.disp_info();
+                character_display::disp_info( u );
                 break;
 
             case ACTION_MAP:
@@ -2288,6 +2293,10 @@ bool game::handle_action()
 
             case ACTION_SCORES:
                 show_scores_ui( *achievements_tracker_ptr, stats(), get_kill_tracker() );
+                break;
+
+            case ACTION_DIARY:
+                diary::show_diary_ui( u.get_avatar_diary() );
                 break;
 
             case ACTION_FACTIONS:
@@ -2320,6 +2329,10 @@ bool game::handle_action()
 
             case ACTION_SAFEMODE:
                 get_safemode().show();
+                break;
+
+            case ACTION_DISTRACTION_MANAGER:
+                get_distraction_manager().show();
                 break;
 
             case ACTION_COLOR:

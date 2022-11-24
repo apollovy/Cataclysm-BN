@@ -20,6 +20,7 @@
 #include "cata_utility.h"
 #include "character.h"
 #include "character_martial_arts.h"
+#include "character_stat.h"
 #include "colony.h"
 #include "color.h"
 #include "consistency_report.h"
@@ -145,7 +146,6 @@ static const skill_id skill_mechanics( "mechanics" );
 static const bionic_id bio_adrenaline( "bio_adrenaline" );
 static const bionic_id bio_advreactor( "bio_advreactor" );
 static const bionic_id bio_ads( "bio_ads" );
-static const bionic_id bio_blaster( "bio_blaster" );
 static const bionic_id bio_blood_anal( "bio_blood_anal" );
 static const bionic_id bio_blood_filter( "bio_blood_filter" );
 static const bionic_id bio_cqb( "bio_cqb" );
@@ -180,7 +180,6 @@ static const bionic_id bio_tools( "bio_tools" );
 static const bionic_id bio_torsionratchet( "bio_torsionratchet" );
 static const bionic_id bio_water_extractor( "bio_water_extractor" );
 static const bionic_id bionic_TOOLS_EXTEND( "bio_tools_extend" );
-// Aftershock stuff!
 static const bionic_id afs_bio_dopamine_stimulators( "afs_bio_dopamine_stimulators" );
 
 static const trait_id trait_CENOBITE( "CENOBITE" );
@@ -282,7 +281,7 @@ void bionic_data::reset()
 
 void bionic_data::load( const JsonObject &jsobj, const std::string src )
 {
-    bool strict = src == "dda";
+    const bool strict = is_strict_enabled( src );
 
     mandatory( jsobj, was_loaded, "name", name );
     mandatory( jsobj, was_loaded, "description", description );
@@ -533,8 +532,8 @@ bool Character::activate_bionic( int b, bool eff_only )
     bionic &bio = ( *my_bionics )[b];
     const bool mounted = is_mounted();
     if( bio.incapacitated_time > 0_turns ) {
-        add_msg( m_info, _( "Your %s is shorting out and can't be activated." ),
-                 bio.info().name );
+        add_msg_if_player( m_info, _( "Your %s is shorting out and can't be activated." ),
+                           bio.info().name );
         return false;
     }
 
@@ -907,8 +906,8 @@ bool Character::activate_bionic( int b, bool eff_only )
         sw.force = 4;
         sw.stun = 2;
         sw.dam_mult = 8;
-
-        explosion_handler::shockwave( pos(), sw, "explosion" );
+        // affects_player is always false, so assuming the player is always the source of this
+        explosion_handler::shockwave( pos(), sw, "explosion", &get_player_character() );
         add_msg_if_player( m_neutral, _( "You unleash a powerful shockwave!" ) );
         mod_moves( -100 );
     } else if( bio.id == bio_meteorologist ) {
@@ -1067,8 +1066,8 @@ bool Character::deactivate_bionic( int b, bool eff_only )
     bionic &bio = ( *my_bionics )[b];
 
     if( bio.incapacitated_time > 0_turns ) {
-        add_msg( m_info, _( "Your %s is shorting out and can't be deactivated." ),
-                 bio.info().name );
+        add_msg_if_player( m_info, _( "Your %s is shorting out and can't be deactivated." ),
+                           bio.info().name );
         return false;
     }
 
@@ -1090,8 +1089,8 @@ bool Character::deactivate_bionic( int b, bool eff_only )
             return false;
         }
         if( get_power_level() < bio.info().power_deactivate ) {
-            add_msg( m_info, _( "You don't have the power to deactivate your %s." ),
-                     bio.info().name );
+            add_msg_if_player( m_info, _( "You don't have the power to deactivate your %s." ),
+                               bio.info().name );
             return false;
         }
 
@@ -1728,7 +1727,6 @@ void Character::process_bionic( int b )
             bio.energy_stored = 150_kJ;
         }
     } else if( bio.id == afs_bio_dopamine_stimulators ) {
-        // Aftershock
         add_morale( MORALE_FEELING_GOOD, 20, 20, 30_minutes, 20_minutes, true );
     }
 }
@@ -1920,12 +1918,6 @@ bool Character::can_uninstall_bionic( const bionic_id &b_id, player &installer, 
 
     if( !has_bionic( b_id ) ) {
         popup( _( "%s don't have this bionic installed." ), disp_name() );
-        return false;
-    }
-
-    if( b_id == bio_blaster ) {
-        popup( _( "Removing %s Fusion Blaster Arm would leave %s with a useless stump." ),
-               disp_name( true ), disp_name() );
         return false;
     }
 

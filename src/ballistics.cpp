@@ -16,7 +16,7 @@
 #include "debug.h"
 #include "dispersion.h"
 #include "enums.h"
-#include "explosion.h"
+#include "explosion_queue.h"
 #include "game.h"
 #include "item.h"
 #include "line.h"
@@ -25,7 +25,6 @@
 #include "monster.h"
 #include "optional.h"
 #include "options.h"
-#include "point.h"
 #include "projectile.h"
 #include "rng.h"
 #include "sounds.h"
@@ -403,6 +402,26 @@ dealt_projectile_attack projectile_attack( const projectile &proj_arg, const tri
                                       critter->ranged_target_size(), 0.4 );
         }
 
+        if( here.obstructed_by_vehicle_rotation( prev_point, tp ) ) {
+            //We're firing through an impassible gap in a rotated vehicle, randomly hit one of the two walls
+            tripoint rand = tp;
+            if( one_in( 2 ) ) {
+                rand.x = prev_point.x;
+            } else {
+                rand.y = prev_point.y;
+            }
+            if( in_veh == nullptr || veh_pointer_or_null( here.veh_at( rand ) ) != in_veh ) {
+                here.shoot( rand, proj, false );
+                if( proj.impact.total_damage() <= 0 ) {
+                    //If the projectile stops here move it back a square so it doesn't end up inside the vehicle
+                    traj_len = i - 1;
+                    tp = prev_point;
+                    break;
+                }
+            }
+        }
+
+
         if( critter != nullptr && cur_missed_by < 1.0 ) {
             if( in_veh != nullptr && veh_pointer_or_null( here.veh_at( tp ) ) == in_veh &&
                 critter->is_player() ) {
@@ -453,10 +472,10 @@ dealt_projectile_attack projectile_attack( const projectile &proj_arg, const tri
 
     drop_or_embed_projectile( attack );
 
-    apply_ammo_effects( tp, proj.get_ammo_effects() );
+    apply_ammo_effects( tp, proj.get_ammo_effects(), origin );
     const auto &expl = proj.get_custom_explosion();
     if( expl ) {
-        explosion_handler::explosion( tp, expl );
+        explosion_handler::explosion( tp, expl, origin );
     }
 
     // TODO: Move this outside now that we have hit point in return values?
@@ -485,7 +504,7 @@ dealt_projectile_attack projectile_attack( const projectile &proj_arg, const tri
                                      sfx::get_heard_volume( z.pos() ), sfx::get_heard_angle( z.pos() ) );
         }
     }
-
+    explosion_handler::get_explosion_queue().execute();
     return attack;
 }
 

@@ -31,6 +31,7 @@
 #include "melee.h"
 #include "messages.h"
 #include "mission.h"
+#include "mod_manager.h"
 #include "mondeath.h"
 #include "mondefense.h"
 #include "monfaction.h"
@@ -647,6 +648,15 @@ int monster::print_info( const catacurses::window &w, int vStart, int vLines, in
         wprintz( w, c_light_gray, _( " Difficulty " ) + std::to_string( type->difficulty ) );
     }
 
+    if( display_mod_source ) {
+        const std::string mod_src = enumerate_as_string( type->src.begin(),
+        type->src.end(), []( const std::pair<mtype_id, mod_id> &source ) {
+            return string_format( "'%s'", source.second->name() );
+        }, enumeration_conjunction::arrow );
+        vStart += fold_and_print( w, point( column, vStart + 1 ), getmaxx( w ) - 2, c_cyan,
+                                  string_format( _( "Origin: %s" ), mod_src ) );
+    }
+
     if( sees( g->u ) ) {
         mvwprintz( w, point( column, ++vStart ), c_yellow, _( "Aware of your presence!" ) );
     }
@@ -697,6 +707,16 @@ std::string monster::extended_description() const
             difficulty_str = _( "<color_red>Fatally dangerous!</color>" );
         }
     }
+
+    if( display_mod_source ) {
+        ss += _( "Origin: " );
+        ss += enumerate_as_string( type->src.begin(),
+        type->src.end(), []( const std::pair<mtype_id, mod_id> &source ) {
+            return string_format( "'%s'", source.second->name() );
+        }, enumeration_conjunction::arrow );
+    }
+
+    ss += "\n--\n";
 
     ss += string_format( _( "This is a %s.  %s %s" ), name(), att_colored,
                          difficulty_str ) + "\n";
@@ -1332,8 +1352,7 @@ bool monster::is_immune_damage( const damage_type dt ) const
         case DT_STAB:
             return false;
         case DT_HEAT:
-            // Ugly hardcode - remove later
-            return made_of( material_id( "steel" ) ) || made_of( material_id( "stone" ) );
+            return has_flag( MF_FIREPROOF );
         case DT_COLD:
             return false;
         case DT_ELECTRIC:
@@ -1374,7 +1393,6 @@ void monster::melee_attack( Creature &target )
 
 void monster::melee_attack( Creature &target, float accuracy )
 {
-    int hitspread = target.deal_melee_attack( this, melee::melee_hit_range( accuracy ) );
     mod_moves( -type->attack_cost );
     if( type->melee_dice == 0 ) {
         // We don't attack, so just return
@@ -1385,6 +1403,12 @@ void monster::melee_attack( Creature &target, float accuracy )
         // This happens sometimes
         return;
     }
+
+    if( !can_squeeze_to( target.pos() ) ) {
+        return;
+    }
+
+    int hitspread = target.deal_melee_attack( this, melee::melee_hit_range( accuracy ) );
 
     if( target.is_player() ||
         ( target.is_npc() && g->u.attitude_to( target ) == A_FRIENDLY ) ) {
@@ -2204,7 +2228,7 @@ void monster::process_turn()
                 const auto t = g->m.ter( zap );
                 if( t == ter_str_id( "t_gas_pump" ) || t == ter_str_id( "t_gas_pump_a" ) ) {
                     if( one_in( 4 ) ) {
-                        explosion_handler::explosion( pos(), 40, 0.8, true );
+                        explosion_handler::explosion( pos(), nullptr, 40, 0.8, true );
                         if( player_sees ) {
                             add_msg( m_warning, _( "The %s explodes in a fiery inferno!" ), g->m.tername( zap ) );
                         }

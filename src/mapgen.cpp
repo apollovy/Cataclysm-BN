@@ -29,6 +29,7 @@
 #include "game.h"
 #include "game_constants.h"
 #include "generic_factory.h"
+#include "input.h"
 #include "int_id.h"
 #include "item.h"
 #include "item_factory.h"
@@ -46,6 +47,7 @@
 #include "mapgenformat.h"
 #include "memory_fast.h"
 #include "mission.h"
+#include "mod_manager.h"
 #include "mongroup.h"
 #include "npc.h"
 #include "omdata.h"
@@ -309,6 +311,7 @@ class mapgen_factory
         void setup() {
             for( std::pair<const std::string, mapgen_basic_container> &omw : mapgens_ ) {
                 omw.second.setup();
+                inp_mngr.pump_events();
             }
             // Dummy entry, overmap terrain null should never appear and is therefor never generated.
             mapgens_.erase( "null" );
@@ -338,7 +341,7 @@ class mapgen_factory
         }
         /// @see mapgen_basic_container::generate
         bool generate( mapgendata &dat, const std::string &key, const int hardcoded_weight = 0 ) const {
-            const auto iter = mapgens_.find( key );
+            const auto iter = mapgens_.find( disable_mapgen ? "test" : key );
             if( iter == mapgens_.end() ) {
                 return false;
             }
@@ -365,11 +368,13 @@ void calculate_mapgen_weights()   // TODO: rename as it runs jsonfunction setup 
     for( auto &pr : nested_mapgen ) {
         for( weighted_object<int, std::shared_ptr<mapgen_function_json_nested>> &ptr : pr.second ) {
             ptr.obj->setup();
+            inp_mngr.pump_events();
         }
     }
     for( auto &pr : update_mapgen ) {
         for( auto &ptr : pr.second ) {
             ptr->setup();
+            inp_mngr.pump_events();
         }
     }
 
@@ -630,8 +635,8 @@ jmapgen_int::jmapgen_int( const JsonObject &jo, const std::string &tag )
     }
 }
 
-jmapgen_int::jmapgen_int( const JsonObject &jo, const std::string &tag, const short def_val,
-                          const short def_valmax )
+jmapgen_int::jmapgen_int( const JsonObject &jo, const std::string &tag, int def_val,
+                          int def_valmax )
     : val( def_val )
     , valmax( def_valmax )
 {
@@ -2399,7 +2404,9 @@ bool mapgen_function_json_base::setup_common( const JsonObject &jo )
     format.resize( static_cast<size_t>( mapgensize.x * mapgensize.y ) );
     // just like mapf::basic_bind("stuff",blargle("foo", etc) ), only json input and faster when applying
     if( jo.has_array( "rows" ) ) {
-        mapgen_palette palette = mapgen_palette::load_temp( jo, "dda" );
+        // TODO: forward correct 'src' parameter
+        mapgen_palette palette = mapgen_palette::load_temp( jo,
+                                 mod_management::get_default_core_content_pack().str() );
         auto &format_terrain = palette.format_terrain;
         auto &format_furniture = palette.format_furniture;
         auto &format_placings = palette.format_placings;

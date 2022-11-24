@@ -23,11 +23,13 @@
 #include "calendar.h"
 #include "cata_utility.h"
 #include "character.h"
+#include "character_functions.h"
 #include "character_martial_arts.h"
 #include "clzones.h"
 #include "colony.h"
 #include "color.h"
 #include "construction.h"
+#include "construction_partial.h"
 #include "coordinate_conversions.h"
 #include "craft_command.h"
 #include "crafting.h"
@@ -119,7 +121,6 @@ static const activity_id ACT_CONSUME_FOOD_MENU( "ACT_CONSUME_FOOD_MENU" );
 static const activity_id ACT_CONSUME_MEDS_MENU( "ACT_CONSUME_MEDS_MENU" );
 static const activity_id ACT_CRACKING( "ACT_CRACKING" );
 static const activity_id ACT_CRAFT( "ACT_CRAFT" );
-static const activity_id ACT_DISASSEMBLE( "ACT_DISASSEMBLE" );
 static const activity_id ACT_DISMEMBER( "ACT_DISMEMBER" );
 static const activity_id ACT_DISSECT( "ACT_DISSECT" );
 static const activity_id ACT_EAT_MENU( "ACT_EAT_MENU" );
@@ -389,7 +390,6 @@ activity_handlers::finish_functions = {
     { ACT_SOCIALIZE, socialize_finish },
     { ACT_TRY_SLEEP, try_sleep_finish },
     { ACT_OPERATION, operation_finish },
-    { ACT_DISASSEMBLE, disassemble_finish },
     { ACT_VIBE, vibe_finish },
     { ACT_ATM, atm_finish },
     { ACT_EAT_MENU, eat_menu_finish },
@@ -3316,12 +3316,13 @@ void activity_handlers::cracking_do_turn( player_activity *act, player *p )
 void activity_handlers::repair_item_do_turn( player_activity *act, player *p )
 {
     // Moves are decremented based on a combination of speed and good vision (not in the dark, farsighted, etc)
-    const int effective_moves = p->moves / p->fine_detail_vision_mod();
+    const float vision_mod = character_funcs::fine_detail_vision_mod( *p );
+    const int effective_moves = p->moves / vision_mod;
     if( effective_moves <= act->moves_left ) {
         act->moves_left -= effective_moves;
         p->moves = 0;
     } else {
-        p->moves -= act->moves_left * p->fine_detail_vision_mod();
+        p->moves -= act->moves_left * vision_mod;
         act->moves_left = 0;
     }
 }
@@ -3549,11 +3550,14 @@ void activity_handlers::operation_do_turn( player_activity *act, player *p )
     time_duration time_left = time_duration::from_turns( act->moves_left / 100 );
 
     map &here = get_map();
-    if( autodoc && here.inbounds( p->pos() ) ) {
-        const std::list<tripoint> autodocs = here.find_furnitures_with_flag_in_radius( p->pos(), 1,
-                                             flag_AUTODOC );
 
-        if( !here.has_flag_furn( flag_AUTODOC_COUCH, p->pos() ) || autodocs.empty() ) {
+    // check if player is on an autodoc couch
+    if( autodoc && here.inbounds( p->pos() ) ) {
+        // this checks if there's an autodoc in a 3D radius around the player (during the operation), excluding just above/below him
+        const std::list<tripoint> autodocs = here.find_furnitures_or_vparts_with_flag_in_radius( p->pos(),
+                                             1,
+                                             flag_AUTODOC );
+        if( !here.has_flag_furn_or_vpart( flag_AUTODOC_COUCH, p->pos() ) || autodocs.empty() ) {
             p->remove_effect( effect_under_op );
             act->set_to_null();
 
@@ -3684,7 +3688,8 @@ void activity_handlers::operation_finish( player_activity *act, player *p )
         if( act->values[1] > 0 ) {
             add_msg( m_good,
                      _( "The Autodoc returns to its resting position after successfully performing the operation." ) );
-            const std::list<tripoint> autodocs = here.find_furnitures_with_flag_in_radius( p->pos(), 1,
+            const std::list<tripoint> autodocs = here.find_furnitures_or_vparts_with_flag_in_radius( p->pos(),
+                                                 1,
                                                  flag_AUTODOC );
             sounds::sound( autodocs.front(), 10, sounds::sound_t::music,
                            _( "a short upbeat jingle: \"Operation successful\"" ), true,
@@ -3694,7 +3699,8 @@ void activity_handlers::operation_finish( player_activity *act, player *p )
             if( act->str_values[0] == "install" ) {
                 add_msg( m_warning,
                          _( "The Autodoc completes installation and activates bionic but reports about complications during operation." ) );
-                const std::list<tripoint> autodocs = here.find_furnitures_with_flag_in_radius( p->pos(), 1,
+                const std::list<tripoint> autodocs = here.find_furnitures_or_vparts_with_flag_in_radius( p->pos(),
+                                                     1,
                                                      flag_AUTODOC );
                 sounds::sound( autodocs.front(), 10, sounds::sound_t::music,
                                _( "a sad beeping noise: \"Complications detected!  Report to medical personnel immediately!\"" ),
@@ -3704,7 +3710,8 @@ void activity_handlers::operation_finish( player_activity *act, player *p )
             } else {
                 add_msg( m_bad,
                          _( "The Autodoc jerks back to its resting position after failing the operation." ) );
-                const std::list<tripoint> autodocs = here.find_furnitures_with_flag_in_radius( p->pos(), 1,
+                const std::list<tripoint> autodocs = here.find_furnitures_or_vparts_with_flag_in_radius( p->pos(),
+                                                     1,
                                                      flag_AUTODOC );
                 sounds::sound( autodocs.front(), 10, sounds::sound_t::music,
                                _( "a sad beeping noise: \"Operation failed\"" ), true,
@@ -3809,7 +3816,7 @@ void activity_handlers::build_do_turn( player_activity *act, player *p )
 
     // Base moves for construction with no speed modifier or assistants
     // Must ensure >= 1 so we don't divide by 0;
-    const double base_total_moves = std::max( 1, built.time );
+    const double base_total_moves = std::max( 1, to_moves<int>( built.time ) );
     // Current expected total moves, includes construction speed modifiers and assistants
     const double cur_total_moves = std::max( 1, built.adjusted_time() );
     // Delta progress in moves adjusted for current crafting speed
@@ -3826,7 +3833,7 @@ void activity_handlers::build_do_turn( player_activity *act, player *p )
     // If construction_progress has reached 100% or more
     if( pc->counter >= 10000000 ) {
         // Activity is canceled in complete_construction()
-        complete_construction( p );
+        complete_construction( *p );
     }
 }
 
@@ -3988,11 +3995,6 @@ void activity_handlers::craft_do_turn( player_activity *act, player *p )
             p->cancel_activity();
         }
     }
-}
-
-void activity_handlers::disassemble_finish( player_activity *, player *p )
-{
-    p->complete_disassemble();
 }
 
 void activity_handlers::vibe_finish( player_activity *act, player *p )
@@ -4783,7 +4785,7 @@ void activity_handlers::spellcasting_finish( player_activity *act, player *p )
 
 void activity_handlers::study_spell_do_turn( player_activity *act, player *p )
 {
-    if( p->fine_detail_vision_mod() > 4 ) {
+    if( !character_funcs::can_see_fine_details( *p ) ) {
         act->values[2] = -1;
         act->moves_left = 0;
         return;
