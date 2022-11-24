@@ -59,6 +59,7 @@ var classmonster =
     [ "can_move_to", "classmonster.html#a241bdfccd5d6b2200c0bfd5eca9ce8ab", null ],
     [ "can_reach_to", "classmonster.html#a3971d4421cdc9f956213c9aef2ff9ae3", null ],
     [ "can_see", "classmonster.html#a79c1aef59cccba881fc60e52fb6d8cb9", null ],
+    [ "can_squeeze_to", "classmonster.html#ad2a28acb4525ce99d90c7d8254c9f27f", null ],
     [ "can_submerge", "classmonster.html#a55fd0614c264b7e89a5735270ff6d2c7", null ],
     [ "can_upgrade", "classmonster.html#a5a6be7cfbce50ad161774221638f356e", null ],
     [ "check_mech_powered", "classmonster.html#a36642aa60e233616102cb9a4e37db955", null ],

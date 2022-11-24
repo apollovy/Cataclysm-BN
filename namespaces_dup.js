@@ -51,17 +51,48 @@ var namespaces_dup =
     [ "anonymous_namespace{bodypart.cpp}", "namespaceanonymous__namespace_02bodypart_8cpp_03.html", [
       [ "body_part_factory", "namespaceanonymous__namespace_02bodypart_8cpp_03.html#aaae7b9ce256ab1fee1bd36587d67cf19", null ]
     ] ],
+    [ "anonymous_namespace{character_display.cpp}", "namespaceanonymous__namespace_02character__display_8cpp_03.html", [
+      [ "player_display_tab", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09", [
+        [ "stats", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09a446501053769c06c565094b26d26e8ef", null ],
+        [ "encumbrance", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09ac6cfd4983be847b61861fd0a9c7cabbe", null ],
+        [ "skills", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09aa658279f9b983958149f31e4d8487673", null ],
+        [ "traits", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09ab4a7cb107b59ab9d38b92d8f65efc29a", null ],
+        [ "bionics", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09af8eb4254a5c40ba0293fd18353b05a33", null ],
+        [ "effects", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09a2bb387c51f0ebdab53cc485d53694d37", null ],
+        [ "num_tabs", "namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09aa7f1baf43a1881420acf12347b52522b", null ]
+      ] ]
+    ] ],
     [ "anonymous_namespace{clothing_mod.cpp}", "namespaceanonymous__namespace_02clothing__mod_8cpp_03.html", [
       [ "all_clothing_mods", "namespaceanonymous__namespace_02clothing__mod_8cpp_03.html#a5f31d58dfc5fbaa8a5da0103182a3e81", null ]
     ] ],
     [ "anonymous_namespace{clzones.cpp}", "namespaceanonymous__namespace_02clzones_8cpp_03.html", [
       [ "zone_type_factory", "namespaceanonymous__namespace_02clzones_8cpp_03.html#a406c1737dfc42cacbea5c69e6fa78a15", null ]
     ] ],
+    [ "anonymous_namespace{construction.cpp}", "namespaceanonymous__namespace_02construction_8cpp_03.html", [
+      [ "all_constructions", "namespaceanonymous__namespace_02construction_8cpp_03.html#a5da2e229b1546f7772edc48fa79116e6", null ],
+      [ "constructions_sorted", "namespaceanonymous__namespace_02construction_8cpp_03.html#ad6f88bc31464db11fe2f957ce8abfe3d", null ]
+    ] ],
     [ "anonymous_namespace{construction_category.cpp}", "namespaceanonymous__namespace_02construction__category_8cpp_03.html", [
       [ "all_construction_categories", "namespaceanonymous__namespace_02construction__category_8cpp_03.html#a62dfe7e8a222a935c47fbe43044973b1", null ]
     ] ],
+    [ "anonymous_namespace{construction_group.cpp}", "namespaceanonymous__namespace_02construction__group_8cpp_03.html", [
+      [ "all_construction_groups", "namespaceanonymous__namespace_02construction__group_8cpp_03.html#a1abe9358fbbbb232d9e3a1d6b06d8ca8", null ]
+    ] ],
+    [ "anonymous_namespace{construction_sequence.cpp}", "namespaceanonymous__namespace_02construction__sequence_8cpp_03.html", [
+      [ "all_sequences", "namespaceanonymous__namespace_02construction__sequence_8cpp_03.html#ad2faffcffdd5b5e821cd1b7deeeea75a", null ],
+      [ "sequences_for_furn", "namespaceanonymous__namespace_02construction__sequence_8cpp_03.html#aeb9da88db26bdb23b47113689c9d7193", null ],
+      [ "sequences_for_ter", "namespaceanonymous__namespace_02construction__sequence_8cpp_03.html#ae49fae693fc8c1c1f9a279f9482d202d", null ]
+    ] ],
     [ "anonymous_namespace{debug.cpp}", "namespaceanonymous__namespace_02debug_8cpp_03.html", [
       [ "ignored_messages", "namespaceanonymous__namespace_02debug_8cpp_03.html#aac5ec8bb66a16096a2fd9ae0e87fcdf6", null ]
+    ] ],
+    [ "anonymous_namespace{diary_ui.cpp}", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html", [
+      [ "draw_diary_border", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#a3598f2825ba29afbf6095658102fad6a", null ],
+      [ "print_list_scrollable", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#aa17d599fa720185e7f8e114bb5d956a6", null ],
+      [ "print_list_scrollable", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#a6f54bfdce622c97184f917f36e4887cc", null ],
+      [ "print_list_scrollable", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#a1b180c4ee1a5c9686d1b8550352aeb13", null ],
+      [ "print_list_scrollable", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#a1ff440bd0de20275e0a526e10e2e7c1f", null ],
+      [ "MAX_DAIRY_UI_WIDTH", "namespaceanonymous__namespace_02diary__ui_8cpp_03.html#a89704e9a29605ed7a423f422907ee24e", null ]
     ] ],
     [ "anonymous_namespace{disease.cpp}", "namespaceanonymous__namespace_02disease_8cpp_03.html", [
       [ "disease_factory", "namespaceanonymous__namespace_02disease_8cpp_03.html#a75cb92ba312ed17a7aa44cdadee9f354", null ]
@@ -162,20 +193,9 @@ var namespaces_dup =
     [ "anonymous_namespace{overmap_location.cpp}", "namespaceanonymous__namespace_02overmap__location_8cpp_03.html", [
       [ "locations", "namespaceanonymous__namespace_02overmap__location_8cpp_03.html#a1746287579ae93eaa7db10693e28de66", null ]
     ] ],
-    [ "anonymous_namespace{player_display.cpp}", "namespaceanonymous__namespace_02player__display_8cpp_03.html", [
-      [ "player_display_tab", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1", [
-        [ "stats", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1a446501053769c06c565094b26d26e8ef", null ],
-        [ "encumbrance", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1ac6cfd4983be847b61861fd0a9c7cabbe", null ],
-        [ "skills", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1aa658279f9b983958149f31e4d8487673", null ],
-        [ "traits", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1ab4a7cb107b59ab9d38b92d8f65efc29a", null ],
-        [ "bionics", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1af8eb4254a5c40ba0293fd18353b05a33", null ],
-        [ "effects", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1a2bb387c51f0ebdab53cc485d53694d37", null ],
-        [ "num_tabs", "namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1aa7f1baf43a1881420acf12347b52522b", null ]
-      ] ]
-    ] ],
     [ "anonymous_namespace{profession.cpp}", "namespaceanonymous__namespace_02profession_8cpp_03.html", [
       [ "all_profs", "namespaceanonymous__namespace_02profession_8cpp_03.html#a7488aa64b6b073c21ae0bf4af01102aa", null ],
-      [ "generic_profession_id", "namespaceanonymous__namespace_02profession_8cpp_03.html#a9ffc5f7c33cad2678fb4b714948d785b", null ]
+      [ "generic_profession_id", "namespaceanonymous__namespace_02profession_8cpp_03.html#a040d4c732bcc22b97ae7a97ea3e73822", null ]
     ] ],
     [ "anonymous_namespace{recipe_dictionary.cpp}", "namespaceanonymous__namespace_02recipe__dictionary_8cpp_03.html", [
       [ "delete_if", "namespaceanonymous__namespace_02recipe__dictionary_8cpp_03.html#a682c179b89f27c7092e1e4907c407a2c", null ]
@@ -232,10 +252,16 @@ var namespaces_dup =
       [ "move", "namespaceavatar__action.html#a76ba74774376a08222b8cdcce08f7304", null ],
       [ "plthrow", "namespaceavatar__action.html#a88a027e47bb814ff61be3e15bd0b8777", null ],
       [ "ramp_move", "namespaceavatar__action.html#abadb3333d387007017d11836c606f1e5", null ],
+      [ "reload", "namespaceavatar__action.html#a03cf09d521b2df8ec4e14523b73804b4", null ],
+      [ "reload_item", "namespaceavatar__action.html#a074ed32b4d421de7f0749e9aef6fe0c9", null ],
+      [ "reload_weapon", "namespaceavatar__action.html#ab640f9426b7ae37fb1fc632cb28e0e30", null ],
+      [ "reload_wielded", "namespaceavatar__action.html#a0263b369eb4d729c1439738f8abcd3f2", null ],
       [ "swim", "namespaceavatar__action.html#a9611563bffc4224b3e724db03688bdd4", null ],
       [ "unload", "namespaceavatar__action.html#afd349bc65fc375556b15241ab68095b1", null ],
       [ "use_item", "namespaceavatar__action.html#ad651718c214e707034374b85d936d671", null ],
-      [ "use_item", "namespaceavatar__action.html#a113bad02e3695c9de0d031d3846ebea9", null ]
+      [ "use_item", "namespaceavatar__action.html#a113bad02e3695c9de0d031d3846ebea9", null ],
+      [ "wield", "namespaceavatar__action.html#a26845c63bf68ad9462172186e3b75cf6", null ],
+      [ "wield", "namespaceavatar__action.html#a4237c55ad7f626915cdb297d52841b8f", null ]
     ] ],
     [ "base_camps", "namespacebase__camps.html", "namespacebase__camps" ],
     [ "behavior", "namespacebehavior.html", "namespacebehavior" ],
@@ -282,6 +308,28 @@ var namespaces_dup =
       [ "draw_age", "namespacechar__creation.html#a002fb4c447a357ba79c83fcdc8434299", null ],
       [ "draw_height", "namespacechar__creation.html#af1e90b6a20df45145253a6ccf3ab27e3", null ]
     ] ],
+    [ "character_display", "namespacecharacter__display.html", [
+      [ "disp_info", "namespacecharacter__display.html#a6f5ceda7117fa3218978f97f5b055ae5", null ],
+      [ "print_encumbrance", "namespacecharacter__display.html#ace984c0b6c76cdc6bcee76a8a2207457", null ],
+      [ "upgrade_stat_prompt", "namespacecharacter__display.html#a006a82c12d14823acc830f2c8c664040", null ]
+    ] ],
+    [ "character_effects", "namespacecharacter__effects.html", [
+      [ "get_kcal_speed_penalty", "namespacecharacter__effects.html#a6d9d51c28a272ae26ed493d1471cf072", null ],
+      [ "get_pain_penalty", "namespacecharacter__effects.html#a8f18c1c2508870515d5c36a3ea255498", null ],
+      [ "get_thirst_speed_penalty", "namespacecharacter__effects.html#a69e2f87b5391a5aec01672c98cdfb57c", null ]
+    ] ],
+    [ "character_funcs", "namespacecharacter__funcs.html", [
+      [ "can_see_fine_details", "namespacecharacter__funcs.html#a813a9decd34980fe53f38ba18ffd6374", null ],
+      [ "can_see_fine_details", "namespacecharacter__funcs.html#a68c0c236c653e5217f1436bfadd54664", null ],
+      [ "estimate_effect_dur", "namespacecharacter__funcs.html#a470b862a6936cbfbd1e80a46b78f1914", null ],
+      [ "fine_detail_vision_mod", "namespacecharacter__funcs.html#adda4d5fd10b7216c49a0f9b6010de579", null ],
+      [ "fine_detail_vision_mod", "namespacecharacter__funcs.html#a03ea116da570af10c630e0fe3a7ea6fc", null ],
+      [ "get_book_fun_for", "namespacecharacter__funcs.html#aaa9f2cc376f03128e0a486a90c7376fa", null ],
+      [ "is_fun_to_read", "namespacecharacter__funcs.html#a862df11441bba358b82fa47ce88ebe85", null ],
+      [ "siphon", "namespacecharacter__funcs.html#adaa760a90e1a9cc452c7b756bcde2a60", null ],
+      [ "FINE_VISION_PERFECT", "namespacecharacter__funcs.html#a4e103652bd1f087acad98fa135eca4a4", null ],
+      [ "FINE_VISION_THRESHOLD", "namespacecharacter__funcs.html#ac767ac632c0c783c8615f5e920cc938e", null ]
+    ] ],
     [ "character_weight_category", "namespacecharacter__weight__category.html", [
       [ "emaciated", "namespacecharacter__weight__category.html#ae41f48d3a0de12bbab86abc5d741f978", null ],
       [ "morbidly_obese", "namespacecharacter__weight__category.html#a8be790615c5a48bdf4fb02fd551f8a17", null ],
@@ -314,7 +362,7 @@ var namespaces_dup =
       [ "check_empty", "namespaceconstruct.html#a5c7bfa81b1b783dbe606e8e1ae270cb2", null ],
       [ "check_empty_up_OK", "namespaceconstruct.html#a8e2634d318be5dc50bdb38f4b30f726f", null ],
       [ "check_no_trap", "namespaceconstruct.html#a067fa17ebfe14fea8e561056651e010f", null ],
-      [ "check_nothing", "namespaceconstruct.html#a993b2191890a54b54730c413070ea577", null ],
+      [ "check_nothing", "namespaceconstruct.html#ac4566ee40eb51023fc15b0f21a120524", null ],
       [ "check_ramp_high", "namespaceconstruct.html#a6b8cdaae5a7bd8bcae16e4670b729896", null ],
       [ "check_ramp_low", "namespaceconstruct.html#aeb00f0d89830aff9fd97f91ada1300b3", null ],
       [ "check_support", "namespaceconstruct.html#adf73ee06612e17a7462faf763b99340b", null ],
@@ -343,11 +391,40 @@ var namespaces_dup =
       [ "load", "namespaceconstruction__categories.html#a7f83111651080465e41ffe8d71b044b8", null ],
       [ "reset", "namespaceconstruction__categories.html#a626e729f7a1ffbe907bab878ccb61a2d", null ]
     ] ],
+    [ "construction_groups", "namespaceconstruction__groups.html", [
+      [ "get_all", "namespaceconstruction__groups.html#aa39b5e6512ad85bc06a16c92d758cc2a", null ],
+      [ "load", "namespaceconstruction__groups.html#aa2c993aeb54fad42759995256dc506f4", null ],
+      [ "reset", "namespaceconstruction__groups.html#a818b6b3bcdd82c5a18a7866adca57ee3", null ]
+    ] ],
+    [ "construction_sequences", "namespaceconstruction__sequences.html", [
+      [ "check_consistency", "namespaceconstruction__sequences.html#ae3dd77cfb59719ab0ce5f04905eb40c1", null ],
+      [ "finalize", "namespaceconstruction__sequences.html#a9d09cc131d46de4a5c993f90dd9407b7", null ],
+      [ "has_valid_category", "namespaceconstruction__sequences.html#abe055de70abaec3f4870b1bbdc0eaf2a", null ],
+      [ "has_valid_result", "namespaceconstruction__sequences.html#ab87dcf409cee13a4410f85cf2e92bfb7", null ],
+      [ "is_valid_first_step", "namespaceconstruction__sequences.html#a63bbedcb693b9cd0f74a7fc5e6b5b864", null ],
+      [ "load", "namespaceconstruction__sequences.html#a931e4647d20ea9a3f0f2f1a3368a87b7", null ],
+      [ "lookup_sequence", "namespaceconstruction__sequences.html#aaaf5d2418465c08d386c8f81c6fe041f", null ],
+      [ "lookup_sequence", "namespaceconstruction__sequences.html#aaea5fc5d3181e2de94c3f0907a6504d9", null ],
+      [ "reset", "namespaceconstruction__sequences.html#abf7e7f9130e3548ede8580c0e8ceb01e", null ]
+    ] ],
+    [ "constructions", "namespaceconstructions.html", [
+      [ "check_consistency", "namespaceconstructions.html#a012e345f9cc8d1b1caaeee08acbea958", null ],
+      [ "finalize", "namespaceconstructions.html#aff7bc057c801d3b2deef09e83cf3e7d7", null ],
+      [ "get_all_sorted", "namespaceconstructions.html#ac95b3bf969c90f634ef207f68584fda3", null ],
+      [ "load", "namespaceconstructions.html#acd2f385d7fcf3afb87b0407e1c8bfb91", null ],
+      [ "override_build_times", "namespaceconstructions.html#a13ebf7d49064b926b2911dadef16bf03", null ],
+      [ "reset", "namespaceconstructions.html#a5dd444bbaaedcd39c8e8208e6b646378", null ]
+    ] ],
     [ "coords", "namespacecoords.html", "namespacecoords" ],
     [ "crafting", "namespacecrafting.html", [
+      [ "can_disassemble", "namespacecrafting.html#a33e973ebbe76aa946752c7f3b4a4392d", null ],
       [ "charges_for_complete", "namespacecrafting.html#a66f83eefe72e71cf1a8831fde5afe0aa", null ],
       [ "charges_for_continuing", "namespacecrafting.html#a653e8b3027cf7e8256c46600bdea2697", null ],
       [ "charges_for_starting", "namespacecrafting.html#a6bd0760f7e4a7e545662d263469fb277", null ],
+      [ "complete_disassemble", "namespacecrafting.html#a6895224ef92a2b991f276b2ea25ca15f", null ],
+      [ "disassemble", "namespacecrafting.html#a6f70f042817b423f427532947f6bf4dd", null ],
+      [ "disassemble", "namespacecrafting.html#a6e0fbc3f9cae7380bb61c26f60dbd821", null ],
+      [ "disassemble_all", "namespacecrafting.html#adb3b3e5acddfb384496ef6157d17c3c6", null ],
       [ "find_tool_component", "namespacecrafting.html#a5844edf7e04b20037d08a1215cf62236", null ],
       [ "get_books_for_recipe", "namespacecrafting.html#a0d310e1d954941b884e3806116ae6f7b", null ],
       [ "get_books_for_recipe", "namespacecrafting.html#a22e3c95d08749d4a4a07b9aaf64db9e8", null ],
@@ -361,9 +438,15 @@ var namespaces_dup =
       [ "complex_conds", "namespacedialogue__data.html#a26e681c79153a7820fdeaa96e9223aa3", null ],
       [ "simple_string_conds", "namespacedialogue__data.html#a6fed24978753ef5c62bb51fd50f30071", null ]
     ] ],
+    [ "distraction_manager", "namespacedistraction__manager.html", "namespacedistraction__manager" ],
     [ "distribution_graph", "namespacedistribution__graph.html", "namespacedistribution__graph" ],
     [ "doors", "namespacedoors.html", [
       [ "close_door", "namespacedoors.html#acc8efe27aeed04f754930b76a29d0c2a", null ]
+    ] ],
+    [ "dreams", "namespacedreams.html", [
+      [ "clear", "namespacedreams.html#a37ba15d5174aeee54ac7ac817dac9ff2", null ],
+      [ "get_random_for_category", "namespacedreams.html#aaf6b15bffecda9689112768164805a72", null ],
+      [ "load", "namespacedreams.html#ac03a7d4bbf2da27c34ded79ba75fcfce", null ]
     ] ],
     [ "drop_token", "namespacedrop__token.html", [
       [ "get_provider", "namespacedrop__token.html#a26140f7217ba2ef2a2549d7a5415f727", null ]
@@ -441,6 +524,28 @@ var namespaces_dup =
     [ "enum_traits_detail", "namespaceenum__traits__detail.html", [
       [ "last_type", "namespaceenum__traits__detail.html#a323fc4524d7546ac92565c8440ef1157", null ]
     ] ],
+    [ "examine_item_menu", "namespaceexamine__item__menu.html", [
+      [ "hint_rating", "namespaceexamine__item__menu.html#afb0565ed1efb7315c7703ceb4fca8399", [
+        [ "cant", "namespaceexamine__item__menu.html#afb0565ed1efb7315c7703ceb4fca8399aff706fc361a57a40a41435153397513a", null ],
+        [ "iffy", "namespaceexamine__item__menu.html#afb0565ed1efb7315c7703ceb4fca8399a394188710799de3dcc6cb1582e490004", null ],
+        [ "good", "namespaceexamine__item__menu.html#afb0565ed1efb7315c7703ceb4fca8399a755f85c2723bb39381c7379a604160d8", null ]
+      ] ],
+      [ "menu_pos_t", "namespaceexamine__item__menu.html#a8b68cfe375a1712f8dd0cef484976020", [
+        [ "left", "namespaceexamine__item__menu.html#a8b68cfe375a1712f8dd0cef484976020a811882fecd5c7618d7099ebbd39ea254", null ],
+        [ "right", "namespaceexamine__item__menu.html#a8b68cfe375a1712f8dd0cef484976020a7c4f29407893c334a6cb7a87bf045c0d", null ]
+      ] ],
+      [ "rate_action_change_side", "namespaceexamine__item__menu.html#a955b5994c5b272ead7ea3a04e27dfa76", null ],
+      [ "rate_action_disassemble", "namespaceexamine__item__menu.html#a2928396bf2a244345b04c750b8b82709", null ],
+      [ "rate_action_eat", "namespaceexamine__item__menu.html#a2020b22b148cdb10f8d5a21109d23cb7", null ],
+      [ "rate_action_mend", "namespaceexamine__item__menu.html#a54389d0b494321eaff498cfe32006c9c", null ],
+      [ "rate_action_read", "namespaceexamine__item__menu.html#a0faff404d5d10a49b84d44f297175129", null ],
+      [ "rate_action_reload", "namespaceexamine__item__menu.html#ab24e5f9726586e01af1ca41bf0a97ba7", null ],
+      [ "rate_action_takeoff", "namespaceexamine__item__menu.html#a2558b816209a853bc3d980a8b4bc5eaa", null ],
+      [ "rate_action_unload", "namespaceexamine__item__menu.html#a51ca4ae6b76aafd7b2bfe3bf4e85546d", null ],
+      [ "rate_action_use", "namespaceexamine__item__menu.html#ac5ee2fa36d7a77da1ae9d04202d8066a", null ],
+      [ "rate_action_wear", "namespaceexamine__item__menu.html#a964eb449c6cc21de8a521a3ea8386372", null ],
+      [ "run", "namespaceexamine__item__menu.html#a0ef68cd5b60cc38b1d1655c81dea6b8c", null ]
+    ] ],
     [ "explosion_handler", "namespaceexplosion__handler.html", "namespaceexplosion__handler" ],
     [ "ff", "namespaceff.html", [
       [ "point_flood_fill_4_connected", "namespaceff.html#adaea099ecca20d124ab3a3d2f2bf79f9", null ]
@@ -477,9 +582,9 @@ var namespaces_dup =
     [ "gates", "namespacegates.html", [
       [ "check", "namespacegates.html#a3ef5351e05e4b2d492562205261db96c", null ],
       [ "load", "namespacegates.html#a0eeda5c9b391c2d30f63a1dad75b043b", null ],
-      [ "open_gate", "namespacegates.html#ae998ffa52a73418a8a0801c102648f75", null ],
-      [ "open_gate", "namespacegates.html#a21a6ac9535199473360da4ccbda76f22", null ],
-      [ "reset", "namespacegates.html#ac8730a42296c6b07c8effd83106ddb08", null ]
+      [ "reset", "namespacegates.html#ac8730a42296c6b07c8effd83106ddb08", null ],
+      [ "toggle_gate", "namespacegates.html#ac6c523200a835b37be9b28bf9fc539b2", null ],
+      [ "toggle_gate", "namespacegates.html#a84015d35b252bacce5c6ee9ae9f6fde2", null ]
     ] ],
     [ "iexamine", "namespaceiexamine.html", [
       [ "aggie_plant", "namespaceiexamine.html#a01429a76cc9d3d1563fb501ae6a1dd3a", null ],
@@ -545,6 +650,7 @@ var namespaces_dup =
       [ "ledge", "namespaceiexamine.html#af44785c44ed5b238072e392c7805a6fe", null ],
       [ "locked_object", "namespaceiexamine.html#ade298007b9644bd1dd31a165c84c273f", null ],
       [ "locked_object_pickable", "namespaceiexamine.html#a06c1947e94ea34ddc4aee4f584c5fc8b", null ],
+      [ "migo_nerve_cluster", "namespaceiexamine.html#a5e019567c1f8ce2c1f580160ea21185c", null ],
       [ "mill_finalize", "namespaceiexamine.html#a639d89c065849a9b4c19a27ac234ce2d", null ],
       [ "nanofab", "namespaceiexamine.html#a04569e7ba85955feff7bf4488d81d0f1", null ],
       [ "none", "namespaceiexamine.html#a45c131e909371e96743dfe0a21ba75a6", null ],
@@ -586,6 +692,9 @@ var namespaces_dup =
       [ "workbench", "namespaceiexamine.html#a1562d040bf1e91a0140086bd6f905802", null ]
     ] ],
     [ "io", "namespaceio.html", "namespaceio" ],
+    [ "item_funcs", "namespaceitem__funcs.html", [
+      [ "can_be_unloaded", "namespaceitem__funcs.html#a59e0738ff81bbd95e725baecf3e23545", null ]
+    ] ],
     [ "item_group", "namespaceitem__group.html", [
       [ "ItemList", "namespaceitem__group.html#a1756cb07c624c3169988316a8615ff69", null ],
       [ "debug_spawn", "namespaceitem__group.html#a7cf722822ed58d63e5b2c1714ae6fc4b", null ],
@@ -678,7 +787,6 @@ var namespaces_dup =
       [ "fish_trap", "namespaceiuse.html#aee840b3e8d9e57e43bf850bb4fe1f32f", null ],
       [ "fishing_rod", "namespaceiuse.html#a5cbe783493c4bbb59042ea505639c06d", null ],
       [ "fitness_check", "namespaceiuse.html#ac24c85992b2571424e8eb4c70b579563", null ],
-      [ "flu_vaccine", "namespaceiuse.html#af015e96f2a09b910339eb5ddc09fd64a", null ],
       [ "flumed", "namespaceiuse.html#aa748624edacd9038fb86f038e61bb68a", null ],
       [ "flusleep", "namespaceiuse.html#adbe3744c239129f7b6cdd7b9fdcddb53", null ],
       [ "foodperson", "namespaceiuse.html#ae1a9869a841219f81c39c873d5c08e59", null ],
@@ -816,6 +924,10 @@ var namespaces_dup =
       [ "handle_liquid_from_container", "namespaceliquid__handler.html#a9df963755dc50d58f0c5fcbd704791c4", null ],
       [ "handle_liquid_from_ground", "namespaceliquid__handler.html#ae4b5ac39dbc51d5559ba9d6f901395f0", null ],
       [ "perform_liquid_transfer", "namespaceliquid__handler.html#a8c1765bcc2eb292f1a8cc24f0ca2b8b9", null ]
+    ] ],
+    [ "map_funcs", "namespacemap__funcs.html", [
+      [ "climbing_cost", "namespacemap__funcs.html#a3d04b9be6f6d41f70f82070ae568e7b2", null ],
+      [ "migo_nerve_cage_removal", "namespacemap__funcs.html#a60f9a4c25252a0b8cffa456f6bc25887", null ]
     ] ],
     [ "MAP_SHARING", "namespaceMAP__SHARING.html", [
       [ "addAdmin", "namespaceMAP__SHARING.html#a77a25d8b951390c8f157e594e1e2993c", null ],
@@ -1091,6 +1203,7 @@ var namespaces_dup =
     ] ],
     [ "mod_management", "namespacemod__management.html", [
       [ "t_mod_list", "namespacemod__management.html#a2b453b753864424a211ee499133505ed", null ],
+      [ "get_default_core_content_pack", "namespacemod__management.html#a822d52deafd2d501f0afbd604ccafdd8", null ],
       [ "load_mod_info", "namespacemod__management.html#a5041a8497495347e6999ac3e88261cf5", null ],
       [ "load_mod_list", "namespacemod__management.html#a2327609c6925917f9a52fb4a54a0a661", null ],
       [ "load_modfile", "namespacemod__management.html#a19b5c0c2b1726de2895bb31d75953a75", null ],
@@ -1099,8 +1212,10 @@ var namespaces_dup =
     ] ],
     [ "monexamine", "namespacemonexamine.html", [
       [ "add_armor", "namespacemonexamine.html#aae7a3811b8d378a0968e67504f671bdf", null ],
+      [ "add_leash", "namespacemonexamine.html#ac213a1f089bcc2602a6c6c9d58d1d7b4", null ],
       [ "attach_bag_to", "namespacemonexamine.html#a935d4c4eb310af58bb939713d5cd22c9", null ],
       [ "attach_or_remove_saddle", "namespacemonexamine.html#a4396430d7db63915584d98c8180ea646", null ],
+      [ "deactivate_pet", "namespacemonexamine.html#ad401ef970ed982d7b51fe916e02429b7", null ],
       [ "dump_items", "namespacemonexamine.html#a684505599f42f0f8c335365a2e0cd73c", null ],
       [ "give_items_to", "namespacemonexamine.html#a89f3eb85572610e64aa683902e43687e", null ],
       [ "insert_battery", "namespacemonexamine.html#ab136709e2d3d094e1935f557142f1f75", null ],
@@ -1117,10 +1232,14 @@ var namespaces_dup =
       [ "remove_bag_from", "namespacemonexamine.html#a2f302aad60309cfa27768eaa40a1b40d", null ],
       [ "remove_battery", "namespacemonexamine.html#ae632756df3737235336f084961b8df6c", null ],
       [ "remove_harness", "namespacemonexamine.html#aec6fc547baa6fbcade434b0c8b38c905", null ],
+      [ "remove_leash", "namespacemonexamine.html#aa21165a63662ca525d1d9eea0a5b0d74", null ],
       [ "rename_pet", "namespacemonexamine.html#ae3ae4dbba4b470de0cb54e316337d6fb", null ],
       [ "shear_animal", "namespacemonexamine.html#af7c79c1c022f82da8a1cedeceb969aeb", null ],
+      [ "start_leading", "namespacemonexamine.html#a1c203b2eee53d0bcd927c4271e410c87", null ],
+      [ "stop_leading", "namespacemonexamine.html#a663586e54746514203b84f302e5b7faf", null ],
       [ "swap", "namespacemonexamine.html#af4ee634a5921005409a5f3aa79e4a8a3", null ],
-      [ "tie_or_untie", "namespacemonexamine.html#a48eed9a72d82e4a9258fbfbe7996aaf1", null ]
+      [ "tie_pet", "namespacemonexamine.html#ae76b120af015a9112d4ae33380b28164", null ],
+      [ "untie_pet", "namespacemonexamine.html#a3500f4f80a6dc864dac50a5af744be0a", null ]
     ] ],
     [ "monfactions", "namespacemonfactions.html", [
       [ "finalize", "namespacemonfactions.html#a420bb089e53354a988195b3f136347ec", null ],
@@ -1147,6 +1266,16 @@ var namespaces_dup =
       [ "gender_flags", "namespaceName.html#afff8f2ac4db08d15d53fa5306ac102ad", null ],
       [ "names", "namespaceName.html#a305934c1ed39204d620efdee7dbec154", null ],
       [ "usage_flags", "namespaceName.html#a20d83b639a7fa02d3690c4dd3af1fcfd", null ]
+    ] ],
+    [ "newcharacter", "namespacenewcharacter.html", [
+      [ "add_traits", "namespacenewcharacter.html#a7bc90a9564c58aaca110dc192c29054a", null ],
+      [ "add_traits", "namespacenewcharacter.html#a101668ddffbc9c60d690f4b9b1ed3e94", null ],
+      [ "has_conflicting_trait", "namespacenewcharacter.html#a810a2d39283752da4d95027d34a4cd2b", null ],
+      [ "has_higher_trait", "namespacenewcharacter.html#a1920445a59667cfb10d9d38d2dcb0e16", null ],
+      [ "has_lower_trait", "namespacenewcharacter.html#accf415a065ef7ba53e81374dce115e0d", null ],
+      [ "has_same_type_trait", "namespacenewcharacter.html#afb61e70aaafdc82eaa9f84a4afda5609", null ],
+      [ "random_bad_trait", "namespacenewcharacter.html#a0b0639d19bcb26127689efdad21c6835", null ],
+      [ "random_good_trait", "namespacenewcharacter.html#af26bc6eecdfca795bacbc3ac398f4578", null ]
     ] ],
     [ "npc_factions", "namespacenpc__factions.html", [
       [ "relationship", "namespacenpc__factions.html#af09ec48d0dc133795062d1424c486686", [
@@ -1211,8 +1340,8 @@ var namespaces_dup =
     [ "overmap_connections", "namespaceovermap__connections.html", [
       [ "check_consistency", "namespaceovermap__connections.html#ab36252a44fc0ccdaee6640bfa11c1be5", null ],
       [ "finalize", "namespaceovermap__connections.html#a42c4f1f50efcfaca2bf3e432c16476a6", null ],
-      [ "guess_for", "namespaceovermap__connections.html#a08ab011bb828d660cabc5c89cbe1b0f4", null ],
-      [ "guess_for", "namespaceovermap__connections.html#af90b58fed265f687f61ea7ebddd57ae1", null ],
+      [ "guess_for", "namespaceovermap__connections.html#aca176db1a81fd417c1eed140b74ae602", null ],
+      [ "guess_for", "namespaceovermap__connections.html#a1b075a87209845b9905895a3a9697e52", null ],
       [ "load", "namespaceovermap__connections.html#ae63dd560ad9fcf9bf40d2023642fb114", null ],
       [ "reset", "namespaceovermap__connections.html#aedeb81c9b5cc4ed3aa0345d2b4b7a5ab", null ]
     ] ],
@@ -1262,6 +1391,7 @@ var namespaces_dup =
       [ "defaultsounddir", "namespacePATH__INFO.html#ab1b96ecc4661a605f4a04c4388e9fd41", null ],
       [ "defaulttilejson", "namespacePATH__INFO.html#ae4c0906500b222227e00bc34cc94252f", null ],
       [ "defaulttilepng", "namespacePATH__INFO.html#a0773f1e01a9fb190c2f1e385ad2892b1", null ],
+      [ "distraction", "namespacePATH__INFO.html#a48b13e0e7d09a341face3e7408cbc8c9", null ],
       [ "fontconfig", "namespacePATH__INFO.html#a80886f68f9d0351e3e43b93063337844", null ],
       [ "fontdir", "namespacePATH__INFO.html#a55c9560f392f8f4a0cd0dc03125978d8", null ],
       [ "gfxdir", "namespacePATH__INFO.html#a089dac91cab1329892ec2ccea9d897dd", null ],
@@ -1323,6 +1453,7 @@ var namespaces_dup =
       [ "get_str_draw_penalty", "namespaceranged.html#a4c8c85e0249f67213d9994612315aa3e", null ],
       [ "gunmode_checks_common", "namespaceranged.html#aed4420a1fd77e160a72de2a528e56da5", null ],
       [ "gunmode_checks_weapon", "namespaceranged.html#a743f9e35b20c136e56ca9e9480fb27bc", null ],
+      [ "handle_gun_damage", "namespaceranged.html#abf8b46e1f1dae2e7a3d4ff75b9495026", null ],
       [ "hit_chance", "namespaceranged.html#ad0ad7f6e4c593e68012655f0befed8cf", null ],
       [ "hit_with_aoe", "namespaceranged.html#a51e6279a2008714e5596da4f5fa1b00e", null ],
       [ "print_dmg_msg", "namespaceranged.html#af042bc3e3b1ea1c57a42ee323ad284a8", null ],
@@ -1466,7 +1597,7 @@ var namespaces_dup =
       [ "bash", "namespacespell__effect.html#a5190e06459a4d2190d8d029a4fba6d09", null ],
       [ "charm_monster", "namespacespell__effect.html#a23cac54dff54c06895ee6a486bdd91e8", null ],
       [ "cone_attack", "namespacespell__effect.html#a1046d781ac5cfb3381c95ce1d965f06b", null ],
-      [ "explosion", "namespacespell__effect.html#a7c2f005c1d34aeb869b6d6ffc5dacc5a", null ],
+      [ "explosion", "namespacespell__effect.html#a9f1b39574600d0523b1c049f7d7d69bd", null ],
       [ "flashbang", "namespacespell__effect.html#a025c386d19f6366b440c998b9d35a6af", null ],
       [ "line_attack", "namespacespell__effect.html#a60706ce2352423a49ebd4d43dacbd12f", null ],
       [ "map_area", "namespacespell__effect.html#a572acfb9ae05c3cdd9f2827512a7a2d4", null ],
@@ -1704,7 +1835,7 @@ var namespaces_dup =
     ] ],
     [ "ui", "namespaceui.html", "namespaceui" ],
     [ "ui_manager", "namespaceui__manager.html", [
-      [ "invalidate", "namespaceui__manager.html#ad37246d94ab9b88c0730eb02ba60643b", null ],
+      [ "invalidate", "namespaceui__manager.html#a93b4bb0f95c5d3a9be3b28ba09878fcc", null ],
       [ "redraw", "namespaceui__manager.html#ae38f3a918052ef286ee60daac47f52d4", null ],
       [ "redraw_invalidated", "namespaceui__manager.html#a5496220e43b7d5f1b3cbbebe6cf1f83d", null ],
       [ "screen_resized", "namespaceui__manager.html#aaa801bfcb6ef4eb737e70c793df08da9", null ]

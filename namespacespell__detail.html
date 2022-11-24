@@ -102,8 +102,8 @@ Functions</h2></td></tr>
 <tr class="separator:a194187db7c9484b97f840581f6bd8f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0b56857385f320b2c69e9265142e2b0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespell__detail.html#ab0b56857385f320b2c69e9265142e2b0">between_or_on</a> (const <a class="el" href="structpoint.html">point</a> &amp;a0, const <a class="el" href="structpoint.html">point</a> &amp;a1, const <a class="el" href="structpoint.html">point</a> &amp;d, const <a class="el" href="structpoint.html">point</a> &amp;<a class="el" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>)</td></tr>
 <tr class="separator:ab0b56857385f320b2c69e9265142e2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fb1409a50c4aa40345c01400ea86672"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespell__detail.html#a1fb1409a50c4aa40345c01400ea86672">build_line</a> (<a class="el" href="structspell__detail_1_1line__iterable.html">spell_detail::line_iterable</a> <a class="el" href="mapgen_8h.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>, const <a class="el" href="structtripoint.html">tripoint</a> &amp;source, const <a class="el" href="structpoint.html">point</a> &amp;delta, const <a class="el" href="structpoint.html">point</a> &amp;delta_perp, bool(*test)(const <a class="el" href="structtripoint.html">tripoint</a> &amp;), std::set&lt; <a class="el" href="structtripoint.html">tripoint</a> &gt; &amp;result)</td></tr>
-<tr class="separator:a1fb1409a50c4aa40345c01400ea86672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a910a75f244678a01fe858dee5fb338dd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacespell__detail.html#a910a75f244678a01fe858dee5fb338dd">build_line</a> (<a class="el" href="structspell__detail_1_1line__iterable.html">spell_detail::line_iterable</a> <a class="el" href="mapgen_8h.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>, const <a class="el" href="structtripoint.html">tripoint</a> &amp;source, const <a class="el" href="structpoint.html">point</a> &amp;delta, const <a class="el" href="structpoint.html">point</a> &amp;delta_perp, bool(*test)(const <a class="el" href="structtripoint.html">tripoint</a> &amp;, const <a class="el" href="structtripoint.html">tripoint</a> &amp;), std::set&lt; <a class="el" href="structtripoint.html">tripoint</a> &gt; &amp;result)</td></tr>
+<tr class="separator:a910a75f244678a01fe858dee5fb338dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ab0b56857385f320b2c69e9265142e2b0" name="ab0b56857385f320b2c69e9265142e2b0"></a>
@@ -165,8 +165,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1fb1409a50c4aa40345c01400ea86672" name="a1fb1409a50c4aa40345c01400ea86672"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fb1409a50c4aa40345c01400ea86672">&#9670;&nbsp;</a></span>build_line()</h2>
+<a id="a910a75f244678a01fe858dee5fb338dd" name="a910a75f244678a01fe858dee5fb338dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a910a75f244678a01fe858dee5fb338dd">&#9670;&nbsp;</a></span>build_line()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +201,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool(*)(const <a class="el" href="structtripoint.html">tripoint</a> &amp;)&#160;</td>
+          <td class="paramtype">bool(*)(const <a class="el" href="structtripoint.html">tripoint</a> &amp;, const <a class="el" href="structtripoint.html">tripoint</a> &amp;)&#160;</td>
           <td class="paramname"><em>test</em>, </td>
         </tr>
         <tr>
@@ -225,22 +225,25 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="magic__spell__effect_8cpp_source.html#l00099">99</a> of file <a class="el" href="magic__spell__effect_8cpp_source.html">magic_spell_effect.cpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">while</span>( <a class="code hl_function" href="namespacespell__detail.html#ab0b56857385f320b2c69e9265142e2b0">between_or_on</a>( <a class="code hl_variable" href="point_8h.html#a0ee2195dcb488ae55fbf4316f5011172">point_zero</a>, delta, delta_perp, <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get() ) ) {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">if</span>( !test( source + <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get() ) ) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_enumeration" href="namespacedetail_1_1digits.html#aad69d2373aa047bdd9e81494bf3da5ae">result</a>.emplace( source + <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get() );</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.next();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
-<div class="ttc" id="amapgen_8cpp_html_a90f1f53dc044e93e7f7f9314cef1bd45"><div class="ttname"><a href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a></div><div class="ttdeci">void line(map *m, const ter_id &amp;type, const point &amp;p1, const point &amp;p2)</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l06455">mapgen.cpp:6455</a></div></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_struct" href="structtripoint.html">tripoint</a> last_point = source;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">while</span>( <a class="code hl_function" href="namespacespell__detail.html#ab0b56857385f320b2c69e9265142e2b0">between_or_on</a>( <a class="code hl_variable" href="point_8h.html#a0ee2195dcb488ae55fbf4316f5011172">point_zero</a>, delta, delta_perp, <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get() ) ) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span>( !test( source + <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get(), last_point ) ) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_enumeration" href="namespacedetail_1_1digits.html#aad69d2373aa047bdd9e81494bf3da5ae">result</a>.emplace( source + <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get() );</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        last_point = source + <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.get();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_function" href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a>.next();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+<div class="ttc" id="amapgen_8cpp_html_a90f1f53dc044e93e7f7f9314cef1bd45"><div class="ttname"><a href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a></div><div class="ttdeci">void line(map *m, const ter_id &amp;type, const point &amp;p1, const point &amp;p2)</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l06462">mapgen.cpp:6462</a></div></div>
 <div class="ttc" id="anamespacedetail_1_1digits_html_aad69d2373aa047bdd9e81494bf3da5ae"><div class="ttname"><a href="namespacedetail_1_1digits.html#aad69d2373aa047bdd9e81494bf3da5ae">detail::digits::result</a></div><div class="ttdeci">result</div><div class="ttdef"><b>Definition:</b> <a href="fmtlib__format-inl_8h_source.html#l01626">fmtlib_format-inl.h:1626</a></div></div>
 <div class="ttc" id="anamespacespell__detail_html_ab0b56857385f320b2c69e9265142e2b0"><div class="ttname"><a href="namespacespell__detail.html#ab0b56857385f320b2c69e9265142e2b0">spell_detail::between_or_on</a></div><div class="ttdeci">static bool between_or_on(const point &amp;a0, const point &amp;a1, const point &amp;d, const point &amp;c)</div><div class="ttdef"><b>Definition:</b> <a href="magic__spell__effect_8cpp_source.html#l00094">magic_spell_effect.cpp:94</a></div></div>
 <div class="ttc" id="apoint_8h_html_a0ee2195dcb488ae55fbf4316f5011172"><div class="ttname"><a href="point_8h.html#a0ee2195dcb488ae55fbf4316f5011172">point_zero</a></div><div class="ttdeci">static constexpr point point_zero</div><div class="ttdef"><b>Definition:</b> <a href="point_8h_source.html#l00274">point.h:274</a></div></div>
+<div class="ttc" id="astructtripoint_html"><div class="ttname"><a href="structtripoint.html">tripoint</a></div><div class="ttdef"><b>Definition:</b> <a href="point_8h_source.html#l00147">point.h:147</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="magic__spell__effect_8cpp_source.html#l00094">between_or_on()</a>, <a class="el" href="mapgen_8cpp_source.html#l06455">line()</a>, and <a class="el" href="point_8h_source.html#l00274">point_zero</a>.</p>
+<p class="reference">References <a class="el" href="magic__spell__effect_8cpp_source.html#l00094">between_or_on()</a>, <a class="el" href="mapgen_8cpp_source.html#l06462">line()</a>, and <a class="el" href="point_8h_source.html#l00274">point_zero</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="magic__spell__effect_8cpp_source.html#l00227">spell_effect::spell_effect_line()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="magic__spell__effect_8cpp_source.html#l00239">spell_effect::spell_effect_line()</a>.</p>
 
 </div>
 </div>
@@ -294,7 +297,7 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="magic_8cpp_source.html#l01030">a</a>, <a class="el" href="magic_8cpp_source.html#l01031">b</a>, and <a class="el" href="magic_8cpp_source.html#l01032">c</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="magic__spell__effect_8cpp_source.html#l00094">between_or_on()</a>, and <a class="el" href="magic__spell__effect_8cpp_source.html#l00227">spell_effect::spell_effect_line()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="magic__spell__effect_8cpp_source.html#l00094">between_or_on()</a>, and <a class="el" href="magic__spell__effect_8cpp_source.html#l00239">spell_effect::spell_effect_line()</a>.</p>
 
 </div>
 </div>
@@ -304,7 +307,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacespell__detail.html">spell_detail</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:08:05 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:40 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

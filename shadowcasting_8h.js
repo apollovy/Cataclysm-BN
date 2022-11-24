@@ -11,8 +11,8 @@ var shadowcasting_8h =
       [ "default_", "shadowcasting_8h.html#a7df0cbde1dcbe2fe3e1530adc91b8c39a172b03053216c6158fe380805998ad6c", null ]
     ] ],
     [ "accumulate_transparency", "shadowcasting_8h.html#af768cd177db1f5b42a89e90bc72b9ac4", null ],
-    [ "cast_zlight", "shadowcasting_8h.html#aab42508cf6fecc57d2a6d130c6fb7047", null ],
-    [ "castLightAll", "shadowcasting_8h.html#aa1e240c2e5ec644959fd1e25bd3ba79d", null ],
+    [ "cast_zlight", "shadowcasting_8h.html#ab72a18c24c4cd86e19ad9f74de5a5fa4", null ],
+    [ "castLightAll", "shadowcasting_8h.html#aac10713ea8ca31869895ebccd82f76b7", null ],
     [ "sight_calc", "shadowcasting_8h.html#aa0a935fafac4951387c32780c74fb5c2", null ],
     [ "sight_check", "shadowcasting_8h.html#aca28982e9214bac1258086ebe070210c", null ],
     [ "update_light", "shadowcasting_8h.html#abb443d832076bbf7e40c4768faf57ce2", null ],

@@ -98,7 +98,6 @@ $(document).ready(function(){initNavTree('profession_8cpp.html',''); initResizab
 <code>#include &lt;iterator&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &quot;<a class="el" href="addiction_8h_source.html">addiction.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="avatar_8h_source.html">avatar.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="calendar_8h_source.html">calendar.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="flat__set_8h_source.html">flat_set.h</a>&quot;</code><br />
@@ -108,9 +107,7 @@ $(document).ready(function(){initNavTree('profession_8cpp.html',''); initResizab
 <code>#include &quot;<a class="el" href="item__group_8h_source.html">item_group.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="itype_8h_source.html">itype.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="json_8h_source.html">json.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="magic_8h_source.html">magic.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="options_8h_source.html">options.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="player_8h_source.html">player.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pldata_8h_source.html">pldata.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="translations_8h_source.html">translations.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="type__id_8h_source.html">type_id.h</a>&quot;</code><br />
@@ -150,8 +147,8 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a7488aa64b6b073c21ae0bf4af01102aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgeneric__factory.html">generic_factory</a>&lt; <a class="el" href="classprofession.html">profession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02profession_8cpp_03.html#a7488aa64b6b073c21ae0bf4af01102aa">anonymous_namespace{profession.cpp}::all_profs</a> (&quot;profession&quot;)</td></tr>
 <tr class="separator:a7488aa64b6b073c21ae0bf4af01102aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ffc5f7c33cad2678fb4b714948d785b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classstring__id.html">string_id</a>&lt; <a class="el" href="classprofession.html">profession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02profession_8cpp_03.html#a9ffc5f7c33cad2678fb4b714948d785b">anonymous_namespace{profession.cpp}::generic_profession_id</a> (&quot;unemployed&quot;)</td></tr>
-<tr class="separator:a9ffc5f7c33cad2678fb4b714948d785b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040d4c732bcc22b97ae7a97ea3e73822"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="type__id_8h.html#ade3fa4a56f88d43404bf3bb1abef30de">profession_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02profession_8cpp_03.html#a040d4c732bcc22b97ae7a97ea3e73822">anonymous_namespace{profession.cpp}::generic_profession_id</a> (&quot;unemployed&quot;)</td></tr>
+<tr class="separator:a040d4c732bcc22b97ae7a97ea3e73822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95457d9fb7b6738005ca46dd3b6c2c4c"><td class="memItemLeft" align="right" valign="top">static class <a class="el" href="classjson__item__substitution.html">json_item_substitution</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="profession_8cpp.html#a95457d9fb7b6738005ca46dd3b6c2c4c">item_substitutions</a></td></tr>
 <tr class="separator:a95457d9fb7b6738005ca46dd3b6c2c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -179,16 +176,16 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="profession_8cpp_source.html#l00368">368</a> of file <a class="el" href="profession_8cpp_source.html">profession.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>{</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> initial_days = get_option&lt;int&gt;( <span class="stringliteral">&quot;INITIAL_DAY&quot;</span> );</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespacecalendar.html#ae25f99fbff61e25df40b5b26bcedee8c">calendar::before_time_starts</a> + 1_days * initial_days;</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>}</div>
+<p class="definition">Definition at line <a class="el" href="profession_8cpp_source.html#l00365">365</a> of file <a class="el" href="profession_8cpp_source.html">profession.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>{</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> initial_days = get_option&lt;int&gt;( <span class="stringliteral">&quot;INITIAL_DAY&quot;</span> );</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespacecalendar.html#ae25f99fbff61e25df40b5b26bcedee8c">calendar::before_time_starts</a> + 1_days * initial_days;</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>}</div>
 <div class="ttc" id="anamespacecalendar_html_ae25f99fbff61e25df40b5b26bcedee8c"><div class="ttname"><a href="namespacecalendar.html#ae25f99fbff61e25df40b5b26bcedee8c">calendar::before_time_starts</a></div><div class="ttdeci">const time_point before_time_starts</div><div class="ttdoc">A time point that is always before the current turn, even when the game has just started.</div><div class="ttdef"><b>Definition:</b> <a href="calendar_8cpp_source.html#l00025">calendar.cpp:25</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="calendar_8cpp_source.html#l00025">calendar::before_time_starts</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00667">json_item_substitution::get_substitution()</a>, and <a class="el" href="profession_8cpp_source.html#l00389">profession::items()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00648">json_item_substitution::get_substitution()</a>, and <a class="el" href="profession_8cpp_source.html#l00386">profession::items()</a>.</p>
 
 </div>
 </div>
@@ -216,23 +213,23 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="profession_8cpp_source.html#l00379">379</a> of file <a class="el" href="profession_8cpp_source.html">profession.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>{</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">if</span>( it.<a class="code hl_function" href="classitem.html#a0b12108a604ac9d940716bb8f1368cf5">get_var</a>( <span class="stringliteral">&quot;dirt&quot;</span>, 0 ) &gt; 0 ) {</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        it.<a class="code hl_function" href="classitem.html#a4938361b8fe897c4e85d66020ef91aff">set_var</a>( <span class="stringliteral">&quot;dirt&quot;</span>, 0 );</div>
+<p class="definition">Definition at line <a class="el" href="profession_8cpp_source.html#l00376">376</a> of file <a class="el" href="profession_8cpp_source.html">profession.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>{</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordflow">if</span>( it.<a class="code hl_function" href="classitem.html#a0b12108a604ac9d940716bb8f1368cf5">get_var</a>( <span class="stringliteral">&quot;dirt&quot;</span>, 0 ) &gt; 0 ) {</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        it.<a class="code hl_function" href="classitem.html#a4938361b8fe897c4e85d66020ef91aff">set_var</a>( <span class="stringliteral">&quot;dirt&quot;</span>, 0 );</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    }</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">if</span>( it.<a class="code hl_function" href="classitem.html#a3bdef3b5c1d1150e63aa1991fc07875d">is_faulty</a>() ) {</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        it.<a class="code hl_variable" href="classitem.html#a12a6fa8aac1350f3ca4362a1bdccd9b0">faults</a>.clear();</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    }</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="keywordflow">if</span>( it.<a class="code hl_function" href="classitem.html#a3bdef3b5c1d1150e63aa1991fc07875d">is_faulty</a>() ) {</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        it.<a class="code hl_variable" href="classitem.html#a12a6fa8aac1350f3ca4362a1bdccd9b0">faults</a>.clear();</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    }</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>}</div>
-<div class="ttc" id="aclassitem_html_a0b12108a604ac9d940716bb8f1368cf5"><div class="ttname"><a href="classitem.html#a0b12108a604ac9d940716bb8f1368cf5">item::get_var</a></div><div class="ttdeci">double get_var(const std::string &amp;name, double default_value) const</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l01021">item.cpp:1021</a></div></div>
-<div class="ttc" id="aclassitem_html_a12a6fa8aac1350f3ca4362a1bdccd9b0"><div class="ttname"><a href="classitem.html#a12a6fa8aac1350f3ca4362a1bdccd9b0">item::faults</a></div><div class="ttdeci">std::set&lt; fault_id &gt; faults</div><div class="ttdoc">What faults (if any) currently apply to this item.</div><div class="ttdef"><b>Definition:</b> <a href="item_8h_source.html#l02160">item.h:2160</a></div></div>
-<div class="ttc" id="aclassitem_html_a3bdef3b5c1d1150e63aa1991fc07875d"><div class="ttname"><a href="classitem.html#a3bdef3b5c1d1150e63aa1991fc07875d">item::is_faulty</a></div><div class="ttdeci">bool is_faulty() const</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l06609">item.cpp:6609</a></div></div>
-<div class="ttc" id="aclassitem_html_a4938361b8fe897c4e85d66020ef91aff"><div class="ttname"><a href="classitem.html#a4938361b8fe897c4e85d66020ef91aff">item::set_var</a></div><div class="ttdeci">void set_var(const std::string &amp;name, int value)</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l00991">item.cpp:991</a></div></div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>}</div>
+<div class="ttc" id="aclassitem_html_a0b12108a604ac9d940716bb8f1368cf5"><div class="ttname"><a href="classitem.html#a0b12108a604ac9d940716bb8f1368cf5">item::get_var</a></div><div class="ttdeci">double get_var(const std::string &amp;name, double default_value) const</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l01025">item.cpp:1025</a></div></div>
+<div class="ttc" id="aclassitem_html_a12a6fa8aac1350f3ca4362a1bdccd9b0"><div class="ttname"><a href="classitem.html#a12a6fa8aac1350f3ca4362a1bdccd9b0">item::faults</a></div><div class="ttdeci">std::set&lt; fault_id &gt; faults</div><div class="ttdoc">What faults (if any) currently apply to this item.</div><div class="ttdef"><b>Definition:</b> <a href="item_8h_source.html#l02161">item.h:2161</a></div></div>
+<div class="ttc" id="aclassitem_html_a3bdef3b5c1d1150e63aa1991fc07875d"><div class="ttname"><a href="classitem.html#a3bdef3b5c1d1150e63aa1991fc07875d">item::is_faulty</a></div><div class="ttdeci">bool is_faulty() const</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l06650">item.cpp:6650</a></div></div>
+<div class="ttc" id="aclassitem_html_a4938361b8fe897c4e85d66020ef91aff"><div class="ttname"><a href="classitem.html#a4938361b8fe897c4e85d66020ef91aff">item::set_var</a></div><div class="ttdeci">void set_var(const std::string &amp;name, int value)</div><div class="ttdef"><b>Definition:</b> <a href="item_8cpp_source.html#l00995">item.cpp:995</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="item_8h_source.html#l02160">item::faults</a>, <a class="el" href="item_8cpp_source.html#l01021">item::get_var()</a>, <a class="el" href="item_8cpp_source.html#l06609">item::is_faulty()</a>, and <a class="el" href="item_8cpp_source.html#l00991">item::set_var()</a>.</p>
+<p class="reference">References <a class="el" href="item_8h_source.html#l02161">item::faults</a>, <a class="el" href="item_8cpp_source.html#l01025">item::get_var()</a>, <a class="el" href="item_8cpp_source.html#l06650">item::is_faulty()</a>, and <a class="el" href="item_8cpp_source.html#l00995">item::set_var()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00389">profession::items()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00386">profession::items()</a>.</p>
 
 </div>
 </div>
@@ -257,7 +254,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00267">profession::check_definitions()</a>, <a class="el" href="profession_8cpp_source.html#l00389">profession::items()</a>, <a class="el" href="profession_8cpp_source.html#l00538">profession::load_item_substitutions()</a>, and <a class="el" href="profession_8cpp_source.html#l00261">profession::reset()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="profession_8cpp_source.html#l00264">profession::check_definitions()</a>, <a class="el" href="profession_8cpp_source.html#l00386">profession::items()</a>, <a class="el" href="profession_8cpp_source.html#l00519">profession::load_item_substitutions()</a>, and <a class="el" href="profession_8cpp_source.html#l00258">profession::reset()</a>.</p>
 
 </div>
 </div>
@@ -267,7 +264,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="profession_8cpp.html">profession.cpp</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:34 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:09 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

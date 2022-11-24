@@ -102,6 +102,7 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <li>basic_printf_context_t&#160;:&#160;<a class="el" href="fmtlib__printf_8h.html#a7721cb26804e73c9c73b908277b42c8c">fmtlib_printf.h</a></li>
 <li>bat_energy_j&#160;:&#160;<a class="el" href="vehicle_8cpp.html#aef6226139c1cd17debb5ac460a1c6595">vehicle.cpp</a></li>
 <li>BATCH&#160;:&#160;<a class="el" href="crafting__gui_8cpp.html#a85d81375d681a4e56a25b42f9f753cdeabc04848b2d94351b99f92127e29bb075">crafting_gui.cpp</a></li>
+<li>belongs_to_connection()&#160;:&#160;<a class="el" href="overmap_8cpp.html#a6b57f36605f8595e0f6f861f9830d0b0">overmap.cpp</a>, <a class="el" href="overmap_8h.html#a6b57f36605f8595e0f6f861f9830d0b0">overmap.h</a></li>
 <li>BELTED_LAYER&#160;:&#160;<a class="el" href="enums_8h.html#aa80f2d4c1530c674e2976ea897d02ec0a6f2948421e2b71cc1b6919b2bc52b8e0">enums.h</a></li>
 <li>bench_type&#160;:&#160;<a class="el" href="crafting_8h.html#aa5f7f30378264d4adcf8b4a0ceb3b207">crafting.h</a></li>
 <li>best_bench_here()&#160;:&#160;<a class="el" href="crafting_8cpp.html#a6ef89b8a3dd653ead46ace741f2a272b">crafting.cpp</a></li>
@@ -109,12 +110,11 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <li>bgcolor_from_string()&#160;:&#160;<a class="el" href="color_8cpp.html#ad929efa027d1dffc115bf4f7e5f07aff">color.cpp</a>, <a class="el" href="color_8h.html#ad929efa027d1dffc115bf4f7e5f07aff">color.h</a></li>
 <li>bio_adrenaline&#160;:&#160;<a class="el" href="bionics_8cpp.html#aac8302f849086f5404cf71692415156d">bionics.cpp</a></li>
 <li>bio_ads&#160;:&#160;<a class="el" href="bionics_8cpp.html#a99bde006d277d411e266b003163d9f05">bionics.cpp</a>, <a class="el" href="character_8cpp.html#a99bde006d277d411e266b003163d9f05">character.cpp</a>, <a class="el" href="npcmove_8cpp.html#a99bde006d277d411e266b003163d9f05">npcmove.cpp</a></li>
-<li>bio_advreactor&#160;:&#160;<a class="el" href="bionics_8cpp.html#af240157d33eeab40ef36bc04dd472e75">bionics.cpp</a>, <a class="el" href="consumption_8cpp.html#af240157d33eeab40ef36bc04dd472e75">consumption.cpp</a>, <a class="el" href="npcmove_8cpp.html#af240157d33eeab40ef36bc04dd472e75">npcmove.cpp</a>, <a class="el" href="suffer_8cpp.html#af240157d33eeab40ef36bc04dd472e75">suffer.cpp</a></li>
+<li>bio_advreactor&#160;:&#160;<a class="el" href="npcmove_8cpp.html#af240157d33eeab40ef36bc04dd472e75">npcmove.cpp</a>, <a class="el" href="suffer_8cpp.html#af240157d33eeab40ef36bc04dd472e75">suffer.cpp</a>, <a class="el" href="consumption_8cpp.html#af240157d33eeab40ef36bc04dd472e75">consumption.cpp</a>, <a class="el" href="bionics_8cpp.html#af240157d33eeab40ef36bc04dd472e75">bionics.cpp</a></li>
 <li>bio_armor_arms&#160;:&#160;<a class="el" href="martialarts_8cpp.html#a4f7c3de213e2505c0cc47fafdd2567d0">martialarts.cpp</a></li>
 <li>bio_armor_eyes&#160;:&#160;<a class="el" href="npctalk_8cpp.html#a60156c3be7e9ad975f66d84becc7a6e1">npctalk.cpp</a></li>
 <li>bio_armor_legs&#160;:&#160;<a class="el" href="martialarts_8cpp.html#a587ef2648b0f57c82429af975597f155">martialarts.cpp</a></li>
 <li>bio_blade&#160;:&#160;<a class="el" href="npcmove_8cpp.html#a2ab46842d379637d4d5711e46f5333b6">npcmove.cpp</a></li>
-<li>bio_blaster&#160;:&#160;<a class="el" href="bionics_8cpp.html#a0890ea610faa3e6918c5dbe33fae3c99">bionics.cpp</a>, <a class="el" href="character_8cpp.html#a0890ea610faa3e6918c5dbe33fae3c99">character.cpp</a></li>
 <li>bio_blindfold&#160;:&#160;<a class="el" href="character_8cpp.html#a2804fe9f932b6123c1f18c7675244ca1">character.cpp</a></li>
 <li>bio_blood_anal&#160;:&#160;<a class="el" href="bionics_8cpp.html#ab25d812b0df8833fcaf9c4f8ff9821bc">bionics.cpp</a></li>
 <li>bio_blood_filter&#160;:&#160;<a class="el" href="bionics_8cpp.html#adcd6ed345eb93c1a98e0741ef77bd3ad">bionics.cpp</a></li>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <li>bio_shock_absorber&#160;:&#160;<a class="el" href="character_8cpp.html#a3d53abc0158eeedcc5163d8676c63b1c">character.cpp</a>, <a class="el" href="trapfunc_8cpp.html#a3d53abc0158eeedcc5163d8676c63b1c">trapfunc.cpp</a></li>
 <li>bio_shockwave&#160;:&#160;<a class="el" href="bionics_8cpp.html#a7fffbc252dc286392d393243e90bad59">bionics.cpp</a></li>
 <li>bio_sleepy&#160;:&#160;<a class="el" href="suffer_8cpp.html#abc86d35521a6cd141ee5b1cc9f87547f">suffer.cpp</a></li>
-<li>bio_soporific&#160;:&#160;<a class="el" href="npcmove_8cpp.html#a978adf30232e0bcf1b9d38a73b8dd30e">npcmove.cpp</a>, <a class="el" href="player_8cpp.html#a978adf30232e0bcf1b9d38a73b8dd30e">player.cpp</a></li>
+<li>bio_soporific&#160;:&#160;<a class="el" href="player_8cpp.html#a978adf30232e0bcf1b9d38a73b8dd30e">player.cpp</a>, <a class="el" href="npcmove_8cpp.html#a978adf30232e0bcf1b9d38a73b8dd30e">npcmove.cpp</a></li>
 <li>bio_spasm&#160;:&#160;<a class="el" href="suffer_8cpp.html#a9612b22e002c7d8a9fc1961de4e983c8">suffer.cpp</a></li>
 <li>bio_speed&#160;:&#160;<a class="el" href="player_8cpp.html#ac51fe65666b5fd877b3a7a223b17a788">player.cpp</a></li>
 <li>bio_storage&#160;:&#160;<a class="el" href="character_8cpp.html#ad9c11a53f8ef5dc5bcd4555426e4fb81">character.cpp</a></li>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <li>bio_synaptic_regen&#160;:&#160;<a class="el" href="character_8cpp.html#a5e1bb0ca8bf7a302f155425990209872">character.cpp</a></li>
 <li>bio_syringe&#160;:&#160;<a class="el" href="iuse__actor_8cpp.html#a0378c4d7c8bedb3b625c06e488f25dd9">iuse_actor.cpp</a>, <a class="el" href="player_8cpp.html#a0378c4d7c8bedb3b625c06e488f25dd9">player.cpp</a></li>
 <li>bio_targeting&#160;:&#160;<a class="el" href="ranged_8cpp.html#a0919705e5cea2aa623cbda27d0cae0b6">ranged.cpp</a></li>
-<li>bio_taste_blocker&#160;:&#160;<a class="el" href="consumption_8cpp.html#a1cdd6de85176097b616ddd8e3e0a9239">consumption.cpp</a></li>
+<li>bio_taste_blocker&#160;:&#160;<a class="el" href="consumption_8cpp.html#a1cdd6de85176097b616ddd8e3e0a9239">consumption.cpp</a>, <a class="el" href="game__inventory_8cpp.html#a1cdd6de85176097b616ddd8e3e0a9239">game_inventory.cpp</a></li>
 <li>bio_tattoo_led&#160;:&#160;<a class="el" href="character_8cpp.html#ac048c1b8346acf47fd7b895a0972f249">character.cpp</a></li>
 <li>bio_teleport&#160;:&#160;<a class="el" href="bionics_8cpp.html#ac7ef7339c13baaf4cef891af5ea503e3">bionics.cpp</a></li>
 <li>bio_time_freeze&#160;:&#160;<a class="el" href="bionics_8cpp.html#a63cd1a2ad221118025e74c767fcce348">bionics.cpp</a></li>
@@ -271,9 +271,10 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <li>bp_leg_r&#160;:&#160;<a class="el" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980a202ad82497ebf8867cdcd6ee15085d16">bodypart.h</a></li>
 <li>bp_mouth&#160;:&#160;<a class="el" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980abb7b120eb8dc7c137110446fe541baed">bodypart.h</a></li>
 <li>bp_torso&#160;:&#160;<a class="el" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980ab4b216482dcc0e468819f023c3aeddd1">bodypart.h</a></li>
+<li>break_after()&#160;:&#160;<a class="el" href="string__editor__window_8cpp.html#adbfe69b8e1d9c5dcf87273165378a9f7">string_editor_window.cpp</a></li>
 <li>bresenham()&#160;:&#160;<a class="el" href="line_8cpp.html#afc7dbbda2c4892a65910699dc4eead7e">line.cpp</a>, <a class="el" href="line_8h.html#afc7dbbda2c4892a65910699dc4eead7e">line.h</a></li>
 <li>broken&#160;:&#160;<a class="el" href="enums_8h.html#a00763863874f01b868849b27ceee73c9a1f85e94c05010d1308d67d1d918944e4">enums.h</a></li>
-<li>bucket_by_distance()&#160;:&#160;<a class="el" href="animation_8h.html#a8fc0a82b99c5c13bd3e7c63b3d47c3bf">animation.h</a>, <a class="el" href="animation_8cpp.html#a8fc0a82b99c5c13bd3e7c63b3d47c3bf">animation.cpp</a></li>
+<li>bucket_by_distance()&#160;:&#160;<a class="el" href="animation_8cpp.html#a8fc0a82b99c5c13bd3e7c63b3d47c3bf">animation.cpp</a>, <a class="el" href="animation_8h.html#a8fc0a82b99c5c13bd3e7c63b3d47c3bf">animation.h</a></li>
 <li>bucketed_points&#160;:&#160;<a class="el" href="animation_8h.html#adc417821aec24e4672777ee602619cc2">animation.h</a></li>
 <li>buffer_context&#160;:&#160;<a class="el" href="fmtlib__core_8h.html#aaaef905b4cc5da6969d9ee839d668406">fmtlib_core.h</a></li>
 <li>buffered_prompts()&#160;:&#160;<a class="el" href="debug_8cpp.html#afc86277dac33d8cff0e14b832365b38b">debug.cpp</a></li>
@@ -305,7 +306,7 @@ $(document).ready(function(){initNavTree('globals_b.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 5 2022 20:08:06 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:41 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

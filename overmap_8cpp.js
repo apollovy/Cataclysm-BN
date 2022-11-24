@@ -7,6 +7,7 @@ var overmap_8cpp =
     [ "MAX_GOO_SIZE", "overmap_8cpp.html#a79d4ebf4be394c07573928cedf0cca52", null ],
     [ "MIN_ANT_SIZE", "overmap_8cpp.html#ac2423e6dbb2b318a2b056fef85e6e17f", null ],
     [ "MIN_GOO_SIZE", "overmap_8cpp.html#a6b21aab4828b100666f39972375f1b05", null ],
+    [ "belongs_to_connection", "overmap_8cpp.html#a6b57f36605f8595e0f6f861f9830d0b0", null ],
     [ "elevate_bridges", "overmap_8cpp.html#a4ed05175aca230b5737505cb0eb61712", null ],
     [ "enum_to_string< lab_type >", "overmap_8cpp.html#ac293a4de69bb907a477d435a0d0eb8e3", null ],
     [ "enum_to_string< ot_match_type >", "overmap_8cpp.html#a43c03e982785cb8effb5ceae96fadc81", null ],

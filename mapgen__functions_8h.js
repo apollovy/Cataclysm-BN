@@ -50,6 +50,7 @@ var mapgen__functions_8h =
     [ "mapgen_sewer_straight", "mapgen__functions_8h.html#affca69f1ad4097bb618a5513defd47fa", null ],
     [ "mapgen_sewer_tee", "mapgen__functions_8h.html#a591f1f82f9f1fde2fbf5aea09e6438d4", null ],
     [ "mapgen_subway", "mapgen__functions_8h.html#adb62dfd957ef2cc7dca9e1d74facc88a", null ],
+    [ "mapgen_test", "mapgen__functions_8h.html#acabe7a654baf0cf98d371299bfba3b3c", null ],
     [ "mapgen_tutorial", "mapgen__functions_8h.html#aa4d27c6c4282002f8245e15633934d9d", null ],
     [ "mremove_trap", "mapgen__functions_8h.html#a7c064303d0678ded194205b5363c1fdc", null ],
     [ "mtrap_set", "mapgen__functions_8h.html#aea2db55228fa350591c48c20b3e5f446", null ],

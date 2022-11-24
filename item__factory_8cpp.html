@@ -122,6 +122,7 @@ $(document).ready(function(){initNavTree('item__factory_8cpp.html',''); initResi
 <code>#include &quot;<a class="el" href="game__constants_8h_source.html">game_constants.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="generic__factory_8h_source.html">generic_factory.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="init_8h_source.html">init.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="input_8h_source.html">input.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="item_8h_source.html">item.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="item__contents_8h_source.html">item_contents.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="item__group_8h_source.html">item_group.h</a>&quot;</code><br />
@@ -213,8 +214,6 @@ Variables</h2></td></tr>
 <tr class="separator:aa4c9f0b19a1528d31cf326fc1a172845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9eb96e4a86c3afc10c7787c6d893e7a1"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="map_8cpp.html#a162c25498e3347a41712a4746b8b5100">ammo_effect_str_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item__factory_8cpp.html#a9eb96e4a86c3afc10c7787c6d893e7a1">ammo_effect_NAPALM_BIG</a> (&quot;NAPALM_BIG&quot;)</td></tr>
 <tr class="separator:a9eb96e4a86c3afc10c7787c6d893e7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07dd3ee8a326de00a3fd0c98cb57aa32"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="map_8cpp.html#a162c25498e3347a41712a4746b8b5100">ammo_effect_str_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item__factory_8cpp.html#a07dd3ee8a326de00a3fd0c98cb57aa32">ammo_effect_NEVER_MISFIRES</a> (&quot;NEVER_MISFIRES&quot;)</td></tr>
-<tr class="separator:a07dd3ee8a326de00a3fd0c98cb57aa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f4fe4bd5d4a6c971b938f573f015886"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="map_8cpp.html#a162c25498e3347a41712a4746b8b5100">ammo_effect_str_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item__factory_8cpp.html#a0f4fe4bd5d4a6c971b938f573f015886">ammo_effect_SMOKE</a> (&quot;SMOKE&quot;)</td></tr>
 <tr class="separator:a0f4fe4bd5d4a6c971b938f573f015886"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a0f387b756b27806acd612df7589c57"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="map_8cpp.html#a162c25498e3347a41712a4746b8b5100">ammo_effect_str_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="item__factory_8cpp.html#a4a0f387b756b27806acd612df7589c57">ammo_effect_SMOKE_BIG</a> (&quot;SMOKE_BIG&quot;)</td></tr>
@@ -284,12 +283,12 @@ Variables</h2></td></tr>
 <div class="ttc" id="aclassJsonObject_html_a69f62f59b5e39da6059b7c3cf8b12421"><div class="ttname"><a href="classJsonObject.html#a69f62f59b5e39da6059b7c3cf8b12421">JsonObject::get_array</a></div><div class="ttdeci">JsonArray get_array(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00332">json.cpp:332</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_aa92b5eb23f6b39645877d79fbef784a0"><div class="ttname"><a href="classJsonObject.html#aa92b5eb23f6b39645877d79fbef784a0">JsonObject::has_array</a></div><div class="ttdeci">bool has_array(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00415">json.cpp:415</a></div></div>
 <div class="ttc" id="aclassgun__modifier__data_html"><div class="ttname"><a href="classgun__modifier__data.html">gun_modifier_data</a></div><div class="ttdef"><b>Definition:</b> <a href="itype_8h_source.html#l00045">itype.h:46</a></div></div>
-<div class="ttc" id="anamespaceom__direction_html_a8ba958ccfad28c0a5572a04dd1428f32"><div class="ttname"><a href="namespaceom__direction.html#a8ba958ccfad28c0a5572a04dd1428f32">om_direction::name</a></div><div class="ttdeci">std::string name(type dir)</div><div class="ttdoc">Get Human readable name of a direction.</div><div class="ttdef"><b>Definition:</b> <a href="overmap_8cpp_source.html#l04108">overmap.cpp:4108</a></div></div>
-<div class="ttc" id="atype__id_8h_html_a8174d98bb32e389bd2e1ab691167f7b9"><div class="ttname"><a href="type__id_8h.html#a8174d98bb32e389bd2e1ab691167f7b9">gun_mode_id</a></div><div class="ttdeci">string_id&lt; gun_mode &gt; gun_mode_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00061">type_id.h:61</a></div></div>
+<div class="ttc" id="anamespaceom__direction_html_a8ba958ccfad28c0a5572a04dd1428f32"><div class="ttname"><a href="namespaceom__direction.html#a8ba958ccfad28c0a5572a04dd1428f32">om_direction::name</a></div><div class="ttdeci">std::string name(type dir)</div><div class="ttdoc">Get Human readable name of a direction.</div><div class="ttdef"><b>Definition:</b> <a href="overmap_8cpp_source.html#l04126">overmap.cpp:4126</a></div></div>
+<div class="ttc" id="atype__id_8h_html_a8174d98bb32e389bd2e1ab691167f7b9"><div class="ttname"><a href="type__id_8h.html#a8174d98bb32e389bd2e1ab691167f7b9">gun_mode_id</a></div><div class="ttdeci">string_id&lt; gun_mode &gt; gun_mode_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00068">type_id.h:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="json_8cpp_source.html#l00332">JsonObject::get_array()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, and <a class="el" href="overmap_8cpp_source.html#l04108">om_direction::name()</a>.</p>
+<p class="reference">References <a class="el" href="json_8cpp_source.html#l00332">JsonObject::get_array()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, and <a class="el" href="overmap_8cpp_source.html#l04126">om_direction::name()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01677">islot_ammo::load()</a>, <a class="el" href="item__factory_8cpp_source.html#l01671">Item_factory::load()</a>, <a class="el" href="item__factory_8cpp_source.html#l01702">Item_factory::load_ammo()</a>, <a class="el" href="item__factory_8cpp_source.html#l02405">Item_factory::load_basic_info()</a>, <a class="el" href="item__factory_8cpp_source.html#l02147">Item_factory::load_comestible()</a>, and <a class="el" href="item__factory_8cpp_source.html#l02654">Item_factory::load_migration()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01672">islot_ammo::load()</a>, <a class="el" href="item__factory_8cpp_source.html#l01666">Item_factory::load()</a>, <a class="el" href="item__factory_8cpp_source.html#l01697">Item_factory::load_ammo()</a>, <a class="el" href="item__factory_8cpp_source.html#l02400">Item_factory::load_basic_info()</a>, <a class="el" href="item__factory_8cpp_source.html#l02142">Item_factory::load_comestible()</a>, and <a class="el" href="item__factory_8cpp_source.html#l02654">Item_factory::load_migration()</a>.</p>
 
 </div>
 </div>
@@ -391,12 +390,12 @@ Variables</h2></td></tr>
 <div class="ttc" id="aclassJsonObject_html_a19d83d03e3d5cc6905bcb850d80a1f05"><div class="ttname"><a href="classJsonObject.html#a19d83d03e3d5cc6905bcb850d80a1f05">JsonObject::has_string</a></div><div class="ttdeci">bool has_string(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00405">json.cpp:405</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_a96b6d1b9cf7bda4fc9cd177a99e0631c"><div class="ttname"><a href="classJsonObject.html#a96b6d1b9cf7bda4fc9cd177a99e0631c">JsonObject::get_string</a></div><div class="ttdeci">std::string get_string(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00314">json.cpp:314</a></div></div>
 <div class="ttc" id="aclassbody__part__set_html_a6e283702940781efa731615116bdd070"><div class="ttname"><a href="classbody__part__set.html#a6e283702940781efa731615116bdd070">body_part_set::set</a></div><div class="ttdeci">void set(const body_part &amp;bp)</div><div class="ttdef"><b>Definition:</b> <a href="bodypart_8h_source.html#l00240">bodypart.h:240</a></div></div>
-<div class="ttc" id="amapgen_8cpp_html_a90f1f53dc044e93e7f7f9314cef1bd45"><div class="ttname"><a href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a></div><div class="ttdeci">void line(map *m, const ter_id &amp;type, const point &amp;p1, const point &amp;p2)</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l06455">mapgen.cpp:6455</a></div></div>
+<div class="ttc" id="amapgen_8cpp_html_a90f1f53dc044e93e7f7f9314cef1bd45"><div class="ttname"><a href="mapgen_8cpp.html#a90f1f53dc044e93e7f7f9314cef1bd45">line</a></div><div class="ttdeci">void line(map *m, const ter_id &amp;type, const point &amp;p1, const point &amp;p2)</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l06462">mapgen.cpp:6462</a></div></div>
 <div class="ttc" id="astring__utils_8cpp_html_a34d7ffc8f91f1bdfed2b21d1411ad557"><div class="ttname"><a href="string__utils_8cpp.html#a34d7ffc8f91f1bdfed2b21d1411ad557">to_lower_case</a></div><div class="ttdeci">std::string to_lower_case(const std::string &amp;s)</div><div class="ttdoc">Converts the string to lower case.</div><div class="ttdef"><b>Definition:</b> <a href="string__utils_8cpp_source.html#l00241">string_utils.cpp:241</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="bodypart_8h_source.html#l00044">bp_arm_l</a>, <a class="el" href="bodypart_8h_source.html#l00045">bp_arm_r</a>, <a class="el" href="bodypart_8h_source.html#l00050">bp_foot_l</a>, <a class="el" href="bodypart_8h_source.html#l00051">bp_foot_r</a>, <a class="el" href="bodypart_8h_source.html#l00046">bp_hand_l</a>, <a class="el" href="bodypart_8h_source.html#l00047">bp_hand_r</a>, <a class="el" href="bodypart_8h_source.html#l00048">bp_leg_l</a>, <a class="el" href="bodypart_8h_source.html#l00049">bp_leg_r</a>, <a class="el" href="json_8cpp_source.html#l00332">JsonObject::get_array()</a>, <a class="el" href="bodypart_8cpp_source.html#l00180">get_body_part_token()</a>, <a class="el" href="json_8cpp_source.html#l00314">JsonObject::get_string()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, <a class="el" href="json_8cpp_source.html#l00405">JsonObject::has_string()</a>, <a class="el" href="cached__options_8cpp_source.html#l00006">json_report_strict</a>, <a class="el" href="mapgen_8cpp_source.html#l06455">line()</a>, <a class="el" href="bodypart_8h_source.html#l00240">body_part_set::set()</a>, and <a class="el" href="string__utils_8cpp_source.html#l00241">to_lower_case()</a>.</p>
+<p class="reference">References <a class="el" href="bodypart_8h_source.html#l00044">bp_arm_l</a>, <a class="el" href="bodypart_8h_source.html#l00045">bp_arm_r</a>, <a class="el" href="bodypart_8h_source.html#l00050">bp_foot_l</a>, <a class="el" href="bodypart_8h_source.html#l00051">bp_foot_r</a>, <a class="el" href="bodypart_8h_source.html#l00046">bp_hand_l</a>, <a class="el" href="bodypart_8h_source.html#l00047">bp_hand_r</a>, <a class="el" href="bodypart_8h_source.html#l00048">bp_leg_l</a>, <a class="el" href="bodypart_8h_source.html#l00049">bp_leg_r</a>, <a class="el" href="json_8cpp_source.html#l00332">JsonObject::get_array()</a>, <a class="el" href="bodypart_8cpp_source.html#l00180">get_body_part_token()</a>, <a class="el" href="json_8cpp_source.html#l00314">JsonObject::get_string()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, <a class="el" href="json_8cpp_source.html#l00405">JsonObject::has_string()</a>, <a class="el" href="cached__options_8cpp_source.html#l00006">json_report_strict</a>, <a class="el" href="mapgen_8cpp_source.html#l06462">line()</a>, <a class="el" href="bodypart_8h_source.html#l00240">body_part_set::set()</a>, and <a class="el" href="string__utils_8cpp_source.html#l00241">to_lower_case()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01856">Item_factory::load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01851">Item_factory::load()</a>.</p>
 
 </div>
 </div>
@@ -466,7 +465,7 @@ Variables</h2></td></tr>
 <div class="line"><a id="l03187" name="l03187"></a><span class="lineno"> 3187</span>}</div>
 <div class="ttc" id="aclassint__id_html_a315169d32cce4267b7c8dceff4b0d1d7"><div class="ttname"><a href="classint__id.html#a315169d32cce4267b7c8dceff4b0d1d7">int_id::obj</a></div><div class="ttdeci">const ammo_effect &amp; obj() const</div><div class="ttdef"><b>Definition:</b> <a href="ammo__effect_8cpp_source.html#l00026">ammo_effect.cpp:26</a></div></div>
 <div class="ttc" id="aclassstring__id_html"><div class="ttname"><a href="classstring__id.html">string_id&lt; item_category &gt;</a></div></div>
-<div class="ttc" id="atype__id_8h_html_a6e9edc884a79795c312ad6d426dda223"><div class="ttname"><a href="type__id_8h.html#a6e9edc884a79795c312ad6d426dda223">item_category_id</a></div><div class="ttdeci">string_id&lt; item_category &gt; item_category_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00067">type_id.h:67</a></div></div>
+<div class="ttc" id="atype__id_8h_html_a6e9edc884a79795c312ad6d426dda223"><div class="ttname"><a href="type__id_8h.html#a6e9edc884a79795c312ad6d426dda223">item_category_id</a></div><div class="ttdeci">string_id&lt; item_category &gt; item_category_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00074">type_id.h:74</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="ammo__effect_8cpp_source.html#l00026">int_id&lt; T &gt;::obj()</a>.</p>
 
@@ -498,22 +497,22 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l02364">2364</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l02365" name="l02365"></a><span class="lineno"> 2365</span>{</div>
-<div class="line"><a id="l02366" name="l02366"></a><span class="lineno"> 2366</span>    <span class="keyword">auto</span> &amp;mats = item_template.<a class="code hl_variable" href="structitype.html#a32ac824cb8437ef7a8288dafe6c6bfe1">materials</a>;</div>
-<div class="line"><a id="l02367" name="l02367"></a><span class="lineno"> 2367</span>    <span class="keyword">const</span> <span class="keyword">auto</span> old_size = mats.size();</div>
-<div class="line"><a id="l02368" name="l02368"></a><span class="lineno"> 2368</span>    mats.erase( std::remove( mats.begin(), mats.end(), <a class="code hl_class" href="classstring__id.html">material_id</a>( <span class="stringliteral">&quot;hflesh&quot;</span> ) ), mats.end() );</div>
-<div class="line"><a id="l02369" name="l02369"></a><span class="lineno"> 2369</span>    <span class="comment">// Only add &quot;flesh&quot; material if not already present</span></div>
-<div class="line"><a id="l02370" name="l02370"></a><span class="lineno"> 2370</span>    <span class="keywordflow">if</span>( old_size != mats.size() &amp;&amp;</div>
-<div class="line"><a id="l02371" name="l02371"></a><span class="lineno"> 2371</span>        <a class="code hl_function" href="namespacedetail.html#ad06b74f7502b63cbab323bba1ca3f72b">std::find</a>( mats.begin(), mats.end(), <a class="code hl_class" href="classstring__id.html">material_id</a>( <span class="stringliteral">&quot;flesh&quot;</span> ) ) == mats.end() ) {</div>
-<div class="line"><a id="l02372" name="l02372"></a><span class="lineno"> 2372</span>        mats.push_back( <a class="code hl_typedef" href="type__id_8h.html#a569ce0271cf4ab170e63bb05658be142">material_id</a>( <span class="stringliteral">&quot;flesh&quot;</span> ) );</div>
-<div class="line"><a id="l02373" name="l02373"></a><span class="lineno"> 2373</span>    }</div>
-<div class="line"><a id="l02374" name="l02374"></a><span class="lineno"> 2374</span>}</div>
+<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l02359">2359</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l02360" name="l02360"></a><span class="lineno"> 2360</span>{</div>
+<div class="line"><a id="l02361" name="l02361"></a><span class="lineno"> 2361</span>    <span class="keyword">auto</span> &amp;mats = item_template.<a class="code hl_variable" href="structitype.html#a32ac824cb8437ef7a8288dafe6c6bfe1">materials</a>;</div>
+<div class="line"><a id="l02362" name="l02362"></a><span class="lineno"> 2362</span>    <span class="keyword">const</span> <span class="keyword">auto</span> old_size = mats.size();</div>
+<div class="line"><a id="l02363" name="l02363"></a><span class="lineno"> 2363</span>    mats.erase( std::remove( mats.begin(), mats.end(), <a class="code hl_class" href="classstring__id.html">material_id</a>( <span class="stringliteral">&quot;hflesh&quot;</span> ) ), mats.end() );</div>
+<div class="line"><a id="l02364" name="l02364"></a><span class="lineno"> 2364</span>    <span class="comment">// Only add &quot;flesh&quot; material if not already present</span></div>
+<div class="line"><a id="l02365" name="l02365"></a><span class="lineno"> 2365</span>    <span class="keywordflow">if</span>( old_size != mats.size() &amp;&amp;</div>
+<div class="line"><a id="l02366" name="l02366"></a><span class="lineno"> 2366</span>        <a class="code hl_function" href="namespacedetail.html#ad06b74f7502b63cbab323bba1ca3f72b">std::find</a>( mats.begin(), mats.end(), <a class="code hl_class" href="classstring__id.html">material_id</a>( <span class="stringliteral">&quot;flesh&quot;</span> ) ) == mats.end() ) {</div>
+<div class="line"><a id="l02367" name="l02367"></a><span class="lineno"> 2367</span>        mats.push_back( <a class="code hl_typedef" href="type__id_8h.html#a569ce0271cf4ab170e63bb05658be142">material_id</a>( <span class="stringliteral">&quot;flesh&quot;</span> ) );</div>
+<div class="line"><a id="l02368" name="l02368"></a><span class="lineno"> 2368</span>    }</div>
+<div class="line"><a id="l02369" name="l02369"></a><span class="lineno"> 2369</span>}</div>
 <div class="ttc" id="anamespacedetail_html_ad06b74f7502b63cbab323bba1ca3f72b"><div class="ttname"><a href="namespacedetail.html#ad06b74f7502b63cbab323bba1ca3f72b">detail::find</a></div><div class="ttdeci">FMT_CONSTEXPR bool find(Ptr first, Ptr last, T value, Ptr &amp;out)</div><div class="ttdef"><b>Definition:</b> <a href="fmtlib__format_8h_source.html#l03355">fmtlib_format.h:3355</a></div></div>
-<div class="ttc" id="astructitype_html_a32ac824cb8437ef7a8288dafe6c6bfe1"><div class="ttname"><a href="structitype.html#a32ac824cb8437ef7a8288dafe6c6bfe1">itype::materials</a></div><div class="ttdeci">std::vector&lt; material_id &gt; materials</div><div class="ttdef"><b>Definition:</b> <a href="itype_8h_source.html#l00922">itype.h:922</a></div></div>
-<div class="ttc" id="atype__id_8h_html_a569ce0271cf4ab170e63bb05658be142"><div class="ttname"><a href="type__id_8h.html#a569ce0271cf4ab170e63bb05658be142">material_id</a></div><div class="ttdeci">string_id&lt; material_type &gt; material_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00085">type_id.h:85</a></div></div>
+<div class="ttc" id="astructitype_html_a32ac824cb8437ef7a8288dafe6c6bfe1"><div class="ttname"><a href="structitype.html#a32ac824cb8437ef7a8288dafe6c6bfe1">itype::materials</a></div><div class="ttdeci">std::vector&lt; material_id &gt; materials</div><div class="ttdef"><b>Definition:</b> <a href="itype_8h_source.html#l00924">itype.h:924</a></div></div>
+<div class="ttc" id="atype__id_8h_html_a569ce0271cf4ab170e63bb05658be142"><div class="ttname"><a href="type__id_8h.html#a569ce0271cf4ab170e63bb05658be142">material_id</a></div><div class="ttdeci">string_id&lt; material_type &gt; material_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00092">type_id.h:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="fmtlib__format_8h_source.html#l03355">detail::find()</a>, and <a class="el" href="itype_8h_source.html#l00922">itype::materials</a>.</p>
+<p class="reference">References <a class="el" href="fmtlib__format_8h_source.html#l03355">detail::find()</a>, and <a class="el" href="itype_8h_source.html#l00924">itype::materials</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l00165">Item_factory::finalize_pre()</a>.</p>
 
@@ -539,11 +538,11 @@ Variables</h2></td></tr>
 <div class="fragment"><div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>{</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="item__factory_8cpp.html#a112454b48fbc4eb47cb271e5ab79e23f">item_blacklist</a>.count( <span class="keywordtype">id</span> );</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
-<div class="ttc" id="aitem__factory_8cpp_html_a112454b48fbc4eb47cb271e5ab79e23f"><div class="ttname"><a href="item__factory_8cpp.html#a112454b48fbc4eb47cb271e5ab79e23f">item_blacklist</a></div><div class="ttdeci">static std::set&lt; itype_id &gt; item_blacklist</div><div class="ttdef"><b>Definition:</b> <a href="item__factory_8cpp_source.html#l00061">item_factory.cpp:59</a></div></div>
+<div class="ttc" id="aitem__factory_8cpp_html_a112454b48fbc4eb47cb271e5ab79e23f"><div class="ttname"><a href="item__factory_8cpp.html#a112454b48fbc4eb47cb271e5ab79e23f">item_blacklist</a></div><div class="ttdeci">static std::set&lt; itype_id &gt; item_blacklist</div><div class="ttdef"><b>Definition:</b> <a href="item__factory_8cpp_source.html#l00062">item_factory.cpp:60</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="item__factory_8cpp_source.html#l00059">item_blacklist</a>.</p>
+<p class="reference">References <a class="el" href="item__factory_8cpp_source.html#l00060">item_blacklist</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l00679">Item_factory::finalize_item_blacklist()</a>, and <a class="el" href="map_8cpp_source.html#l04173">map::spawn_item()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l00671">Item_factory::finalize_item_blacklist()</a>, and <a class="el" href="map_8cpp_source.html#l04194">map::spawn_item()</a>.</p>
 
 </div>
 </div>
@@ -601,7 +600,7 @@ template&lt;typename T &gt; </div>
 <div class="ttc" id="aclassJsonArray_html_a513b7a4eb1438938d9806d9446d90803"><div class="ttname"><a href="classJsonArray.html#a513b7a4eb1438938d9806d9446d90803">JsonArray::read_next</a></div><div class="ttdeci">bool read_next(T &amp;t)</div><div class="ttdef"><b>Definition:</b> <a href="json_8h_source.html#l01113">json.h:1113</a></div></div>
 <div class="ttc" id="anamespacedetail_1_1digits_html_aad69d2373aa047bdd9e81494bf3da5ae"><div class="ttname"><a href="namespacedetail_1_1digits.html#aad69d2373aa047bdd9e81494bf3da5ae">detail::digits::result</a></div><div class="ttdeci">result</div><div class="ttdef"><b>Definition:</b> <a href="fmtlib__format-inl_8h_source.html#l01626">fmtlib_format-inl.h:1626</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="overmap_8cpp_source.html#l04108">om_direction::name()</a>, <a class="el" href="ammo__effect_8cpp_source.html#l00026">int_id&lt; T &gt;::obj()</a>, and <a class="el" href="json_8h_source.html#l01113">JsonArray::read_next()</a>.</p>
+<p class="reference">References <a class="el" href="overmap_8cpp_source.html#l04126">om_direction::name()</a>, <a class="el" href="ammo__effect_8cpp_source.html#l00026">int_id&lt; T &gt;::obj()</a>, and <a class="el" href="json_8h_source.html#l01113">JsonArray::read_next()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l02911">Item_factory::add_entry()</a>.</p>
 
@@ -641,21 +640,21 @@ template&lt;typename E &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l01601">1601</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01603" name="l01603"></a><span class="lineno"> 1603</span>{</div>
-<div class="line"><a id="l01604" name="l01604"></a><span class="lineno"> 1604</span> </div>
-<div class="line"><a id="l01605" name="l01605"></a><span class="lineno"> 1605</span>    <span class="keywordflow">if</span>( !jo.<a class="code hl_function" href="classJsonObject.html#a887d230c6a42ef2a6cf72c0e040cd4e3">has_member</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> ) ) {</div>
-<div class="line"><a id="l01606" name="l01606"></a><span class="lineno"> 1606</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l01607" name="l01607"></a><span class="lineno"> 1607</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>( !jo.<a class="code hl_function" href="classJsonObject.html#aa92b5eb23f6b39645877d79fbef784a0">has_array</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> ) ) {</div>
-<div class="line"><a id="l01608" name="l01608"></a><span class="lineno"> 1608</span>        jo.<a class="code hl_function" href="classJsonObject.html#ae7bcdb4ec8ab2c64e607b411cb98d00c">throw_error</a>( <span class="stringliteral">&quot;expected array&quot;</span>, <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> );</div>
-<div class="line"><a id="l01609" name="l01609"></a><span class="lineno"> 1609</span>    }</div>
-<div class="line"><a id="l01610" name="l01610"></a><span class="lineno"> 1610</span> </div>
-<div class="line"><a id="l01611" name="l01611"></a><span class="lineno"> 1611</span>    <a class="code hl_class" href="classJsonIn.html">JsonIn</a> &amp;stream = *jo.<a class="code hl_function" href="classJsonObject.html#a985f8f01dd1105c10a318d04b710d413">get_raw</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> );</div>
-<div class="line"><a id="l01612" name="l01612"></a><span class="lineno"> 1612</span>    stream.<a class="code hl_function" href="classJsonIn.html#a70443f07b40c2a0ab1aee1e0418a1faf">start_array</a>();</div>
-<div class="line"><a id="l01613" name="l01613"></a><span class="lineno"> 1613</span>    <span class="keywordflow">while</span>( !stream.<a class="code hl_function" href="classJsonIn.html#adb53515d72e6e0457ae3266ace12d5e5">end_array</a>() ) {</div>
-<div class="line"><a id="l01614" name="l01614"></a><span class="lineno"> 1614</span>        vec.push_back( stream.<a class="code hl_function" href="classJsonIn.html#a4d4bca74241c07362969d5ef19be4882">get_enum_value</a>&lt;E&gt;() );</div>
-<div class="line"><a id="l01615" name="l01615"></a><span class="lineno"> 1615</span>    }</div>
-<div class="line"><a id="l01616" name="l01616"></a><span class="lineno"> 1616</span>}</div>
+<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l01596">1596</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01598" name="l01598"></a><span class="lineno"> 1598</span>{</div>
+<div class="line"><a id="l01599" name="l01599"></a><span class="lineno"> 1599</span> </div>
+<div class="line"><a id="l01600" name="l01600"></a><span class="lineno"> 1600</span>    <span class="keywordflow">if</span>( !jo.<a class="code hl_function" href="classJsonObject.html#a887d230c6a42ef2a6cf72c0e040cd4e3">has_member</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> ) ) {</div>
+<div class="line"><a id="l01601" name="l01601"></a><span class="lineno"> 1601</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l01602" name="l01602"></a><span class="lineno"> 1602</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>( !jo.<a class="code hl_function" href="classJsonObject.html#aa92b5eb23f6b39645877d79fbef784a0">has_array</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> ) ) {</div>
+<div class="line"><a id="l01603" name="l01603"></a><span class="lineno"> 1603</span>        jo.<a class="code hl_function" href="classJsonObject.html#ae7bcdb4ec8ab2c64e607b411cb98d00c">throw_error</a>( <span class="stringliteral">&quot;expected array&quot;</span>, <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> );</div>
+<div class="line"><a id="l01604" name="l01604"></a><span class="lineno"> 1604</span>    }</div>
+<div class="line"><a id="l01605" name="l01605"></a><span class="lineno"> 1605</span> </div>
+<div class="line"><a id="l01606" name="l01606"></a><span class="lineno"> 1606</span>    <a class="code hl_class" href="classJsonIn.html">JsonIn</a> &amp;stream = *jo.<a class="code hl_function" href="classJsonObject.html#a985f8f01dd1105c10a318d04b710d413">get_raw</a>( <a class="code hl_variable" href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">member</a> );</div>
+<div class="line"><a id="l01607" name="l01607"></a><span class="lineno"> 1607</span>    stream.<a class="code hl_function" href="classJsonIn.html#a70443f07b40c2a0ab1aee1e0418a1faf">start_array</a>();</div>
+<div class="line"><a id="l01608" name="l01608"></a><span class="lineno"> 1608</span>    <span class="keywordflow">while</span>( !stream.<a class="code hl_function" href="classJsonIn.html#adb53515d72e6e0457ae3266ace12d5e5">end_array</a>() ) {</div>
+<div class="line"><a id="l01609" name="l01609"></a><span class="lineno"> 1609</span>        vec.push_back( stream.<a class="code hl_function" href="classJsonIn.html#a4d4bca74241c07362969d5ef19be4882">get_enum_value</a>&lt;E&gt;() );</div>
+<div class="line"><a id="l01610" name="l01610"></a><span class="lineno"> 1610</span>    }</div>
+<div class="line"><a id="l01611" name="l01611"></a><span class="lineno"> 1611</span>}</div>
 <div class="ttc" id="aclassJsonIn_html"><div class="ttname"><a href="classJsonIn.html">JsonIn</a></div><div class="ttdef"><b>Definition:</b> <a href="json_8h_source.html#l00176">json.h:177</a></div></div>
 <div class="ttc" id="aclassJsonIn_html_a4d4bca74241c07362969d5ef19be4882"><div class="ttname"><a href="classJsonIn.html#a4d4bca74241c07362969d5ef19be4882">JsonIn::get_enum_value</a></div><div class="ttdeci">E get_enum_value()</div><div class="ttdef"><b>Definition:</b> <a href="json_8h_source.html#l00243">json.h:243</a></div></div>
 <div class="ttc" id="aclassJsonIn_html_a70443f07b40c2a0ab1aee1e0418a1faf"><div class="ttname"><a href="classJsonIn.html#a70443f07b40c2a0ab1aee1e0418a1faf">JsonIn::start_array</a></div><div class="ttdeci">void start_array()</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l01373">json.cpp:1373</a></div></div>
@@ -663,11 +662,11 @@ template&lt;typename E &gt; </div>
 <div class="ttc" id="aclassJsonObject_html_a887d230c6a42ef2a6cf72c0e040cd4e3"><div class="ttname"><a href="classJsonObject.html#a887d230c6a42ef2a6cf72c0e040cd4e3">JsonObject::has_member</a></div><div class="ttdeci">bool has_member(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00181">json.cpp:181</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_a985f8f01dd1105c10a318d04b710d413"><div class="ttname"><a href="classJsonObject.html#a985f8f01dd1105c10a318d04b710d413">JsonObject::get_raw</a></div><div class="ttdeci">JsonIn * get_raw(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00241">json.cpp:241</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_ae7bcdb4ec8ab2c64e607b411cb98d00c"><div class="ttname"><a href="classJsonObject.html#ae7bcdb4ec8ab2c64e607b411cb98d00c">JsonObject::throw_error</a></div><div class="ttdeci">void throw_error(std::string err) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00233">json.cpp:233</a></div></div>
-<div class="ttc" id="anamespacemapgen__defer_html_a640e58e4d234e3f1e2ddbfff8fd665ce"><div class="ttname"><a href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">mapgen_defer::member</a></div><div class="ttdeci">std::string member</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l00402">mapgen.cpp:402</a></div></div>
+<div class="ttc" id="anamespacemapgen__defer_html_a640e58e4d234e3f1e2ddbfff8fd665ce"><div class="ttname"><a href="namespacemapgen__defer.html#a640e58e4d234e3f1e2ddbfff8fd665ce">mapgen_defer::member</a></div><div class="ttdeci">std::string member</div><div class="ttdef"><b>Definition:</b> <a href="mapgen_8cpp_source.html#l00407">mapgen.cpp:407</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="json_8cpp_source.html#l01389">JsonIn::end_array()</a>, <a class="el" href="json_8h_source.html#l00243">JsonIn::get_enum_value()</a>, <a class="el" href="json_8cpp_source.html#l00241">JsonObject::get_raw()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, <a class="el" href="json_8cpp_source.html#l00181">JsonObject::has_member()</a>, <a class="el" href="mapgen_8cpp_source.html#l00402">mapgen_defer::member</a>, <a class="el" href="json_8cpp_source.html#l01373">JsonIn::start_array()</a>, and <a class="el" href="json_8cpp_source.html#l00233">JsonObject::throw_error()</a>.</p>
+<p class="reference">References <a class="el" href="json_8cpp_source.html#l01389">JsonIn::end_array()</a>, <a class="el" href="json_8h_source.html#l00243">JsonIn::get_enum_value()</a>, <a class="el" href="json_8cpp_source.html#l00241">JsonObject::get_raw()</a>, <a class="el" href="json_8cpp_source.html#l00415">JsonObject::has_array()</a>, <a class="el" href="json_8cpp_source.html#l00181">JsonObject::has_member()</a>, <a class="el" href="mapgen_8cpp_source.html#l00407">mapgen_defer::member</a>, <a class="el" href="json_8cpp_source.html#l01373">JsonIn::start_array()</a>, and <a class="el" href="json_8cpp_source.html#l00233">JsonObject::throw_error()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01653">Item_factory::load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l01648">Item_factory::load()</a>.</p>
 
 </div>
 </div>
@@ -1067,34 +1066,6 @@ template&lt;typename E &gt; </div>
 
 </div>
 </div>
-<a id="a07dd3ee8a326de00a3fd0c98cb57aa32" name="a07dd3ee8a326de00a3fd0c98cb57aa32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07dd3ee8a326de00a3fd0c98cb57aa32">&#9670;&nbsp;</a></span>ammo_effect_NEVER_MISFIRES</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="map_8cpp.html#a162c25498e3347a41712a4746b8b5100">ammo_effect_str_id</a> ammo_effect_NEVER_MISFIRES(&quot;NEVER_MISFIRES&quot;) </td>
-          <td>(</td>
-          <td class="paramtype">&quot;NEVER_MISFIRES&quot;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l00165">Item_factory::finalize_pre()</a>.</p>
-
-</div>
-</div>
 <a id="a0f4fe4bd5d4a6c971b938f573f015886" name="a0f4fe4bd5d4a6c971b938f573f015886"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f4fe4bd5d4a6c971b938f573f015886">&#9670;&nbsp;</a></span>ammo_effect_SMOKE</h2>
 
@@ -1199,9 +1170,9 @@ template&lt;typename E &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l00063">63</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l00064">64</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="creature_8cpp_source.html#l00977">Creature::add_effect()</a>, <a class="el" href="monster_8cpp_source.html#l01807">monster::add_effect()</a>, <a class="el" href="item__factory_8cpp_source.html#l02763">Item_factory::clear()</a>, <a class="el" href="item__factory_8cpp_source.html#l00640">Item_factory::finalize()</a>, and <a class="el" href="item__factory_8cpp_source.html#l01618">Item_factory::load_definition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="creature_8cpp_source.html#l00980">Creature::add_effect()</a>, <a class="el" href="monster_8cpp_source.html#l01831">monster::add_effect()</a>, <a class="el" href="item__factory_8cpp_source.html#l02763">Item_factory::clear()</a>, <a class="el" href="item__factory_8cpp_source.html#l00632">Item_factory::finalize()</a>, and <a class="el" href="item__factory_8cpp_source.html#l01613">Item_factory::load_definition()</a>.</p>
 
 </div>
 </div>
@@ -1281,9 +1252,9 @@ template&lt;typename E &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l00061">61</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l00062">62</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l02763">Item_factory::clear()</a>, <a class="el" href="item__factory_8cpp_source.html#l00679">Item_factory::finalize_item_blacklist()</a>, <a class="el" href="item__factory_8cpp_source.html#l00106">item_is_blacklisted()</a>, and <a class="el" href="item__factory_8cpp_source.html#l00774">Item_factory::load_item_blacklist()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__factory_8cpp_source.html#l02763">Item_factory::clear()</a>, <a class="el" href="item__factory_8cpp_source.html#l00671">Item_factory::finalize_item_blacklist()</a>, <a class="el" href="item__factory_8cpp_source.html#l00106">item_is_blacklisted()</a>, and <a class="el" href="item__factory_8cpp_source.html#l00766">Item_factory::load_item_blacklist()</a>.</p>
 
 </div>
 </div>
@@ -1301,7 +1272,7 @@ template&lt;typename E &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="item__factory_8cpp_source.html#l00085">85</a> of file <a class="el" href="item__factory_8cpp_source.html">item_factory.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item__action_8cpp_source.html#l00215">item_action_generator::check_consistency()</a>, <a class="el" href="init_8cpp_source.html#l00713">DynamicDataLoader::check_consistency()</a>, <a class="el" href="item__group_8cpp_source.html#l00087">Single_item_creator::create()</a>, <a class="el" href="item__group_8cpp_source.html#l00050">Single_item_creator::create_single()</a>, <a class="el" href="item__factory_8cpp_source.html#l03218">item_group::debug_spawn()</a>, <a class="el" href="dump_8cpp_source.html#l00037">game::dump_stats()</a>, <a class="el" href="item__group_8cpp_source.html#l00195">Single_item_creator::every_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00617">item_group::every_possible_item_from()</a>, <a class="el" href="item_8cpp_source.html#l03539">item::final_info()</a>, <a class="el" href="recipe__dictionary_8cpp_source.html#l00421">recipe_dictionary::finalize()</a>, <a class="el" href="requirements_8cpp_source.html#l00550">requirement_data::finalize()</a>, <a class="el" href="init_8cpp_source.html#l00626">DynamicDataLoader::finalize_loaded_data()</a>, <a class="el" href="recipe__dictionary_8cpp_source.html#l00378">recipe_dictionary::find_items_on_loops()</a>, <a class="el" href="item__group_8cpp_source.html#l00608">item_group::group_contains_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00603">item_group::group_is_defined()</a>, <a class="el" href="init_8cpp_source.html#l00233">DynamicDataLoader::initialize()</a>, <a class="el" href="savegame__json_8cpp_source.html#l02155">item::io()</a>, <a class="el" href="artifact_8cpp_source.html#l00645">it_artifact_armor::it_artifact_armor()</a>, <a class="el" href="artifact_8cpp_source.html#l00621">it_artifact_tool::it_artifact_tool()</a>, <a class="el" href="item__group_8cpp_source.html#l00589">item_group::item_from()</a>, <a class="el" href="item__group_8cpp_source.html#l00574">item_group::items_from()</a>, <a class="el" href="mapgen_8cpp_source.html#l01110">jmapgen_liquid_item::jmapgen_liquid_item()</a>, <a class="el" href="mapgen_8cpp_source.html#l01160">jmapgen_loot::jmapgen_loot()</a>, <a class="el" href="mapgen_8cpp_source.html#l01393">jmapgen_spawn_item::jmapgen_spawn_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00626">item_group::load_item_group()</a>, <a class="el" href="iuse__actor_8cpp_source.html#l02952">bandolier_actor::max_stored_volume()</a>, <a class="el" href="artifact_8cpp_source.html#l00677">new_artifact()</a>, <a class="el" href="artifact_8cpp_source.html#l00931">new_natural_artifact()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00651">auto_pickup::rule_list::refresh_map_items()</a>, <a class="el" href="item__group_8cpp_source.html#l00147">Single_item_creator::remove_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00169">Single_item_creator::replace_item()</a>, <a class="el" href="artifact_8cpp_source.html#l01277">save_artifacts()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00413">auto_pickup::rule::test_pattern()</a>, <a class="el" href="init_8cpp_source.html#l00523">DynamicDataLoader::unload_data()</a>, and <a class="el" href="wish_8cpp_source.html#l00535">debug_menu::wishitem()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item__action_8cpp_source.html#l00215">item_action_generator::check_consistency()</a>, <a class="el" href="init_8cpp_source.html#l00724">DynamicDataLoader::check_consistency()</a>, <a class="el" href="item__group_8cpp_source.html#l00087">Single_item_creator::create()</a>, <a class="el" href="item__group_8cpp_source.html#l00050">Single_item_creator::create_single()</a>, <a class="el" href="item__factory_8cpp_source.html#l03218">item_group::debug_spawn()</a>, <a class="el" href="dump_8cpp_source.html#l00038">game::dump_stats()</a>, <a class="el" href="item__group_8cpp_source.html#l00195">Single_item_creator::every_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00617">item_group::every_possible_item_from()</a>, <a class="el" href="item_8cpp_source.html#l03576">item::final_info()</a>, <a class="el" href="recipe__dictionary_8cpp_source.html#l00423">recipe_dictionary::finalize()</a>, <a class="el" href="requirements_8cpp_source.html#l00550">requirement_data::finalize()</a>, <a class="el" href="init_8cpp_source.html#l00636">DynamicDataLoader::finalize_loaded_data()</a>, <a class="el" href="recipe__dictionary_8cpp_source.html#l00380">recipe_dictionary::find_items_on_loops()</a>, <a class="el" href="item__group_8cpp_source.html#l00608">item_group::group_contains_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00603">item_group::group_is_defined()</a>, <a class="el" href="init_8cpp_source.html#l00238">DynamicDataLoader::initialize()</a>, <a class="el" href="savegame__json_8cpp_source.html#l02167">item::io()</a>, <a class="el" href="artifact_8cpp_source.html#l00645">it_artifact_armor::it_artifact_armor()</a>, <a class="el" href="artifact_8cpp_source.html#l00621">it_artifact_tool::it_artifact_tool()</a>, <a class="el" href="item__group_8cpp_source.html#l00589">item_group::item_from()</a>, <a class="el" href="item__group_8cpp_source.html#l00574">item_group::items_from()</a>, <a class="el" href="mapgen_8cpp_source.html#l01115">jmapgen_liquid_item::jmapgen_liquid_item()</a>, <a class="el" href="mapgen_8cpp_source.html#l01165">jmapgen_loot::jmapgen_loot()</a>, <a class="el" href="mapgen_8cpp_source.html#l01398">jmapgen_spawn_item::jmapgen_spawn_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00626">item_group::load_item_group()</a>, <a class="el" href="iuse__actor_8cpp_source.html#l02954">bandolier_actor::max_stored_volume()</a>, <a class="el" href="artifact_8cpp_source.html#l00677">new_artifact()</a>, <a class="el" href="artifact_8cpp_source.html#l00931">new_natural_artifact()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00651">auto_pickup::rule_list::refresh_map_items()</a>, <a class="el" href="item__group_8cpp_source.html#l00147">Single_item_creator::remove_item()</a>, <a class="el" href="item__group_8cpp_source.html#l00169">Single_item_creator::replace_item()</a>, <a class="el" href="artifact_8cpp_source.html#l01277">save_artifacts()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00413">auto_pickup::rule::test_pattern()</a>, <a class="el" href="init_8cpp_source.html#l00531">DynamicDataLoader::unload_data()</a>, and <a class="el" href="wish_8cpp_source.html#l00548">debug_menu::wishitem()</a>.</p>
 
 </div>
 </div>
@@ -1311,7 +1282,7 @@ template&lt;typename E &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="item__factory_8cpp.html">item_factory.cpp</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:31 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:06 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

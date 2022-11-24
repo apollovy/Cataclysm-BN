@@ -8,6 +8,7 @@ var classovermap__connection =
     [ "load", "classovermap__connection.html#a3c3b8ebdef6c846df12834258381a312", null ],
     [ "pick_subtype_for", "classovermap__connection.html#a59e647be76b1c10f5ee8d0890380120e", null ],
     [ "cached_subtypes", "classovermap__connection.html#a6fd189d71d0c47c678c9b9e47118598c", null ],
+    [ "default_terrain", "classovermap__connection.html#a2a0da812e6c2eace11e180673868c8db", null ],
     [ "id", "classovermap__connection.html#a740dde7093a54ecde390c1c86db3493a", null ],
     [ "subtypes", "classovermap__connection.html#a0774af65fd0af5ea1e58eb14ad87baf9", null ],
     [ "was_loaded", "classovermap__connection.html#a690291efa5727c5d9543c92e6c0253f1", null ]

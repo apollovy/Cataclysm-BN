@@ -20,6 +20,7 @@ var overmap_8h =
       [ "MESSAGE_BROADCAST", "overmap_8h.html#a70d86ad55f59766b1ec9c303f6133ca6a0082e2c3663f70eda1cdda6145f2f2dd", null ],
       [ "WEATHER_RADIO", "overmap_8h.html#a70d86ad55f59766b1ec9c303f6133ca6ae9bf89949c50540e0c72274a5520f5cc", null ]
     ] ],
+    [ "belongs_to_connection", "overmap_8h.html#a6b57f36605f8595e0f6f861f9830d0b0", null ],
     [ "enum_to_string< lab_type >", "overmap_8h.html#ac293a4de69bb907a477d435a0d0eb8e3", null ],
     [ "is_ot_match", "overmap_8h.html#a03e6bd608fa639e549bff00791e5d701", null ],
     [ "is_river", "overmap_8h.html#a8649724292a78ee43164a3ecfe5aa0e7", null ],

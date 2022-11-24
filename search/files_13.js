@@ -17,5 +17,7 @@ var searchData=
   ['units_5ftemperature_2eh_14',['units_temperature.h',['../units__temperature_8h.html',1,'']]],
   ['units_5futility_2ecpp_15',['units_utility.cpp',['../units__utility_8cpp.html',1,'']]],
   ['units_5futility_2eh_16',['units_utility.h',['../units__utility_8h.html',1,'']]],
-  ['units_5fvolume_2eh_17',['units_volume.h',['../units__volume_8h.html',1,'']]]
+  ['units_5fvolume_2eh_17',['units_volume.h',['../units__volume_8h.html',1,'']]],
+  ['url_5futility_2ecpp_18',['url_utility.cpp',['../url__utility_8cpp.html',1,'']]],
+  ['url_5futility_2eh_19',['url_utility.h',['../url__utility_8h.html',1,'']]]
 ];

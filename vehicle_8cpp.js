@@ -23,17 +23,22 @@ var vehicle_8cpp =
     [ "fault_filter_air", "vehicle_8cpp.html#a0c862ae2786ce8dbc0d67cb723601d2d", null ],
     [ "fault_filter_fuel", "vehicle_8cpp.html#a34a9a7092d079c64e664da1e486ddfc0", null ],
     [ "fault_immobiliser", "vehicle_8cpp.html#abdff65814bacc115b63402844460a99e", null ],
+    [ "flipH", "vehicle_8cpp.html#a21312f35ae0a47871b55c4b738806ba5", null ],
+    [ "flipV", "vehicle_8cpp.html#a51039391df1c14f756ad11efdde5a336", null ],
     [ "fuel_type_animal", "vehicle_8cpp.html#a944ba9be1d911a61e9ca62af989355fd", null ],
     [ "fuel_type_battery", "vehicle_8cpp.html#a3f2436294a28dc686156c10abab2f994", null ],
     [ "fuel_type_mana", "vehicle_8cpp.html#adf09e0f2410a6b0b61ebc369b0ce462c", null ],
     [ "fuel_type_muscle", "vehicle_8cpp.html#af54ee122fbd5cf94c6ef8bca7e67c8e8", null ],
     [ "fuel_type_plutonium_cell", "vehicle_8cpp.html#a59f51e93e35b379afce3b4d953656938", null ],
     [ "fuel_type_wind", "vehicle_8cpp.html#aacae8af2b949fe924016b5e370170fc8", null ],
+    [ "gradient", "vehicle_8cpp.html#a1f8196dbe9e950d371989b1a3017f282", null ],
     [ "itype_battery", "vehicle_8cpp.html#ab5f267c571dc194e5b7e0b10b5136a33", null ],
     [ "itype_plut_cell", "vehicle_8cpp.html#ae0a6efc65dd587028e5fbf37af06bdfc", null ],
     [ "itype_water", "vehicle_8cpp.html#abfd8b1d23930a50d7f122f0d39538649", null ],
     [ "itype_water_clean", "vehicle_8cpp.html#a04c0f30be5943072fbaecacc8a0cf848", null ],
     [ "itype_water_purifier", "vehicle_8cpp.html#a23c8190c3fbddc3ba5596ce2b31d8ce6", null ],
     [ "maxrow", "vehicle_8cpp.html#a3ff34f557908f2c21ec8f1bf3e25af65", null ],
-    [ "minrow", "vehicle_8cpp.html#ae6e50ea1c6f681b76fbb6761d19a8069", null ]
+    [ "minrow", "vehicle_8cpp.html#ae6e50ea1c6f681b76fbb6761d19a8069", null ],
+    [ "rotation_info", "vehicle_8cpp.html#a826cb2188fd2030ab8d0e7f7da106651", null ],
+    [ "swapXY", "vehicle_8cpp.html#a1f314834123bd77463ad68546fc483d7", null ]
 ];

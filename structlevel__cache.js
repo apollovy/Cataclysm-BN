@@ -23,7 +23,8 @@ var structlevel__cache =
     [ "veh_exists_at", "structlevel__cache.html#abc05173a201b92434aa76b9548e8c5db", null ],
     [ "veh_in_active_range", "structlevel__cache.html#a89601d2fa12cacb02a3c347a11c63162", null ],
     [ "vehicle_list", "structlevel__cache.html#a98e6882301ee3fd356e840dc466bfc45", null ],
+    [ "vehicle_obscured_cache", "structlevel__cache.html#acb6c8f8ad8aa68d9cc24daefc7bdd47c", null ],
+    [ "vehicle_obstructed_cache", "structlevel__cache.html#ac41c38c1b2f5132bbf89795536e2553b", null ],
     [ "visibility_cache", "structlevel__cache.html#afc09df9c0144ecc9c0fb47a2131506eb", null ],
-    [ "vision_transparency_cache", "structlevel__cache.html#ae679f104e906364a8b4bfce502d99b67", null ],
     [ "zone_vehicles", "structlevel__cache.html#a8e9aa1e28e9e616a972ac6cb5353d104", null ]
 ];

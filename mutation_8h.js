@@ -1,6 +1,5 @@
 var mutation_8h =
 [
-    [ "dream", "structdream.html", "structdream" ],
     [ "mut_attack", "structmut__attack.html", "structmut__attack" ],
     [ "mut_transform", "structmut__transform.html", "structmut__transform" ],
     [ "mutation_branch", "structmutation__branch.html", "structmutation__branch" ],
@@ -39,6 +38,5 @@ var mutation_8h =
     [ "test_crossing_threshold", "mutation_8h.html#abc91fa51b9e9a034f26b08e949da4471", null ],
     [ "trait_display_nocolor_sort", "mutation_8h.html#ad5ff1ef7b89e058898dd0acbed7fb743", null ],
     [ "trait_display_sort", "mutation_8h.html#a8f58cbcd689ed6000773f2d78333fe82", null ],
-    [ "dreams", "mutation_8h.html#a7eddae5b8cd6593d94cf284ac4b6efb4", null ],
     [ "mutations_category", "mutation_8h.html#a4a23a4a5391f6469d95295fadb4f3d50", null ]
 ];

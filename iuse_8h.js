@@ -82,7 +82,6 @@ var iuse_8h =
     [ "fish_trap", "iuse_8h.html#aee840b3e8d9e57e43bf850bb4fe1f32f", null ],
     [ "fishing_rod", "iuse_8h.html#a5cbe783493c4bbb59042ea505639c06d", null ],
     [ "fitness_check", "iuse_8h.html#ac24c85992b2571424e8eb4c70b579563", null ],
-    [ "flu_vaccine", "iuse_8h.html#af015e96f2a09b910339eb5ddc09fd64a", null ],
     [ "flumed", "iuse_8h.html#aa748624edacd9038fb86f038e61bb68a", null ],
     [ "flusleep", "iuse_8h.html#adbe3744c239129f7b6cdd7b9fdcddb53", null ],
     [ "foodperson", "iuse_8h.html#ae1a9869a841219f81c39c873d5c08e59", null ],

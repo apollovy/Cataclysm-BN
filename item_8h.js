@@ -11,11 +11,6 @@ var item_8h =
     [ "CATA_SRC_ITEM_H", "item_8h.html#a3c76500ce8f73cc9398460b182ac31c2", null ],
     [ "bodytype_id", "item_8h.html#afa47dd7776166d27248a54bcf21f1ac8", null ],
     [ "faction_id", "item_8h.html#ab899db7b87cf958f079fe0f14793625b", null ],
-    [ "hint_rating", "item_8h.html#af6bf8b91fa38e785d6f5ae7fdaa74219", [
-      [ "cant", "item_8h.html#af6bf8b91fa38e785d6f5ae7fdaa74219aff706fc361a57a40a41435153397513a", null ],
-      [ "iffy", "item_8h.html#af6bf8b91fa38e785d6f5ae7fdaa74219a394188710799de3dcc6cb1582e490004", null ],
-      [ "good", "item_8h.html#af6bf8b91fa38e785d6f5ae7fdaa74219a755f85c2723bb39381c7379a604160d8", null ]
-    ] ],
     [ "get", "item_8h.html#a4c420e5c73d867c7b481e35c55c00a3b", null ],
     [ "is_crafting_component", "item_8h.html#a64c6001518eb0b959300f427a0086eb0", null ],
     [ "is_crafting_component_allow_filthy", "item_8h.html#a38666448dddc353c29d2d6a2a6a3b192", null ],

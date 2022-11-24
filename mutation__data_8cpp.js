@@ -13,7 +13,7 @@ var mutation__data_8cpp =
     [ "mutation_category_is_valid", "mutation__data_8cpp.html#abfd34b82b6bc6f1c7c1a92930ebb9e3d", null ],
     [ "trait_display_nocolor_sort", "mutation__data_8cpp.html#ad5ff1ef7b89e058898dd0acbed7fb743", null ],
     [ "trait_display_sort", "mutation__data_8cpp.html#a8f58cbcd689ed6000773f2d78333fe82", null ],
-    [ "dreams", "mutation__data_8cpp.html#a7eddae5b8cd6593d94cf284ac4b6efb4", null ],
+    [ "all_dreams", "mutation__data_8cpp.html#adcde87cecbf564b0bb16a917da8730d7", null ],
     [ "mutation_category_traits", "mutation__data_8cpp.html#a1d592d876c58ff391a2d11cedff6c8c3", null ],
     [ "mutations_category", "mutation__data_8cpp.html#a4a23a4a5391f6469d95295fadb4f3d50", null ],
     [ "trait_blacklist", "mutation__data_8cpp.html#a7347c43bdcc3ef758f374517fba1ad31", null ],

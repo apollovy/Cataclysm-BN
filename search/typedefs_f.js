@@ -12,7 +12,7 @@ var searchData=
   ['overmap_5fland_5fuse_5fcode_5fid_9',['overmap_land_use_code_id',['../omdata_8h.html#af29c9e397b40ad575ac13f98a1b63687',1,'omdata.h']]],
   ['overmap_5flocation_5fid_10',['overmap_location_id',['../type__id_8h.html#a193c6fac4d30a74533eda3e6bbf50929',1,'type_id.h']]],
   ['overmap_5flocation_5fstr_5fid_11',['overmap_location_str_id',['../npc_8h.html#a2133f0475d2d48ccd56f780287e26ed7',1,'npc.h']]],
-  ['overmap_5fspecial_5fid_12',['overmap_special_id',['../omdata_8h.html#aa7964d871c74fa759b358081855b6e24',1,'overmap_special_id():&#160;omdata.h'],['../type__id_8h.html#aa7964d871c74fa759b358081855b6e24',1,'overmap_special_id():&#160;type_id.h']]],
+  ['overmap_5fspecial_5fid_12',['overmap_special_id',['../type__id_8h.html#aa7964d871c74fa759b358081855b6e24',1,'type_id.h']]],
   ['overview_5faction_5ft_13',['overview_action_t',['../classveh__interact.html#ab31ab8da689e61c59879570e904ea564',1,'veh_interact']]],
   ['overview_5fenable_5ft_14',['overview_enable_t',['../classveh__interact.html#a95dd253e3bc5d71a879834aa7a8d8349',1,'veh_interact']]]
 ];

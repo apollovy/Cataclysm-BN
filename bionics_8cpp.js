@@ -20,7 +20,6 @@ var bionics_8cpp =
     [ "bio_adrenaline", "bionics_8cpp.html#aac8302f849086f5404cf71692415156d", null ],
     [ "bio_ads", "bionics_8cpp.html#a99bde006d277d411e266b003163d9f05", null ],
     [ "bio_advreactor", "bionics_8cpp.html#af240157d33eeab40ef36bc04dd472e75", null ],
-    [ "bio_blaster", "bionics_8cpp.html#a0890ea610faa3e6918c5dbe33fae3c99", null ],
     [ "bio_blood_anal", "bionics_8cpp.html#ab25d812b0df8833fcaf9c4f8ff9821bc", null ],
     [ "bio_blood_filter", "bionics_8cpp.html#adcd6ed345eb93c1a98e0741ef77bd3ad", null ],
     [ "bio_cqb", "bionics_8cpp.html#a018a5823d7e1524b702156d66788c335", null ],

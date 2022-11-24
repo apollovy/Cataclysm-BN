@@ -10,7 +10,7 @@ var searchData=
   ['channel_7',['channel',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18',1,'sfx']]],
   ['char8_5ftype_8',['char8_type',['../namespacedetail.html#af2d1c9abcf61fc5c29bb85fdbd0c0153',1,'detail']]],
   ['character_5fmovemode_9',['character_movemode',['../character_8h.html#af749573d20b6327d21f9588ebdd5b19b',1,'character.h']]],
-  ['character_5fstat_10',['character_stat',['../character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755',1,'character.h']]],
+  ['character_5fstat_10',['character_stat',['../character__stat_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755',1,'character_stat.h']]],
   ['character_5ftype_11',['character_type',['../pldata_8h.html#a4347123c63c51d604edfddf0b7e23954',1,'pldata.h']]],
   ['clipped_5falign_12',['clipped_align',['../calendar_8h.html#a2966e2ed60e1b292fb9f87bc519ece79',1,'calendar.h']]],
   ['clipped_5funit_13',['clipped_unit',['../calendar_8h.html#a5db9490f8316b22d7c367c5a563a2f00',1,'calendar.h']]],

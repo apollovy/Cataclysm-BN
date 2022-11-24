@@ -160,8 +160,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a04e6b4e87a7b0664ca91c73486e233b6"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="classoptions__manager_1_1id__and__option.html">options_manager::id_and_option</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8cpp.html#a04e6b4e87a7b0664ca91c73486e233b6">build_resource_list</a> (std::map&lt; std::string, std::string &gt; &amp;resource_option, const std::string &amp;operation_name, const std::string &amp;dirname, const std::string &amp;filename)</td></tr>
 <tr class="memdesc:a04e6b4e87a7b0664ca91c73486e233b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a mapping with values.  <a href="options_8cpp.html#a04e6b4e87a7b0664ca91c73486e233b6">More...</a><br /></td></tr>
 <tr class="separator:a04e6b4e87a7b0664ca91c73486e233b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97a6a8b9ffb3c2dfd462af1a9353f8dc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8cpp.html#a97a6a8b9ffb3c2dfd462af1a9353f8dc">refresh_tiles</a> (bool, bool, bool)</td></tr>
-<tr class="separator:a97a6a8b9ffb3c2dfd462af1a9353f8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8600ac715df3f79d8221e0438f85c0ee"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8cpp.html#a8600ac715df3f79d8221e0438f85c0ee">refresh_tiles</a> (bool, bool, bool, bool)</td></tr>
+<tr class="separator:a8600ac715df3f79d8221e0438f85c0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64727816bd8be1e0f42522f6486cf68c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8cpp.html#a64727816bd8be1e0f42522f6486cf68c">draw_borders_external</a> (const <a class="el" href="classcatacurses_1_1window.html">catacurses::window</a> &amp;w, int horizontal_level, const std::set&lt; int &gt; &amp;vert_lines, const bool world_options_only)</td></tr>
 <tr class="separator:a64727816bd8be1e0f42522f6486cf68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ae028db3d63f91d1271ddaf441c382"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8cpp.html#af3ae028db3d63f91d1271ddaf441c382">draw_borders_internal</a> (const <a class="el" href="classcatacurses_1_1window.html">catacurses::window</a> &amp;w, std::set&lt; int &gt; &amp;vert_lines)</td></tr>
@@ -371,19 +371,19 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02639">2639</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l02642" name="l02642"></a><span class="lineno"> 2642</span>{</div>
-<div class="line"><a id="l02643" name="l02643"></a><span class="lineno"> 2643</span>    <span class="keywordflow">if</span>( !world_options_only ) {</div>
-<div class="line"><a id="l02644" name="l02644"></a><span class="lineno"> 2644</span>        <a class="code hl_function" href="output_8cpp.html#afea9968fcee47ebca0e45d27099d1c22">draw_border</a>( w, <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot; OPTIONS &quot;</span> ) );</div>
-<div class="line"><a id="l02645" name="l02645"></a><span class="lineno"> 2645</span>    }</div>
-<div class="line"><a id="l02646" name="l02646"></a><span class="lineno"> 2646</span>    <span class="comment">// intersections</span></div>
-<div class="line"><a id="l02647" name="l02647"></a><span class="lineno"> 2647</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 0, horizontal_level ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4b80f0039259ebe61dc2e58ca4b31043">LINE_XXXO</a> ); <span class="comment">// |-</span></div>
-<div class="line"><a id="l02648" name="l02648"></a><span class="lineno"> 2648</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w ) - 1, horizontal_level ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a0803e4570f3cd69d38952bc2b4555c24">LINE_XOXX</a> ); <span class="comment">// -|</span></div>
-<div class="line"><a id="l02649" name="l02649"></a><span class="lineno"> 2649</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> &amp;x : vert_lines ) {</div>
-<div class="line"><a id="l02650" name="l02650"></a><span class="lineno"> 2650</span>        <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( x + 1, <a class="code hl_function" href="namespacecatacurses.html#adc81ca40445dc062af12fb6d7a4793d0">getmaxy</a>( w ) - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> ); <span class="comment">// _|_</span></div>
-<div class="line"><a id="l02651" name="l02651"></a><span class="lineno"> 2651</span>    }</div>
-<div class="line"><a id="l02652" name="l02652"></a><span class="lineno"> 2652</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
-<div class="line"><a id="l02653" name="l02653"></a><span class="lineno"> 2653</span>}</div>
+<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02675">2675</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l02678" name="l02678"></a><span class="lineno"> 2678</span>{</div>
+<div class="line"><a id="l02679" name="l02679"></a><span class="lineno"> 2679</span>    <span class="keywordflow">if</span>( !world_options_only ) {</div>
+<div class="line"><a id="l02680" name="l02680"></a><span class="lineno"> 2680</span>        <a class="code hl_function" href="output_8cpp.html#afea9968fcee47ebca0e45d27099d1c22">draw_border</a>( w, <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot; OPTIONS &quot;</span> ) );</div>
+<div class="line"><a id="l02681" name="l02681"></a><span class="lineno"> 2681</span>    }</div>
+<div class="line"><a id="l02682" name="l02682"></a><span class="lineno"> 2682</span>    <span class="comment">// intersections</span></div>
+<div class="line"><a id="l02683" name="l02683"></a><span class="lineno"> 2683</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 0, horizontal_level ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4b80f0039259ebe61dc2e58ca4b31043">LINE_XXXO</a> ); <span class="comment">// |-</span></div>
+<div class="line"><a id="l02684" name="l02684"></a><span class="lineno"> 2684</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w ) - 1, horizontal_level ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a0803e4570f3cd69d38952bc2b4555c24">LINE_XOXX</a> ); <span class="comment">// -|</span></div>
+<div class="line"><a id="l02685" name="l02685"></a><span class="lineno"> 2685</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> &amp;x : vert_lines ) {</div>
+<div class="line"><a id="l02686" name="l02686"></a><span class="lineno"> 2686</span>        <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( x + 1, <a class="code hl_function" href="namespacecatacurses.html#adc81ca40445dc062af12fb6d7a4793d0">getmaxy</a>( w ) - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> ); <span class="comment">// _|_</span></div>
+<div class="line"><a id="l02687" name="l02687"></a><span class="lineno"> 2687</span>    }</div>
+<div class="line"><a id="l02688" name="l02688"></a><span class="lineno"> 2688</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
+<div class="line"><a id="l02689" name="l02689"></a><span class="lineno"> 2689</span>}</div>
 <div class="ttc" id="anamespacecatacurses_html_a929fe85d472028f52d8a5cdfc0d35017"><div class="ttname"><a href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">catacurses::getmaxx</a></div><div class="ttdeci">int getmaxx(const window &amp;win)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00058">ncurses_def.cpp:58</a></div></div>
 <div class="ttc" id="anamespacecatacurses_html_aa9823d249c21fa50daf277957fabb175"><div class="ttname"><a href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">catacurses::wnoutrefresh</a></div><div class="ttdeci">void wnoutrefresh(const window &amp;win)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00043">ncurses_def.cpp:43</a></div></div>
 <div class="ttc" id="anamespacecatacurses_html_adc81ca40445dc062af12fb6d7a4793d0"><div class="ttname"><a href="namespacecatacurses.html#adc81ca40445dc062af12fb6d7a4793d0">catacurses::getmaxy</a></div><div class="ttdeci">int getmaxy(const window &amp;win)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00063">ncurses_def.cpp:63</a></div></div>
@@ -398,7 +398,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="output_8h_source.html#l00135">BORDER_COLOR</a>, <a class="el" href="output_8cpp_source.html#l00575">draw_border()</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00058">catacurses::getmaxx()</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00063">catacurses::getmaxy()</a>, <a class="el" href="output_8h_source.html#l00047">LINE_XOXX</a>, <a class="el" href="output_8h_source.html#l00046">LINE_XXOX</a>, <a class="el" href="output_8h_source.html#l00045">LINE_XXXO</a>, <a class="el" href="output_8cpp_source.html#l00477">mvwputch()</a>, and <a class="el" href="ncurses__def_8cpp_source.html#l00043">catacurses::wnoutrefresh()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02722">options_manager::show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02758">options_manager::show()</a>.</p>
 
 </div>
 </div>
@@ -436,25 +436,25 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02655">2655</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l02656" name="l02656"></a><span class="lineno"> 2656</span>{</div>
-<div class="line"><a id="l02657" name="l02657"></a><span class="lineno"> 2657</span>    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w ); ++i ) {</div>
-<div class="line"><a id="l02658" name="l02658"></a><span class="lineno"> 2658</span>        <span class="keywordflow">if</span>( vert_lines.count( i ) != 0 ) {</div>
-<div class="line"><a id="l02659" name="l02659"></a><span class="lineno"> 2659</span>            <span class="comment">// intersection</span></div>
-<div class="line"><a id="l02660" name="l02660"></a><span class="lineno"> 2660</span>            <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( i, 0 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
-<div class="line"><a id="l02661" name="l02661"></a><span class="lineno"> 2661</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l02662" name="l02662"></a><span class="lineno"> 2662</span>            <span class="comment">// regular line</span></div>
-<div class="line"><a id="l02663" name="l02663"></a><span class="lineno"> 2663</span>            <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( i, 0 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a435355aeca1be3844e79fc4db8e691e1">LINE_OXOX</a> );</div>
-<div class="line"><a id="l02664" name="l02664"></a><span class="lineno"> 2664</span>        }</div>
-<div class="line"><a id="l02665" name="l02665"></a><span class="lineno"> 2665</span>    }</div>
-<div class="line"><a id="l02666" name="l02666"></a><span class="lineno"> 2666</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
-<div class="line"><a id="l02667" name="l02667"></a><span class="lineno"> 2667</span>}</div>
+<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02691">2691</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l02692" name="l02692"></a><span class="lineno"> 2692</span>{</div>
+<div class="line"><a id="l02693" name="l02693"></a><span class="lineno"> 2693</span>    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w ); ++i ) {</div>
+<div class="line"><a id="l02694" name="l02694"></a><span class="lineno"> 2694</span>        <span class="keywordflow">if</span>( vert_lines.count( i ) != 0 ) {</div>
+<div class="line"><a id="l02695" name="l02695"></a><span class="lineno"> 2695</span>            <span class="comment">// intersection</span></div>
+<div class="line"><a id="l02696" name="l02696"></a><span class="lineno"> 2696</span>            <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( i, 0 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
+<div class="line"><a id="l02697" name="l02697"></a><span class="lineno"> 2697</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l02698" name="l02698"></a><span class="lineno"> 2698</span>            <span class="comment">// regular line</span></div>
+<div class="line"><a id="l02699" name="l02699"></a><span class="lineno"> 2699</span>            <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( i, 0 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a435355aeca1be3844e79fc4db8e691e1">LINE_OXOX</a> );</div>
+<div class="line"><a id="l02700" name="l02700"></a><span class="lineno"> 2700</span>        }</div>
+<div class="line"><a id="l02701" name="l02701"></a><span class="lineno"> 2701</span>    }</div>
+<div class="line"><a id="l02702" name="l02702"></a><span class="lineno"> 2702</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
+<div class="line"><a id="l02703" name="l02703"></a><span class="lineno"> 2703</span>}</div>
 <div class="ttc" id="aoutput_8h_html_a435355aeca1be3844e79fc4db8e691e1"><div class="ttname"><a href="output_8h.html#a435355aeca1be3844e79fc4db8e691e1">LINE_OXOX</a></div><div class="ttdeci">#define LINE_OXOX</div><div class="ttdef"><b>Definition:</b> <a href="output_8h_source.html#l00040">output.h:40</a></div></div>
 <div class="ttc" id="aoutput_8h_html_a4a3bfadbe7ec0abb14ff53e5e2f8983e"><div class="ttname"><a href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a></div><div class="ttdeci">#define LINE_OXXX</div><div class="ttdef"><b>Definition:</b> <a href="output_8h_source.html#l00048">output.h:48</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="output_8h_source.html#l00135">BORDER_COLOR</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00058">catacurses::getmaxx()</a>, <a class="el" href="output_8h_source.html#l00040">LINE_OXOX</a>, <a class="el" href="output_8h_source.html#l00048">LINE_OXXX</a>, <a class="el" href="output_8cpp_source.html#l00477">mvwputch()</a>, and <a class="el" href="ncurses__def_8cpp_source.html#l00043">catacurses::wnoutrefresh()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02722">options_manager::show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02758">options_manager::show()</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Variables</h2></td></tr>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
 <div class="ttc" id="aclassoptions__manager_html"><div class="ttname"><a href="classoptions__manager.html">options_manager</a></div><div class="ttdef"><b>Definition:</b> <a href="options_8h_source.html#l00019">options.h:20</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="auto__pickup_8cpp_source.html#l00540">auto_pickup::player_settings::add_rule()</a>, <a class="el" href="safemode__ui_8cpp_source.html#l00598">safemode::add_rule()</a>, <a class="el" href="regional__settings_8cpp_source.html#l00997">regional_settings::finalize()</a>, <a class="el" href="options_8h_source.html#l00368">get_option()</a>, <a class="el" href="handle__action_8cpp_source.html#l01512">game::handle_action()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00263">worldfactory::init()</a>, <a class="el" href="game_8cpp_source.html#l00456">game_ui::init_ui()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01635">load_external_option()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01589">WORLD::load_legacy_options()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01571">WORLD::load_options()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01623">load_world_option()</a>, <a class="el" href="main_8cpp_source.html#l00185">main()</a>, <a class="el" href="main__menu_8cpp_source.html#l00446">main_menu::opening_screen()</a>, <a class="el" href="language_8cpp_source.html#l00300">prompt_select_lang_on_startup()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00560">worldfactory::remove_world()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00213">worldfactory::set_active_world()</a>, <a class="el" href="auto__note_8cpp_source.html#l00174">auto_notes::auto_note_manager_gui::show()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00044">auto_pickup::user_interface::show()</a>, <a class="el" href="safemode__ui_8cpp_source.html#l00050">safemode::show()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00604">worldfactory::show_worldgen_tab_options()</a>, and <a class="el" href="worldfactory_8cpp_source.html#l00076">WORLD::WORLD()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auto__pickup_8cpp_source.html#l00540">auto_pickup::player_settings::add_rule()</a>, <a class="el" href="safemode__ui_8cpp_source.html#l00598">safemode::add_rule()</a>, <a class="el" href="regional__settings_8cpp_source.html#l00997">regional_settings::finalize()</a>, <a class="el" href="options_8h_source.html#l00368">get_option()</a>, <a class="el" href="handle__action_8cpp_source.html#l01516">game::handle_action()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00263">worldfactory::init()</a>, <a class="el" href="game_8cpp_source.html#l00466">game_ui::init_ui()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01632">load_external_option()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01586">WORLD::load_legacy_options()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01568">WORLD::load_options()</a>, <a class="el" href="worldfactory_8cpp_source.html#l01620">load_world_option()</a>, <a class="el" href="main_8cpp_source.html#l00188">main()</a>, <a class="el" href="main__menu_8cpp_source.html#l00449">main_menu::opening_screen()</a>, <a class="el" href="language_8cpp_source.html#l00300">prompt_select_lang_on_startup()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00560">worldfactory::remove_world()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00213">worldfactory::set_active_world()</a>, <a class="el" href="auto__note_8cpp_source.html#l00174">auto_notes::auto_note_manager_gui::show()</a>, <a class="el" href="auto__pickup_8cpp_source.html#l00044">auto_pickup::user_interface::show()</a>, <a class="el" href="safemode__ui_8cpp_source.html#l00050">safemode::show()</a>, <a class="el" href="worldfactory_8cpp_source.html#l00604">worldfactory::show_worldgen_tab_options()</a>, and <a class="el" href="worldfactory_8cpp_source.html#l00076">WORLD::WORLD()</a>.</p>
 
 </div>
 </div>
@@ -564,8 +564,8 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a id="a97a6a8b9ffb3c2dfd462af1a9353f8dc" name="a97a6a8b9ffb3c2dfd462af1a9353f8dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97a6a8b9ffb3c2dfd462af1a9353f8dc">&#9670;&nbsp;</a></span>refresh_tiles()</h2>
+<a id="a8600ac715df3f79d8221e0438f85c0ee" name="a8600ac715df3f79d8221e0438f85c0ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8600ac715df3f79d8221e0438f85c0ee">&#9670;&nbsp;</a></span>refresh_tiles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -576,6 +576,12 @@ template&lt;&gt; </div>
         <tr>
           <td class="memname">static void refresh_tiles </td>
           <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname">, </td>
         </tr>
@@ -604,11 +610,11 @@ template&lt;&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02634">2634</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l02635" name="l02635"></a><span class="lineno"> 2635</span>{</div>
-<div class="line"><a id="l02636" name="l02636"></a><span class="lineno"> 2636</span>}</div>
+<p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l02670">2670</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l02671" name="l02671"></a><span class="lineno"> 2671</span>{</div>
+<div class="line"><a id="l02672" name="l02672"></a><span class="lineno"> 2672</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02722">options_manager::show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02758">options_manager::show()</a>.</p>
 
 </div>
 </div>
@@ -635,7 +641,7 @@ template&lt;&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l00096">96</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02072">options_manager::add_options_debug()</a>, and <a class="el" href="options_8cpp_source.html#l03276">options_manager::cache_to_globals()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02087">options_manager::add_options_debug()</a>, and <a class="el" href="options_8cpp_source.html#l03316">options_manager::cache_to_globals()</a>.</p>
 
 </div>
 </div>
@@ -683,7 +689,7 @@ template&lt;&gt; </div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="options_8cpp_source.html#l00076">76</a> of file <a class="el" href="options_8cpp_source.html">options.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02072">options_manager::add_options_debug()</a>, and <a class="el" href="options_8cpp_source.html#l03276">options_manager::cache_to_globals()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l02087">options_manager::add_options_debug()</a>, and <a class="el" href="options_8cpp_source.html#l03316">options_manager::cache_to_globals()</a>.</p>
 
 </div>
 </div>
@@ -735,7 +741,7 @@ template&lt;&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="options_8cpp.html">options.cpp</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:33 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:08 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

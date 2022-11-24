@@ -14,6 +14,7 @@ var classtileset =
     [ "get_tile_pixelscale", "classtileset.html#a633c3945adcadd976190dac068288893", null ],
     [ "get_tile_width", "classtileset.html#a4f86670b4c1066936b558aac75fb0570", null ],
     [ "get_tileset_id", "classtileset.html#a3736d49c76a8d236926304d8c996e2fd", null ],
+    [ "get_z_overlay", "classtileset.html#a933ecd6e9b71c0c7bc8960c496d07174", null ],
     [ "tileset_loader", "classtileset.html#a0871c1dd2dd99b28ca932834c64cd028", null ],
     [ "memory_tile_values", "classtileset.html#aba9003b94d672585d9360ee348952c12", null ],
     [ "night_tile_values", "classtileset.html#a63ea9a683e87a5a50cfede95c50eb3bb", null ],
@@ -25,5 +26,6 @@ var classtileset =
     [ "tile_pixelscale", "classtileset.html#a96a13546a394de563d0301f71f9259d9", null ],
     [ "tile_values", "classtileset.html#a56b03955caf1b5054bb2618141e26ca8", null ],
     [ "tile_width", "classtileset.html#a28320b2943f20213ed3975d85769c958", null ],
-    [ "tileset_id", "classtileset.html#aba774e8723e0cf25b6db3d643179bfae", null ]
+    [ "tileset_id", "classtileset.html#aba774e8723e0cf25b6db3d643179bfae", null ],
+    [ "z_overlay_values", "classtileset.html#aca086eeb4a94606a77aeb3613832ef68", null ]
 ];

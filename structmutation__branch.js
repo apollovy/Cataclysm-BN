@@ -85,6 +85,7 @@ var structmutation__branch =
     [ "noise_modifier", "structmutation__branch.html#af9b49d0689459a52d571b67bb5a41de0", null ],
     [ "overmap_multiplier", "structmutation__branch.html#a4ad2ec13af458a5374c13bf9b7e71503", null ],
     [ "overmap_sight", "structmutation__branch.html#a327647c43604890e8c911ddc3bfc1b9e", null ],
+    [ "pain_recovery", "structmutation__branch.html#a8617292540f38e07717bb6016a454954", null ],
     [ "pierce_dmg_bonus", "structmutation__branch.html#a85ff8797da3d7c72b5b46b60ed0c4148", null ],
     [ "player_display", "structmutation__branch.html#af48b4afb0ecb7fe21b9ac01ea85d6b4c", null ],
     [ "points", "structmutation__branch.html#aa93d2307c30ca95fd47cde8b78aab1b6", null ],

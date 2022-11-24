@@ -129,8 +129,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a588b0269e8b90fbaaf314abf1ed85f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1be36035ce00b2c64dd1b73528f4975"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#ad1be36035ce00b2c64dd1b73528f4975">transparency_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
 <tr class="separator:ad1be36035ce00b2c64dd1b73528f4975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae679f104e906364a8b4bfce502d99b67"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#ae679f104e906364a8b4bfce502d99b67">vision_transparency_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
-<tr class="separator:ae679f104e906364a8b4bfce502d99b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb6c8f8ad8aa68d9cc24daefc7bdd47c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdiagonal__blocks.html">diagonal_blocks</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#acb6c8f8ad8aa68d9cc24daefc7bdd47c">vehicle_obscured_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
+<tr class="separator:acb6c8f8ad8aa68d9cc24daefc7bdd47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41c38c1b2f5132bbf89795536e2553b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdiagonal__blocks.html">diagonal_blocks</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#ac41c38c1b2f5132bbf89795536e2553b">vehicle_obstructed_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
+<tr class="separator:ac41c38c1b2f5132bbf89795536e2553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d5b0df13e2b5fe817a458be44546219"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#a0d5b0df13e2b5fe817a458be44546219">seen_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
 <tr class="separator:a0d5b0df13e2b5fe817a458be44546219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af70ab849b23746d4c7758a6d7dc34ca8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlevel__cache.html#af70ab849b23746d4c7758a6d7dc34ca8">camera_cache</a> [<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td></tr>
@@ -154,7 +156,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00291">291</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00301">301</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9a4ea1fae01f7663677734507557ba8f" name="a9a4ea1fae01f7663677734507557ba8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a4ea1fae01f7663677734507557ba8f">&#9670;&nbsp;</a></span>level_cache() <span class="overload">[1/2]</span></h2>
@@ -171,47 +173,52 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8cpp_source.html#l08542">8542</a> of file <a class="el" href="map_8cpp_source.html">map.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l08543" name="l08543"></a><span class="lineno"> 8543</span>{</div>
-<div class="line"><a id="l08544" name="l08544"></a><span class="lineno"> 8544</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> map_dimensions = <a class="code hl_variable" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a> * <a class="code hl_variable" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>;</div>
-<div class="line"><a id="l08545" name="l08545"></a><span class="lineno"> 8545</span>    <a class="code hl_variable" href="structlevel__cache.html#a5442c23fc714c659faac43bfd17bc2f4">transparency_cache_dirty</a>.set();</div>
-<div class="line"><a id="l08546" name="l08546"></a><span class="lineno"> 8546</span>    <a class="code hl_variable" href="structlevel__cache.html#a09608233136cae79d2bd94c3d1d9ffdd">outside_cache_dirty</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l08547" name="l08547"></a><span class="lineno"> 8547</span>    <a class="code hl_variable" href="structlevel__cache.html#a24b1fdeb40834e94a75234743cc2948d">floor_cache_dirty</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l08548" name="l08548"></a><span class="lineno"> 8548</span>    <span class="keyword">constexpr</span> <a class="code hl_struct" href="structfour__quadrants.html">four_quadrants</a> four_zeros( 0.0f );</div>
-<div class="line"><a id="l08549" name="l08549"></a><span class="lineno"> 8549</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a1d3856892a7a5815f09ea7e8e502c2e5">lm</a>[0][0], map_dimensions, four_zeros );</div>
-<div class="line"><a id="l08550" name="l08550"></a><span class="lineno"> 8550</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#aae5b10f8c81f98cfcba26167bf800df7">sm</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08551" name="l08551"></a><span class="lineno"> 8551</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a109f086036f662c196589200b972f8a4">light_source_buffer</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08552" name="l08552"></a><span class="lineno"> 8552</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#aaf488243c97a59afbd63a9f9e2972afc">outside_cache</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
-<div class="line"><a id="l08553" name="l08553"></a><span class="lineno"> 8553</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a588b0269e8b90fbaaf314abf1ed85f55">floor_cache</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
-<div class="line"><a id="l08554" name="l08554"></a><span class="lineno"> 8554</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#ad1be36035ce00b2c64dd1b73528f4975">transparency_cache</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08555" name="l08555"></a><span class="lineno"> 8555</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#ae679f104e906364a8b4bfce502d99b67">vision_transparency_cache</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08556" name="l08556"></a><span class="lineno"> 8556</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a0d5b0df13e2b5fe817a458be44546219">seen_cache</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08557" name="l08557"></a><span class="lineno"> 8557</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#af70ab849b23746d4c7758a6d7dc34ca8">camera_cache</a>[0][0], map_dimensions, 0.0f );</div>
-<div class="line"><a id="l08558" name="l08558"></a><span class="lineno"> 8558</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#afc09df9c0144ecc9c0fb47a2131506eb">visibility_cache</a>[0][0], map_dimensions, <a class="code hl_enumvalue" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e">lit_level::DARK</a> );</div>
-<div class="line"><a id="l08559" name="l08559"></a><span class="lineno"> 8559</span>    <a class="code hl_variable" href="structlevel__cache.html#a89601d2fa12cacb02a3c347a11c63162">veh_in_active_range</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l08560" name="l08560"></a><span class="lineno"> 8560</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#abc05173a201b92434aa76b9548e8c5db">veh_exists_at</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
-<div class="line"><a id="l08561" name="l08561"></a><span class="lineno"> 8561</span>}</div>
+<p class="definition">Definition at line <a class="el" href="map_8cpp_source.html#l08765">8765</a> of file <a class="el" href="map_8cpp_source.html">map.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l08766" name="l08766"></a><span class="lineno"> 8766</span>{</div>
+<div class="line"><a id="l08767" name="l08767"></a><span class="lineno"> 8767</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> map_dimensions = <a class="code hl_variable" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a> * <a class="code hl_variable" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>;</div>
+<div class="line"><a id="l08768" name="l08768"></a><span class="lineno"> 8768</span>    <a class="code hl_variable" href="structlevel__cache.html#a5442c23fc714c659faac43bfd17bc2f4">transparency_cache_dirty</a>.set();</div>
+<div class="line"><a id="l08769" name="l08769"></a><span class="lineno"> 8769</span>    <a class="code hl_variable" href="structlevel__cache.html#a09608233136cae79d2bd94c3d1d9ffdd">outside_cache_dirty</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l08770" name="l08770"></a><span class="lineno"> 8770</span>    <a class="code hl_variable" href="structlevel__cache.html#a24b1fdeb40834e94a75234743cc2948d">floor_cache_dirty</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l08771" name="l08771"></a><span class="lineno"> 8771</span>    <span class="keyword">constexpr</span> <a class="code hl_struct" href="structfour__quadrants.html">four_quadrants</a> four_zeros( 0.0f );</div>
+<div class="line"><a id="l08772" name="l08772"></a><span class="lineno"> 8772</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a1d3856892a7a5815f09ea7e8e502c2e5">lm</a>[0][0], map_dimensions, four_zeros );</div>
+<div class="line"><a id="l08773" name="l08773"></a><span class="lineno"> 8773</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#aae5b10f8c81f98cfcba26167bf800df7">sm</a>[0][0], map_dimensions, 0.0f );</div>
+<div class="line"><a id="l08774" name="l08774"></a><span class="lineno"> 8774</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a109f086036f662c196589200b972f8a4">light_source_buffer</a>[0][0], map_dimensions, 0.0f );</div>
+<div class="line"><a id="l08775" name="l08775"></a><span class="lineno"> 8775</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#aaf488243c97a59afbd63a9f9e2972afc">outside_cache</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
+<div class="line"><a id="l08776" name="l08776"></a><span class="lineno"> 8776</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a588b0269e8b90fbaaf314abf1ed85f55">floor_cache</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
+<div class="line"><a id="l08777" name="l08777"></a><span class="lineno"> 8777</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#ad1be36035ce00b2c64dd1b73528f4975">transparency_cache</a>[0][0], map_dimensions, 0.0f );</div>
+<div class="line"><a id="l08778" name="l08778"></a><span class="lineno"> 8778</span>    <a class="code hl_struct" href="structdiagonal__blocks.html">diagonal_blocks</a> <a class="code hl_function" href="namespacedetail.html#a3051eb18ec32a280d7212f15e759934e">fill</a> = {<span class="keyword">false</span>, <span class="keyword">false</span>};</div>
+<div class="line"><a id="l08779" name="l08779"></a><span class="lineno"> 8779</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#acb6c8f8ad8aa68d9cc24daefc7bdd47c">vehicle_obscured_cache</a>[0][0], map_dimensions, <a class="code hl_function" href="namespacedetail.html#a3051eb18ec32a280d7212f15e759934e">fill</a> );</div>
+<div class="line"><a id="l08780" name="l08780"></a><span class="lineno"> 8780</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#ac41c38c1b2f5132bbf89795536e2553b">vehicle_obstructed_cache</a>[0][0], map_dimensions, <a class="code hl_function" href="namespacedetail.html#a3051eb18ec32a280d7212f15e759934e">fill</a> );</div>
+<div class="line"><a id="l08781" name="l08781"></a><span class="lineno"> 8781</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#a0d5b0df13e2b5fe817a458be44546219">seen_cache</a>[0][0], map_dimensions, 0.0f );</div>
+<div class="line"><a id="l08782" name="l08782"></a><span class="lineno"> 8782</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#af70ab849b23746d4c7758a6d7dc34ca8">camera_cache</a>[0][0], map_dimensions, 0.0f );</div>
+<div class="line"><a id="l08783" name="l08783"></a><span class="lineno"> 8783</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#afc09df9c0144ecc9c0fb47a2131506eb">visibility_cache</a>[0][0], map_dimensions, <a class="code hl_enumvalue" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e">lit_level::DARK</a> );</div>
+<div class="line"><a id="l08784" name="l08784"></a><span class="lineno"> 8784</span>    <a class="code hl_variable" href="structlevel__cache.html#a89601d2fa12cacb02a3c347a11c63162">veh_in_active_range</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l08785" name="l08785"></a><span class="lineno"> 8785</span>    std::fill_n( &amp;<a class="code hl_variable" href="structlevel__cache.html#abc05173a201b92434aa76b9548e8c5db">veh_exists_at</a>[0][0], map_dimensions, <span class="keyword">false</span> );</div>
+<div class="line"><a id="l08786" name="l08786"></a><span class="lineno"> 8786</span>}</div>
 <div class="ttc" id="agame__constants_8h_html_a2b6d307dfab13601267fc3c627192f4e"><div class="ttname"><a href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a></div><div class="ttdeci">static constexpr int MAPSIZE_Y</div><div class="ttdef"><b>Definition:</b> <a href="game__constants_8h_source.html#l00040">game_constants.h:40</a></div></div>
 <div class="ttc" id="agame__constants_8h_html_a2f229f6ae9b3affb78ec8139ccdbf18e"><div class="ttname"><a href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a></div><div class="ttdeci">static constexpr int MAPSIZE_X</div><div class="ttdef"><b>Definition:</b> <a href="game__constants_8h_source.html#l00039">game_constants.h:39</a></div></div>
 <div class="ttc" id="alightmap_8h_html_aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e"><div class="ttname"><a href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e">lit_level::DARK</a></div><div class="ttdeci">@ DARK</div></div>
-<div class="ttc" id="astructfour__quadrants_html"><div class="ttname"><a href="structfour__quadrants.html">four_quadrants</a></div><div class="ttdef"><b>Definition:</b> <a href="shadowcasting_8h_source.html#l00026">shadowcasting.h:26</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a09608233136cae79d2bd94c3d1d9ffdd"><div class="ttname"><a href="structlevel__cache.html#a09608233136cae79d2bd94c3d1d9ffdd">level_cache::outside_cache_dirty</a></div><div class="ttdeci">bool outside_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00297">map.h:297</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a0d5b0df13e2b5fe817a458be44546219"><div class="ttname"><a href="structlevel__cache.html#a0d5b0df13e2b5fe817a458be44546219">level_cache::seen_cache</a></div><div class="ttdeci">float seen_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00331">map.h:331</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a109f086036f662c196589200b972f8a4"><div class="ttname"><a href="structlevel__cache.html#a109f086036f662c196589200b972f8a4">level_cache::light_source_buffer</a></div><div class="ttdeci">float light_source_buffer[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00308">map.h:308</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a1d3856892a7a5815f09ea7e8e502c2e5"><div class="ttname"><a href="structlevel__cache.html#a1d3856892a7a5815f09ea7e8e502c2e5">level_cache::lm</a></div><div class="ttdeci">four_quadrants lm[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00304">map.h:304</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a24b1fdeb40834e94a75234743cc2948d"><div class="ttname"><a href="structlevel__cache.html#a24b1fdeb40834e94a75234743cc2948d">level_cache::floor_cache_dirty</a></div><div class="ttdeci">bool floor_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00298">map.h:298</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a5442c23fc714c659faac43bfd17bc2f4"><div class="ttname"><a href="structlevel__cache.html#a5442c23fc714c659faac43bfd17bc2f4">level_cache::transparency_cache_dirty</a></div><div class="ttdeci">std::bitset&lt; MAPSIZE *MAPSIZE &gt; transparency_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00296">map.h:296</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a588b0269e8b90fbaaf314abf1ed85f55"><div class="ttname"><a href="structlevel__cache.html#a588b0269e8b90fbaaf314abf1ed85f55">level_cache::floor_cache</a></div><div class="ttdeci">bool floor_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00318">map.h:318</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_a89601d2fa12cacb02a3c347a11c63162"><div class="ttname"><a href="structlevel__cache.html#a89601d2fa12cacb02a3c347a11c63162">level_cache::veh_in_active_range</a></div><div class="ttdeci">bool veh_in_active_range</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00342">map.h:342</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_aae5b10f8c81f98cfcba26167bf800df7"><div class="ttname"><a href="structlevel__cache.html#aae5b10f8c81f98cfcba26167bf800df7">level_cache::sm</a></div><div class="ttdeci">float sm[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00305">map.h:305</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_aaf488243c97a59afbd63a9f9e2972afc"><div class="ttname"><a href="structlevel__cache.html#aaf488243c97a59afbd63a9f9e2972afc">level_cache::outside_cache</a></div><div class="ttdeci">bool outside_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00312">map.h:312</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_abc05173a201b92434aa76b9548e8c5db"><div class="ttname"><a href="structlevel__cache.html#abc05173a201b92434aa76b9548e8c5db">level_cache::veh_exists_at</a></div><div class="ttdeci">bool veh_exists_at[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00343">map.h:343</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_ad1be36035ce00b2c64dd1b73528f4975"><div class="ttname"><a href="structlevel__cache.html#ad1be36035ce00b2c64dd1b73528f4975">level_cache::transparency_cache</a></div><div class="ttdeci">float transparency_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00322">map.h:322</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_ae679f104e906364a8b4bfce502d99b67"><div class="ttname"><a href="structlevel__cache.html#ae679f104e906364a8b4bfce502d99b67">level_cache::vision_transparency_cache</a></div><div class="ttdeci">float vision_transparency_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00327">map.h:327</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_af70ab849b23746d4c7758a6d7dc34ca8"><div class="ttname"><a href="structlevel__cache.html#af70ab849b23746d4c7758a6d7dc34ca8">level_cache::camera_cache</a></div><div class="ttdeci">float camera_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00335">map.h:335</a></div></div>
-<div class="ttc" id="astructlevel__cache_html_afc09df9c0144ecc9c0fb47a2131506eb"><div class="ttname"><a href="structlevel__cache.html#afc09df9c0144ecc9c0fb47a2131506eb">level_cache::visibility_cache</a></div><div class="ttdeci">lit_level visibility_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00338">map.h:338</a></div></div>
+<div class="ttc" id="anamespacedetail_html_a3051eb18ec32a280d7212f15e759934e"><div class="ttname"><a href="namespacedetail.html#a3051eb18ec32a280d7212f15e759934e">detail::fill</a></div><div class="ttdeci">FMT_NOINLINE OutputIt fill(OutputIt it, size_t n, const fill_t&lt; Char &gt; &amp;fill)</div><div class="ttdef"><b>Definition:</b> <a href="fmtlib__format_8h_source.html#l01696">fmtlib_format.h:1696</a></div></div>
+<div class="ttc" id="astructdiagonal__blocks_html"><div class="ttname"><a href="structdiagonal__blocks.html">diagonal_blocks</a></div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00296">map.h:296</a></div></div>
+<div class="ttc" id="astructfour__quadrants_html"><div class="ttname"><a href="structfour__quadrants.html">four_quadrants</a></div><div class="ttdef"><b>Definition:</b> <a href="shadowcasting_8h_source.html#l00027">shadowcasting.h:27</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a09608233136cae79d2bd94c3d1d9ffdd"><div class="ttname"><a href="structlevel__cache.html#a09608233136cae79d2bd94c3d1d9ffdd">level_cache::outside_cache_dirty</a></div><div class="ttdeci">bool outside_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00307">map.h:307</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a0d5b0df13e2b5fe817a458be44546219"><div class="ttname"><a href="structlevel__cache.html#a0d5b0df13e2b5fe817a458be44546219">level_cache::seen_cache</a></div><div class="ttdeci">float seen_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00343">map.h:343</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a109f086036f662c196589200b972f8a4"><div class="ttname"><a href="structlevel__cache.html#a109f086036f662c196589200b972f8a4">level_cache::light_source_buffer</a></div><div class="ttdeci">float light_source_buffer[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00318">map.h:318</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a1d3856892a7a5815f09ea7e8e502c2e5"><div class="ttname"><a href="structlevel__cache.html#a1d3856892a7a5815f09ea7e8e502c2e5">level_cache::lm</a></div><div class="ttdeci">four_quadrants lm[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00314">map.h:314</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a24b1fdeb40834e94a75234743cc2948d"><div class="ttname"><a href="structlevel__cache.html#a24b1fdeb40834e94a75234743cc2948d">level_cache::floor_cache_dirty</a></div><div class="ttdeci">bool floor_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00308">map.h:308</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a5442c23fc714c659faac43bfd17bc2f4"><div class="ttname"><a href="structlevel__cache.html#a5442c23fc714c659faac43bfd17bc2f4">level_cache::transparency_cache_dirty</a></div><div class="ttdeci">std::bitset&lt; MAPSIZE *MAPSIZE &gt; transparency_cache_dirty</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00306">map.h:306</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a588b0269e8b90fbaaf314abf1ed85f55"><div class="ttname"><a href="structlevel__cache.html#a588b0269e8b90fbaaf314abf1ed85f55">level_cache::floor_cache</a></div><div class="ttdeci">bool floor_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00328">map.h:328</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_a89601d2fa12cacb02a3c347a11c63162"><div class="ttname"><a href="structlevel__cache.html#a89601d2fa12cacb02a3c347a11c63162">level_cache::veh_in_active_range</a></div><div class="ttdeci">bool veh_in_active_range</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00354">map.h:354</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_aae5b10f8c81f98cfcba26167bf800df7"><div class="ttname"><a href="structlevel__cache.html#aae5b10f8c81f98cfcba26167bf800df7">level_cache::sm</a></div><div class="ttdeci">float sm[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00315">map.h:315</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_aaf488243c97a59afbd63a9f9e2972afc"><div class="ttname"><a href="structlevel__cache.html#aaf488243c97a59afbd63a9f9e2972afc">level_cache::outside_cache</a></div><div class="ttdeci">bool outside_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00322">map.h:322</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_abc05173a201b92434aa76b9548e8c5db"><div class="ttname"><a href="structlevel__cache.html#abc05173a201b92434aa76b9548e8c5db">level_cache::veh_exists_at</a></div><div class="ttdeci">bool veh_exists_at[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00355">map.h:355</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_ac41c38c1b2f5132bbf89795536e2553b"><div class="ttname"><a href="structlevel__cache.html#ac41c38c1b2f5132bbf89795536e2553b">level_cache::vehicle_obstructed_cache</a></div><div class="ttdeci">diagonal_blocks vehicle_obstructed_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00339">map.h:339</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_acb6c8f8ad8aa68d9cc24daefc7bdd47c"><div class="ttname"><a href="structlevel__cache.html#acb6c8f8ad8aa68d9cc24daefc7bdd47c">level_cache::vehicle_obscured_cache</a></div><div class="ttdeci">diagonal_blocks vehicle_obscured_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00336">map.h:336</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_ad1be36035ce00b2c64dd1b73528f4975"><div class="ttname"><a href="structlevel__cache.html#ad1be36035ce00b2c64dd1b73528f4975">level_cache::transparency_cache</a></div><div class="ttdeci">float transparency_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00332">map.h:332</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_af70ab849b23746d4c7758a6d7dc34ca8"><div class="ttname"><a href="structlevel__cache.html#af70ab849b23746d4c7758a6d7dc34ca8">level_cache::camera_cache</a></div><div class="ttdeci">float camera_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00347">map.h:347</a></div></div>
+<div class="ttc" id="astructlevel__cache_html_afc09df9c0144ecc9c0fb47a2131506eb"><div class="ttname"><a href="structlevel__cache.html#afc09df9c0144ecc9c0fb47a2131506eb">level_cache::visibility_cache</a></div><div class="ttdeci">lit_level visibility_cache[MAPSIZE_X][MAPSIZE_Y]</div><div class="ttdef"><b>Definition:</b> <a href="map_8h_source.html#l00350">map.h:350</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="map_8h_source.html#l00335">camera_cache</a>, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e">DARK</a>, <a class="el" href="map_8h_source.html#l00318">floor_cache</a>, <a class="el" href="map_8h_source.html#l00298">floor_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00308">light_source_buffer</a>, <a class="el" href="map_8h_source.html#l00304">lm</a>, <a class="el" href="game__constants_8h_source.html#l00039">MAPSIZE_X</a>, <a class="el" href="game__constants_8h_source.html#l00040">MAPSIZE_Y</a>, <a class="el" href="map_8h_source.html#l00312">outside_cache</a>, <a class="el" href="map_8h_source.html#l00297">outside_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00331">seen_cache</a>, <a class="el" href="map_8h_source.html#l00305">sm</a>, <a class="el" href="map_8h_source.html#l00322">transparency_cache</a>, <a class="el" href="map_8h_source.html#l00296">transparency_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00343">veh_exists_at</a>, <a class="el" href="map_8h_source.html#l00342">veh_in_active_range</a>, <a class="el" href="map_8h_source.html#l00338">visibility_cache</a>, and <a class="el" href="map_8h_source.html#l00327">vision_transparency_cache</a>.</p>
+<p class="reference">References <a class="el" href="map_8h_source.html#l00347">camera_cache</a>, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e">DARK</a>, <a class="el" href="fmtlib__format_8h_source.html#l01696">detail::fill()</a>, <a class="el" href="map_8h_source.html#l00328">floor_cache</a>, <a class="el" href="map_8h_source.html#l00308">floor_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00318">light_source_buffer</a>, <a class="el" href="map_8h_source.html#l00314">lm</a>, <a class="el" href="game__constants_8h_source.html#l00039">MAPSIZE_X</a>, <a class="el" href="game__constants_8h_source.html#l00040">MAPSIZE_Y</a>, <a class="el" href="map_8h_source.html#l00322">outside_cache</a>, <a class="el" href="map_8h_source.html#l00307">outside_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00343">seen_cache</a>, <a class="el" href="map_8h_source.html#l00315">sm</a>, <a class="el" href="map_8h_source.html#l00332">transparency_cache</a>, <a class="el" href="map_8h_source.html#l00306">transparency_cache_dirty</a>, <a class="el" href="map_8h_source.html#l00355">veh_exists_at</a>, <a class="el" href="map_8h_source.html#l00354">veh_in_active_range</a>, <a class="el" href="map_8h_source.html#l00336">vehicle_obscured_cache</a>, <a class="el" href="map_8h_source.html#l00339">vehicle_obstructed_cache</a>, and <a class="el" href="map_8h_source.html#l00350">visibility_cache</a>.</p>
 
 </div>
 </div>
@@ -254,9 +261,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00335">335</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00347">347</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00636">map::apparent_light_helper()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00409">map::set_seen_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00667">map::apparent_light_helper()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00421">map::set_seen_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -272,9 +279,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00340">340</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00352">352</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l05386">map::add_field()</a>, <a class="el" href="map_8cpp_source.html#l02658">map::decay_fields_and_scent()</a>, <a class="el" href="map_8cpp_source.html#l06849">map::loadn()</a>, <a class="el" href="map__field_8cpp_source.html#l00141">map::process_fields()</a>, <a class="el" href="map__field_8cpp_source.html#l00394">map::process_fields_in_submap()</a>, and <a class="el" href="map_8cpp_source.html#l05443">map::remove_field()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l05408">map::add_field()</a>, <a class="el" href="map_8cpp_source.html#l02674">map::decay_fields_and_scent()</a>, <a class="el" href="map_8cpp_source.html#l07004">map::loadn()</a>, <a class="el" href="map__field_8cpp_source.html#l00141">map::process_fields()</a>, <a class="el" href="map__field_8cpp_source.html#l00396">map::process_fields_in_submap()</a>, and <a class="el" href="map_8cpp_source.html#l05465">map::remove_field()</a>.</p>
 
 </div>
 </div>
@@ -290,9 +297,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00318">318</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00328">328</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00218">map::build_sunlight_cache()</a>, <a class="el" href="lightmap_8cpp_source.html#l00369">map::generate_lightmap()</a>, <a class="el" href="map_8cpp_source.html#l02002">map::has_floor()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l07979">vehicle_caching_internal()</a>, and <a class="el" href="map_8cpp_source.html#l08008">vehicle_caching_internal_above()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00249">map::build_sunlight_cache()</a>, <a class="el" href="lightmap_8cpp_source.html#l00400">map::generate_lightmap()</a>, <a class="el" href="map_8cpp_source.html#l02007">map::has_floor()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l08135">vehicle_caching_internal()</a>, and <a class="el" href="map_8cpp_source.html#l08202">vehicle_caching_internal_above()</a>.</p>
 
 </div>
 </div>
@@ -308,9 +315,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00298">298</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00308">308</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00458">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00436">map::set_floor_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00470">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00448">map::set_floor_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -326,9 +333,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00308">308</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00318">318</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00582">map::add_light_source()</a>, and <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00613">map::add_light_source()</a>, and <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>.</p>
 
 </div>
 </div>
@@ -344,9 +351,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00304">304</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00314">314</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00615">map::ambient_light_at()</a>, <a class="el" href="lightmap_8cpp_source.html#l00636">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01534">map::apply_light_ray()</a>, <a class="el" href="lightmap_8cpp_source.html#l00218">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l05574">map::update_visibility_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00646">map::ambient_light_at()</a>, <a class="el" href="lightmap_8cpp_source.html#l00667">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01720">map::apply_light_ray()</a>, <a class="el" href="lightmap_8cpp_source.html#l00249">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l05608">map::update_visibility_cache()</a>.</p>
 
 </div>
 </div>
@@ -362,9 +369,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00339">339</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00351">351</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00474">map::check_and_set_seen_cache()</a>, <a class="el" href="map_8h_source.html#l00469">map::check_seen_cache()</a>, <a class="el" href="game_8cpp_source.html#l09954">game::place_player_overmap()</a>, <a class="el" href="map_8h_source.html#l00451">map::set_memory_seen_cache_dirty()</a>, and <a class="el" href="game_8cpp_source.html#l11092">game::vertical_shift()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00486">map::check_and_set_seen_cache()</a>, <a class="el" href="map_8h_source.html#l00481">map::check_seen_cache()</a>, <a class="el" href="game_8cpp_source.html#l09543">game::place_player_overmap()</a>, <a class="el" href="map_8h_source.html#l00463">map::set_memory_seen_cache_dirty()</a>, and <a class="el" href="game_8cpp_source.html#l10704">game::vertical_shift()</a>.</p>
 
 </div>
 </div>
@@ -380,9 +387,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00312">312</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00322">322</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00218">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l02658">map::decay_fields_and_scent()</a>, <a class="el" href="map_8cpp_source.html#l02558">map::is_outside()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l07979">vehicle_caching_internal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00249">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l02674">map::decay_fields_and_scent()</a>, <a class="el" href="map_8cpp_source.html#l02574">map::is_outside()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l08135">vehicle_caching_internal()</a>.</p>
 
 </div>
 </div>
@@ -398,9 +405,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00297">297</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00307">307</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00458">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00430">map::set_outside_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00470">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00442">map::set_outside_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -416,9 +423,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00331">331</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00343">343</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00636">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01224">map::build_seen_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, <a class="el" href="creature_8cpp_source.html#l00275">Creature::sees()</a>, and <a class="el" href="map_8h_source.html#l00409">map::set_seen_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00667">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01392">map::build_seen_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="creature_8cpp_source.html#l00278">Creature::sees()</a>, and <a class="el" href="map_8h_source.html#l00421">map::set_seen_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -434,9 +441,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00299">299</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00309">309</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08034">map::build_map_cache()</a>, <a class="el" href="map_8h_source.html#l00458">map::invalidate_map_cache()</a>, and <a class="el" href="map_8h_source.html#l00409">map::set_seen_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08228">map::build_map_cache()</a>, <a class="el" href="map_8h_source.html#l00470">map::invalidate_map_cache()</a>, and <a class="el" href="map_8h_source.html#l00421">map::set_seen_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -452,9 +459,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00305">305</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00315">315</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>.</p>
 
 </div>
 </div>
@@ -470,9 +477,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00302">302</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00312">312</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l01634">map::ter_set()</a>, and <a class="el" href="map_8cpp_source.html#l07915">map::update_suspension_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l01639">map::ter_set()</a>, and <a class="el" href="map_8cpp_source.html#l08071">map::update_suspension_cache()</a>.</p>
 
 </div>
 </div>
@@ -488,9 +495,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00301">301</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00311">311</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00458">map::invalidate_map_cache()</a>, <a class="el" href="map_8h_source.html#l00442">map::set_suspension_cache_dirty()</a>, and <a class="el" href="map_8cpp_source.html#l07915">map::update_suspension_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00470">map::invalidate_map_cache()</a>, <a class="el" href="map_8h_source.html#l00454">map::set_suspension_cache_dirty()</a>, and <a class="el" href="map_8cpp_source.html#l08071">map::update_suspension_cache()</a>.</p>
 
 </div>
 </div>
@@ -506,9 +513,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00300">300</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00310">310</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l07915">map::update_suspension_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08071">map::update_suspension_cache()</a>.</p>
 
 </div>
 </div>
@@ -524,9 +531,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00322">322</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00332">332</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00636">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01534">map::apply_light_ray()</a>, <a class="el" href="lightmap_8cpp_source.html#l00218">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, <a class="el" href="lightmap_8cpp_source.html#l00629">map::light_transparency()</a>, and <a class="el" href="map_8cpp_source.html#l07979">vehicle_caching_internal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00667">map::apparent_light_helper()</a>, <a class="el" href="lightmap_8cpp_source.html#l01720">map::apply_light_ray()</a>, <a class="el" href="lightmap_8cpp_source.html#l01313">map::apply_vision_transparency_cache()</a>, <a class="el" href="lightmap_8cpp_source.html#l00249">map::build_sunlight_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="lightmap_8cpp_source.html#l00660">map::light_transparency()</a>, and <a class="el" href="map_8cpp_source.html#l08135">vehicle_caching_internal()</a>.</p>
 
 </div>
 </div>
@@ -542,9 +549,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00296">296</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00306">306</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00458">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00393">map::set_transparency_cache_dirty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h_source.html#l00470">map::invalidate_map_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8h_source.html#l00405">map::set_transparency_cache_dirty()</a>.</p>
 
 </div>
 </div>
@@ -560,9 +567,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00344">344</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00356">356</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00267">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00309">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l00291">map::clear_vehicle_point_from_cache()</a>, and <a class="el" href="map_8cpp_source.html#l01019">map::veh_at_internal()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00271">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00313">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l00295">map::clear_vehicle_point_from_cache()</a>, and <a class="el" href="map_8cpp_source.html#l01024">map::veh_at_internal()</a>.</p>
 
 </div>
 </div>
@@ -578,9 +585,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00343">343</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00355">355</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00267">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00309">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l00291">map::clear_vehicle_point_from_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l01019">map::veh_at_internal()</a>, and <a class="el" href="map_8cpp_source.html#l00458">map::vehproceed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00271">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00313">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l00295">map::clear_vehicle_point_from_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l01024">map::veh_at_internal()</a>, and <a class="el" href="map_8cpp_source.html#l00462">map::vehproceed()</a>.</p>
 
 </div>
 </div>
@@ -596,9 +603,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00342">342</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00354">354</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00267">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00309">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l01004">map::veh_at()</a>, <a class="el" href="map_8cpp_source.html#l01019">map::veh_at_internal()</a>, and <a class="el" href="map_8cpp_source.html#l00458">map::vehproceed()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00271">map::add_vehicle_to_cache()</a>, <a class="el" href="map_8cpp_source.html#l00313">map::clear_vehicle_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l01009">map::veh_at()</a>, <a class="el" href="map_8cpp_source.html#l01024">map::veh_at_internal()</a>, and <a class="el" href="map_8cpp_source.html#l00462">map::vehproceed()</a>.</p>
 
 </div>
 </div>
@@ -614,9 +621,45 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00345">345</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00357">357</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00350">map::detach_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l01114">map::displace_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l08017">map::do_vehicle_caching()</a>, <a class="el" href="map_8cpp_source.html#l04559">map::process_items()</a>, <a class="el" href="map_8cpp_source.html#l06602">map::shift_vehicle_z()</a>, <a class="el" href="map_8cpp_source.html#l00336">map::update_vehicle_list()</a>, <a class="el" href="map_8cpp_source.html#l00410">map::vehmove()</a>, and <a class="el" href="game_8cpp_source.html#l11092">game::vertical_shift()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00354">map::detach_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l01119">map::displace_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l08211">map::do_vehicle_caching()</a>, <a class="el" href="map_8cpp_source.html#l04580">map::process_items()</a>, <a class="el" href="map_8cpp_source.html#l06733">map::shift_vehicle_z()</a>, <a class="el" href="map_8cpp_source.html#l00340">map::update_vehicle_list()</a>, <a class="el" href="map_8cpp_source.html#l00414">map::vehmove()</a>, and <a class="el" href="game_8cpp_source.html#l10704">game::vertical_shift()</a>.</p>
+
+</div>
+</div>
+<a id="acb6c8f8ad8aa68d9cc24daefc7bdd47c" name="acb6c8f8ad8aa68d9cc24daefc7bdd47c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb6c8f8ad8aa68d9cc24daefc7bdd47c">&#9670;&nbsp;</a></span>vehicle_obscured_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structdiagonal__blocks.html">diagonal_blocks</a> level_cache::vehicle_obscured_cache[<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00336">336</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l01313">map::apply_vision_transparency_cache()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l06532">map::obscured_by_vehicle_rotation()</a>, and <a class="el" href="map_8cpp_source.html#l08135">vehicle_caching_internal()</a>.</p>
+
+</div>
+</div>
+<a id="ac41c38c1b2f5132bbf89795536e2553b" name="ac41c38c1b2f5132bbf89795536e2553b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac41c38c1b2f5132bbf89795536e2553b">&#9670;&nbsp;</a></span>vehicle_obstructed_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structdiagonal__blocks.html">diagonal_blocks</a> level_cache::vehicle_obstructed_cache[<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00339">339</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, <a class="el" href="map_8cpp_source.html#l06495">map::obstructed_by_vehicle_rotation()</a>, <a class="el" href="explosion_8cpp_source.html#l00611">explosion_handler::shrapnel()</a>, <a class="el" href="scent__map_8cpp_source.html#l00150">scent_map::update()</a>, and <a class="el" href="map_8cpp_source.html#l08135">vehicle_caching_internal()</a>.</p>
 
 </div>
 </div>
@@ -632,27 +675,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00338">338</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00350">350</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l05670">map::draw()</a>, <a class="el" href="handle__action_8cpp_source.html#l00177">generate_weather_anim_frame()</a>, <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l05574">map::update_visibility_cache()</a>.</p>
-
-</div>
-</div>
-<a id="ae679f104e906364a8b4bfce502d99b67" name="ae679f104e906364a8b4bfce502d99b67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae679f104e906364a8b4bfce502d99b67">&#9670;&nbsp;</a></span>vision_transparency_cache</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float level_cache::vision_transparency_cache[<a class="el" href="game__constants_8h.html#a2f229f6ae9b3affb78ec8139ccdbf18e">MAPSIZE_X</a>][<a class="el" href="game__constants_8h.html#a2b6d307dfab13601267fc3c627192f4e">MAPSIZE_Y</a>]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00327">327</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="lightmap_8cpp_source.html#l00636">map::apparent_light_helper()</a>, and <a class="el" href="map_8cpp_source.html#l08542">level_cache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l05712">map::draw()</a>, <a class="el" href="handle__action_8cpp_source.html#l00181">generate_weather_anim_frame()</a>, <a class="el" href="map_8cpp_source.html#l08765">level_cache()</a>, and <a class="el" href="map_8cpp_source.html#l05608">map::update_visibility_cache()</a>.</p>
 
 </div>
 </div>
@@ -668,9 +693,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00346">346</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="map_8h_source.html#l00358">358</a> of file <a class="el" href="map_8h_source.html">map.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00350">map::detach_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l01114">map::displace_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l06602">map::shift_vehicle_z()</a>, <a class="el" href="map_8cpp_source.html#l00336">map::update_vehicle_list()</a>, and <a class="el" href="game_8cpp_source.html#l11092">game::vertical_shift()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8cpp_source.html#l00354">map::detach_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l01119">map::displace_vehicle()</a>, <a class="el" href="map_8cpp_source.html#l06733">map::shift_vehicle_z()</a>, <a class="el" href="map_8cpp_source.html#l00340">map::update_vehicle_list()</a>, and <a class="el" href="game_8cpp_source.html#l10704">game::vertical_shift()</a>.</p>
 
 </div>
 </div>
@@ -684,7 +709,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structlevel__cache.html">level_cache</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:47 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:22 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

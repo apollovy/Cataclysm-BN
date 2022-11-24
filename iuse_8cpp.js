@@ -226,6 +226,7 @@ var iuse_8cpp =
     [ "itype_towel", "iuse_8cpp.html#ad3c607806d47a97eff457cf43aefe736", null ],
     [ "itype_towel_soiled", "iuse_8cpp.html#a637bcdb64af86e0962bba0315985f1db", null ],
     [ "itype_towel_wet", "iuse_8cpp.html#aa79e3b5eebd78aa052b047842beb5572", null ],
+    [ "itype_UPS", "iuse_8cpp.html#a55a80a9bbab1925d5462d46d355c2b6e", null ],
     [ "itype_UPS_off", "iuse_8cpp.html#ae89306fd36cf36b57fe05dad0db3f71b", null ],
     [ "itype_water", "iuse_8cpp.html#abfd8b1d23930a50d7f122f0d39538649", null ],
     [ "itype_water_clean", "iuse_8cpp.html#a04c0f30be5943072fbaecacc8a0cf848", null ],

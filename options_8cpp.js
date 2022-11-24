@@ -10,7 +10,7 @@ var options_8cpp =
     [ "get_options", "options_8cpp.html#ac44b4e780d3ddcda744723fc256743a9", null ],
     [ "get_value_type", "options_8cpp.html#ac6420f57d1bc2ccadee1e87b9c9a3155", null ],
     [ "options_manager::cOpt::value_as< std::string >", "options_8cpp.html#adb970be4a18c7c72aa4180377fe77d13", null ],
-    [ "refresh_tiles", "options_8cpp.html#a97a6a8b9ffb3c2dfd462af1a9353f8dc", null ],
+    [ "refresh_tiles", "options_8cpp.html#a8600ac715df3f79d8221e0438f85c0ee", null ],
     [ "debug_log_classes", "options_8cpp.html#aae39c0b4da325d9397e161c030b27d0f", null ],
     [ "debug_log_levels", "options_8cpp.html#a031b0d1a47acae590a315c72df6b2052", null ],
     [ "SOUNDPACKS", "options_8cpp.html#a28c374585686e3c68f7015ebec764881", null ],

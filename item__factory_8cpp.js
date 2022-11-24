@@ -22,7 +22,6 @@ var item__factory_8cpp =
     [ "ammo_effect_INCENDIARY", "item__factory_8cpp.html#a506fc166f774a4ac78c54dd998286ef1", null ],
     [ "ammo_effect_NAPALM", "item__factory_8cpp.html#aa4c9f0b19a1528d31cf326fc1a172845", null ],
     [ "ammo_effect_NAPALM_BIG", "item__factory_8cpp.html#a9eb96e4a86c3afc10c7787c6d893e7a1", null ],
-    [ "ammo_effect_NEVER_MISFIRES", "item__factory_8cpp.html#a07dd3ee8a326de00a3fd0c98cb57aa32", null ],
     [ "ammo_effect_SMOKE", "item__factory_8cpp.html#a0f4fe4bd5d4a6c971b938f573f015886", null ],
     [ "ammo_effect_SMOKE_BIG", "item__factory_8cpp.html#a4a0f387b756b27806acd612df7589c57", null ],
     [ "ammo_effect_TOXICGAS", "item__factory_8cpp.html#af27066fbeaeb6ef423c4926c5cf8e4cb", null ],

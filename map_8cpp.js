@@ -28,6 +28,7 @@ var map_8cpp =
     [ "ammo_effect_LASER", "map_8cpp.html#a4823a8b924c5e1c83c8e1e1a316e1ae7", null ],
     [ "ammo_effect_LIGHTNING", "map_8cpp.html#a17d7acb18d1ef9119106898d678fac76", null ],
     [ "ammo_effect_PLASMA", "map_8cpp.html#aaf09bb55e60a45b1eb81e989d0758e93", null ],
+    [ "disable_mapgen", "map_8cpp.html#ae6af50176f3458f8541902c00ce67666", null ],
     [ "effect_boomered", "map_8cpp.html#a468a4ea99d05230e46c7e014a68270a7", null ],
     [ "effect_crushed", "map_8cpp.html#a309e3746ea5d262a99d79a007dcd8478", null ],
     [ "itype_autoclave", "map_8cpp.html#a131f75fad15a4a5320ba7e9a5abe8bbf", null ],

@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('armor__layers_8cpp.html',''); initResi
 <code>#include &quot;<a class="el" href="avatar_8h_source.html">avatar.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cata__utility_8h_source.html">cata_utility.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="catacharset_8h_source.html">catacharset.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="character__display_8h_source.html">character_display.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="enums_8h_source.html">enums.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="game_8h_source.html">game.h</a>&quot;</code><br />
@@ -235,26 +236,26 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="armor__layers_8cpp_source.html#l00417">417</a> of file <a class="el" href="armor__layers_8cpp_source.html">armor_layers.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>{</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> win_w = <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w );</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> win_h = <a class="code hl_function" href="namespacecatacurses.html#adc81ca40445dc062af12fb6d7a4793d0">getmaxy</a>( w );</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>    <a class="code hl_function" href="output_8cpp.html#afea9968fcee47ebca0e45d27099d1c22">draw_border</a>( w );</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    <a class="code hl_function" href="namespacecatacurses.html#a378d993a574b6bf30ea509fa46de2142">mvwhline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 1, 2 ), 0, win_w - 2 );</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <a class="code hl_function" href="namespacecatacurses.html#a6b1752cd3ddf8789d193e23b540d6354">mvwvline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, 3 ), 0, win_h - 4 );</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    <a class="code hl_function" href="namespacecatacurses.html#a6b1752cd3ddf8789d193e23b540d6354">mvwvline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, 3 ), 0, win_h - 4 );</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    <span class="comment">// intersections</span></div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 0, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4b80f0039259ebe61dc2e58ca4b31043">LINE_XXXO</a> );</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( win_w - 1, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a0803e4570f3cd69d38952bc2b4555c24">LINE_XOXX</a> );</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, win_h - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> );</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, win_h - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> );</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>}</div>
+<p class="definition">Definition at line <a class="el" href="armor__layers_8cpp_source.html#l00418">418</a> of file <a class="el" href="armor__layers_8cpp_source.html">armor_layers.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>{</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> win_w = <a class="code hl_function" href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">getmaxx</a>( w );</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> win_h = <a class="code hl_function" href="namespacecatacurses.html#adc81ca40445dc062af12fb6d7a4793d0">getmaxy</a>( w );</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    <a class="code hl_function" href="output_8cpp.html#afea9968fcee47ebca0e45d27099d1c22">draw_border</a>( w );</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <a class="code hl_function" href="namespacecatacurses.html#a378d993a574b6bf30ea509fa46de2142">mvwhline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 1, 2 ), 0, win_w - 2 );</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    <a class="code hl_function" href="namespacecatacurses.html#a6b1752cd3ddf8789d193e23b540d6354">mvwvline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, 3 ), 0, win_h - 4 );</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    <a class="code hl_function" href="namespacecatacurses.html#a6b1752cd3ddf8789d193e23b540d6354">mvwvline</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, 3 ), 0, win_h - 4 );</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>    <span class="comment">// intersections</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( 0, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4b80f0039259ebe61dc2e58ca4b31043">LINE_XXXO</a> );</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( win_w - 1, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a0803e4570f3cd69d38952bc2b4555c24">LINE_XOXX</a> );</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + 1, win_h - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> );</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, 2 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a4a3bfadbe7ec0abb14ff53e5e2f8983e">LINE_OXXX</a> );</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <a class="code hl_function" href="output_8cpp.html#afb5597c87a5847c7d64b878ab3a77d5b">mvwputch</a>( w, <a class="code hl_struct" href="structpoint.html">point</a>( left_pane_w + mid_pane_w + 2, win_h - 1 ), <a class="code hl_define" href="output_8h.html#a966901ace2cf6cba3fc9cec310150860">BORDER_COLOR</a>, <a class="code hl_define" href="output_8h.html#a612d0d0728e93276b2b7de1fc57b096b">LINE_XXOX</a> );</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <a class="code hl_function" href="namespacecatacurses.html#aa9823d249c21fa50daf277957fabb175">wnoutrefresh</a>( w );</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>}</div>
 <div class="ttc" id="anamespacecatacurses_html_a378d993a574b6bf30ea509fa46de2142"><div class="ttname"><a href="namespacecatacurses.html#a378d993a574b6bf30ea509fa46de2142">catacurses::mvwhline</a></div><div class="ttdeci">void mvwhline(const window &amp;win, const point &amp;p, chtype ch, int n)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00152">ncurses_def.cpp:152</a></div></div>
 <div class="ttc" id="anamespacecatacurses_html_a6b1752cd3ddf8789d193e23b540d6354"><div class="ttname"><a href="namespacecatacurses.html#a6b1752cd3ddf8789d193e23b540d6354">catacurses::mvwvline</a></div><div class="ttdeci">void mvwvline(const window &amp;win, const point &amp;p, chtype ch, int n)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00158">ncurses_def.cpp:158</a></div></div>
 <div class="ttc" id="anamespacecatacurses_html_a929fe85d472028f52d8a5cdfc0d35017"><div class="ttname"><a href="namespacecatacurses.html#a929fe85d472028f52d8a5cdfc0d35017">catacurses::getmaxx</a></div><div class="ttdeci">int getmaxx(const window &amp;win)</div><div class="ttdef"><b>Definition:</b> <a href="ncurses__def_8cpp_source.html#l00058">ncurses_def.cpp:58</a></div></div>
@@ -271,7 +272,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="output_8h_source.html#l00135">BORDER_COLOR</a>, <a class="el" href="output_8cpp_source.html#l00575">draw_border()</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00058">catacurses::getmaxx()</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00063">catacurses::getmaxy()</a>, <a class="el" href="output_8h_source.html#l00048">LINE_OXXX</a>, <a class="el" href="output_8h_source.html#l00047">LINE_XOXX</a>, <a class="el" href="output_8h_source.html#l00046">LINE_XXOX</a>, <a class="el" href="output_8h_source.html#l00045">LINE_XXXO</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00152">catacurses::mvwhline()</a>, <a class="el" href="output_8cpp_source.html#l00477">mvwputch()</a>, <a class="el" href="ncurses__def_8cpp_source.html#l00158">catacurses::mvwvline()</a>, and <a class="el" href="ncurses__def_8cpp_source.html#l00043">catacurses::wnoutrefresh()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00438">player::sort_armor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00439">player::sort_armor()</a>.</p>
 
 </div>
 </div>
@@ -299,7 +300,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -327,7 +328,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -355,7 +356,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -383,7 +384,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -411,7 +412,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -439,7 +440,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -467,7 +468,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -495,7 +496,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -523,7 +524,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -551,7 +552,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -579,7 +580,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -607,7 +608,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -635,7 +636,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -663,7 +664,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -691,7 +692,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -719,7 +720,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00273">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00274">anonymous_namespace{armor_layers.cpp}::clothing_layer()</a>.</p>
 
 </div>
 </div>
@@ -747,7 +748,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -775,7 +776,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00336">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00337">anonymous_namespace{armor_layers.cpp}::clothing_flags_description()</a>.</p>
 
 </div>
 </div>
@@ -813,26 +814,26 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="armor__layers_8cpp_source.html#l00403">403</a> of file <a class="el" href="armor__layers_8cpp_source.html">armor_layers.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>{</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    std::vector&lt;layering_item_info&gt; s;</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> elem_it = <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>.worn.begin(); elem_it != <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>.worn.end(); ++elem_it ) {</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>        <span class="keywordflow">if</span>( elem_it-&gt;covers( <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980">body_part</a><span class="keyword">&gt;</span>( bp ) ) ) {</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>            s.push_back( { <a class="code hl_function" href="namespaceanonymous__namespace_02armor__layers_8cpp_03.html#a2e94b6058062109e294a70310b442785">get_item_penalties</a>( elem_it, <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>, bp ),</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>                           elem_it-&gt;get_encumber( <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a> ),</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                           elem_it-&gt;tname()</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                         } );</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        }</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    }</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    <span class="keywordflow">return</span> s;</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>}</div>
+<p class="definition">Definition at line <a class="el" href="armor__layers_8cpp_source.html#l00404">404</a> of file <a class="el" href="armor__layers_8cpp_source.html">armor_layers.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>{</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    std::vector&lt;layering_item_info&gt; s;</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <span class="keywordflow">for</span>( <span class="keyword">auto</span> elem_it = <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>.worn.begin(); elem_it != <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>.worn.end(); ++elem_it ) {</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>        <span class="keywordflow">if</span>( elem_it-&gt;covers( <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980">body_part</a><span class="keyword">&gt;</span>( bp ) ) ) {</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>            s.push_back( { <a class="code hl_function" href="namespaceanonymous__namespace_02armor__layers_8cpp_03.html#a2e94b6058062109e294a70310b442785">get_item_penalties</a>( elem_it, <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a>, bp ),</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                           elem_it-&gt;get_encumber( <a class="code hl_variable" href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a> ),</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                           elem_it-&gt;tname()</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>                         } );</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        }</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    }</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>}</div>
 <div class="ttc" id="abodypart_8h_html_af618290c4c2de42aab87977ac7311980"><div class="ttname"><a href="bodypart_8h.html#af618290c4c2de42aab87977ac7311980">body_part</a></div><div class="ttdeci">body_part</div><div class="ttdef"><b>Definition:</b> <a href="bodypart_8h_source.html#l00039">bodypart.h:39</a></div></div>
 <div class="ttc" id="amagic_8cpp_html_a6753ecfe87da659675b18c2f81d6ec12"><div class="ttname"><a href="magic_8cpp.html#a6753ecfe87da659675b18c2f81d6ec12">c</a></div><div class="ttdeci">constexpr double c</div><div class="ttdef"><b>Definition:</b> <a href="magic_8cpp_source.html#l01032">magic.cpp:1032</a></div></div>
-<div class="ttc" id="anamespaceanonymous__namespace_02armor__layers_8cpp_03_html_a2e94b6058062109e294a70310b442785"><div class="ttname"><a href="namespaceanonymous__namespace_02armor__layers_8cpp_03.html#a2e94b6058062109e294a70310b442785">anonymous_namespace{armor_layers.cpp}::get_item_penalties</a></div><div class="ttdeci">item_penalties get_item_penalties(std::list&lt; item &gt;::const_iterator worn_item_it, const Character &amp;c, int tabindex)</div><div class="ttdef"><b>Definition:</b> <a href="armor__layers_8cpp_source.html#l00083">armor_layers.cpp:83</a></div></div>
+<div class="ttc" id="anamespaceanonymous__namespace_02armor__layers_8cpp_03_html_a2e94b6058062109e294a70310b442785"><div class="ttname"><a href="namespaceanonymous__namespace_02armor__layers_8cpp_03.html#a2e94b6058062109e294a70310b442785">anonymous_namespace{armor_layers.cpp}::get_item_penalties</a></div><div class="ttdeci">item_penalties get_item_penalties(std::list&lt; item &gt;::const_iterator worn_item_it, const Character &amp;c, int tabindex)</div><div class="ttdef"><b>Definition:</b> <a href="armor__layers_8cpp_source.html#l00084">armor_layers.cpp:84</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="magic_8cpp_source.html#l01032">c</a>, and <a class="el" href="armor__layers_8cpp_source.html#l00083">anonymous_namespace{armor_layers.cpp}::get_item_penalties()</a>.</p>
+<p class="reference">References <a class="el" href="magic_8cpp_source.html#l01032">c</a>, and <a class="el" href="armor__layers_8cpp_source.html#l00084">anonymous_namespace{armor_layers.cpp}::get_item_penalties()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00438">player::sort_armor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00439">player::sort_armor()</a>.</p>
 
 </div>
 </div>
@@ -861,7 +862,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00438">player::sort_armor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="armor__layers_8cpp_source.html#l00439">player::sort_armor()</a>.</p>
 
 </div>
 </div>
@@ -871,7 +872,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="armor__layers_8cpp.html">armor_layers.cpp</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:28 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:04 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

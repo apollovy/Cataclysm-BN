@@ -3,7 +3,6 @@ var fungal__effects_8cpp =
     [ "dbg", "fungal__effects_8cpp.html#a49bc164f30e64702250d2cbea09bf86c", null ],
     [ "flag_DIGGABLE", "fungal__effects_8cpp.html#a278a837249e42af97e0732cd82a9df7b", null ],
     [ "flag_FLAMMABLE", "fungal__effects_8cpp.html#a6aa11979d814b25e5da342edad2abe4a", null ],
-    [ "flag_FLAT", "fungal__effects_8cpp.html#a35073da0fb672bbbfd010ed8ac5fae50", null ],
     [ "flag_FLOWER", "fungal__effects_8cpp.html#a0d87ae7f5a678188d085be189ade118e", null ],
     [ "flag_FUNGUS", "fungal__effects_8cpp.html#ae002e878ae18d5606ca01aeaa659a44c", null ],
     [ "flag_ORGANIC", "fungal__effects_8cpp.html#ad3944d318bd661fed2b391d8fa1ed92f", null ],

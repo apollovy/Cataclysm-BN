@@ -1,7 +1,7 @@
 var character_8cpp =
 [
     [ "acc_clothing_warmth", "character_8cpp.html#ae11deea526b1f8389fa6a1b002bcc193", null ],
-    [ "apply_mut_encumbrance", "character_8cpp.html#acc65ed71b43e84ebed41fae4a566ff6b", null ],
+    [ "apply_mut_encumbrance", "character_8cpp.html#a5f07804986d7a43335dbd1ff98cf571b", null ],
     [ "armor_enchantment_adjust", "character_8cpp.html#aa98b9719e049fe2ae24ac3ad79b0c3d3", null ],
     [ "bonus_from_clothing", "character_8cpp.html#a1c5231c963e438d6f00d73f47f464ad5", null ],
     [ "calc_mutation_value", "character_8cpp.html#a5cbb3d5d062bae11ec68a7114d07d7c7", null ],
@@ -52,8 +52,9 @@ var character_8cpp =
     [ "get_player_character", "character_8cpp.html#a2fcb25d686f4a35fca374c6f71280311", null ],
     [ "get_speedydex_bonus", "character_8cpp.html#acd8074a2353e1244722bbbabb4f0c3cf", null ],
     [ "get_stat_name", "character_8cpp.html#a035c78e847a263690eaab59f16c23b88", null ],
+    [ "has_psy_protection", "character_8cpp.html#ad9592dafb578bdbac6e6945f9dffda42", null ],
     [ "item_armor_enchantment_adjust", "character_8cpp.html#a2a52160b53ff51da3991f3a6d6f20e8b", null ],
-    [ "layer_item", "character_8cpp.html#a7439f0b119fef109749469c3771d84e2", null ],
+    [ "layer_item", "character_8cpp.html#a6ef9222693ad91f337a76eb8faf70171", null ],
     [ "nv_range_from_eye_encumbrance", "character_8cpp.html#ac9e992a7dff11772e270108ad424e4ab", null ],
     [ "nv_range_from_per", "character_8cpp.html#a05a8ace4b281f390ac9ee3de19c61a78", null ],
     [ "threshold_for_nv_range", "character_8cpp.html#a8d88c9a764e41f78d403b0fb6976ef56", null ],
@@ -74,7 +75,6 @@ var character_8cpp =
     [ "ACT_WAIT_STAMINA", "character_8cpp.html#ad05a7937ccf2adf4932c0aba94d6ba1b", null ],
     [ "afs_bio_linguistic_coprocessor", "character_8cpp.html#a6c042cc19a15c8597af7ab0735c5fdbd", null ],
     [ "bio_ads", "character_8cpp.html#a99bde006d277d411e266b003163d9f05", null ],
-    [ "bio_blaster", "character_8cpp.html#a0890ea610faa3e6918c5dbe33fae3c99", null ],
     [ "bio_blindfold", "character_8cpp.html#a2804fe9f932b6123c1f18c7675244ca1", null ],
     [ "bio_climate", "character_8cpp.html#ac0142ea0e6c541f9065960340b5c669a", null ],
     [ "bio_earplugs", "character_8cpp.html#aaad58adaa21f25c9dcd190166c40480a", null ],

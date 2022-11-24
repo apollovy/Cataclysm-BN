@@ -8,7 +8,7 @@ var searchData=
   ['pickup_5fanswer_5',['pickup_answer',['../pickup_8cpp.html#a777d97e4e0b5f526a83ac7c820cb92e1',1,'pickup.cpp']]],
   ['pixel_5fminimap_5fmode_6',['pixel_minimap_mode',['../pixel__minimap_8h.html#a5f62bf59e1051d11100e5fcc845aa612',1,'pixel_minimap.h']]],
   ['pixel_5fminimap_5ftype_7',['pixel_minimap_type',['../pixel__minimap_8h.html#a4fce3f12a67d63ae2f077518ef1dab20',1,'pixel_minimap.h']]],
-  ['player_5fdisplay_5ftab_8',['player_display_tab',['../namespaceanonymous__namespace_02player__display_8cpp_03.html#a2f6040cde5f366f2f92e1fd995b289c1',1,'anonymous_namespace{player_display.cpp}']]],
+  ['player_5fdisplay_5ftab_8',['player_display_tab',['../namespaceanonymous__namespace_02character__display_8cpp_03.html#a5960c87973f8859f2e6997206a97fb09',1,'anonymous_namespace{character_display.cpp}']]],
   ['plfop_9',['PlfOp',['../namespacecata__libintl.html#a878543575fc327e486d98e3ae2d3d674',1,'cata_libintl']]],
   ['point_5flimit_10',['point_limit',['../structpoints__left.html#ab75600e756b02407392cd8b6c3406423',1,'points_left']]],
   ['popupflags_11',['PopupFlags',['../output_8h.html#ab214b85345aeab978acdcea0250f27f5',1,'output.h']]],

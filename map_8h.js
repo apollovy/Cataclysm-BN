@@ -6,6 +6,7 @@ var map_8h =
     [ "bash_params", "structbash__params.html", "structbash__params" ],
     [ "bash_results", "structbash__results.html", "structbash__results" ],
     [ "drawsq_params", "structdrawsq__params.html", "structdrawsq__params" ],
+    [ "diagonal_blocks", "structdiagonal__blocks.html", "structdiagonal__blocks" ],
     [ "level_cache", "structlevel__cache.html", "structlevel__cache" ],
     [ "map", "classmap.html", "classmap" ],
     [ "map::apparent_light_info", "structmap_1_1apparent__light__info.html", "structmap_1_1apparent__light__info" ],
@@ -15,5 +16,6 @@ var map_8h =
     [ "VehicleList", "map_8h.html#ae705edb5469cf2668ca5bc3297d75ebb", null ],
     [ "get_map", "map_8h.html#acb0b34be6e497bdd2f9f40ae6929d562", null ],
     [ "shift_bitset_cache", "map_8h.html#a7c3a7f6a3874e9928b498a842013d636", null ],
-    [ "ter_furn_has_flag", "map_8h.html#a154653b69f33e37a47333fd07d81c6f0", null ]
+    [ "ter_furn_has_flag", "map_8h.html#a154653b69f33e37a47333fd07d81c6f0", null ],
+    [ "disable_mapgen", "map_8h.html#ae6af50176f3458f8541902c00ce67666", null ]
 ];

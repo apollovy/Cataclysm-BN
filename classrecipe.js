@@ -15,6 +15,7 @@ var classrecipe =
     [ "create_result", "classrecipe.html#a0109db19f0b18d82ab469121ee60ca3f", null ],
     [ "create_results", "classrecipe.html#a24c28c37139310df37b499c963d0d13d", null ],
     [ "deduped_requirements", "classrecipe.html#a1c935a61b9e502fe69cc8c1e89c72d12", null ],
+    [ "disassembly_batch_size", "classrecipe.html#aa0ccdbf0781d345bd97abe1ff4781018", null ],
     [ "disassembly_requirements", "classrecipe.html#a555772480849b6e628c94dd0f56af81e", null ],
     [ "finalize", "classrecipe.html#aa5f3b456921e247b995c3ce001ed4c5c", null ],
     [ "get_blueprint", "classrecipe.html#a3f7b6a161fb2c4fe8428b6996f13ebad", null ],

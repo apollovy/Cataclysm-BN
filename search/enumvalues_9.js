@@ -2,7 +2,7 @@ var searchData=
 [
   ['ice_0',['ice',['../overmap_8h.html#a9fc8376b48f8cce3e3138d4a0019512da7bdff76536f12a7c5ffde207e72cfe3a',1,'overmap.h']]],
   ['idle_5fchainsaw_1',['idle_chainsaw',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18a661036444e60a010951b875acbe1b1d7',1,'sfx']]],
-  ['iffy_2',['iffy',['../item_8h.html#af6bf8b91fa38e785d6f5ae7fdaa74219a394188710799de3dcc6cb1582e490004',1,'item.h']]],
+  ['iffy_2',['iffy',['../namespaceexamine__item__menu.html#afb0565ed1efb7315c7703ceb4fca8399a394188710799de3dcc6cb1582e490004',1,'examine_item_menu']]],
   ['ignore_5fnoise_3',['ignore_noise',['../npc_8h.html#a05a2c81a2657358f0255ca09071a6813a72566b3ed580981ba68980d66f5535a3',1,'npc.h']]],
   ['ignore_5fwalls_4',['IGNORE_WALLS',['../magic_8h.html#a5322019703a7521b2c3e0ae4a038d0d9ad04ee222e8292a6e01eba60fa2b5501a',1,'magic.h']]],
   ['imaxsteps_5',['iMaxSteps',['../classscrollingcombattext.html#aaf1f6d9e6ace308d25c0d29df454059baba005cccb901543ab7ccfdd1a05d4d67',1,'scrollingcombattext']]],
@@ -34,7 +34,7 @@ var searchData=
   ['int128_5ftype_31',['int128_type',['../namespacedetail.html#ad46d232fb6116de4dac0c43dbde8e7a9aecf38f9991052ed7003df04b819cd478',1,'detail']]],
   ['int_5f_32',['int_',['../cata__variant_8h.html#adfe42687fffdd05d233096b4e7dac2f4ad7488204e92ed01986284bef5650eb53',1,'cata_variant.h']]],
   ['int_5ftype_33',['int_type',['../namespacedetail.html#ad46d232fb6116de4dac0c43dbde8e7a9a06d324fffd90570dc177e7d1aabcb4dd',1,'detail']]],
-  ['intelligence_34',['INTELLIGENCE',['../character_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755acbc4a7ccc74fbcbda6a01632c5e4656e',1,'INTELLIGENCE():&#160;character.h'],['../namespaceenchant__vals.html#acd6a6ebb27f9ecb82b3bce1d3aef2998acbc4a7ccc74fbcbda6a01632c5e4656e',1,'enchant_vals::INTELLIGENCE()']]],
+  ['intelligence_34',['INTELLIGENCE',['../character__stat_8h.html#a27f8e52e2e5afc1c4a709dd65ab84755acbc4a7ccc74fbcbda6a01632c5e4656e',1,'INTELLIGENCE():&#160;character_stat.h'],['../namespaceenchant__vals.html#acd6a6ebb27f9ecb82b3bce1d3aef2998acbc4a7ccc74fbcbda6a01632c5e4656e',1,'enchant_vals::INTELLIGENCE()']]],
   ['intensity_35',['intensity',['../namespacefields.html#af8bc739ca8fbe535a44afc02da973280a04bb0ec2d0e931c59f606510558e55a1',1,'fields']]],
   ['interior_5fengine_5fsound_36',['interior_engine_sound',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18a6492e8fca309130dc1783804cecdeffc',1,'sfx']]],
   ['invalid_37',['invalid',['../overmap_8h.html#a9fc8376b48f8cce3e3138d4a0019512dafedb2d84cafe20862cb4399751a8a7e3',1,'invalid():&#160;overmap.h'],['../namespaceom__direction.html#a3f3a3bf2c5af33fc8036734d1ba70b7cafedb2d84cafe20862cb4399751a8a7e3',1,'om_direction::invalid()'],['../classturret__data.html#aa11f464b221b987d03a8859293e07ab6afedb2d84cafe20862cb4399751a8a7e3',1,'turret_data::invalid()'],['../classitem__location.html#a038e108475b9fb4f9833268f5fa2888dafedb2d84cafe20862cb4399751a8a7e3',1,'item_location::invalid()']]],

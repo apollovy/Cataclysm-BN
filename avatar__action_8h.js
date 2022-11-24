@@ -15,8 +15,14 @@ var avatar__action_8h =
     [ "move", "avatar__action_8h.html#a76ba74774376a08222b8cdcce08f7304", null ],
     [ "plthrow", "avatar__action_8h.html#a88a027e47bb814ff61be3e15bd0b8777", null ],
     [ "ramp_move", "avatar__action_8h.html#abadb3333d387007017d11836c606f1e5", null ],
+    [ "reload", "avatar__action_8h.html#a03cf09d521b2df8ec4e14523b73804b4", null ],
+    [ "reload_item", "avatar__action_8h.html#a074ed32b4d421de7f0749e9aef6fe0c9", null ],
+    [ "reload_weapon", "avatar__action_8h.html#ab640f9426b7ae37fb1fc632cb28e0e30", null ],
+    [ "reload_wielded", "avatar__action_8h.html#a0263b369eb4d729c1439738f8abcd3f2", null ],
     [ "swim", "avatar__action_8h.html#a9611563bffc4224b3e724db03688bdd4", null ],
     [ "unload", "avatar__action_8h.html#afd349bc65fc375556b15241ab68095b1", null ],
     [ "use_item", "avatar__action_8h.html#ad651718c214e707034374b85d936d671", null ],
-    [ "use_item", "avatar__action_8h.html#a113bad02e3695c9de0d031d3846ebea9", null ]
+    [ "use_item", "avatar__action_8h.html#a113bad02e3695c9de0d031d3846ebea9", null ],
+    [ "wield", "avatar__action_8h.html#a26845c63bf68ad9462172186e3b75cf6", null ],
+    [ "wield", "avatar__action_8h.html#a4237c55ad7f626915cdb297d52841b8f", null ]
 ];

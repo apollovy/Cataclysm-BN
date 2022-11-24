@@ -67,6 +67,7 @@ var iexamine_8h =
     [ "ledge", "iexamine_8h.html#af44785c44ed5b238072e392c7805a6fe", null ],
     [ "locked_object", "iexamine_8h.html#ade298007b9644bd1dd31a165c84c273f", null ],
     [ "locked_object_pickable", "iexamine_8h.html#a06c1947e94ea34ddc4aee4f584c5fc8b", null ],
+    [ "migo_nerve_cluster", "iexamine_8h.html#a5e019567c1f8ce2c1f580160ea21185c", null ],
     [ "mill_finalize", "iexamine_8h.html#a639d89c065849a9b4c19a27ac234ce2d", null ],
     [ "nanofab", "iexamine_8h.html#a04569e7ba85955feff7bf4488d81d0f1", null ],
     [ "none", "iexamine_8h.html#a45c131e909371e96743dfe0a21ba75a6", null ],

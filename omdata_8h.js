@@ -7,7 +7,6 @@ var omdata_8h =
     [ "oter_t", "structoter__t.html", "structoter__t" ],
     [ "CATA_SRC_OMDATA_H", "omdata_8h.html#aa050019b0e857f29fc6fe7db77e722cf", null ],
     [ "overmap_land_use_code_id", "omdata_8h.html#af29c9e397b40ad575ac13f98a1b63687", null ],
-    [ "overmap_special_id", "omdata_8h.html#aa7964d871c74fa759b358081855b6e24", null ],
     [ "oter_flags", "omdata_8h.html#afaf721417ebfe396111f8f48b690ac4b", [
       [ "known_down", "omdata_8h.html#afaf721417ebfe396111f8f48b690ac4ba964030af5ffc668ff06d2753b0a5683f", null ],
       [ "known_up", "omdata_8h.html#afaf721417ebfe396111f8f48b690ac4ba4037042c01947884e24971f2e1d438ad", null ],

@@ -227,7 +227,7 @@ var classCreature =
     [ "reset_bonuses", "classCreature.html#ac17b598158d47e40713408e8c88b20b4", null ],
     [ "reset_hit_range", "classCreature.html#a3bf8de6374564ea2a011d1235acb44a1", null ],
     [ "reset_stats", "classCreature.html#a80f8d134c689097b8137f973e7401c84", null ],
-    [ "resists_effect", "classCreature.html#af6a1afd1c3ed70f80b5b902125569408", null ],
+    [ "resists_effect", "classCreature.html#a6b40041c12e2c414170aad5511878446", null ],
     [ "sees", "classCreature.html#ab42d5d429a5599b7f80906394c1236e5", null ],
     [ "sees", "classCreature.html#a27fff88bfad76aff38b190676b694482", null ],
     [ "select_body_part", "classCreature.html#ad7ff6d771fb2845965d103ad8cf2ff5d", null ],

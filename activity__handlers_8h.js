@@ -84,7 +84,6 @@ var activity__handlers_8h =
     [ "cracking_do_turn", "activity__handlers_8h.html#a5f1fdf668db6be51654b622955efe055", null ],
     [ "cracking_finish", "activity__handlers_8h.html#ae1c445a69322a94b96147bfcf2bff1a3", null ],
     [ "craft_do_turn", "activity__handlers_8h.html#a049d5e37d9fcb8fe528059f9662d0b7a", null ],
-    [ "disassemble_finish", "activity__handlers_8h.html#ab41a7a60cb4ead75058475cfe1731cf6", null ],
     [ "drop_do_turn", "activity__handlers_8h.html#acc0a4d4e8dc6bfe6b167a1d3f96a823d", null ],
     [ "drop_on_map", "activity__handlers_8h.html#a7a8187a46223fffe87a69ae5c289b1c5", null ],
     [ "eat_menu_do_turn", "activity__handlers_8h.html#a7660badcf7c37032ba3948df32ecc8f4", null ],

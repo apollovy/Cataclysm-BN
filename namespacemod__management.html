@@ -113,6 +113,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a2327609c6925917f9a52fb4a54a0a661"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcata_1_1optional.html">cata::optional</a>&lt; <a class="el" href="namespacemod__management.html#a2b453b753864424a211ee499133505ed">t_mod_list</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemod__management.html#a2327609c6925917f9a52fb4a54a0a661">load_mod_list</a> (const std::string &amp;path)</td></tr>
 <tr class="memdesc:a2327609c6925917f9a52fb4a54a0a661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load mod list from file.  <a href="namespacemod__management.html#a2327609c6925917f9a52fb4a54a0a661">More...</a><br /></td></tr>
 <tr class="separator:a2327609c6925917f9a52fb4a54a0a661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822d52deafd2d501f0afbd604ccafdd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemod__management.html#a822d52deafd2d501f0afbd604ccafdd8">get_default_core_content_pack</a> ()</td></tr>
+<tr class="memdesc:a822d52deafd2d501f0afbd604ccafdd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get id of default core content pack.  <a href="namespacemod__management.html#a822d52deafd2d501f0afbd604ccafdd8">More...</a><br /></td></tr>
+<tr class="separator:a822d52deafd2d501f0afbd604ccafdd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a2b453b753864424a211ee499133505ed" name="a2b453b753864424a211ee499133505ed"></a>
@@ -132,6 +135,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a822d52deafd2d501f0afbd604ccafdd8" name="a822d52deafd2d501f0afbd604ccafdd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822d52deafd2d501f0afbd604ccafdd8">&#9670;&nbsp;</a></span>get_default_core_content_pack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a> mod_management::get_default_core_content_pack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get id of default core content pack. </p>
+
+<p class="definition">Definition at line <a class="el" href="mod__manager_8cpp_source.html#l00361">361</a> of file <a class="el" href="mod__manager_8cpp_source.html">mod_manager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>{</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a>( <span class="stringliteral">&quot;bn&quot;</span> );</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>}</div>
+<div class="ttc" id="atype__id_8h_html_aabcbcb9fb77661ba75c47b6287318e03"><div class="ttname"><a href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a></div><div class="ttdeci">string_id&lt; MOD_INFORMATION &gt; mod_id</div><div class="ttdef"><b>Definition:</b> <a href="type__id_8h_source.html#l00098">type_id.h:98</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="dump_8cpp_source.html#l00038">game::dump_stats()</a>, <a class="el" href="mod__manager_8cpp_source.html#l00368">is_strict_enabled()</a>, and <a class="el" href="mapgen_8cpp_source.html#l02397">mapgen_function_json_base::setup_common()</a>.</p>
+
+</div>
+</div>
 <a id="a5041a8497495347e6999ac3e88261cf5" name="a5041a8497495347e6999ac3e88261cf5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5041a8497495347e6999ac3e88261cf5">&#9670;&nbsp;</a></span>load_mod_info()</h2>
 
@@ -237,11 +267,11 @@ Functions</h2></td></tr>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="namespacecata.html#ad05314667ac5d05f984aeeef26b9a87f">cata::nullopt</a>;</div>
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    }</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>}</div>
-<div class="ttc" id="anamespaceavatar__action_html_a76ba74774376a08222b8cdcce08f7304"><div class="ttname"><a href="namespaceavatar__action.html#a76ba74774376a08222b8cdcce08f7304">avatar_action::move</a></div><div class="ttdeci">bool move(avatar &amp;you, map &amp;m, const tripoint &amp;d)</div><div class="ttdef"><b>Definition:</b> <a href="avatar__action_8cpp_source.html#l00090">avatar_action.cpp:90</a></div></div>
+<div class="ttc" id="anamespaceavatar__action_html_a76ba74774376a08222b8cdcce08f7304"><div class="ttname"><a href="namespaceavatar__action.html#a76ba74774376a08222b8cdcce08f7304">avatar_action::move</a></div><div class="ttdeci">bool move(avatar &amp;you, map &amp;m, const tripoint &amp;d)</div><div class="ttdef"><b>Definition:</b> <a href="avatar__action_8cpp_source.html#l00093">avatar_action.cpp:93</a></div></div>
 <div class="ttc" id="anamespacecata_html_ad05314667ac5d05f984aeeef26b9a87f"><div class="ttname"><a href="namespacecata.html#ad05314667ac5d05f984aeeef26b9a87f">cata::nullopt</a></div><div class="ttdeci">static constexpr nullopt_t nullopt</div><div class="ttdef"><b>Definition:</b> <a href="optional_8h_source.html#l00022">optional.h:22</a></div></div>
 <div class="ttc" id="anamespacemod__management_html_a2b453b753864424a211ee499133505ed"><div class="ttname"><a href="namespacemod__management.html#a2b453b753864424a211ee499133505ed">mod_management::t_mod_list</a></div><div class="ttdeci">std::vector&lt; mod_id &gt; t_mod_list</div><div class="ttdef"><b>Definition:</b> <a href="mod__manager_8h_source.html#l00091">mod_manager.h:91</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="avatar__action_8cpp_source.html#l00090">avatar_action::move()</a>, <a class="el" href="optional_8h_source.html#l00022">cata::nullopt</a>, and <a class="el" href="cata__utility_8cpp_source.html#l00562">read_from_file_optional_json()</a>.</p>
+<p class="reference">References <a class="el" href="avatar__action_8cpp_source.html#l00093">avatar_action::move()</a>, <a class="el" href="optional_8h_source.html#l00022">cata::nullopt</a>, and <a class="el" href="cata__utility_8cpp_source.html#l00562">read_from_file_optional_json()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="mod__manager_8cpp_source.html#l00144">mod_manager::refresh_mod_list()</a>.</p>
 
@@ -351,7 +381,7 @@ Functions</h2></td></tr>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="keywordflow">return</span> { <a class="code hl_function" href="namespaceavatar__action.html#a76ba74774376a08222b8cdcce08f7304">std::move</a>( modfile ) };</div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>}</div>
-<div class="ttc" id="aassign_8h_html_ac353926c625eb31f78ef7534277c5aaf"><div class="ttname"><a href="assign_8h.html#ac353926c625eb31f78ef7534277c5aaf">assign</a></div><div class="ttdeci">bool assign(const JsonObject &amp;jo, const std::string &amp;name, T &amp;val, bool strict=false, T lo=std::numeric_limits&lt; T &gt;::lowest(), T hi=std::numeric_limits&lt; T &gt;::max())</div><div class="ttdef"><b>Definition:</b> <a href="assign_8h_source.html#l00054">assign.h:54</a></div></div>
+<div class="ttc" id="aassign_8h_html_ac353926c625eb31f78ef7534277c5aaf"><div class="ttname"><a href="assign_8h.html#ac353926c625eb31f78ef7534277c5aaf">assign</a></div><div class="ttdeci">bool assign(const JsonObject &amp;jo, const std::string &amp;name, T &amp;val, bool strict=false, T lo=std::numeric_limits&lt; T &gt;::lowest(), T hi=std::numeric_limits&lt; T &gt;::max())</div><div class="ttdef"><b>Definition:</b> <a href="assign_8h_source.html#l00059">assign.h:59</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_a19d83d03e3d5cc6905bcb850d80a1f05"><div class="ttname"><a href="classJsonObject.html#a19d83d03e3d5cc6905bcb850d80a1f05">JsonObject::has_string</a></div><div class="ttdeci">bool has_string(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00405">json.cpp:405</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_a96b6d1b9cf7bda4fc9cd177a99e0631c"><div class="ttname"><a href="classJsonObject.html#a96b6d1b9cf7bda4fc9cd177a99e0631c">JsonObject::get_string</a></div><div class="ttdeci">std::string get_string(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00314">json.cpp:314</a></div></div>
 <div class="ttc" id="aclassJsonObject_html_ae00f195360e3783cf50527cf07344202"><div class="ttname"><a href="classJsonObject.html#ae00f195360e3783cf50527cf07344202">JsonObject::allow_omitted_members</a></div><div class="ttdeci">void allow_omitted_members() const</div><div class="ttdef"><b>Definition:</b> <a href="json_8cpp_source.html#l00150">json.cpp:150</a></div></div>
@@ -374,7 +404,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="astructMOD__INFORMATION_html_ac94216b21b254ea82d4b9e75311ff3bd"><div class="ttname"><a href="structMOD__INFORMATION.html#ac94216b21b254ea82d4b9e75311ff3bd">MOD_INFORMATION::ident</a></div><div class="ttdeci">mod_id ident</div><div class="ttdef"><b>Definition:</b> <a href="mod__manager_8h_source.html#l00055">mod_manager.h:55</a></div></div>
 <div class="ttc" id="astructtranslatable__mod__info_html"><div class="ttname"><a href="structtranslatable__mod__info.html">translatable_mod_info</a></div><div class="ttdef"><b>Definition:</b> <a href="mod__manager_8h_source.html#l00027">mod_manager.h:27</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="json_8cpp_source.html#l00150">JsonObject::allow_omitted_members()</a>, <a class="el" href="assign_8h_source.html#l00054">assign()</a>, <a class="el" href="mod__manager_8h_source.html#l00064">MOD_INFORMATION::authors</a>, <a class="el" href="mod__manager_8h_source.html#l00086">MOD_INFORMATION::category</a>, <a class="el" href="mod__manager_8h_source.html#l00078">MOD_INFORMATION::conflicts</a>, <a class="el" href="mod__manager_8h_source.html#l00081">MOD_INFORMATION::core</a>, <a class="el" href="mod__manager_8h_source.html#l00075">MOD_INFORMATION::dependencies</a>, <a class="el" href="fmtlib__format_8h_source.html#l03355">detail::find()</a>, <a class="el" href="mod__manager_8cpp_source.html#l00059">get_mod_list_categories()</a>, <a class="el" href="json_8cpp_source.html#l00314">JsonObject::get_string()</a>, <a class="el" href="json_8cpp_source.html#l00405">JsonObject::has_string()</a>, <a class="el" href="mod__manager_8h_source.html#l00055">MOD_INFORMATION::ident</a>, <a class="el" href="mod__manager_8h_source.html#l00070">MOD_INFORMATION::maintainers</a>, <a class="el" href="avatar__action_8cpp_source.html#l00090">avatar_action::move()</a>, <a class="el" href="optional_8h_source.html#l00022">cata::nullopt</a>, <a class="el" href="mod__manager_8h_source.html#l00084">MOD_INFORMATION::obsolete</a>, <a class="el" href="mod__manager_8h_source.html#l00058">MOD_INFORMATION::path</a>, <a class="el" href="mod__manager_8h_source.html#l00051">MOD_INFORMATION::set_translatable_info()</a>, <a class="el" href="string__formatter_8h_source.html#l00418">string_format()</a>, <a class="el" href="json_8cpp_source.html#l00233">JsonObject::throw_error()</a>, and <a class="el" href="mod__manager_8h_source.html#l00072">MOD_INFORMATION::version</a>.</p>
+<p class="reference">References <a class="el" href="json_8cpp_source.html#l00150">JsonObject::allow_omitted_members()</a>, <a class="el" href="assign_8h_source.html#l00059">assign()</a>, <a class="el" href="mod__manager_8h_source.html#l00064">MOD_INFORMATION::authors</a>, <a class="el" href="mod__manager_8h_source.html#l00086">MOD_INFORMATION::category</a>, <a class="el" href="mod__manager_8h_source.html#l00078">MOD_INFORMATION::conflicts</a>, <a class="el" href="mod__manager_8h_source.html#l00081">MOD_INFORMATION::core</a>, <a class="el" href="mod__manager_8h_source.html#l00075">MOD_INFORMATION::dependencies</a>, <a class="el" href="fmtlib__format_8h_source.html#l03355">detail::find()</a>, <a class="el" href="mod__manager_8cpp_source.html#l00059">get_mod_list_categories()</a>, <a class="el" href="json_8cpp_source.html#l00314">JsonObject::get_string()</a>, <a class="el" href="json_8cpp_source.html#l00405">JsonObject::has_string()</a>, <a class="el" href="mod__manager_8h_source.html#l00055">MOD_INFORMATION::ident</a>, <a class="el" href="mod__manager_8h_source.html#l00070">MOD_INFORMATION::maintainers</a>, <a class="el" href="avatar__action_8cpp_source.html#l00093">avatar_action::move()</a>, <a class="el" href="optional_8h_source.html#l00022">cata::nullopt</a>, <a class="el" href="mod__manager_8h_source.html#l00084">MOD_INFORMATION::obsolete</a>, <a class="el" href="mod__manager_8h_source.html#l00058">MOD_INFORMATION::path</a>, <a class="el" href="mod__manager_8h_source.html#l00051">MOD_INFORMATION::set_translatable_info()</a>, <a class="el" href="string__formatter_8h_source.html#l00418">string_format()</a>, <a class="el" href="json_8cpp_source.html#l00233">JsonObject::throw_error()</a>, and <a class="el" href="mod__manager_8h_source.html#l00072">MOD_INFORMATION::version</a>.</p>
 
 </div>
 </div>
@@ -497,7 +527,7 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="json_8h_source.html#l00620">JsonOut::write()</a>, and <a class="el" href="cata__utility_8cpp_source.html#l00453">write_to_file()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="mod__manager_8cpp_source.html#l00398">mod_manager::set_default_mods()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="mod__manager_8cpp_source.html#l00408">mod_manager::set_default_mods()</a>.</p>
 
 </div>
 </div>
@@ -507,7 +537,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemod__management.html">mod_management</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:08:04 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:39 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

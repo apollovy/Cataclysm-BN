@@ -31,7 +31,7 @@ var searchData=
   ['kill_5fcount_5fto_5freach_28',['kill_count_to_reach',['../classmission.html#ad9b001adad63743ee17a0d2365ff7464',1,'mission']]],
   ['kill_5ftracker_5fptr_29',['kill_tracker_ptr',['../classgame.html#a3b7828e88a965ea18597b632c9444ea5',1,'game']]],
   ['killer_30',['killer',['../classCreature.html#af4d6d569180f457e7d2294946eaf7563',1,'Creature']]],
-  ['kills_31',['kills',['../classkill__tracker.html#a1fbcc4310449c768846a668f79fc90e7',1,'kill_tracker']]],
+  ['kills_31',['kills',['../structdiary__page.html#abffa26498493ef5540ac4e4abe8e3361',1,'diary_page::kills()'],['../classkill__tracker.html#a1fbcc4310449c768846a668f79fc90e7',1,'kill_tracker::kills()']]],
   ['kind_32',['kind',['../structdetail_1_1arg__ref.html#a116910e6930a72e226b4b4da57a56702',1,'detail::arg_ref::kind()'],['../structcata__libintl_1_1PlfToken.html#adb6c7c3c5ca49f938e4f18e370f4bfd5',1,'cata_libintl::PlfToken::kind()']]],
   ['kitten_33',['KITTEN',['../iuse__software__kitten_8cpp.html#ab91264844d482eccf3df3c244542c887',1,'iuse_software_kitten.cpp']]],
   ['kitten_34',['kitten',['../classrobot__finds__kitten.html#a2ec3cf2977508663b03e3da09a036175',1,'robot_finds_kitten']]],
@@ -39,9 +39,10 @@ var searchData=
   ['knockback_5ffollow_36',['knockback_follow',['../classma__technique.html#ac5b25106fb9228f7f95ed332c5b2ff2d',1,'ma_technique']]],
   ['knockback_5fspread_37',['knockback_spread',['../classma__technique.html#aef99838a20ef28230b35239656ee12f9',1,'ma_technique']]],
   ['known_5fby_5fu_38',['known_by_u',['../classfaction__template.html#a5e2a500660f3adf90c6940ecbe78ccee',1,'faction_template']]],
-  ['known_5fnon_5fexisting_39',['known_non_existing',['../classovermapbuffer.html#a8785e0c97d23b9f41fea0fe4fe057365',1,'overmapbuffer']]],
-  ['known_5fspells_40',['known_spells',['../classspellcasting__callback.html#a2b0ef3985557056677d093d99d89ebcf',1,'spellcasting_callback']]],
-  ['known_5fteleporters_41',['known_teleporters',['../classteleporter__list.html#a8ce414da4b2ffff35fe734142b762e85',1,'teleporter_list']]],
-  ['known_5fto_5fu_42',['known_to_u',['../classnpc.html#add6f65308422586d783412921823ad20',1,'npc']]],
-  ['known_5ftraps_43',['known_traps',['../classCharacter.html#a64070428e31eb610ff5fa6b817cbafde',1,'Character']]]
+  ['known_5fmartial_5farts_39',['known_martial_arts',['../structdiary__page.html#a94b59c08a10f94cdee82cc5bcccb76e2',1,'diary_page']]],
+  ['known_5fnon_5fexisting_40',['known_non_existing',['../classovermapbuffer.html#a8785e0c97d23b9f41fea0fe4fe057365',1,'overmapbuffer']]],
+  ['known_5fspells_41',['known_spells',['../classspellcasting__callback.html#a2b0ef3985557056677d093d99d89ebcf',1,'spellcasting_callback::known_spells()'],['../structdiary__page.html#a63ca9723270bc3628a401e3b629ec304',1,'diary_page::known_spells()']]],
+  ['known_5fteleporters_42',['known_teleporters',['../classteleporter__list.html#a8ce414da4b2ffff35fe734142b762e85',1,'teleporter_list']]],
+  ['known_5fto_5fu_43',['known_to_u',['../classnpc.html#add6f65308422586d783412921823ad20',1,'npc']]],
+  ['known_5ftraps_44',['known_traps',['../classCharacter.html#a64070428e31eb610ff5fa6b817cbafde',1,'Character']]]
 ];

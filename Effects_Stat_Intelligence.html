@@ -107,9 +107,11 @@ $(document).ready(function(){initNavTree('Effects_Stat_Intelligence.html',''); i
 <dt>Member <a class="el" href="crafting_8h.html#a7c51895a096c73f1f38c949bf9ae11e0">complete_craft</a>  (player &amp;p, item &amp;craft, const <a class="el" href="structbench__location.html">bench_location</a> &amp;bench)</dt>
 <dd><a class="anchor" id="_Effects_Stat_Intelligence000011"></a> Intelligence increases chance to learn recipe when crafting from a book  </dd>
 <dt>Member <a class="el" href="classcomputer__session.html#afaa9683b8e80eb7dc63afd4fb2597295">computer_session::hack_attempt</a>  (player &amp;p, int Security=-1)</dt>
-<dd><p class="startdd"><a class="anchor" id="_Effects_Stat_Intelligence000008"></a> Intelligence &lt;8 randomly penalizes hack attempts, 50% of the time </p>
-<p class="enddd"><a class="anchor" id="_Effects_Stat_Intelligence000009"></a> Intelligence &gt;8 randomly benefits hack attempts, 33% of the time  </p>
+<dd><p class="startdd"><a class="anchor" id="_Effects_Stat_Intelligence000009"></a> Intelligence &gt;8 randomly benefits hack attempts, 33% of the time </p>
+<p class="enddd"><a class="anchor" id="_Effects_Stat_Intelligence000008"></a> Intelligence &lt;8 randomly penalizes hack attempts, 50% of the time  </p>
 </dd>
+<dt>Member <a class="el" href="namespacecrafting.html#a6895224ef92a2b991f276b2ea25ca15f">crafting::complete_disassemble</a>  (<a class="el" href="classCharacter.html">Character</a> &amp;who, <a class="el" href="structiuse__location.html">iuse_location</a> target, const tripoint &amp;pos)</dt>
+<dd><a class="anchor" id="_Effects_Stat_Intelligence000012"></a> Intelligence increases success rate for disassembling items  </dd>
 <dt>Member <a class="el" href="structdialogue.html#a27792785bd5349401efa3948399f89e8">dialogue::dynamic_line</a>  (const <a class="el" href="structtalk__topic.html">talk_topic</a> &amp;topic) const</dt>
 <dd><a class="anchor" id="_Effects_Stat_Intelligence000035"></a> Intelligence slightly affects whether player can size up NPCs  </dd>
 <dt>Member <a class="el" href="player__hardcoded__effects_8cpp.html#ad53da4ff53d73ac4976c4e5cc5ffa2d6">eff_fun_hallu</a>  (player &amp;u, effect &amp;it)</dt>
@@ -158,8 +160,6 @@ $(document).ready(function(){initNavTree('Effects_Stat_Intelligence.html',''); i
 </dd>
 <dt>Member <a class="el" href="classplace__monster__iuse.html#abccc201fa5f271d7fb40d79adad58f5f">place_monster_iuse::use</a>  (player &amp;, item &amp;, bool, const tripoint &amp;) const override</dt>
 <dd><a class="anchor" id="_Effects_Stat_Intelligence000028"></a> Intelligence increases chance of a placed turret being friendly  </dd>
-<dt>Member <a class="el" href="classplayer.html#acb97666728df699a74ece656d95578bf">player::complete_disassemble</a>  (<a class="el" href="classitem__location.html" title="A lightweight handle to an item independent of it&#39;s location Unlike a raw pointer can be (de-)seriali...">item_location</a> &amp;target, const recipe &amp;dis)</dt>
-<dd><a class="anchor" id="_Effects_Stat_Intelligence000012"></a> Intelligence increases success rate for disassembling items  </dd>
 <dt>Member <a class="el" href="classplayer.html#aeab8d12218640d360a89b3dfccebc9c8">player::crafting_success_roll</a>  (const recipe &amp;making) const</dt>
 <dd><a class="anchor" id="_Effects_Stat_Intelligence000010"></a> Intelligence increases crafting success chance  </dd>
 <dt>Member <a class="el" href="classplayer.html#a35dbd29627c811fa80d6b6226fcc5d24">player::hardcoded_effects</a>  (effect &amp;it)</dt>
@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('Effects_Stat_Intelligence.html',''); i
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:35 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:10 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

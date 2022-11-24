@@ -10,6 +10,6 @@ var profession_8cpp =
     [ "advanced_spawn_time", "profession_8cpp.html#a1372762fb8a6c884514efd200384f025", null ],
     [ "clear_faults", "profession_8cpp.html#aba99d3f9595500d04cf805ec73a92e36", null ],
     [ "all_profs", "profession_8cpp.html#a7488aa64b6b073c21ae0bf4af01102aa", null ],
-    [ "generic_profession_id", "profession_8cpp.html#a9ffc5f7c33cad2678fb4b714948d785b", null ],
+    [ "generic_profession_id", "profession_8cpp.html#a040d4c732bcc22b97ae7a97ea3e73822", null ],
     [ "item_substitutions", "profession_8cpp.html#a95457d9fb7b6738005ca46dd3b6c2c4c", null ]
 ];

@@ -1,6 +1,8 @@
 var iexamine_8cpp =
 [
     [ "anonymous_namespace{iexamine.cpp}::atm_menu", "classanonymous__namespace_02iexamine_8cpp_03_1_1atm__menu.html", "classanonymous__namespace_02iexamine_8cpp_03_1_1atm__menu" ],
+    [ "apply_lock_picking_tool", "iexamine_8cpp.html#ac76be4ed7114f2d0c303cc8a1d570f1d", null ],
+    [ "apply_prying_tool", "iexamine_8cpp.html#a6faf1e23a351b5d8794d2de23e57472a", null ],
     [ "best_installer", "iexamine_8cpp.html#ab22e90f992c0815576e11c8216f28945", null ],
     [ "can_drink_nectar", "iexamine_8cpp.html#af7f617a2322cfcb84700260ef745ff6b", null ],
     [ "count_charges_in_list", "iexamine_8cpp.html#a0270df10fe59879068e7fde158e3fe0b", null ],
@@ -8,8 +10,11 @@ var iexamine_8cpp =
     [ "dead_plant", "iexamine_8cpp.html#a7275f774429f8bae00796e9ea033fa7c", null ],
     [ "displace_items_except_one_liquid", "iexamine_8cpp.html#a8778e47a7cd8da1779330966216e12e1", null ],
     [ "drink_nectar", "iexamine_8cpp.html#ac157cb8d54abefdba3d800abed617921", null ],
+    [ "find_best_lock_picking_tool", "iexamine_8cpp.html#a683f2cd9e3de490da109dff64d2dc368", null ],
+    [ "find_best_prying_tool", "iexamine_8cpp.html#ab95b5229caf77d3b7a3cea7c9161c68e", null ],
     [ "find_tent_itype", "iexamine_8cpp.html#adbbb521883b37050b79bf17a70b8f29b", null ],
     [ "findBestGasDiscount", "iexamine_8cpp.html#a2fca445bbfe882b8dcbded90cfcd0190", null ],
+    [ "flag_AUTODOC", "iexamine_8cpp.html#ab849b88436e7694e040bcbf2b50b7a0b", null ],
     [ "flag_AUTODOC_COUCH", "iexamine_8cpp.html#a8f09f88f12d06451c8aa83b57011a685", null ],
     [ "flag_BARRICADABLE_WINDOW_CURTAINS", "iexamine_8cpp.html#a28545c378424dd8dce926da887af1ea7", null ],
     [ "flag_CLIMB_SIMPLE", "iexamine_8cpp.html#adc9b587eea6f8ad93e0bde8347dd792e", null ],

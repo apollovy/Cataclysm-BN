@@ -232,9 +232,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aebdb80f0d2b7f9fc9008cf60bbee035e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00eee6b8b0ea991532c35d22b09fa0e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a00eee6b8b0ea991532c35d22b09fa0e7">has_draw_override</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p) const</td></tr>
 <tr class="separator:a00eee6b8b0ea991532c35d22b09fa0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac628968b0732c5472d2a08da2d642f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ac628968b0732c5472d2a08da2d642f43">load_tileset</a> (const std::string &amp;tileset_id, bool precheck=false, bool force=false)</td></tr>
-<tr class="memdesc:ac628968b0732c5472d2a08da2d642f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the current tileset (load tile images, load mapping), using the current tileset as it is set in the options.  <a href="classcata__tiles.html#ac628968b0732c5472d2a08da2d642f43">More...</a><br /></td></tr>
-<tr class="separator:ac628968b0732c5472d2a08da2d642f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde66799a0630f031dbab73d0d0fdaba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#acde66799a0630f031dbab73d0d0fdaba">load_tileset</a> (const std::string &amp;tileset_id, const std::vector&lt; <a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a> &gt; &amp;mod_list, bool precheck=false, bool force=false, bool pump_events=false)</td></tr>
+<tr class="memdesc:acde66799a0630f031dbab73d0d0fdaba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the current tileset (load tile images, load mapping), using the current tileset as it is set in the options.  <a href="classcata__tiles.html#acde66799a0630f031dbab73d0d0fdaba">More...</a><br /></td></tr>
+<tr class="separator:acde66799a0630f031dbab73d0d0fdaba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46bd185110872077b734d30dc2522ffd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a46bd185110872077b734d30dc2522ffd">reinit</a> ()</td></tr>
 <tr class="memdesc:a46bd185110872077b734d30dc2522ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitializes the current tileset, like init, but using the original screen information.  <a href="classcata__tiles.html#a46bd185110872077b734d30dc2522ffd">More...</a><br /></td></tr>
 <tr class="separator:a46bd185110872077b734d30dc2522ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -277,21 +277,32 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a795de6589ab436a58f49f3cb45077625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa80a509189ce25e910e75e0f88bc5f1b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#aa80a509189ce25e910e75e0f88bc5f1b">find_overlay_looks_like</a> (bool <a class="el" href="newcharacter_8cpp.html#a1d22ab3ab1f5b7b3d7b9491dcd8787b4">male</a>, const std::string &amp;overlay, std::string &amp;draw_id)</td></tr>
 <tr class="separator:aa80a509189ce25e910e75e0f88bc5f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d3156f72aef976c0317bc8b49fd6b26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a2d3156f72aef976c0317bc8b49fd6b26">draw_from_id_string</a> (const std::string &amp;id, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles)</td></tr>
-<tr class="separator:a2d3156f72aef976c0317bc8b49fd6b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a616bb4039e6acde9ba440d835543aeec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a616bb4039e6acde9ba440d835543aeec">draw_from_id_string</a> (const std::string &amp;id, <a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a> category, const std::string &amp;subcategory, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles)</td></tr>
-<tr class="separator:a616bb4039e6acde9ba440d835543aeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae9e3ea1710a9a41adf9113967fbbc54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#aae9e3ea1710a9a41adf9113967fbbc54">draw_from_id_string</a> (const std::string &amp;id, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d)</td></tr>
-<tr class="separator:aae9e3ea1710a9a41adf9113967fbbc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88565f491015d1230be7f64752f7578e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a88565f491015d1230be7f64752f7578e">draw_from_id_string</a> (const std::string &amp;id, <a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a> category, const std::string &amp;subcategory, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d)</td></tr>
-<tr class="separator:a88565f491015d1230be7f64752f7578e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7586f6cb42eb2a34312f62ee5f56812"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#af7586f6cb42eb2a34312f62ee5f56812">draw_sprite_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;svlist, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, bool rota_fg, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles)</td></tr>
-<tr class="separator:af7586f6cb42eb2a34312f62ee5f56812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e30a57cc22da86153fafbd34952a382"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a3e30a57cc22da86153fafbd34952a382">draw_sprite_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;svlist, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, bool rota_fg, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d)</td></tr>
-<tr class="separator:a3e30a57cc22da86153fafbd34952a382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a292d555e76032d6336ac199d63107477"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a292d555e76032d6336ac199d63107477">draw_tile_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d)</td></tr>
-<tr class="separator:a292d555e76032d6336ac199d63107477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0755564600f85ca20114bf8eebf10874"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874">draw_from_id_string</a> (const std::string &amp;id, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int overlay_count)</td></tr>
+<tr class="memdesc:a0755564600f85ca20114bf8eebf10874"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874" title="draw_from_id_string() without category, subcategory and height_3d">draw_from_id_string()</a> without category, subcategory and height_3d  <a href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874">More...</a><br /></td></tr>
+<tr class="separator:a0755564600f85ca20114bf8eebf10874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520a73e267a1d68ac231bba0b6759e87"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a520a73e267a1d68ac231bba0b6759e87">draw_from_id_string</a> (const std::string &amp;id, <a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a> category, const std::string &amp;subcategory, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int overlay_count)</td></tr>
+<tr class="memdesc:a520a73e267a1d68ac231bba0b6759e87"><td class="mdescLeft">&#160;</td><td class="mdescRight"><ul>
+<li></li>
+</ul>
+ <a href="classcata__tiles.html#a520a73e267a1d68ac231bba0b6759e87">More...</a><br /></td></tr>
+<tr class="separator:a520a73e267a1d68ac231bba0b6759e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c8340a629b5d22ca122d7c5ef14558"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a35c8340a629b5d22ca122d7c5ef14558">draw_from_id_string</a> (const std::string &amp;id, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d, int overlay_count)</td></tr>
+<tr class="memdesc:a35c8340a629b5d22ca122d7c5ef14558"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874" title="draw_from_id_string() without category, subcategory and height_3d">draw_from_id_string()</a> without height_3d  <a href="classcata__tiles.html#a35c8340a629b5d22ca122d7c5ef14558">More...</a><br /></td></tr>
+<tr class="separator:a35c8340a629b5d22ca122d7c5ef14558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d8f7851b11cb865678ac1a33181b47"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a25d8f7851b11cb865678ac1a33181b47">draw_from_id_string</a> (const std::string &amp;id, <a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a> category, const std::string &amp;subcategory, const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, int subtile, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d, int overlay_count)</td></tr>
+<tr class="memdesc:a25d8f7851b11cb865678ac1a33181b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to draw a tile using the given id.  <a href="classcata__tiles.html#a25d8f7851b11cb865678ac1a33181b47">More...</a><br /></td></tr>
+<tr class="separator:a25d8f7851b11cb865678ac1a33181b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41a47edcf1f88256815e0f1ed552e8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a">draw_sprite_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;svlist, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, bool rota_fg, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int overlay_count)</td></tr>
+<tr class="memdesc:ac41a47edcf1f88256815e0f1ed552e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a" title="draw_sprite_at() without height_3d">draw_sprite_at()</a> without height_3d  <a href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a">More...</a><br /></td></tr>
+<tr class="separator:ac41a47edcf1f88256815e0f1ed552e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73bda85cac08e12b131836778adc4e3a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a73bda85cac08e12b131836778adc4e3a">draw_sprite_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;svlist, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, bool rota_fg, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d, int overlay_count)</td></tr>
+<tr class="memdesc:a73bda85cac08e12b131836778adc4e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to draw either forground or background using the given reference.  <a href="classcata__tiles.html#a73bda85cac08e12b131836778adc4e3a">More...</a><br /></td></tr>
+<tr class="separator:a73bda85cac08e12b131836778adc4e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a077be0f164110316d6883a20b0a08c5d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a077be0f164110316d6883a20b0a08c5d">draw_tile_at</a> (const <a class="el" href="structtile__type.html">tile_type</a> &amp;tile, const <a class="el" href="structpoint.html">point</a> &amp;, unsigned int loc_rand, int rota, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, bool apply_night_vision_goggles, int &amp;height_3d, int overlay_count)</td></tr>
+<tr class="memdesc:a077be0f164110316d6883a20b0a08c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls <a class="el" href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a" title="draw_sprite_at() without height_3d">draw_sprite_at()</a> twice each for foreground and background.  <a href="classcata__tiles.html#a077be0f164110316d6883a20b0a08c5d">More...</a><br /></td></tr>
+<tr class="separator:a077be0f164110316d6883a20b0a08c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae92887d3edd2bb8d57adc7e2edea1524"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ae92887d3edd2bb8d57adc7e2edea1524">get_tile_values</a> (int t, const int *tn, int &amp;subtile, int &amp;rotation)</td></tr>
+<tr class="memdesc:ae92887d3edd2bb8d57adc7e2edea1524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tile Picking.  <a href="classcata__tiles.html#ae92887d3edd2bb8d57adc7e2edea1524">More...</a><br /></td></tr>
 <tr class="separator:ae92887d3edd2bb8d57adc7e2edea1524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4821fea11dedae53918a2555515a0dab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a4821fea11dedae53918a2555515a0dab">get_connect_values</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, int &amp;subtile, int &amp;rotation, int connect_group, const std::map&lt; <a class="el" href="structtripoint.html">tripoint</a>, <a class="el" href="type__id_8h.html#a52570fdf9996c7b72d444f8020a741e8">ter_id</a> &gt; &amp;ter_override)</td></tr>
 <tr class="separator:a4821fea11dedae53918a2555515a0dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,30 +334,26 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a648ab890b9dec665f94242f839194016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99faaacd275a1dd0f873bec0237fe99c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a99faaacd275a1dd0f873bec0237fe99c">apply_vision_effects</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, <a class="el" href="enums_8h.html#a098f2c63abf2d51d89c2b3e8db8b313b">visibility_type</a> visibility)</td></tr>
 <tr class="separator:a99faaacd275a1dd0f873bec0237fe99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a503c96600cf5b6cc02745bee84c00240"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a503c96600cf5b6cc02745bee84c00240">draw_terrain</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a503c96600cf5b6cc02745bee84c00240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a988a07480e2741c404552d5f1bcbe2ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a988a07480e2741c404552d5f1bcbe2ec">draw_terrain_below</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a988a07480e2741c404552d5f1bcbe2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29b9f15e379d396e769657afa7accc4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a29b9f15e379d396e769657afa7accc4f">draw_furniture</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a29b9f15e379d396e769657afa7accc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15741970cd90c3dd95f93dd50d9a4535"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a15741970cd90c3dd95f93dd50d9a4535">draw_graffiti</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a15741970cd90c3dd95f93dd50d9a4535"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb11f54b2cc6dc26c8aef1855015a584"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#afb11f54b2cc6dc26c8aef1855015a584">draw_trap</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:afb11f54b2cc6dc26c8aef1855015a584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9116a4a101368b416f66a6147b67694"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#af9116a4a101368b416f66a6147b67694">draw_field_or_item</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:af9116a4a101368b416f66a6147b67694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3269f40aa0e01bc30c431e495860887f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a3269f40aa0e01bc30c431e495860887f">draw_vpart</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a3269f40aa0e01bc30c431e495860887f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d566308c0c44e87ec625c0a19b099c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ad0d566308c0c44e87ec625c0a19b099c">draw_vpart_below</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:ad0d566308c0c44e87ec625c0a19b099c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4241e8b55d0d93fa3c4915588628f4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ae4241e8b55d0d93fa3c4915588628f4d">draw_critter_at</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:ae4241e8b55d0d93fa3c4915588628f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a933e7b2de4aa241a82ff4a29b586fb68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a933e7b2de4aa241a82ff4a29b586fb68">draw_critter_at_below</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a933e7b2de4aa241a82ff4a29b586fb68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66896fcac7e38650e58c1f4ab7b24cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ae66896fcac7e38650e58c1f4ab7b24cb">draw_zone_mark</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:ae66896fcac7e38650e58c1f4ab7b24cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c96c8157b017cbbe001d6cf4a15da6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a76c96c8157b017cbbe001d6cf4a15da6">draw_zombie_revival_indicators</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5])</td></tr>
-<tr class="separator:a76c96c8157b017cbbe001d6cf4a15da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa823c1c203120e19e3015752faba522"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#aaa823c1c203120e19e3015752faba522">draw_block</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, SDL_Color <a class="el" href="editmap_8cpp.html#a87385d720a3aba24286fd8b799cc55d3">color</a>, int scale)</td></tr>
+<tr class="separator:aaa823c1c203120e19e3015752faba522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89b3c5fbfd147636a7684ca12918518a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a89b3c5fbfd147636a7684ca12918518a">draw_terrain</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a89b3c5fbfd147636a7684ca12918518a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dfaf01a4a389138010df16d5e9119df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a4dfaf01a4a389138010df16d5e9119df">draw_furniture</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a4dfaf01a4a389138010df16d5e9119df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9289cdec574d3c00079c525c46a2ed0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ae9289cdec574d3c00079c525c46a2ed0">draw_graffiti</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:ae9289cdec574d3c00079c525c46a2ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a254656ffea344ff83ec1cd9b4d969b2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a254656ffea344ff83ec1cd9b4d969b2c">draw_trap</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a254656ffea344ff83ec1cd9b4d969b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083a99a3e59b9ce7030fdb857e2cd33f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a083a99a3e59b9ce7030fdb857e2cd33f">draw_field_or_item</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a083a99a3e59b9ce7030fdb857e2cd33f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a076f67b0abb7db84a33ea8abc0b6345e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a076f67b0abb7db84a33ea8abc0b6345e">draw_vpart</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a076f67b0abb7db84a33ea8abc0b6345e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5ad8468bd2ab288aae7e099e9c7f07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a3f5ad8468bd2ab288aae7e099e9c7f07">draw_critter_at</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a3f5ad8468bd2ab288aae7e099e9c7f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbdade7f76dc959ed552759e098822bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#abbdade7f76dc959ed552759e098822bc">draw_zone_mark</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:abbdade7f76dc959ed552759e098822bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8965c2cc569442e5799ceb2fbeaa7eed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a8965c2cc569442e5799ceb2fbeaa7eed">draw_zombie_revival_indicators</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d, const bool(&amp;invisible)[5], int z_drop)</td></tr>
+<tr class="separator:a8965c2cc569442e5799ceb2fbeaa7eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17ef88decc5224e93598fcba8cbb04b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a17ef88decc5224e93598fcba8cbb04b2">draw_entity_with_overlays</a> (const <a class="el" href="classCharacter.html">Character</a> &amp;ch, const <a class="el" href="structtripoint.html">tripoint</a> &amp;p, <a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a> ll, int &amp;height_3d)</td></tr>
 <tr class="separator:a17ef88decc5224e93598fcba8cbb04b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a588b8966b8b1b396a238bf677cf8e898"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a588b8966b8b1b396a238bf677cf8e898">draw_item_highlight</a> (const <a class="el" href="structtripoint.html">tripoint</a> &amp;pos)</td></tr>
@@ -376,7 +383,11 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a0e2f7d539c9f5358cebc05e840746a5e"><td class="memItemLeft" align="right" valign="top">const GeometryRenderer_Ptr &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a0e2f7d539c9f5358cebc05e840746a5e">geometry</a></td></tr>
 <tr class="separator:a0e2f7d539c9f5358cebc05e840746a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a755f86b4f0363115ab66474c5f83b228"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classtileset.html">tileset</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a755f86b4f0363115ab66474c5f83b228">tileset_ptr</a></td></tr>
+<tr class="memdesc:a755f86b4f0363115ab66474c5f83b228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently loaded tileset.  <a href="classcata__tiles.html#a755f86b4f0363115ab66474c5f83b228">More...</a><br /></td></tr>
 <tr class="separator:a755f86b4f0363115ab66474c5f83b228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09aad87f82d55be93a3ec6c87046c545"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a09aad87f82d55be93a3ec6c87046c545">tileset_mod_list_stamp</a></td></tr>
+<tr class="memdesc:a09aad87f82d55be93a3ec6c87046c545"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of mods with which <a class="el" href="classcata__tiles.html#a755f86b4f0363115ab66474c5f83b228">tileset_ptr</a> was loaded.  <a href="classcata__tiles.html#a09aad87f82d55be93a3ec6c87046c545">More...</a><br /></td></tr>
+<tr class="separator:a09aad87f82d55be93a3ec6c87046c545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c31c9dadbf1431b07e7b41172b4476f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a0c31c9dadbf1431b07e7b41172b4476f">tile_height</a> = 0</td></tr>
 <tr class="separator:a0c31c9dadbf1431b07e7b41172b4476f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8197c54b722d4c096efeffed6da01f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a8b8197c54b722d4c096efeffed6da01f">tile_width</a> = 0</td></tr>
@@ -481,6 +492,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a7db24670319996efc1d31ab7ec407154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac16feaac55b1b194f0d03e3bb06f2dd0"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="structtripoint.html">tripoint</a>, std::tuple&lt; <a class="el" href="type__id_8h.html#a039e4134b8c5eb549ca440b962667a2f">mtype_id</a>, int, bool, <a class="el" href="classCreature.html#a8a475630b3289c468bd06cf114008217">Creature::Attitude</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#ac16feaac55b1b194f0d03e3bb06f2dd0">monster_override</a></td></tr>
 <tr class="separator:ac16feaac55b1b194f0d03e3bb06f2dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0268669424f0cc02dc6a29e132dd5549"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpimpl.html">pimpl</a>&lt; std::vector&lt; tile_render_info &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcata__tiles.html#a0268669424f0cc02dc6a29e132dd5549">draw_points_cache</a></td></tr>
+<tr class="separator:a0268669424f0cc02dc6a29e132dd5549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -497,7 +510,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00331">331</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00350">350</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0d3b403cd6813959a89a2e12651168a4" name="a0d3b403cd6813959a89a2e12651168a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d3b403cd6813959a89a2e12651168a4">&#9670;&nbsp;</a></span>cata_tiles()</h2>
@@ -604,7 +617,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l01756">options_manager::add_options_graphics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l01762">options_manager::add_options_graphics()</a>.</p>
 
 </div>
 </div>
@@ -631,7 +644,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l01756">options_manager::add_options_graphics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="options_8cpp_source.html#l01762">options_manager::add_options_graphics()</a>.</p>
 
 </div>
 </div>
@@ -706,6 +719,48 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa823c1c203120e19e3015752faba522" name="aaa823c1c203120e19e3015752faba522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa823c1c203120e19e3015752faba522">&#9670;&nbsp;</a></span>draw_block()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cata_tiles::draw_block </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scale</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6158cb3bafd5267fdd9a78e8c6820400" name="a6158cb3bafd5267fdd9a78e8c6820400"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6158cb3bafd5267fdd9a78e8c6820400">&#9670;&nbsp;</a></span>draw_bullet_frame()</h2>
 
@@ -740,8 +795,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae4241e8b55d0d93fa3c4915588628f4d" name="ae4241e8b55d0d93fa3c4915588628f4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4241e8b55d0d93fa3c4915588628f4d">&#9670;&nbsp;</a></span>draw_critter_at()</h2>
+<a id="a3f5ad8468bd2ab288aae7e099e9c7f07" name="a3f5ad8468bd2ab288aae7e099e9c7f07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5ad8468bd2ab288aae7e099e9c7f07">&#9670;&nbsp;</a></span>draw_critter_at()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -771,55 +826,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a933e7b2de4aa241a82ff4a29b586fb68" name="a933e7b2de4aa241a82ff4a29b586fb68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a933e7b2de4aa241a82ff4a29b586fb68">&#9670;&nbsp;</a></span>draw_critter_at_below()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool cata_tiles::draw_critter_at_below </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramname"><em>invisible</em>[5], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -935,8 +948,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af9116a4a101368b416f66a6147b67694" name="af9116a4a101368b416f66a6147b67694"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9116a4a101368b416f66a6147b67694">&#9670;&nbsp;</a></span>draw_field_or_item()</h2>
+<a id="a083a99a3e59b9ce7030fdb857e2cd33f" name="a083a99a3e59b9ce7030fdb857e2cd33f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083a99a3e59b9ce7030fdb857e2cd33f">&#9670;&nbsp;</a></span>draw_field_or_item()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -966,7 +979,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1001,68 +1020,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d3156f72aef976c0317bc8b49fd6b26" name="a2d3156f72aef976c0317bc8b49fd6b26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d3156f72aef976c0317bc8b49fd6b26">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[1/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool cata_tiles::draw_from_id_string </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
-          <td class="paramname"><em>pos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>subtile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rota</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>apply_night_vision_goggles</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae9e3ea1710a9a41adf9113967fbbc54" name="aae9e3ea1710a9a41adf9113967fbbc54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae9e3ea1710a9a41adf9113967fbbc54">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[2/4]</span></h2>
+<a id="a35c8340a629b5d22ca122d7c5ef14558" name="a35c8340a629b5d22ca122d7c5ef14558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35c8340a629b5d22ca122d7c5ef14558">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1110,7 +1069,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>&#160;</td>
+          <td class="paramname"><em>height_3d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1125,10 +1090,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874" title="draw_from_id_string() without category, subcategory and height_3d">draw_from_id_string()</a> without height_3d </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">category</td><td>C_NONE </td></tr>
+    <tr><td class="paramname">subcategory</td><td>empty_string </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a616bb4039e6acde9ba440d835543aeec" name="a616bb4039e6acde9ba440d835543aeec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a616bb4039e6acde9ba440d835543aeec">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[3/4]</span></h2>
+<a id="a0755564600f85ca20114bf8eebf10874" name="a0755564600f85ca20114bf8eebf10874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0755564600f85ca20114bf8eebf10874">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1141,18 +1115,6 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a>&#160;</td>
-          <td class="paramname"><em>category</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>subcategory</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1182,7 +1144,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>apply_night_vision_goggles</em>&#160;</td>
+          <td class="paramname"><em>apply_night_vision_goggles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1197,10 +1165,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874" title="draw_from_id_string() without category, subcategory and height_3d">draw_from_id_string()</a> without category, subcategory and height_3d </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">category</td><td>C_NONE </td></tr>
+    <tr><td class="paramname">subcategory</td><td>empty_string </td></tr>
+    <tr><td class="paramname">height_3d</td><td>nullint </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a88565f491015d1230be7f64752f7578e" name="a88565f491015d1230be7f64752f7578e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88565f491015d1230be7f64752f7578e">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[4/4]</span></h2>
+<a id="a25d8f7851b11cb865678ac1a33181b47" name="a25d8f7851b11cb865678ac1a33181b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25d8f7851b11cb865678ac1a33181b47">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1260,7 +1238,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>&#160;</td>
+          <td class="paramname"><em>height_3d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1275,10 +1259,119 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Try to draw a tile using the given id. </p>
+<p >calls <a class="el" href="classcata__tiles.html#a077be0f164110316d6883a20b0a08c5d" title="Calls draw_sprite_at() twice each for foreground and background.">draw_tile_at()</a> at the end.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>String id of the tile to draw. </td></tr>
+    <tr><td class="paramname">category</td><td>Category of the tile to draw. </td></tr>
+    <tr><td class="paramname">subcategory</td><td>if id is not found, try to find a tile for the category+subcategory combination </td></tr>
+    <tr><td class="paramname">pos</td><td>Tripoint of the tile to draw. </td></tr>
+    <tr><td class="paramname">subtile</td><td>variant of the tile </td></tr>
+    <tr><td class="paramname">rota</td><td>rotation: { UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3 } </td></tr>
+    <tr><td class="paramname">ll</td><td>light level </td></tr>
+    <tr><td class="paramname">apply_night_vision_goggles</td><td>use night vision colors? </td></tr>
+    <tr><td class="paramname">height_3d</td><td>return parameter for height of the sprite </td></tr>
+    <tr><td class="paramname">overlay_count</td><td>how blue the tile looks for lower z levels </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>always true </dd></dl>
+
 </div>
 </div>
-<a id="a29b9f15e379d396e769657afa7accc4f" name="a29b9f15e379d396e769657afa7accc4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29b9f15e379d396e769657afa7accc4f">&#9670;&nbsp;</a></span>draw_furniture()</h2>
+<a id="a520a73e267a1d68ac231bba0b6759e87" name="a520a73e267a1d68ac231bba0b6759e87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520a73e267a1d68ac231bba0b6759e87">&#9670;&nbsp;</a></span>draw_from_id_string() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cata_tiles::draw_from_id_string </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="cata__tiles_8h.html#a847d0e126a7684d25f82ed1bbeaeedf4">TILE_CATEGORY</a>&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>subcategory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>subtile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rota</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
+          <td class="paramname"><em>ll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>apply_night_vision_goggles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><ul>
+<li></li>
+</ul>
+</p>
+<p ><a class="el" href="classcata__tiles.html#a0755564600f85ca20114bf8eebf10874" title="draw_from_id_string() without category, subcategory and height_3d">draw_from_id_string()</a> without height_3d</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height_3d</td><td>nullint </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4dfaf01a4a389138010df16d5e9119df" name="a4dfaf01a4a389138010df16d5e9119df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dfaf01a4a389138010df16d5e9119df">&#9670;&nbsp;</a></span>draw_furniture()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1308,7 +1401,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1325,8 +1424,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a15741970cd90c3dd95f93dd50d9a4535" name="a15741970cd90c3dd95f93dd50d9a4535"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15741970cd90c3dd95f93dd50d9a4535">&#9670;&nbsp;</a></span>draw_graffiti()</h2>
+<a id="ae9289cdec574d3c00079c525c46a2ed0" name="ae9289cdec574d3c00079c525c46a2ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9289cdec574d3c00079c525c46a2ed0">&#9670;&nbsp;</a></span>draw_graffiti()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1356,7 +1455,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1544,80 +1649,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af7586f6cb42eb2a34312f62ee5f56812" name="af7586f6cb42eb2a34312f62ee5f56812"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7586f6cb42eb2a34312f62ee5f56812">&#9670;&nbsp;</a></span>draw_sprite_at() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool cata_tiles::draw_sprite_at </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtile__type.html">tile_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>tile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>svlist</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structpoint.html">point</a> &amp;&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>loc_rand</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>rota_fg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rota</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>apply_night_vision_goggles</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3e30a57cc22da86153fafbd34952a382" name="a3e30a57cc22da86153fafbd34952a382"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e30a57cc22da86153fafbd34952a382">&#9670;&nbsp;</a></span>draw_sprite_at() <span class="overload">[2/2]</span></h2>
+<a id="a73bda85cac08e12b131836778adc4e3a" name="a73bda85cac08e12b131836778adc4e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73bda85cac08e12b131836778adc4e3a">&#9670;&nbsp;</a></span>draw_sprite_at() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1677,7 +1710,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>&#160;</td>
+          <td class="paramname"><em>height_3d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1692,10 +1731,100 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Try to draw either forground or background using the given reference. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">svlist</td><td>list of weighted subtile variants </td></tr>
+    <tr><td class="paramname">rota_fg</td><td>is it foreground (true) or background? </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>always true. </dd></dl>
+
 </div>
 </div>
-<a id="a503c96600cf5b6cc02745bee84c00240" name="a503c96600cf5b6cc02745bee84c00240"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a503c96600cf5b6cc02745bee84c00240">&#9670;&nbsp;</a></span>draw_terrain()</h2>
+<a id="ac41a47edcf1f88256815e0f1ed552e8a" name="ac41a47edcf1f88256815e0f1ed552e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac41a47edcf1f88256815e0f1ed552e8a">&#9670;&nbsp;</a></span>draw_sprite_at() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cata_tiles::draw_sprite_at </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structtile__type.html">tile_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>tile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structweighted__int__list.html">weighted_int_list</a>&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>svlist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpoint.html">point</a> &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>loc_rand</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>rota_fg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rota</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
+          <td class="paramname"><em>ll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>apply_night_vision_goggles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a" title="draw_sprite_at() without height_3d">draw_sprite_at()</a> without height_3d </p>
+
+</div>
+</div>
+<a id="a89b3c5fbfd147636a7684ca12918518a" name="a89b3c5fbfd147636a7684ca12918518a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89b3c5fbfd147636a7684ca12918518a">&#9670;&nbsp;</a></span>draw_terrain()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1725,7 +1854,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1742,56 +1877,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a988a07480e2741c404552d5f1bcbe2ec" name="a988a07480e2741c404552d5f1bcbe2ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a988a07480e2741c404552d5f1bcbe2ec">&#9670;&nbsp;</a></span>draw_terrain_below()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool cata_tiles::draw_terrain_below </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a292d555e76032d6336ac199d63107477" name="a292d555e76032d6336ac199d63107477"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a292d555e76032d6336ac199d63107477">&#9670;&nbsp;</a></span>draw_tile_at()</h2>
+<a id="a077be0f164110316d6883a20b0a08c5d" name="a077be0f164110316d6883a20b0a08c5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a077be0f164110316d6883a20b0a08c5d">&#9670;&nbsp;</a></span>draw_tile_at()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1839,7 +1926,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>&#160;</td>
+          <td class="paramname"><em>height_3d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>overlay_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1854,10 +1947,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Calls <a class="el" href="classcata__tiles.html#ac41a47edcf1f88256815e0f1ed552e8a" title="draw_sprite_at() without height_3d">draw_sprite_at()</a> twice each for foreground and background. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tile</td><td>Tile to draw. </td></tr>
+    <tr><td class="paramname">p</td><td>Point to draw the tile at. </td></tr>
+    <tr><td class="paramname">loc_rand</td><td>picked random int </td></tr>
+    <tr><td class="paramname">rota_fg</td><td>rotate foreground: { UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3 } </td></tr>
+    <tr><td class="paramname">rota</td><td>rotation: { UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3 } </td></tr>
+    <tr><td class="paramname">ll</td><td>light level </td></tr>
+    <tr><td class="paramname">apply_night_vision_goggles</td><td>use night vision colors? </td></tr>
+    <tr><td class="paramname">height_3d</td><td>return parameter for height of the sprite </td></tr>
+    <tr><td class="paramname">overlay_count</td><td>how blue the tile looks for lower z levels </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>always true. </dd></dl>
+
 </div>
 </div>
-<a id="afb11f54b2cc6dc26c8aef1855015a584" name="afb11f54b2cc6dc26c8aef1855015a584"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb11f54b2cc6dc26c8aef1855015a584">&#9670;&nbsp;</a></span>draw_trap()</h2>
+<a id="a254656ffea344ff83ec1cd9b4d969b2c" name="a254656ffea344ff83ec1cd9b4d969b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a254656ffea344ff83ec1cd9b4d969b2c">&#9670;&nbsp;</a></span>draw_trap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1887,7 +1997,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1904,8 +2020,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3269f40aa0e01bc30c431e495860887f" name="a3269f40aa0e01bc30c431e495860887f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3269f40aa0e01bc30c431e495860887f">&#9670;&nbsp;</a></span>draw_vpart()</h2>
+<a id="a076f67b0abb7db84a33ea8abc0b6345e" name="a076f67b0abb7db84a33ea8abc0b6345e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a076f67b0abb7db84a33ea8abc0b6345e">&#9670;&nbsp;</a></span>draw_vpart()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1935,55 +2051,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad0d566308c0c44e87ec625c0a19b099c" name="ad0d566308c0c44e87ec625c0a19b099c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0d566308c0c44e87ec625c0a19b099c">&#9670;&nbsp;</a></span>draw_vpart_below()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool cata_tiles::draw_vpart_below </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structtripoint.html">tripoint</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramname"><em>invisible</em>[5], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38">lit_level</a>&#160;</td>
-          <td class="paramname"><em>ll</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>height_3d</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -2017,8 +2091,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a76c96c8157b017cbbe001d6cf4a15da6" name="a76c96c8157b017cbbe001d6cf4a15da6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76c96c8157b017cbbe001d6cf4a15da6">&#9670;&nbsp;</a></span>draw_zombie_revival_indicators()</h2>
+<a id="a8965c2cc569442e5799ceb2fbeaa7eed" name="a8965c2cc569442e5799ceb2fbeaa7eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8965c2cc569442e5799ceb2fbeaa7eed">&#9670;&nbsp;</a></span>draw_zombie_revival_indicators()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2048,7 +2122,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -2065,8 +2145,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae66896fcac7e38650e58c1f4ab7b24cb" name="ae66896fcac7e38650e58c1f4ab7b24cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66896fcac7e38650e58c1f4ab7b24cb">&#9670;&nbsp;</a></span>draw_zone_mark()</h2>
+<a id="abbdade7f76dc959ed552759e098822bc" name="abbdade7f76dc959ed552759e098822bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbdade7f76dc959ed552759e098822bc">&#9670;&nbsp;</a></span>draw_zone_mark()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2096,7 +2176,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool(&amp;)&#160;</td>
-          <td class="paramname"><em>invisible</em>[5]&#160;</td>
+          <td class="paramname"><em>invisible</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>z_drop</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -2551,13 +2637,13 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00548">548</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
-<div class="fragment"><div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>                                    {</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a0c31c9dadbf1431b07e7b41172b4476f">tile_height</a>;</div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>        }</div>
-<div class="ttc" id="aclasscata__tiles_html_a0c31c9dadbf1431b07e7b41172b4476f"><div class="ttname"><a href="classcata__tiles.html#a0c31c9dadbf1431b07e7b41172b4476f">cata_tiles::tile_height</a></div><div class="ttdeci">int tile_height</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00591">cata_tiles.h:591</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00635">635</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<div class="fragment"><div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>                                    {</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a0c31c9dadbf1431b07e7b41172b4476f">tile_height</a>;</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>        }</div>
+<div class="ttc" id="aclasscata__tiles_html_a0c31c9dadbf1431b07e7b41172b4476f"><div class="ttname"><a href="classcata__tiles.html#a0c31c9dadbf1431b07e7b41172b4476f">cata_tiles::tile_height</a></div><div class="ttdeci">int tile_height</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00681">cata_tiles.h:681</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00591">tile_height</a>.</p>
+<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00681">tile_height</a>.</p>
 
 </div>
 </div>
@@ -2584,13 +2670,13 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00554">554</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
-<div class="fragment"><div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>                                      {</div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a9cbd4b4924ea0b0df47bf28dc53c4103">tile_ratiox</a>;</div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>        }</div>
-<div class="ttc" id="aclasscata__tiles_html_a9cbd4b4924ea0b0df47bf28dc53c4103"><div class="ttname"><a href="classcata__tiles.html#a9cbd4b4924ea0b0df47bf28dc53c4103">cata_tiles::tile_ratiox</a></div><div class="ttdeci">float tile_ratiox</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00597">cata_tiles.h:597</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00641">641</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<div class="fragment"><div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>                                      {</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a9cbd4b4924ea0b0df47bf28dc53c4103">tile_ratiox</a>;</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>        }</div>
+<div class="ttc" id="aclasscata__tiles_html_a9cbd4b4924ea0b0df47bf28dc53c4103"><div class="ttname"><a href="classcata__tiles.html#a9cbd4b4924ea0b0df47bf28dc53c4103">cata_tiles::tile_ratiox</a></div><div class="ttdeci">float tile_ratiox</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00687">cata_tiles.h:687</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00597">tile_ratiox</a>.</p>
+<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00687">tile_ratiox</a>.</p>
 
 </div>
 </div>
@@ -2617,13 +2703,13 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00557">557</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
-<div class="fragment"><div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>                                      {</div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#ad9e0e80ffad0b0529eeb830c2cb1ab74">tile_ratioy</a>;</div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        }</div>
-<div class="ttc" id="aclasscata__tiles_html_ad9e0e80ffad0b0529eeb830c2cb1ab74"><div class="ttname"><a href="classcata__tiles.html#ad9e0e80ffad0b0529eeb830c2cb1ab74">cata_tiles::tile_ratioy</a></div><div class="ttdeci">float tile_ratioy</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00598">cata_tiles.h:598</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00644">644</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<div class="fragment"><div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>                                      {</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#ad9e0e80ffad0b0529eeb830c2cb1ab74">tile_ratioy</a>;</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>        }</div>
+<div class="ttc" id="aclasscata__tiles_html_ad9e0e80ffad0b0529eeb830c2cb1ab74"><div class="ttname"><a href="classcata__tiles.html#ad9e0e80ffad0b0529eeb830c2cb1ab74">cata_tiles::tile_ratioy</a></div><div class="ttdeci">float tile_ratioy</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00688">cata_tiles.h:688</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00598">tile_ratioy</a>.</p>
+<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00688">tile_ratioy</a>.</p>
 
 </div>
 </div>
@@ -2673,6 +2759,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Tile Picking. </p>
+
 </div>
 </div>
 <a id="a27ab8f5e8d4090bf4ff05c766c9dafb2" name="a27ab8f5e8d4090bf4ff05c766c9dafb2"></a>
@@ -2698,13 +2786,13 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00551">551</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
-<div class="fragment"><div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>                                   {</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a8b8197c54b722d4c096efeffed6da01f">tile_width</a>;</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>        }</div>
-<div class="ttc" id="aclasscata__tiles_html_a8b8197c54b722d4c096efeffed6da01f"><div class="ttname"><a href="classcata__tiles.html#a8b8197c54b722d4c096efeffed6da01f">cata_tiles::tile_width</a></div><div class="ttdeci">int tile_width</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00592">cata_tiles.h:592</a></div></div>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00638">638</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<div class="fragment"><div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>                                   {</div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="classcata__tiles.html#a8b8197c54b722d4c096efeffed6da01f">tile_width</a>;</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>        }</div>
+<div class="ttc" id="aclasscata__tiles_html_a8b8197c54b722d4c096efeffed6da01f"><div class="ttname"><a href="classcata__tiles.html#a8b8197c54b722d4c096efeffed6da01f">cata_tiles::tile_width</a></div><div class="ttdeci">int tile_width</div><div class="ttdef"><b>Definition:</b> <a href="cata__tiles_8h_source.html#l00682">cata_tiles.h:682</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00592">tile_width</a>.</p>
+<p class="reference">References <a class="el" href="cata__tiles_8h_source.html#l00682">tile_width</a>.</p>
 
 </div>
 </div>
@@ -3622,8 +3710,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ac628968b0732c5472d2a08da2d642f43" name="ac628968b0732c5472d2a08da2d642f43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac628968b0732c5472d2a08da2d642f43">&#9670;&nbsp;</a></span>load_tileset()</h2>
+<a id="acde66799a0630f031dbab73d0d0fdaba" name="acde66799a0630f031dbab73d0d0fdaba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde66799a0630f031dbab73d0d0fdaba">&#9670;&nbsp;</a></span>load_tileset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3637,6 +3725,12 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mod_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>precheck</em> = <code>false</code>, </td>
         </tr>
@@ -3644,7 +3738,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>force</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>force</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>pump_events</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3658,8 +3758,10 @@ template&lt;typename T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tileset_id</td><td>Ident of the tileset, as it appears in the options. </td></tr>
+    <tr><td class="paramname">mod_list</td><td>List of active world mods, for correct caching behavior. </td></tr>
     <tr><td class="paramname">precheck</td><td>If true, only loads the meta data of the tileset (tile dimensions). </td></tr>
     <tr><td class="paramname">force</td><td>If true, forces loading the tileset even if it is already loaded. </td></tr>
+    <tr><td class="paramname">pump_events</td><td>Handle window events and refresh the screen when necessary. Please ensure that the tileset is not accessed when this method is executing if you set it to true. </td></tr>
   </table>
   </dd>
 </dl>
@@ -4389,7 +4491,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00639">639</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00729">729</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4413,7 +4515,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00626">626</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00716">716</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4437,7 +4539,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00625">625</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00715">715</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4461,7 +4563,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00623">623</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00713">713</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4485,7 +4587,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00622">622</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00712">712</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4509,7 +4611,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00636">636</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00726">726</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4533,7 +4635,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00620">620</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00710">710</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4557,7 +4659,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00606">606</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00696">696</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4581,7 +4683,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00614">614</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00704">704</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4605,7 +4707,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00609">609</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00699">699</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4629,7 +4731,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00605">605</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00695">695</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4653,7 +4755,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00604">604</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00694">694</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4677,7 +4779,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00610">610</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00700">700</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4701,7 +4803,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00607">607</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00697">697</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4725,7 +4827,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00608">608</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00698">698</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4749,7 +4851,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00612">612</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00702">702</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4773,7 +4875,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00611">611</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00701">701</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4797,7 +4899,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00613">613</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00703">703</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4821,7 +4923,31 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00662">662</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00752">752</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+
+</div>
+</div>
+<a id="a0268669424f0cc02dc6a29e132dd5549" name="a0268669424f0cc02dc6a29e132dd5549"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0268669424f0cc02dc6a29e132dd5549">&#9670;&nbsp;</a></span>draw_points_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpimpl.html">pimpl</a>&lt;std::vector&lt;tile_render_info&gt; &gt; cata_tiles::draw_points_cache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00755">755</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4845,7 +4971,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00618">618</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00708">708</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4869,7 +4995,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00616">616</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00706">706</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4893,7 +5019,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00617">617</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00707">707</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4917,7 +5043,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00656">656</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00746">746</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4941,7 +5067,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00653">653</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00743">743</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4965,7 +5091,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00588">588</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00675">675</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -4989,7 +5115,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00654">654</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00744">744</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5013,7 +5139,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00637">637</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00727">727</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5037,7 +5163,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00629">629</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00719">719</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5061,7 +5187,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00628">628</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00718">718</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5085,7 +5211,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00600">600</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00690">690</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5109,7 +5235,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00602">602</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00692">692</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5133,7 +5259,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00632">632</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00722">722</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5157,7 +5283,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00658">658</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00748">748</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5181,7 +5307,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00634">634</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00724">724</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5205,7 +5331,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00631">631</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00721">721</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5229,7 +5355,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00633">633</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00723">723</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5245,7 +5371,7 @@ template&lt;typename basetype &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00676">676</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00767">767</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5269,7 +5395,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00673">673</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00764">764</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5293,7 +5419,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00664">664</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00754">754</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5320,7 +5446,7 @@ template&lt;typename basetype &gt; </div>
 <p>Tracks active night vision goggle status for each draw call. </p>
 <p >Allows usage of night vision tilesets during sprite rendering. </p>
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00671">671</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00762">762</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5344,7 +5470,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00647">647</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00737">737</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5368,7 +5494,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00649">649</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00739">739</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5392,7 +5518,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00651">651</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00741">741</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5418,7 +5544,7 @@ template&lt;typename basetype &gt; </div>
 
 <p>Variables. </p>
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00587">587</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00674">674</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5442,7 +5568,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00596">596</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00686">686</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5466,7 +5592,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00595">595</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00685">685</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5490,7 +5616,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00652">652</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00742">742</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5514,9 +5640,9 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00591">591</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00681">681</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00548">get_tile_height()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00635">get_tile_height()</a>.</p>
 
 </div>
 </div>
@@ -5540,9 +5666,9 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00597">597</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00687">687</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00554">get_tile_ratiox()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00641">get_tile_ratiox()</a>.</p>
 
 </div>
 </div>
@@ -5566,9 +5692,9 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00598">598</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00688">688</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00557">get_tile_ratioy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00644">get_tile_ratioy()</a>.</p>
 
 </div>
 </div>
@@ -5592,9 +5718,35 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00592">592</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00682">682</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00551">get_tile_width()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cata__tiles_8h_source.html#l00638">get_tile_width()</a>.</p>
+
+</div>
+</div>
+<a id="a09aad87f82d55be93a3ec6c87046c545" name="a09aad87f82d55be93a3ec6c87046c545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09aad87f82d55be93a3ec6c87046c545">&#9670;&nbsp;</a></span>tileset_mod_list_stamp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="type__id_8h.html#aabcbcb9fb77661ba75c47b6287318e03">mod_id</a>&gt; cata_tiles::tileset_mod_list_stamp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of mods with which <a class="el" href="classcata__tiles.html#a755f86b4f0363115ab66474c5f83b228">tileset_ptr</a> was loaded. </p>
+
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00679">679</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5618,7 +5770,9 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00589">589</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p>Currently loaded tileset. </p>
+
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00677">677</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5642,7 +5796,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00655">655</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00745">745</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5666,7 +5820,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00661">661</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00751">751</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5690,7 +5844,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00640">640</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00730">730</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5714,7 +5868,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00643">643</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00733">733</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5738,7 +5892,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00644">644</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00734">734</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5762,7 +5916,7 @@ template&lt;typename basetype &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00642">642</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cata__tiles_8h_source.html#l00732">732</a> of file <a class="el" href="cata__tiles_8h_source.html">cata_tiles.h</a>.</p>
 
 </div>
 </div>
@@ -5775,7 +5929,7 @@ template&lt;typename basetype &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classcata__tiles.html">cata_tiles</a></li>
-    <li class="footer">Generated on Fri Aug 5 2022 20:07:36 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 18:18:12 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

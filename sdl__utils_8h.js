@@ -11,6 +11,7 @@ var sdl__utils_8h =
     [ "color_pixel_nightvision", "sdl__utils_8h.html#a676592951b71116140f3ed92527f020a", null ],
     [ "color_pixel_overexposed", "sdl__utils_8h.html#a1156f0d07c69ffab7cf975697f078527", null ],
     [ "color_pixel_sepia", "sdl__utils_8h.html#ae50c90c1ecb4302f77ef9e8d18203a6d", null ],
+    [ "color_pixel_z_overlay", "sdl__utils_8h.html#aa09b2809f617f10371de20a814c43922", null ],
     [ "create_surface_32", "sdl__utils_8h.html#a2409219be466cff794b21b6fbe6154a5", null ],
     [ "curses_color_to_SDL", "sdl__utils_8h.html#a53204099dcec8ba4483731c8f2e2a853", null ],
     [ "fit_rect_inside", "sdl__utils_8h.html#a57b37e6740c7ff22785f93e5140793a9", null ],

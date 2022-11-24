@@ -48,7 +48,7 @@ var searchData=
   ['unfinalized_5ftrail_5fterrain_45',['unfinalized_trail_terrain',['../structforest__trail__settings.html#a2a0bce93e5b0d7d84a169bc5b2ef5e2d',1,'forest_trail_settings']]],
   ['unfinalized_5ftypes_46',['unfinalized_types',['../structforest__biome__component.html#a8adfc7e16ec9c9e52dc134c36a2edeee',1,'forest_biome_component']]],
   ['unfold_5fmsg_47',['unfold_msg',['../classunfold__vehicle__iuse.html#ac334afcd93f99b958d681e305ef7750e',1,'unfold_vehicle_iuse']]],
-  ['unique_5fmons_48',['unique_mons',['../structmonster__visible__info.html#a1f6b4cb2fda42b2d64c7a1d373f14d0b',1,'monster_visible_info']]],
+  ['unique_5fmons_48',['unique_mons',['../structmonster__visible__info.html#a34226c200f829671f6e08831000a8ea4',1,'monster_visible_info']]],
   ['unique_5fname_49',['unique_name',['../classmonster.html#a5e50554c4210ec2a15d9ed44e61bcf3a',1,'monster']]],
   ['unique_5ftypes_50',['unique_types',['../structmonster__visible__info.html#aeca42c9bb1d4c3fbb8675120317c2e70',1,'monster_visible_info']]],
   ['units_51',['units',['../classtime__duration.html#a4694c27b90feb607344d0605cfa50db8',1,'time_duration']]],

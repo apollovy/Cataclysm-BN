@@ -42,6 +42,7 @@ var game__inventory_8cpp =
     [ "ACT_CONSUME_MEDS_MENU", "game__inventory_8cpp.html#a80bc871a0f1eba80630d6f98d61eb77a", null ],
     [ "ACT_EAT_MENU", "game__inventory_8cpp.html#a30e10debf4a47a91c371902258fed73a", null ],
     [ "bio_painkiller", "game__inventory_8cpp.html#a15450ecf5b34a615affe959125bf1626", null ],
+    [ "bio_taste_blocker", "game__inventory_8cpp.html#a1cdd6de85176097b616ddd8e3e0a9239", null ],
     [ "fault_bionic_nonsterile", "game__inventory_8cpp.html#a26ecdac9a64be27edf58e27505e8548b", null ],
     [ "flag_BIONIC_NPC_USABLE", "game__inventory_8cpp.html#a4f00ac4bfbf8730ef99a96a55cab197e", null ],
     [ "qual_ANESTHESIA", "game__inventory_8cpp.html#a42ac34659f1b9fc5662b2f849fd96dab", null ],

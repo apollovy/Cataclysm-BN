@@ -16,6 +16,7 @@ var path__info_8h =
     [ "defaultsounddir", "path__info_8h.html#ab1b96ecc4661a605f4a04c4388e9fd41", null ],
     [ "defaulttilejson", "path__info_8h.html#ae4c0906500b222227e00bc34cc94252f", null ],
     [ "defaulttilepng", "path__info_8h.html#a0773f1e01a9fb190c2f1e385ad2892b1", null ],
+    [ "distraction", "path__info_8h.html#a48b13e0e7d09a341face3e7408cbc8c9", null ],
     [ "fontconfig", "path__info_8h.html#a80886f68f9d0351e3e43b93063337844", null ],
     [ "fontdir", "path__info_8h.html#a55c9560f392f8f4a0cd0dc03125978d8", null ],
     [ "gfxdir", "path__info_8h.html#a089dac91cab1329892ec2ccea9d897dd", null ],

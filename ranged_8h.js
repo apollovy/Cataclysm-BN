@@ -13,6 +13,7 @@ var ranged_8h =
     [ "get_str_draw_penalty", "ranged_8h.html#a4c8c85e0249f67213d9994612315aa3e", null ],
     [ "gunmode_checks_common", "ranged_8h.html#aed4420a1fd77e160a72de2a528e56da5", null ],
     [ "gunmode_checks_weapon", "ranged_8h.html#a743f9e35b20c136e56ca9e9480fb27bc", null ],
+    [ "handle_gun_damage", "ranged_8h.html#abf8b46e1f1dae2e7a3d4ff75b9495026", null ],
     [ "hit_with_aoe", "ranged_8h.html#a51e6279a2008714e5596da4f5fa1b00e", null ],
     [ "mode_fire", "ranged_8h.html#a15e531943e7385d987d87f82f5957821", null ],
     [ "mode_reach", "ranged_8h.html#aeab5385d86293c622a3796625364be16", null ],
