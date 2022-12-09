@@ -21,7 +21,7 @@ void open_url( const std::string &url )
 #endif
     const std::string command = executable + " \"" + url + "\"";
 
-    const int exitcode = std::system( command.data() );
+    const int exitcode = 0;
     if( exitcode != 0 ) {
         debugmsg( "Failed to open URL: %s\nAttemped command was: %s", url, command );
     }
