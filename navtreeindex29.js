@@ -1,6 +1,5 @@
 var NAVTREEINDEX29 =
 {
-"classcata__variant.html#a4d0c1d9d98427998662a6b795d9b8073":[36,0,136,5],
 "classcata__variant.html#a4ea107c52b6036473651c4635b2aabd8":[36,0,136,14],
 "classcata__variant.html#a51b6e6f25381a485e26454c016bd88e8":[36,0,136,3],
 "classcata__variant.html#a650c1d9c0423bcd7b4fcc0f3b346c0a1":[36,0,136,15],
@@ -14,18 +13,18 @@ var NAVTREEINDEX29 =
 "classcata__variant.html#ade848ec7327ac791de557498299d0912":[36,0,136,8],
 "classcatacurses_1_1window.html":[35,0,77,0],
 "classcatacurses_1_1window.html":[36,0,17,0],
-"classcatacurses_1_1window.html#a0605d4950cc8eddacf1e93f4a0b79ec0":[36,0,17,0,2],
 "classcatacurses_1_1window.html#a0605d4950cc8eddacf1e93f4a0b79ec0":[35,0,77,0,2],
-"classcatacurses_1_1window.html#a37f2ca0cc9f7bf0852e76aba4ba99bb5":[36,0,17,0,3],
+"classcatacurses_1_1window.html#a0605d4950cc8eddacf1e93f4a0b79ec0":[36,0,17,0,2],
 "classcatacurses_1_1window.html#a37f2ca0cc9f7bf0852e76aba4ba99bb5":[35,0,77,0,3],
+"classcatacurses_1_1window.html#a37f2ca0cc9f7bf0852e76aba4ba99bb5":[36,0,17,0,3],
 "classcatacurses_1_1window.html#a54ddd79d27421b1da357757c3a5fa8a8":[36,0,17,0,5],
 "classcatacurses_1_1window.html#a54ddd79d27421b1da357757c3a5fa8a8":[35,0,77,0,5],
-"classcatacurses_1_1window.html#a8afbd1925d293cb03e3a913075249887":[36,0,17,0,1],
 "classcatacurses_1_1window.html#a8afbd1925d293cb03e3a913075249887":[35,0,77,0,1],
-"classcatacurses_1_1window.html#a9411dcd946165d408ea51644b0fb3f99":[36,0,17,0,4],
+"classcatacurses_1_1window.html#a8afbd1925d293cb03e3a913075249887":[36,0,17,0,1],
 "classcatacurses_1_1window.html#a9411dcd946165d408ea51644b0fb3f99":[35,0,77,0,4],
-"classcatacurses_1_1window.html#ab399d7c205c8c6b31063b2b51be67b9b":[36,0,17,0,6],
+"classcatacurses_1_1window.html#a9411dcd946165d408ea51644b0fb3f99":[36,0,17,0,4],
 "classcatacurses_1_1window.html#ab399d7c205c8c6b31063b2b51be67b9b":[35,0,77,0,6],
+"classcatacurses_1_1window.html#ab399d7c205c8c6b31063b2b51be67b9b":[36,0,17,0,6],
 "classcatacurses_1_1window.html#ab4ebccdbbf950c1d41d68054e1903de6":[35,0,77,0,0],
 "classcatacurses_1_1window.html#ab4ebccdbbf950c1d41d68054e1903de6":[36,0,17,0,0],
 "classcauterize__actor.html":[36,0,137],
@@ -249,5 +248,6 @@ var NAVTREEINDEX29 =
 "classcomputer__session.html#a9d122cf891c1877d971f34bde6d561d1":[36,0,163,45],
 "classcomputer__session.html#a9f0800210289545b3ae56cb4bf17bbeb":[36,0,163,35],
 "classcomputer__session.html#aa3892c9eb93f08079b24086ab2b4341c":[36,0,163,43],
-"classcomputer__session.html#aa47c9e6975e98cf8447102636b2a35d5":[36,0,163,59]
+"classcomputer__session.html#aa47c9e6975e98cf8447102636b2a35d5":[36,0,163,59],
+"classcomputer__session.html#aaa5ab0cf4e6cd70924d265412a65e338":[36,0,163,41]
 };

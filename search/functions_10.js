@@ -82,7 +82,7 @@ var searchData=
   ['passable_5fter_5ffurn_79',['passable_ter_furn',['../classmap.html#a2d734f291c46db96540c27b8fc8bd487',1,'map']]],
   ['passive_5fabsorb_5fhit_80',['passive_absorb_hit',['../classCharacter.html#ab204a367071ffd6cc1d01ec8010222c5',1,'Character']]],
   ['passive_5fpower_5fgen_81',['passive_power_gen',['../classCharacter.html#a81d89e1924a7b368282e3065e6e1b617',1,'Character']]],
-  ['patch_5factivity_5ffor_5ffurniture_82',['patch_activity_for_furniture',['../namespaceactivity__handlers_1_1repair__activity__hack.html#a3797595d4215a8977cd3c5a39f063b4e',1,'activity_handlers::repair_activity_hack']]],
+  ['patch_5factivity_5ffor_5ffurniture_82',['patch_activity_for_furniture',['../namespaceactivity__handlers_1_1repair__activity__hack.html#a3e3ae9542f50ef9949b9840ef4fce32c',1,'activity_handlers::repair_activity_hack']]],
   ['patch_5factivity_5ffor_5fvehicle_5fwelder_83',['patch_activity_for_vehicle_welder',['../namespaceactivity__handlers_1_1repair__activity__hack.html#a5a06628fc3bbbfafb38b9b5b44e819d3',1,'activity_handlers::repair_activity_hack']]],
   ['pathfinder_84',['pathfinder',['../structpathfinder.html#a14564b8f0d59b7a4ad791f5f59480547',1,'pathfinder']]],
   ['pathfinding_5fcache_85',['pathfinding_cache',['../structpathfinding__cache.html#a082c46dee17769a54322638a5126714e',1,'pathfinding_cache']]],

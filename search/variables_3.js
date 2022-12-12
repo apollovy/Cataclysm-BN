@@ -309,7 +309,7 @@ var searchData=
   ['craft_5fsubcat_5flist_306',['craft_subcat_list',['../crafting__gui_8cpp.html#a03dfc4c687680a542638da508622d822',1,'crafting_gui.cpp']]],
   ['crafter_307',['crafter',['../classcraft__command.html#a998e2e948bbe45760370565994701622',1,'craft_command']]],
   ['crafting_5finv_308',['crafting_inv',['../classveh__interact.html#a98e0b32284e185fd557e513c2d8a604a',1,'veh_interact']]],
-  ['crafting_5fpseudo_5fitem_309',['crafting_pseudo_item',['../structfurn__t.html#a1c2dba493686253a3366982da99c7345',1,'furn_t']]],
+  ['crafting_5fpseudo_5fitems_309',['crafting_pseudo_items',['../structfurn__t.html#ac3243f9d8b999ebf120e519289d410ea',1,'furn_t']]],
   ['create_5fif_5fnecessary_310',['create_if_necessary',['../structmission__target__params.html#a543bec9d08fb8481afaf82062d43d93d',1,'mission_target_params']]],
   ['creation_5ftime_311',['creation_time',['../classscent__trace.html#afaae5b5e3a84f4a1d71182c000303018',1,'scent_trace']]],
   ['creators_312',['creators',['../classTrait__group.html#a20305460244c282c1d7739bd0aca44ec',1,'Trait_group']]],

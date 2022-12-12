@@ -1,11 +1,5 @@
 var NAVTREEINDEX85 =
 {
-"fmtlib__format_8h.html#ad1b3fa8cba0ba0e7f22dcca74151e092":[37,0,1,220,249],
-"fmtlib__format_8h.html#ad1bfebfc0b0d3723c72d3c3c405aa903":[37,0,1,220,191],
-"fmtlib__format_8h.html#ad1cda2b5818d1c1e6c6d93d824901e6b":[37,0,1,220,187],
-"fmtlib__format_8h.html#ad1d9f060a96b8cfe1814271f08219e8c":[37,0,1,220,255],
-"fmtlib__format_8h.html#ad258cc73fca14257a1daee6c735a2df2":[37,0,1,220,80],
-"fmtlib__format_8h.html#ad2d9cdfb674145cf1dc14df637e81130":[37,0,1,220,206],
 "fmtlib__format_8h.html#ad5786ea401cd50acfd01c29ab9abb097":[37,0,1,220,201],
 "fmtlib__format_8h.html#ad65908bd5d03f057bd2009ce3f40f9f3":[37,0,1,220,103],
 "fmtlib__format_8h.html#ad9019a08e555fdf86f1b8b30fdeb1b86":[37,0,1,220,133],
@@ -112,8 +106,8 @@ var NAVTREEINDEX85 =
 "fstream__utils_8h.html#adb5f308b4d5f3656ad32fbe62fab29f1":[37,0,1,225,9],
 "fstream__utils_8h.html#afc8cc3e35ba50c37cf8597c5fa334c82":[37,0,1,225,10],
 "fstream__utils_8h_source.html":[37,0,1,225],
-"functions.html":[36,3,0,0],
 "functions.html":[36,3,0],
+"functions.html":[36,3,0,0],
 "functions_a.html":[36,3,0,1],
 "functions_b.html":[36,3,0,2],
 "functions_c.html":[36,3,0,3],
@@ -165,8 +159,8 @@ var NAVTREEINDEX85 =
 "functions_rela.html":[36,3,6],
 "functions_s.html":[36,3,0,19],
 "functions_t.html":[36,3,0,20],
-"functions_type.html":[36,3,3],
 "functions_type.html":[36,3,3,0],
+"functions_type.html":[36,3,3],
 "functions_type_a.html":[36,3,3,1],
 "functions_type_b.html":[36,3,3,2],
 "functions_type_c.html":[36,3,3,3],
@@ -249,5 +243,11 @@ var NAVTREEINDEX85 =
 "fungal__effects_8cpp.html#ae002e878ae18d5606ca01aeaa659a44c":[37,0,1,226,4],
 "fungal__effects_8cpp_source.html":[37,0,1,226],
 "fungal__effects_8h.html":[37,0,1,227],
-"fungal__effects_8h.html#aa45c38f53623c0b73df82890a1767162":[37,0,1,227,1]
+"fungal__effects_8h.html#aa45c38f53623c0b73df82890a1767162":[37,0,1,227,1],
+"fungal__effects_8h_source.html":[37,0,1,227],
+"game_8cpp.html":[37,0,1,228],
+"game_8cpp.html#a02a4844a7fb68c13a34dc40b0a9e94d8":[37,0,1,228,62],
+"game_8cpp.html#a08481f62adb6937636ea44b855311037":[37,0,1,228,51],
+"game_8cpp.html#a09c667a72022d7e0ee0b851560831e04":[37,0,1,228,67],
+"game_8cpp.html#a09e952ef4d27618e2f60ec737a8d1bae":[37,0,1,228,47]
 };

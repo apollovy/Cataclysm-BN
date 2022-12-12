@@ -691,6 +691,13 @@ var namespaces_dup =
       [ "water_source", "namespaceiexamine.html#ad419b04851e9070c7bb2e15bf97cfb00", null ],
       [ "workbench", "namespaceiexamine.html#a1562d040bf1e91a0140086bd6f905802", null ]
     ] ],
+    [ "init", "namespaceinit.html", [
+      [ "check_mods_for_errors", "namespaceinit.html#a65d404eb71b025ce30265f7eb245a813", null ],
+      [ "is_data_loaded", "namespaceinit.html#adfd08e6d89eb52f3404a9bb47f0f6fa7", null ],
+      [ "load_core_bn_modfiles", "namespaceinit.html#a4c0940fb41394700d2b04313098d8204", null ],
+      [ "load_soundpack_files", "namespaceinit.html#a8ba37b679d394453119d20c691fd20d9", null ],
+      [ "load_world_modfiles", "namespaceinit.html#abd5d92dc3d9cc02dd46330831b163372", null ]
+    ] ],
     [ "io", "namespaceio.html", "namespaceio" ],
     [ "item_funcs", "namespaceitem__funcs.html", [
       [ "can_be_unloaded", "namespaceitem__funcs.html#a59e0738ff81bbd95e725baecf3e23545", null ]
@@ -1399,12 +1406,12 @@ var namespaces_dup =
       [ "help", "namespacePATH__INFO.html#aaf487dc39e4ae73021efefcd2823b8f0", null ],
       [ "init_base_path", "namespacePATH__INFO.html#a46fcd07deaf63ce8cb7868650c74b616", null ],
       [ "init_user_dir", "namespacePATH__INFO.html#a703803ec701d6d98cd654cf9e3c7aadc", null ],
-      [ "jsondir", "namespacePATH__INFO.html#aa1cf85690e0967e7bc9e983d068ee974", null ],
       [ "keybindings", "namespacePATH__INFO.html#a260f287e95e936a3370680ac46c7571d", null ],
       [ "keybindings_edit_creature", "namespacePATH__INFO.html#ab3d95df4eec0fef93da1209a72218d92", null ],
       [ "keybindings_vehicle", "namespacePATH__INFO.html#a62b393a7371282a42628555ca7153af3", null ],
       [ "language_defs_file", "namespacePATH__INFO.html#a87c3bb74433855094b83a53bfdd92852", null ],
       [ "lastworld", "namespacePATH__INFO.html#a8c382696ff179ba28e1f06d7cfdd4436", null ],
+      [ "main_menu_tips", "namespacePATH__INFO.html#aabcf66dffe7dc74841a1b92f729904d1", null ],
       [ "memorialdir", "namespacePATH__INFO.html#a182bc8dae734699bdf8e6942592366bc", null ],
       [ "moddir", "namespacePATH__INFO.html#a3b5e8898cb37116e2a8639b13b0079f9", null ],
       [ "mods_dev_default", "namespacePATH__INFO.html#acc1e44c237e22ed6998c6d15b277334c", null ],

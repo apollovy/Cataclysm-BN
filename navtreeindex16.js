@@ -1,6 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"classJsonDeserializer.html#aa73189b79a25b4ffef0d537679038993":[36,0,530,3],
 "classJsonDeserializer.html#aaf4e444a8f40cdc69403aee22b076471":[36,0,530,1],
 "classJsonDeserializer.html#ab99bbee738aa9defe6e0516eaecf11d9":[36,0,530,0],
 "classJsonError.html":[36,0,531],
@@ -180,8 +179,8 @@ var NAVTREEINDEX16 =
 "classJsonOut.html#a44cdd853d4c6913b37caa9f0131eeff2":[36,0,535,2],
 "classJsonOut.html#a4550e2036b904c4d4a90e440dd41c684":[36,0,535,14],
 "classJsonOut.html#a4756f9a569adbfc60de127f7c335d82f":[36,0,535,15],
-"classJsonOut.html#a4b8c8e50e3be57e737ae971ecf2c3fd5":[36,0,535,32],
 "classJsonOut.html#a4b8c8e50e3be57e737ae971ecf2c3fd5":[36,0,535,33],
+"classJsonOut.html#a4b8c8e50e3be57e737ae971ecf2c3fd5":[36,0,535,32],
 "classJsonOut.html#a4c5d22835b7dd2a090f1576a12304c9a":[36,0,535,38],
 "classJsonOut.html#a5751001115057ac29e266c14b4da5cbc":[36,0,535,45],
 "classJsonOut.html#a57a841c30e82540a073e8fb90f082ce2":[36,0,535,36],
@@ -249,5 +248,6 @@ var NAVTREEINDEX16 =
 "classMapgenRemovePartHandler.html":[36,0,598],
 "classMapgenRemovePartHandler.html#a2e7cd5c3b77c5fdf631da69cb81ae483":[36,0,598,7],
 "classMapgenRemovePartHandler.html#a366b38f5c14dcfa58017ecb9bb6841a9":[36,0,598,3],
-"classMapgenRemovePartHandler.html#a3cfbfe2d9122064bb59791830ba6e654":[36,0,598,2]
+"classMapgenRemovePartHandler.html#a3cfbfe2d9122064bb59791830ba6e654":[36,0,598,2],
+"classMapgenRemovePartHandler.html#a53b09ea33f6e0730e883389009a24356":[36,0,598,4]
 };

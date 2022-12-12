@@ -667,19 +667,19 @@ $(document).ready(function(){initNavTree('magic__enchantment_8cpp_source.html','
 <div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>            ( mut-&gt;enchantments.size() == 1 &amp;&amp;</div>
 <div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>              <a class="code hl_function" href="namespacedetail.html#ab2f84fb3de26acdac3fc63a2dce5ea5e">std::count</a>( mut-&gt;enchantments.begin(), mut-&gt;enchantments.end(), <span class="keywordtype">id</span> ) == 0 ) ) {</div>
 <div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>            problems.push_back(</div>
-<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>                <a class="code hl_function" href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which has other enchantments (not supported)&quot;</span>, mut.str() ) );</div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>                <a class="code hl_function" href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which has other enchantments (not supported)&quot;</span>, mut.str() ) );</div>
 <div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>        }</div>
 <div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span> </div>
 <div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>        <span class="comment">// TODO: Implement or also list alpha-stat muts and slime perception</span></div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>        <span class="keywordflow">if</span>( !mut-&gt;mods.empty() ) {</div>
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>            problems.push_back(</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>                <a class="code hl_function" href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which has stat adjustments (not supported)&quot;</span>, mut.str() ) );</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>                <a class="code hl_function" href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which has stat adjustments (not supported)&quot;</span>, mut.str() ) );</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        }</div>
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span> </div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>        <span class="comment">// TODO: Implement or also list glass jaw</span></div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>        <span class="keywordflow">if</span>( !is_set_value&lt;&amp;mutation_branch::hp_modifier, &amp;mutation_branch::hp_modifier_secondary, &amp;mutation_branch::hp_adjustment&gt;</div>
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>            ( mut, 0.0f ) ) {</div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>            problems.push_back( <a class="code hl_function" href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which adjusts hp (not supported)&quot;</span>,</div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>            problems.push_back( <a class="code hl_function" href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a>( <span class="stringliteral">&quot;\nmutation %s which adjusts hp (not supported)&quot;</span>,</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>                                               mut.str() ) );</div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>        }</div>
 <div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>    }</div>
@@ -876,7 +876,7 @@ $(document).ready(function(){initNavTree('magic__enchantment_8cpp_source.html','
 <div class="ttc" id="apoint_8h_html"><div class="ttname"><a href="point_8h.html">point.h</a></div></div>
 <div class="ttc" id="arng_8cpp_html_aad28bdad07401a34ecf9912708f8b750"><div class="ttname"><a href="rng_8cpp.html#aad28bdad07401a34ecf9912708f8b750">one_in</a></div><div class="ttdeci">bool one_in(int chance)</div><div class="ttdef"><b>Definition:</b> <a href="rng_8cpp_source.html#l00065">rng.cpp:65</a></div></div>
 <div class="ttc" id="arng_8h_html"><div class="ttname"><a href="rng_8h.html">rng.h</a></div></div>
-<div class="ttc" id="astring__formatter_8h_html_a9b089d0b697443b096063219dab08ef5"><div class="ttname"><a href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a></div><div class="ttdeci">std::string string_format(std::string format, Args &amp;&amp;...args)</div><div class="ttdoc">Simple wrapper over string_formatter::parse.</div><div class="ttdef"><b>Definition:</b> <a href="string__formatter_8h_source.html#l00418">string_formatter.h:418</a></div></div>
+<div class="ttc" id="astring__formatter_8h_html_a8964099387da2f95396c67566bafce3d"><div class="ttname"><a href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a></div><div class="ttdeci">std::string string_format(std::string_view format, Args &amp;&amp;...args)</div><div class="ttdoc">Simple wrapper over string_formatter::parse.</div><div class="ttdef"><b>Definition:</b> <a href="string__formatter_8h_source.html#l00431">string_formatter.h:431</a></div></div>
 <div class="ttc" id="astring__id_8h_html"><div class="ttname"><a href="string__id_8h.html">string_id.h</a></div></div>
 <div class="ttc" id="astructenum__traits_html"><div class="ttname"><a href="structenum__traits.html">enum_traits</a></div><div class="ttdef"><b>Definition:</b> <a href="achievement_8h_source.html#l00030">achievement.h:30</a></div></div>
 <div class="ttc" id="astructfake__spell_html"><div class="ttname"><a href="structfake__spell.html">fake_spell</a></div><div class="ttdef"><b>Definition:</b> <a href="magic_8h_source.html#l00094">magic.h:94</a></div></div>
@@ -899,7 +899,7 @@ $(document).ready(function(){initNavTree('magic__enchantment_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="magic__enchantment_8cpp.html">magic_enchantment.cpp</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 18:46:37 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Dec 12 2022 17:46:08 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

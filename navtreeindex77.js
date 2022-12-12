@@ -1,12 +1,5 @@
 var NAVTREEINDEX77 =
 {
-"coordinate__conversions_8h.html#a15ee52c646f6d06e964da80b3355227a":[37,0,1,129,35],
-"coordinate__conversions_8h.html#a162ac1a3a0949e25134e2834bd66477a":[37,0,1,129,7],
-"coordinate__conversions_8h.html#a188b1ffc5326dd8b042fcbfec44c7166":[37,0,1,129,56],
-"coordinate__conversions_8h.html#a19e3e91f11926707e5583547807bf1ea":[37,0,1,129,49],
-"coordinate__conversions_8h.html#a1cd50b99d08ed45ef62c6a58b496afca":[37,0,1,129,22],
-"coordinate__conversions_8h.html#a1d4d395199c6d078e5d1deca53b5b912":[37,0,1,129,42],
-"coordinate__conversions_8h.html#a248760018e30d4c79fd7e02fc885faad":[37,0,1,129,20],
 "coordinate__conversions_8h.html#a24fce5d0632043832b87aacb9155d6de":[37,0,1,129,18],
 "coordinate__conversions_8h.html#a25521f7c41da90832b8d6573c2405f45":[37,0,1,129,8],
 "coordinate__conversions_8h.html#a323c60830f00fd61265b99b34992bf31":[37,0,1,129,38],
@@ -249,5 +242,12 @@ var NAVTREEINDEX77 =
 "crafting__gui_8cpp.html#a85d81375d681a4e56a25b42f9f753cdea50d1448013c6f17125caee18aa418af7":[37,0,1,135,0,0],
 "crafting__gui_8cpp.html#a85d81375d681a4e56a25b42f9f753cdeab0f4e80b9200bdfca611883a5bb2cecb":[37,0,1,135,0,1],
 "crafting__gui_8cpp.html#a85d81375d681a4e56a25b42f9f753cdeabc04848b2d94351b99f92127e29bb075":[37,0,1,135,0,2],
-"crafting__gui_8cpp.html#a9b5fd4dac0fab1f3ffe8b9113bced8dd":[37,0,1,135,9]
+"crafting__gui_8cpp.html#a9b5fd4dac0fab1f3ffe8b9113bced8dd":[37,0,1,135,9],
+"crafting__gui_8cpp.html#aa303320cbbe300afa5ec05b8d253af78":[37,0,1,135,16],
+"crafting__gui_8cpp.html#aa56eb1d3153ac8abf3ede81da9bef10b":[37,0,1,135,18],
+"crafting__gui_8cpp.html#aaa7cc31c4d1120e7b3cce0559991bb09":[37,0,1,135,12],
+"crafting__gui_8cpp.html#ab39a98f7d9f786e678a5b87ab6385beb":[37,0,1,135,13],
+"crafting__gui_8cpp.html#aca65d188b99ba28b7aa105b7ed7bd077":[37,0,1,135,6],
+"crafting__gui_8cpp.html#af8ee3f5b0aa324d4db5e0af57f80ee3b":[37,0,1,135,15],
+"crafting__gui_8cpp_source.html":[37,0,1,135]
 };

@@ -1,12 +1,5 @@
 var NAVTREEINDEX60 =
 {
-"classplayer__activity.html#ad8add7819b06dcfa95ca4871447159f2":[36,0,751,44],
-"classplayer__activity.html#adb6198e1b33fc9dfa2d7ef2003a0ea54":[36,0,751,33],
-"classplayer__activity.html#adb747c5138ba09209de359e85ce3ec45":[36,0,751,26],
-"classplayer__activity.html#adce4e86f744d9f801b41b1becdf257e5":[36,0,751,9],
-"classplayer__activity.html#ae44b657c59940e256aeb15e73bf2be1d":[36,0,751,20],
-"classplayer__activity.html#ae7eb73e1613215c4508b0345de0303f7":[36,0,751,17],
-"classplayer__activity.html#af40e3a7e2719460248e8c7d4661b9fa8":[36,0,751,36],
 "classplayer__morale.html":[36,0,752],
 "classplayer__morale.html#a0974d1b5faca8295ddc5ed84edf9aa02":[36,0,752,42],
 "classplayer__morale.html#a0a721ca1c9917b62b4308c2ef6bc7052":[36,0,752,28],
@@ -142,8 +135,8 @@ var NAVTREEINDEX60 =
 "classprintf__arg__formatter.html#a852e7a37fef46d579690ea30b8c68861":[36,0,763,8],
 "classprintf__arg__formatter.html#a89c23f2c6801475cb6f7e814b2a8e67e":[36,0,763,10],
 "classprintf__arg__formatter.html#a985529e3e633ce43f7e5261fa11ac3f6":[36,0,763,6],
-"classprintf__arg__formatter.html#aa751a29c68a1f4d7292160a176e17639":[36,0,763,11],
 "classprintf__arg__formatter.html#aa751a29c68a1f4d7292160a176e17639":[36,0,763,12],
+"classprintf__arg__formatter.html#aa751a29c68a1f4d7292160a176e17639":[36,0,763,11],
 "classprintf__arg__formatter.html#ad1eb24ea2b7c065bc176269fb9136ada":[36,0,763,5],
 "classprintf__arg__formatter.html#ae7a8ddae47b8bc0ad3cd0248299e7a4a":[36,0,763,16],
 "classprintf__arg__formatter.html#af0151b330f97bc42c4d97cd36fe4be18":[36,0,763,9],
@@ -249,5 +242,12 @@ var NAVTREEINDEX60 =
 "classquery__popup.html#afaf11ff265d2f47f0b7f7b2e0fd54088":[36,0,772,16],
 "classquery__popup.html#afd4109f9c8d73e90f0e6c51a4a00b781":[36,0,772,22],
 "classquery__popup.html#afef428e4aeef34bd85016c7eaa773aa9":[36,0,772,15],
-"classread__inventory__preset.html":[36,0,777]
+"classread__inventory__preset.html":[36,0,777],
+"classread__inventory__preset.html#a01947d5241797c2b2dc269299eeecf2b":[36,0,777,3],
+"classread__inventory__preset.html#a2ca9a4e5b9248ebc2537f7a8bd48733c":[36,0,777,5],
+"classread__inventory__preset.html#a5706335574378584f2cdd29ed8bb0c6e":[36,0,777,0],
+"classread__inventory__preset.html#a86b5891ab1a579d99ab64b7dfbf35a9c":[36,0,777,2],
+"classread__inventory__preset.html#a9503a5ff7d4e1b2f3af2b616e13a5326":[36,0,777,7],
+"classread__inventory__preset.html#aaf418d0a216ddce5c9d54401f3a86eaf":[36,0,777,8],
+"classread__inventory__preset.html#ac049c3c86fd3d76118cde6a6eb01238d":[36,0,777,4]
 };

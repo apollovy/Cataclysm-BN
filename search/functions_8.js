@@ -127,7 +127,7 @@ var searchData=
   ['has_5fenough_5fenergy_124',['has_enough_energy',['../classknown__magic.html#a1ae3fde0f6332bfb1398a623141c3a9e',1,'known_magic']]],
   ['has_5fenough_5fpainkiller_125',['has_enough_painkiller',['../classinventory.html#ab8183f0eebbaa418f6cc2982dc6d1d35',1,'inventory']]],
   ['has_5fentry_5ftype_126',['has_entry_type',['../classharvest__list.html#ad41b6f2da745f60a65f295894099d9e5',1,'harvest_list']]],
-  ['has_5ferrors_127',['has_errors',['../classdependency__node.html#a96f1ad47c878a8a7fb7973c4edd0e65a',1,'dependency_node']]],
+  ['has_5ferrors_127',['has_errors',['../classdependency__node.html#ab044cb4673c0fec731fb2bb715ab286d',1,'dependency_node']]],
   ['has_5fexplosion_5fdata_128',['has_explosion_data',['../classitem.html#a39e79f886f257aaaa199a7c2351993b7',1,'item']]],
   ['has_5fextra_129',['has_extra',['../classovermap.html#a3b44939d7a011d34cc60d22a44814ab6',1,'overmap::has_extra()'],['../classovermapbuffer.html#aa46126af574b225d4afff16117a10da4',1,'overmapbuffer::has_extra()']]],
   ['has_5ffaction_5frelationship_130',['has_faction_relationship',['../classnpc.html#a5f2a9b23638826a2058710cacf76a5a7',1,'npc']]],

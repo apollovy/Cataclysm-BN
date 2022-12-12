@@ -204,7 +204,7 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="game_8cpp_source.html#l00276">g</a>, and <a class="el" href="bionics_8cpp.html#a17e20a34f5837e50de3264fa93af7d0a">trait_DEBUG_BIONICS</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="iexamine_8cpp_source.html#l04719">best_installer()</a>, <a class="el" href="bionics_8cpp_source.html#l02149">Character::can_install_bionics()</a>, <a class="el" href="bionics_8cpp_source.html#l01907">Character::can_uninstall_bionic()</a>, <a class="el" href="game__inventory_8cpp_source.html#l01863">bionic_install_preset::get_failure_chance()</a>, <a class="el" href="game__inventory_8cpp_source.html#l01958">bionic_install_surgeon_preset::get_failure_chance()</a>, <a class="el" href="game__inventory_8cpp_source.html#l02042">bionic_uninstall_preset::get_failure_chance()</a>, <a class="el" href="bionics_8cpp_source.html#l02242">Character::install_bionics()</a>, <a class="el" href="game_8cpp_source.html#l05056">game::save_cyborg()</a>, and <a class="el" href="bionics_8cpp_source.html#l01977">Character::uninstall_bionic()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="iexamine_8cpp_source.html#l04807">best_installer()</a>, <a class="el" href="bionics_8cpp_source.html#l02149">Character::can_install_bionics()</a>, <a class="el" href="bionics_8cpp_source.html#l01907">Character::can_uninstall_bionic()</a>, <a class="el" href="game__inventory_8cpp_source.html#l01863">bionic_install_preset::get_failure_chance()</a>, <a class="el" href="game__inventory_8cpp_source.html#l01958">bionic_install_surgeon_preset::get_failure_chance()</a>, <a class="el" href="game__inventory_8cpp_source.html#l02042">bionic_uninstall_preset::get_failure_chance()</a>, <a class="el" href="bionics_8cpp_source.html#l02242">Character::install_bionics()</a>, <a class="el" href="game_8cpp_source.html#l04875">game::save_cyborg()</a>, and <a class="el" href="bionics_8cpp_source.html#l01977">Character::uninstall_bionic()</a>.</p>
 
 </div>
 </div>
@@ -322,7 +322,7 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="bionics_8h_source.html#l00089">bionic_data::occupied_bodyparts</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="game__inventory_8cpp_source.html#l01816">bionic_install_preset::get_denial()</a>, and <a class="el" href="activity__handlers_8cpp_source.html#l03520">activity_handlers::operation_do_turn()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="game__inventory_8cpp_source.html#l01816">bionic_install_preset::get_denial()</a>, and <a class="el" href="activity__handlers_8cpp_source.html#l03527">activity_handlers::operation_do_turn()</a>.</p>
 
 </div>
 </div>
@@ -367,19 +367,19 @@ Functions</h2></td></tr>
 <div class="line"><a id="l02475" name="l02475"></a><span class="lineno"> 2475</span>    <span class="keywordflow">for</span>( <span class="keyword">const</span> std::pair&lt;const bodypart_str_id, int&gt; &amp;elem : bio_id-&gt;<a class="code hl_variable" href="structbionic__data.html#ae9faf505571841d8ef97496eb3a26607">occupied_bodyparts</a> ) {</div>
 <div class="line"><a id="l02476" name="l02476"></a><span class="lineno"> 2476</span>        desc += ( each_bp_on_new_line ? <span class="stringliteral">&quot;\n&quot;</span> : <span class="stringliteral">&quot; &quot;</span> );</div>
 <div class="line"><a id="l02477" name="l02477"></a><span class="lineno"> 2477</span>        <span class="comment">//~ &lt;Bodypart name&gt; (&lt;number of occupied slots&gt; slots);</span></div>
-<div class="line"><a id="l02478" name="l02478"></a><span class="lineno"> 2478</span>        desc += <a class="code hl_function" href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a>( <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;%s (%i slots);&quot;</span> ),</div>
+<div class="line"><a id="l02478" name="l02478"></a><span class="lineno"> 2478</span>        desc += <a class="code hl_function" href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a>( <a class="code hl_define" href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a>( <span class="stringliteral">&quot;%s (%i slots);&quot;</span> ),</div>
 <div class="line"><a id="l02479" name="l02479"></a><span class="lineno"> 2479</span>                               <a class="code hl_function" href="bodypart_8cpp.html#aeadf2675d36776a1f685d1d2dfa06e78">body_part_name_as_heading</a>( elem.first-&gt;token, 1 ),</div>
 <div class="line"><a id="l02480" name="l02480"></a><span class="lineno"> 2480</span>                               elem.second );</div>
 <div class="line"><a id="l02481" name="l02481"></a><span class="lineno"> 2481</span>    }</div>
 <div class="line"><a id="l02482" name="l02482"></a><span class="lineno"> 2482</span>    <span class="keywordflow">return</span> desc;</div>
 <div class="line"><a id="l02483" name="l02483"></a><span class="lineno"> 2483</span>}</div>
 <div class="ttc" id="abodypart_8cpp_html_aeadf2675d36776a1f685d1d2dfa06e78"><div class="ttname"><a href="bodypart_8cpp.html#aeadf2675d36776a1f685d1d2dfa06e78">body_part_name_as_heading</a></div><div class="ttdeci">std::string body_part_name_as_heading(body_part bp, int number)</div><div class="ttdoc">Returns the name of the body parts in a context where the name is used as a heading or title e....</div><div class="ttdef"><b>Definition:</b> <a href="bodypart_8cpp_source.html#l00341">bodypart.cpp:341</a></div></div>
-<div class="ttc" id="astring__formatter_8h_html_a9b089d0b697443b096063219dab08ef5"><div class="ttname"><a href="string__formatter_8h.html#a9b089d0b697443b096063219dab08ef5">string_format</a></div><div class="ttdeci">std::string string_format(std::string format, Args &amp;&amp;...args)</div><div class="ttdoc">Simple wrapper over string_formatter::parse.</div><div class="ttdef"><b>Definition:</b> <a href="string__formatter_8h_source.html#l00418">string_formatter.h:418</a></div></div>
+<div class="ttc" id="astring__formatter_8h_html_a8964099387da2f95396c67566bafce3d"><div class="ttname"><a href="string__formatter_8h.html#a8964099387da2f95396c67566bafce3d">string_format</a></div><div class="ttdeci">std::string string_format(std::string_view format, Args &amp;&amp;...args)</div><div class="ttdoc">Simple wrapper over string_formatter::parse.</div><div class="ttdef"><b>Definition:</b> <a href="string__formatter_8h_source.html#l00431">string_formatter.h:431</a></div></div>
 <div class="ttc" id="atranslations_8h_html_aa829053017e23ef22d44dccecba63a34"><div class="ttname"><a href="translations_8h.html#aa829053017e23ef22d44dccecba63a34">_</a></div><div class="ttdeci">#define _(msg)</div><div class="ttdef"><b>Definition:</b> <a href="translations_8h_source.html#l00116">translations.h:116</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="bodypart_8cpp_source.html#l00341">body_part_name_as_heading()</a>, <a class="el" href="bionics_8h_source.html#l00089">bionic_data::occupied_bodyparts</a>, and <a class="el" href="string__formatter_8h_source.html#l00418">string_format()</a>.</p>
+<p class="reference">References <a class="el" href="translations_8h_source.html#l00116">_</a>, <a class="el" href="bodypart_8cpp_source.html#l00341">body_part_name_as_heading()</a>, <a class="el" href="bionics_8h_source.html#l00089">bionic_data::occupied_bodyparts</a>, and <a class="el" href="string__formatter_8h_source.html#l00431">string_format()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="item_8cpp_source.html#l03235">item::bionic_info()</a>, and <a class="el" href="bionics__ui_8cpp_source.html#l00363">draw_description()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="item_8cpp_source.html#l03240">item::bionic_info()</a>, and <a class="el" href="bionics__ui_8cpp_source.html#l00363">draw_description()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="bionics_8h.html">bionics.h</a></li>
-    <li class="footer">Generated on Fri Dec 9 2022 18:46:46 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Dec 12 2022 17:46:16 for Cataclysm BN by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
