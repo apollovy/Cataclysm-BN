@@ -754,6 +754,10 @@ void character_edit_menu( Character &c )
         }
         break;
         case edit_character::opinion: {
+            if( np == nullptr ) {
+                // HACK: For some reason, tidy is not satisfied with simple assert(np)
+                std::abort();
+            }
             uilist smenu;
             smenu.addentry( 0, true, 'h', "%s: %d", _( "trust" ), np->op_of_u.trust );
             smenu.addentry( 1, true, 's', "%s: %d", _( "fear" ), np->op_of_u.fear );
@@ -1374,7 +1378,6 @@ void debug()
 
         case DEBUG_SPAWN_NPC: {
             shared_ptr_fast<npc> temp = make_shared_fast<npc>();
-            temp->normalize();
             temp->randomize();
             temp->spawn_at_precise( { g->get_levx(), g->get_levy() }, u.pos() + point( -4, -4 ) );
             overmap_buffer.insert_npc( temp );
