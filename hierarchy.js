@@ -48,7 +48,7 @@ var hierarchy =
     [ "advanced_inventory", "classadvanced__inventory.html", null ],
     [ "advanced_inventory_pane", "classadvanced__inventory__pane.html", null ],
     [ "affected_type", "structaffected__type.html", null ],
-    [ "aim_type", "structaim__type.html", null ],
+    [ "ranged::aim_type", "structranged_1_1aim__type.html", null ],
     [ "std::allocator< T >", null, [
       [ "cata::colony< element_type, element_allocator_type, element_skipfield_type >", "classcata_1_1colony.html", null ],
       [ "cata::list< element_type, element_allocator_type >", "classcata_1_1list.html", null ]
@@ -159,9 +159,6 @@ var hierarchy =
     [ "bionic_data", "structbionic__data.html", null ],
     [ "anonymous_namespace{bionics_ui.cpp}::bionic_sort_less", "structanonymous__namespace_02bionics__ui_8cpp_03_1_1bionic__sort__less.html", null ],
     [ "detail::bits< T >", "structdetail_1_1bits.html", null ],
-    [ "std::bitset< Bits >", null, [
-      [ "iteminfo_query", "classiteminfo__query.html", null ]
-    ] ],
     [ "player_morale::body_part_data", "structplayer__morale_1_1body__part__data.html", null ],
     [ "body_part_set", "classbody__part__set.html", null ],
     [ "body_part_type", "structbody__part__type.html", null ],
@@ -214,6 +211,7 @@ var hierarchy =
     [ "char_encumbrance_data", "structchar__encumbrance__data.html", null ],
     [ "detail::char_t_impl< S, typename >", "structdetail_1_1char__t__impl.html", null ],
     [ "detail::char_t_impl< S, enable_if_t< is_string< S >::value > >", "structdetail_1_1char__t__impl_3_01S_00_01enable__if__t_3_01is__string_3_01S_01_4_1_1value_01_4_01_4.html", null ],
+    [ "char_trait_data", "structchar__trait__data.html", null ],
     [ "character_id", "classcharacter__id.html", null ],
     [ "character_martial_arts", "classcharacter__martial__arts.html", null ],
     [ "cata::colony< element_type, element_allocator_type, element_skipfield_type >::choose< flag, is_true, is_false >", "structcata_1_1colony_1_1choose.html", null ],
@@ -234,7 +232,7 @@ var hierarchy =
     [ "color_manager", "classcolor__manager.html", null ],
     [ "color_manager::color_struct", "structcolor__manager_1_1color__struct.html", null ],
     [ "color_tag_parse_result", "structcolor__tag__parse__result.html", null ],
-    [ "Character::comfort_response_t", "structCharacter_1_1comfort__response__t.html", null ],
+    [ "character_funcs::comfort_response_t", "structcharacter__funcs_1_1comfort__response__t.html", null ],
     [ "common_ranged_data", "structcommon__ranged__data.html", [
       [ "islot_ammo", "structislot__ammo.html", null ],
       [ "islot_gun", "structislot__gun.html", null ],
@@ -489,6 +487,8 @@ var hierarchy =
     [ "enum_traits< ot_match_type >", "structenum__traits_3_01ot__match__type_01_4.html", null ],
     [ "enum_traits< phase_id >", "structenum__traits_3_01phase__id_01_4.html", null ],
     [ "enum_traits< precip_class >", "structenum__traits_3_01precip__class_01_4.html", null ],
+    [ "enum_traits< relic_recharge_req >", "structenum__traits_3_01relic__recharge__req_01_4.html", null ],
+    [ "enum_traits< relic_recharge_type >", "structenum__traits_3_01relic__recharge__type_01_4.html", null ],
     [ "enum_traits< season_type >", "structenum__traits_3_01season__type_01_4.html", null ],
     [ "enum_traits< side >", "structenum__traits_3_01side_01_4.html", null ],
     [ "enum_traits< sounds::sound_t >", "structenum__traits_3_01sounds_1_1sound__t_01_4.html", null ],
@@ -963,6 +963,7 @@ var hierarchy =
     [ "anonymous_namespace{armor_layers.cpp}::item_penalties", "structanonymous__namespace_02armor__layers_8cpp_03_1_1item__penalties.html", null ],
     [ "item_pricing", "classitem__pricing.html", null ],
     [ "item_reference", "structitem__reference.html", null ],
+    [ "item_reload_option", "classitem__reload__option.html", null ],
     [ "Item_spawn_data", "classItem__spawn__data.html", [
       [ "Item_group", "classItem__group.html", null ],
       [ "Single_item_creator", "classSingle__item__creator.html", null ]
@@ -972,6 +973,7 @@ var hierarchy =
       [ "vehicle_stack", "classvehicle__stack.html", null ]
     ] ],
     [ "iteminfo", "structiteminfo.html", null ],
+    [ "iteminfo_query", "classiteminfo__query.html", null ],
     [ "game::non_dead_range< T >::iterator", "classgame_1_1non__dead__range_1_1iterator.html", null ],
     [ "rect_range< RectType >::iterator", "classrect__range_1_1iterator.html", null ],
     [ "std::iterator_traits< vehicle_part_iterator< T > >", "structstd_1_1iterator__traits_3_01vehicle__part__iterator_3_01T_01_4_01_4.html", null ],
@@ -1247,6 +1249,7 @@ var hierarchy =
     [ "mutation_category_trait", "structmutation__category__trait.html", null ],
     [ "player_morale::mutation_data", "structplayer__morale_1_1mutation__data.html", null ],
     [ "mutation_type", "structmutation__type.html", null ],
+    [ "detail::mutations_ui_result", "structdetail_1_1mutations__ui__result.html", null ],
     [ "mvwzstr", "structmvwzstr.html", null ],
     [ "detail::named_arg_info< Char >", "structdetail_1_1named__arg__info.html", null ],
     [ "detail::named_arg_value< Char >", "structdetail_1_1named__arg__value.html", null ],
@@ -1405,7 +1408,6 @@ var hierarchy =
     [ "points_left", "structpoints__left.html", null ],
     [ "uilist::pos_scalar", "classuilist_1_1pos__scalar.html", null ],
     [ "potential_mutation", "structpotential__mutation.html", null ],
-    [ "player::power_mut_ui_result", "structplayer_1_1power__mut__ui__result.html", null ],
     [ "detail::precision_adapter< SpecHandler, Char >", "structdetail_1_1precision__adapter.html", null ],
     [ "detail::precision_checker< ErrorHandler >", "classdetail_1_1precision__checker.html", null ],
     [ "prepared_item_consumption", "structprepared__item__consumption.html", null ],
@@ -1456,7 +1458,7 @@ var hierarchy =
     [ "region_terrain_and_furniture_settings", "structregion__terrain__and__furniture__settings.html", null ],
     [ "regional_settings", "structregional__settings.html", null ],
     [ "relic", "classrelic.html", null ],
-    [ "item::reload_option", "classitem_1_1reload__option.html", null ],
+    [ "relic_recharge", "classrelic__recharge.html", null ],
     [ "RemovePartHandler", "classRemovePartHandler.html", [
       [ "DefaultRemovePartHandler", "classDefaultRemovePartHandler.html", null ],
       [ "MapgenRemovePartHandler", "classMapgenRemovePartHandler.html", null ]
@@ -1684,7 +1686,6 @@ var hierarchy =
       ] ],
       [ "Trait_group_creator", "classTrait__group__creator.html", null ]
     ] ],
-    [ "Character::trait_data", "structCharacter_1_1trait__data.html", null ],
     [ "json_item_substitution::trait_requirements", "structjson__item__substitution_1_1trait__requirements.html", null ],
     [ "cata_libintl::trans_catalogue", "classcata__libintl_1_1trans__catalogue.html", null ],
     [ "cata_libintl::trans_library", "classcata__libintl_1_1trans__library.html", null ],
@@ -1772,7 +1773,8 @@ var hierarchy =
     ] ],
     [ "std::unordered_map< K, T >", null, [
       [ "auto_pickup::cache", "classauto__pickup_1_1cache.html", null ],
-      [ "effects_map", "classeffects__map.html", null ]
+      [ "effects_map", "classeffects__map.html", null ],
+      [ "mutation_collection", "structmutation__collection.html", null ]
     ] ],
     [ "pickup::unstacked_items", "structpickup_1_1unstacked__items.html", null ],
     [ "hacking_activity_actor::use_bionic", "structhacking__activity__actor_1_1use__bionic.html", null ],

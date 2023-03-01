@@ -70,5 +70,6 @@ var searchData=
   ['auto_5fnotes_67',['auto_notes',['../namespaceauto__notes.html',1,'']]],
   ['auto_5fpickup_68',['auto_pickup',['../namespaceauto__pickup.html',1,'']]],
   ['avatar_5faction_69',['avatar_action',['../namespaceavatar__action.html',1,'']]],
-  ['repair_5factivity_5fhack_70',['repair_activity_hack',['../namespaceactivity__handlers_1_1repair__activity__hack.html',1,'activity_handlers']]]
+  ['avatar_5ffuncs_70',['avatar_funcs',['../namespaceavatar__funcs.html',1,'']]],
+  ['repair_5factivity_5fhack_71',['repair_activity_hack',['../namespaceactivity__handlers_1_1repair__activity__hack.html',1,'activity_handlers']]]
 ];

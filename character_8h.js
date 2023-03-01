@@ -1,12 +1,12 @@
 var character_8h =
 [
     [ "enum_traits< character_movemode >", "structenum__traits_3_01character__movemode_01_4.html", "structenum__traits_3_01character__movemode_01_4" ],
-    [ "aim_type", "structaim__type.html", "structaim__type" ],
     [ "special_attack", "structspecial__attack.html", "structspecial__attack" ],
+    [ "needs_rates", "structneeds__rates.html", "structneeds__rates" ],
+    [ "char_trait_data", "structchar__trait__data.html", "structchar__trait__data" ],
+    [ "mutation_collection", "structmutation__collection.html", null ],
     [ "Character", "classCharacter.html", "classCharacter" ],
-    [ "Character::comfort_response_t", "structCharacter_1_1comfort__response__t.html", "structCharacter_1_1comfort__response__t" ],
     [ "Character::has_mission_item_filter", "structCharacter_1_1has__mission__item__filter.html", "structCharacter_1_1has__mission__item__filter" ],
-    [ "Character::trait_data", "structCharacter_1_1trait__data.html", "structCharacter_1_1trait__data" ],
     [ "CATA_SRC_CHARACTER_H", "character_8h.html#a40a19339f13ec04291e3cc17bca37d69", null ],
     [ "MAX_CLAIRVOYANCE", "character_8h.html#a0b97b2ab8862038f108ad883eb5274fb", null ],
     [ "character_movemode", "character_8h.html#af749573d20b6327d21f9588ebdd5b19b", [

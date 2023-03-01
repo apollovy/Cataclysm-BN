@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d0_0',['d0',['../vehicle__autodrive_8cpp.html#a8a8ef3bbd9ed2a52dac59671e4bcb210a133137876e26fb4c4088bb8cccd04195',1,'d0():&#160;vehicle_autodrive.cpp'],['../vehicle__autodrive_8cpp.html#a05cbb1ebfffc0786b82e54aafb09632aa133137876e26fb4c4088bb8cccd04195',1,'d0():&#160;vehicle_autodrive.cpp']]],
+  ['d0_0',['d0',['../vehicle__autodrive_8cpp.html#a05cbb1ebfffc0786b82e54aafb09632aa133137876e26fb4c4088bb8cccd04195',1,'d0():&#160;vehicle_autodrive.cpp'],['../vehicle__autodrive_8cpp.html#a8a8ef3bbd9ed2a52dac59671e4bcb210a133137876e26fb4c4088bb8cccd04195',1,'d0():&#160;vehicle_autodrive.cpp']]],
   ['d180_1',['d180',['../vehicle__autodrive_8cpp.html#a05cbb1ebfffc0786b82e54aafb09632aa79e0a18f5029dac0a8662dca40b4e79e',1,'vehicle_autodrive.cpp']]],
   ['d270_2',['d270',['../vehicle__autodrive_8cpp.html#a05cbb1ebfffc0786b82e54aafb09632aaa563e7ecf76c86ab5a38ef4229bd58bb',1,'vehicle_autodrive.cpp']]],
   ['d90_3',['d90',['../vehicle__autodrive_8cpp.html#a05cbb1ebfffc0786b82e54aafb09632aaef0b0b5b1f685fd8e36cb1c9bd1387b8',1,'vehicle_autodrive.cpp']]],
@@ -11,9 +11,9 @@ var searchData=
   ['danger_5fmedium_5ftheme_8',['danger_medium_theme',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18a58c5441d6a149e9912026b83203460ee',1,'sfx']]],
   ['dark_9',['DARK',['../lightmap_8h.html#aeb9bbbd65db85e3561729666fb6c7b38aacaef50d33fc86532c260a045c672f3e',1,'lightmap.h']]],
   ['darkness_10',['DARKNESS',['../character_8h.html#ad87be595004034c31843cf782d41c0b5a2e8bc5fc1b2072d06a95f19237a2a9f6',1,'character.h']]],
-  ['day_11',['day',['../weather__type_8h.html#ae8decd3daf4ed96986e06992ea70d17da628b7db04235f228d40adc671413a8c8',1,'day():&#160;weather_type.h'],['../calendar_8h.html#a5db9490f8316b22d7c367c5a563a2f00a628b7db04235f228d40adc671413a8c8',1,'day():&#160;calendar.h']]],
+  ['day_11',['day',['../calendar_8h.html#a5db9490f8316b22d7c367c5a563a2f00a628b7db04235f228d40adc671413a8c8',1,'day():&#160;calendar.h'],['../weather__type_8h.html#ae8decd3daf4ed96986e06992ea70d17da628b7db04235f228d40adc671413a8c8',1,'day():&#160;weather_type.h']]],
   ['daytime_5foutdoors_5fenv_12',['daytime_outdoors_env',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18a798e54712226899a9a484b7ae5aaecea',1,'sfx']]],
-  ['deactivate_13',['Deactivate',['../classplayer.html#ace29da9579ab4126cf7f83ba4ace8859a109fec06829bd79d222cfc8af52aaaf1',1,'player']]],
+  ['deactivate_13',['deactivate',['../namespacedetail.html#a89a6ead77427b27fdb713df77aa556e5a822509d77d8e4544ec4701e7474f262e',1,'detail']]],
   ['dead_14',['dead',['../character_8h.html#a2e6af65e94e820564fb484840378cf4aaf58e6a506c76fc2c90a7d29cbc631c2f',1,'character.h']]],
   ['dead_5ftired_15',['dead_tired',['../character_8h.html#abf088072c9ca5b676f7f7545bac9a137afc375b3ddd5525adbdf783e5ade0473d',1,'character.h']]],
   ['deafness_5ftone_16',['deafness_tone',['../namespacesfx.html#af20f2b1f5492d2f2d793da6d29740f18ad4d821788d7522d6cc54d3afb22e05b9',1,'sfx']]],
